@@ -1,0 +1,40 @@
+import = ["/home/ivanruano83/.config/alacritty/frikios.toml"]
+
+[cursor.style]
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 9
+
+[font.normal]
+family = "HackNerdFontMono"
+style = "bold"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control"
+
+
+[window]
+decorations = "full"
+dynamic_title = true
+
+[window.class]
+general = "Alacritty"
+
+[window.dimensions]
+columns = 90
+lines = 53
+
+[window.padding]
+x = 6
+y = 6

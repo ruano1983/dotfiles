@@ -1,0 +1,170 @@
+############## Archivo de configuración de Sway ######################################################
+## Salida de Video hdmi
+output HDMI-A-1 mode 1920x1080@74.973Hz
+# tecla funcion(windows)
+set $mod Mod4
+# teclas de direciones
+set $left h
+set $down j
+set $up k
+set $right l
+# Terminal predeterminado
+set $term alacritty
+set $wallpaper ~/Imágenes/wallpapers/Nba01.jpg
+set $lock swaylock -e -f -i $wallpaper
+#Bloqueo de pantalla
+bindsym $mod+Shift+b exec $lock
+# Power Menu
+bindsym $mod+Shift+p exec ~/.config/rofi/powermenu/type-2/powermenu.sh
+# firefox
+bindsym $mod+Shift+w exec MOZ_ENABLE_WAYLAND=1 firefox
+bindsym $mod+Shift+t exec MOZ_ENABLE_WAYLAND=1 thunderbird
+bindsym $mod+Shift+d exec dolphin
+bindsym $mod+Shift+m exec audacious
+bindsym $mod+Print exec grim  ~/Imágenes/capturas/$(date "%Y%m%d%H%M%S").png
+## Aparencia de sway y fonde de pantalla
+#output * bg ~/Imágenes/wallpapers/frikios.png  fill
+output * bg  $wallpaper fill
+# espacios entre aplicaciones
+gaps inner 10px
+gaps outer 10px
+# Tipografia
+font pango : Nono Sans bold 12px
+# espacio de la barra de titulo
+titlebar_padding 15 8
+#colores
+client.focused  #ffa749 #ffa749 #ffffff #098bba
+client.unfocused #242424 #242424 #a8a8a8
+client.focused_inactive #6f6f6f #6f6f6f #ffffff
+client.urgent  #d25145 #d25145 #ffffff #098bba
+
+# Aplicacions en ejecutar
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# lanzar al inicio
+exec dbus-update-activation-environment --all
+exec  ~/scripts/pipewiremedia.sh
+exec /usr/lib/libexec/polkit-kde-authentication-agent-1 
+#exec /usr/libexec/polkit-gnome-authentication-agent-1
+exec /usr/bin/dunst -config ~/.config/dunst/dunstrc
+# tiempo de espera
+exec swayidle -w \
+         timeout 600 $look
+# Ventanas flotantes
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="About"] floating enable
+##### Atajos de Teclado      
+# lanzar Terminal
+bindsym $mod+Return exec $term
+ # Salir de la Aplicación activa   
+bindsym $mod+Shift+q kill
+ #Lanzar launcher
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+z exec ~/.config/rofi/launchers/type-2/launcher.sh
+floating_modifier $mod normal
+# Recargar Configuración
+bindsym $mod+Shift+c reload
+# Salir de Sway
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Quieres salir de Sway wm? .' -B 'Si, Salir de Sway wm' 'swaymsg exit'
+# Control Sonido y multimedia
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+# Moverse entre las aplicaciones
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+# Mover Aplicaciones en diferentes escritorios de trabajo
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+# Moverse entre escritorios de trabajo
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+# Mover una aplicacion a un escritorio diferente    
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+# Layaut    
+bindsym $mod+b splith
+bindsym $mod+v splitv
+# Cambiar de estilo flotante o tiling
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+# Poner la aplicacion activa en pantalla completa  
+bindsym $mod+f fullscreen
+# cambiar la aplicacion activa de estilo flotante o tiling
+bindsym $mod+Shift+space floating toggle
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+# Move focus to the parent container
+bindsym $mod+a focus parent
+#scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+# Rediminsionar los contenedores
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+#### Barra de estado Waybar
+bar {
+    swaybar_command waybar
+}
+# Mapa del teclado
+ input * {
+        xkb_layout "es"     
+}
+
+seat seat0 xcursor_theme 'Breeze_Snow' ' 22'
+# Aparencia de las aplicaciones GTK-3, iconos y cursores
+exec_always {
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface icon-theme  'Papirus'
+    gsettings set org.gnome.desktop.interface cursor-theme 'Breeze_Snow'
+    #settings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+}
+include /etc/sway/config.d/*

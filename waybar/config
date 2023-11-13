@@ -1,0 +1,130 @@
+{
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 34, // Waybar height (to be removed for auto height) 
+    "spacing":2, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["custom/launcher", "sway/workspaces",  "sway/window"],
+    "modules-right": [ "wireplumber", "network", "cpu", "memory", "disk", "temperature","sway/language","clock","custom/launcher2" ],
+    // Modules configuration
+    // "sway/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "warp-on-scroll": false,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //     }
+    // },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+   
+    "custom/launcher":{
+        "format": "󰕰",
+        "on-click": "~/.config/rofi/launchers/type-2/launcher.sh",
+        "on-click-right": "killall rofi"
+    },
+
+
+
+  "sway/window": {
+     "format": "{title}",
+     "max-length": 150,
+     "rewrite": {
+        
+        "ivanruano83@B550-plus(.*)" : "  ivanruano83@B550-plus $1 - Alacritty",
+        "(.*) — Mozilla Firefox": "🌎  $1 - Mozilla Firefox", 
+        "(.*) — Midori Browser": "🌎  $1 - Midori Browser",
+	"(.*) — Dolphin": "   $1 - Dolphin",
+        "(.*) - Mozilla Thunderbird": "    $1 - Mozilla Thunderbird",
+        "(.*) - Audacious": "   $1 - Audacious",
+        "(.*) - NVIM": "   $1 - Neovim"
+
+    
+      }
+  },
+
+
+
+    "wireplumber": {
+         "format": "{volume}% {icon}",
+         "format-muted": "",
+         "on-click": "helvum",
+         "format-icons": ["", "", ""]
+    },  
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Desconectado ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": true,
+        "interval": 1
+        },
+    "memory": {
+        "format": "{}% ",
+        "interval": 1
+    },
+
+    "disk": {
+	"interval": 30,
+	"format": "{percentage_used}% 󰆼 ",
+	"unit": "GB"
+	
+
+    },
+
+   "temperature": {
+        // "thermal-zone": 2,
+         "hwmon-path": "/sys/class/hwmon/hwmon2/temp3_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""],
+         "interval":1
+    },
+    
+
+
+  "sway/language": {
+       "format": "{} ",
+        "tooltip": false
+
+  },
+
+    "clock": {
+        "timezone": "Europe/Madrid",
+       	"tooltip-format": "{:%d-%m-%Y}",
+        "format": "{:%a  %H:%M}",
+       "interval": 2
+        
+    },
+
+
+   "custom/launcher2":{
+        "format": "",
+        "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh",
+        "on-click-right": "killall rofi"
+    },
+
+
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name    
+}
+
