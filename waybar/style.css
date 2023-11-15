@@ -48,7 +48,7 @@ button:hover {
 #custom-launcher2 {
   padding-left: 14px;
     padding-right: 14px;
-    background-color: #ffa749;
+    background-color: #f1581b;
     color: #ffffff;
 
 }
@@ -68,7 +68,7 @@ button:hover {
   }
 
 #workspaces button.focused {
-    background-color: #ffa749;
+    background-color: #f1581b;
     
    
 

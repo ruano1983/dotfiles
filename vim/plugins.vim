@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
-Plug 'navarasu/onedark.nvim' " Tema
-Plug 'EdenEast/nightfox.nvim' "Tema  
+
+Plug 'ayu-theme/ayu-vim' 
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

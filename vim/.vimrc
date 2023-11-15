@@ -23,7 +23,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del 
 " Cargar fuente Powerline y símbolos (ver nota)
 let g:airline_powerline_fonts = 1
 set noshowmode  " No mostrar el modo actual (ya lo muestra la barra de estado)
-let g:airline_theme='google_dark' "Tema de airline
+let g:airline_theme='one' "Tema de airline
 
 "Configuración de NerdTree
 let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
@@ -41,4 +41,6 @@ if has("autocmd")
 endif
 
 set background=dark
-colorscheme abstract
+set termguicolors     " enable true colors support
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu

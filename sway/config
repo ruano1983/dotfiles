@@ -29,11 +29,11 @@ output * bg  $wallpaper fill
 gaps inner 10px
 gaps outer 10px
 # Tipografia
-font pango : Nono Sans bold 12px
+font pango : Nono Sans bold 12px 
 # espacio de la barra de titulo
 titlebar_padding 15 8
 #colores
-client.focused  #ffa749 #ffa749 #ffffff #098bba
+client.focused #f1581b #f1581b  #ffffff #6021df 
 client.unfocused #242424 #242424 #a8a8a8
 client.focused_inactive #6f6f6f #6f6f6f #ffffff
 client.urgent  #d25145 #d25145 #ffffff #098bba
@@ -42,7 +42,7 @@ client.urgent  #d25145 #d25145 #ffffff #098bba
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 # lanzar al inicio
 exec dbus-update-activation-environment --all
-exec  ~/scripts/pipewiremedia.sh
+exec  ~/scripts/pipewire.sh
 exec /usr/lib/libexec/polkit-kde-authentication-agent-1 
 #exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec /usr/bin/dunst -config ~/.config/dunst/dunstrc
