@@ -1,6 +1,8 @@
 so ~/.config/nvim/plugins.vim
 so ~/.config/nvim/nerdtree.vim
-so ~/.config/nvim/airline.vim
+"so ~/.config/nvim/airline.vim"
+so ~/.config/nvim/jedi.vim
+
 " Cargar fuente Powerline y símbolos (ver nota)
 let g:airline_powerline_fonts = 1
 let g:airline_theme='one' "Tema de airline
@@ -24,8 +26,9 @@ set background=dark
 set termguicolors     " enable true colors support
 let ayucolor="dark"   " for dark version of theme
 colorscheme ayu
-"lua << END
-"require('lualine-config')
-"END
 
+
+let g:lightline = {
+      \ 'colorscheme': 'ayu',
+      \ }
 

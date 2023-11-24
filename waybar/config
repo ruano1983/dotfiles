@@ -43,7 +43,7 @@
         "ivanruano83@B550-plus(.*)" : "  ivanruano83@B550-plus $1 - Alacritty",
         "(.*) — Mozilla Firefox": "🌎  $1 - Mozilla Firefox", 
         "(.*) — Midori Browser": "🌎  $1 - Midori Browser",
-	"(.*) — Dolphin": "   $1 - Dolphin",
+        "(.*) — Dolphin": "   $1 - Dolphin",
         "(.*) - Mozilla Thunderbird": "    $1 - Mozilla Thunderbird",
         "(.*) - Audacious": "   $1 - Audacious",
         "(.*) - NVIM": "   $1 - Neovim"
@@ -83,7 +83,7 @@
 
     "disk": {
 	"interval": 30,
-	"format": "{percentage_used}% 󰆼 ",
+	"format": "{percentage_used}%  ",
 	"unit": "GB"
 	
 
@@ -91,7 +91,7 @@
 
    "temperature": {
         // "thermal-zone": 2,
-         "hwmon-path": "/sys/class/hwmon/hwmon2/temp3_input",
+         "hwmon-path": "/sys/class/hwmon/hwmon1/temp3_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
