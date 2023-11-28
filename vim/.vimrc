@@ -1,7 +1,7 @@
 set history=1000
+set nocompatible
 syntax on
 set number
-set cursorline
 set showmatch
 set autoindent	"autoidentación
 set shiftwidth=4
@@ -15,8 +15,18 @@ set wildoptions=pum
 set noruler
 set hlsearch
 set smartcase
-set noshowmode  " No mostrar el modo actual (ya lo muestra la barra de estado)
+nnoremap <c-s> :w<CR>
+imap ññ <Esc>
+
 so ~/.vim/plugins.vim
+
+"Configuracion de airline
+let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
+let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
+" Cargar fuente Powerline y símbolos
+let g:airline_powerline_fonts = 1
+let g:airline_theme='google_dark' "Tema de airline
+
 "Configuración de NerdTree
 let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
 let g:NERDTreeWinSize=40
@@ -27,19 +37,7 @@ map <F2> :NERDTreeToggle<CR>
 "Ignorar tipos de ficheros
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx,*.odt
 let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
-
-if has("autocmd")
-   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
-
 set laststatus=2
 set background=dark
 set termguicolors     " enable true colors support
-let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
-let g:lightline = {
-      \ 'colorscheme': 'ayu',
-      \ }
-
-
-
+source ~/.config/nvim/colors/frikios.vim

@@ -1,10 +1,10 @@
 {
     "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 34, // Waybar height (to be removed for auto height) 
-    "spacing":2, // Gaps between modules (4px)
+    "height": 36, // Waybar height (to be removed for auto height) 
+    "spacing":4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": ["custom/launcher", "sway/workspaces",  "sway/window"],
-    "modules-right": [ "wireplumber", "network", "cpu", "memory", "disk", "temperature","sway/language","clock","custom/launcher2" ],
+    "modules-right": [ "wireplumber", "network", "cpu", "memory", "disk", "temperature","clock","custom/launcher2" ],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -28,7 +28,7 @@
     },
    
     "custom/launcher":{
-        "format": "",
+        "format": "",
         "on-click": "~/.config/rofi/launchers/type-2/launcher.sh",
         "on-click-right": "killall rofi"
     },
@@ -37,7 +37,7 @@
 
   "sway/window": {
      "format": "{title}",
-     "max-length": 150,
+     "max-length": 170,
      "rewrite": {
         
         "ivanruano83@B550-plus(.*)" : "  ivanruano83@B550-plus $1 - Alacritty",

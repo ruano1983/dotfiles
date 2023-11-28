@@ -3,4 +3,4 @@ let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como p
 let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
 " Cargar fuente Powerline y símbolos
 let g:airline_powerline_fonts = 1
-let g:airline_theme='one' "Tema de airline
+let g:airline_theme='google_dark' "Tema de airline
