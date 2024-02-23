@@ -21,6 +21,8 @@ bindsym $mod+Shift+w exec MOZ_ENABLE_WAYLAND=1 firefox
 bindsym $mod+Shift+t exec MOZ_ENABLE_WAYLAND=1 thunderbird
 bindsym $mod+Shift+d exec dolphin
 bindsym $mod+Shift+m exec audacious
+bindsym $mod+Shift+f exec darktable
+bindsym $mod+Shift+o exec libreoffice --writer
 bindsym $mod+Print exec grim  ~/Imágenes/capturas/$(date "%Y%m%d%H%M%S").png
 ## Aparencia de sway y fonde de pantalla
 #output * bg ~/Imágenes/wallpapers/frikios.png  fill
@@ -34,10 +36,10 @@ font pango : Nono Sans bold 12px
 titlebar_padding 15 8
 default_border pixel 2px
 #colores
-client.focused #f1581b #f1581b  #ffffff #9237e1
+client.focused #f1581b #f1581b  #ffffff #ab35f4
 client.unfocused #242424 #242424 #a8a8a8
 client.focused_inactive #6f6f6f #6f6f6f #ffffff
-client.urgent  #9237e1 #9237e1 #ffffff #098bba
+client.urgent  #ab35f4 #ab35f4 #ffffff #098bba
 
 # Aplicacions en ejecutar
 set $menu dmenu_path | dmenu | xargs swaymsg exec --

@@ -59,7 +59,7 @@ button:hover {
 }
 
 #workspaces button.urgent {
-    background-color:#9237e1;   
+    background-color:#ab35f4  
    }
 
 
@@ -108,12 +108,12 @@ button:hover {
 }
 
 #network.disconnected {
-    background-color: #d25145;
+    background-color: #ab35f4
 }
 
 
 #wireplumber.muted {
-    background-color: #f53c3c;
+    background-color: #ab35f4
 }
 
 #custom-media {
@@ -132,7 +132,7 @@ button:hover {
 
 
 #temperature.critical {
-    background-color: #6021df;
+    background-color: #ab35f4
 }
 
 
