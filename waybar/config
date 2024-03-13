@@ -5,7 +5,7 @@
     // Choose the order of the modules
     "modules-left": ["custom/launcher", "sway/workspaces"],
     "modules-center": ["clock", "custom/weather"],
-    "modules-right": [ "keyboard-state","wireplumber", "network", "cpu", "memory", "disk", "temperature",  "sway/language" , "custom/launcher2" ],
+    "modules-right": [ "keyboard-state","wireplumber", "network", "cpu", "memory", "disk", "temperature" , "temperature2", "sway/language" , "custom/launcher2" ],
     // Modules configuration
       
     "custom/launcher":{
@@ -54,6 +54,7 @@
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%A, %d %B, %H:%M}"
+
     },
 
     "custom/weather": {
@@ -109,14 +110,23 @@
 
    "temperature": {
         // "thermal-zone": 2,
-         "hwmon-path": "/sys/class/hwmon/hwmon1/temp3_input",
-        "critical-threshold": 90,
+         "hwmon-path": "/sys/class/hwmon/hwmon2/temp3_input",
+        "critical-threshold": 95,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""],
          "interval":1
     },
-    
+
+       "temperature2": {
+        // "thermal-zone": 2,
+         "hwmon-path": "/sys/class/hwmon/hwmon1/temp3_input",
+        "critical-threshold": 95,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""],
+         "interval":1
+    },
 
     "sway/language": {
     	"format": "{} ",
@@ -127,14 +137,16 @@
     "clock#time": {
 		"interval": 10,
 		"format": "{:%H:%M}",
-		"tooltip": false
+		"tooltip": false,
+		"locale": "es"
 	},
 
     "clock#date": {
 		"interval": 20,
 		"format": "{:%e %b %Y}",
-		"tooltip": false
-		//"tooltip-format": "{:%e %B %Y}"
+		"tooltip": false,
+		"locale": "es"
+	    
 	},
 
 

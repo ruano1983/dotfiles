@@ -1,3 +1,4 @@
+@import "colors/frikios.css";
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: Noto Sans, Helvetica, Arial, sans-serif;
@@ -6,9 +7,9 @@
   }
 
   window#waybar {
-    background-color: #000000;
+    background-color: @background;
     border-bottom: 0px solid ;
-    color: #ffffff;
+    color: @text;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -36,36 +37,36 @@ button:hover {
 #custom-launcher2 {
   padding-left: 12px;
     padding-right: 12px;
-    background-color: #f1581b;
-    color: #ffffff;
+    background-color: @base;
+    color: @text;
 
 }
 
 #workspaces button {
     padding-left: 8px;
     padding-right: 8px;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: @background;
+    color: @text;
 }
 
 #workspaces button:hover {
-        background-color: #000000;
+        background-color: @hover;
     
   }
 
 #workspaces button.focused {
-    background-color: #f1581b;
+    background-color: @focus;
       
 }
 
 #workspaces button.urgent {
-    background-color:#ab35f4  
+    background-color: @alert; 
    }
 
 
 #mode {
-     background-color: #000000;
-    border-bottom: 3px solid #ffffff;
+     background-color: @background;
+    border-bottom: 3px solid @text;
 }
 
 #disk,
@@ -81,7 +82,7 @@ button:hover {
 #scratchpad
  {
     padding: 0 10px;
-    color: #ffffff;
+    color: @text;
 }
 
 #window,
@@ -102,47 +103,32 @@ button:hover {
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
+        background-color: @text;
         color: #000000;
     }
 }
 
-#network.disconnected {
-    background-color: #ab35f4
+#network.disconnected { 
+    background-color: @alert; 
 }
 
 
 #wireplumber.muted {
-    background-color: #ab35f4
+    background-color: @alert;
 }
 
-#custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    background-color: #ffa000;
-}
-
-
-#temperature.critical {
-    background-color: #ab35f4
+#temperature.critical { 
+    background-color: @alert; 
 }
 
 
 #idle_inhibitor {
-    background-color: #2d3436;
+    background-color:@background;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
+    background-color: @alert;
+    color: @text;
 }
 
 
@@ -157,6 +143,4 @@ button:hover {
 #clock.toltip {
 font-family: Noto Sans;
 }
-
-
 

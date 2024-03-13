@@ -1,0 +1,9 @@
+set $base #0d62ac
+set $base_background #0d62ac
+set $text1 #ffffff
+set $secundary_background #111111
+set $secundary #111111
+set $alert #b63625
+set $alert_background #b63625
+set $indicator_main #b63625
+set $indicator_secundary #7218a6

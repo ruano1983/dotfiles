@@ -1,4 +1,5 @@
 ############## Archivo de configuración de Sway ######################################################
+include colors/frikios
 ## Salida de Video hdmi
 output HDMI-A-1 mode 1920x1080@74.973Hz
 # tecla funcion(windows)
@@ -10,7 +11,7 @@ set $up k
 set $right l
 # Terminal predeterminado
 set $term alacritty
-set $wallpaper ~/Imágenes/wallpapers/minimal/wp9077777-minimal-orange-4k-wallpapers.jpg
+set $wallpaper ~/Imágenes/wallpapers/minimal/cave-minimalist-4k-k5-3840x2160.jpg
 set $lock swaylock -e -f -i $wallpaper
 #Bloqueo de pantalla
 bindsym $mod+Shift+b exec $lock
@@ -36,10 +37,10 @@ font pango : Nono Sans bold 12px
 titlebar_padding 15 8
 default_border pixel 2px
 #colores
-client.focused #f1581b #f1581b  #ffffff #ab35f4
-client.unfocused #242424 #242424 #a8a8a8
-client.focused_inactive #6f6f6f #6f6f6f #ffffff
-client.urgent  #ab35f4 #ab35f4 #ffffff #098bba
+client.focused $base $base_background $text1 $indicator_main
+client.unfocused $secundary $secundary_background $text1 $indicator_secundary
+client.focused_inactive $secundary $secundary_background $text1 $indicator_secundary
+client.urgent $alert $alert_background $text1 $indicator_secundary
 
 # Aplicacions en ejecutar
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
