@@ -17,16 +17,15 @@ set $lock swaylock -e -f -i $wallpaper
 bindsym $mod+Shift+b exec $lock
 # Power Menu
 bindsym $mod+Shift+p exec ~/.config/rofi/powermenu/type-2/powermenu.sh
-# firefox
+# Apps
 bindsym $mod+Shift+w exec MOZ_ENABLE_WAYLAND=1 firefox
 bindsym $mod+Shift+t exec MOZ_ENABLE_WAYLAND=1 thunderbird
 bindsym $mod+Shift+d exec dolphin
 bindsym $mod+Shift+m exec audacious
 bindsym $mod+Shift+f exec darktable
 bindsym $mod+Shift+o exec libreoffice --writer
-bindsym $mod+Print exec grim  ~/Imágenes/capturas/$(date "%Y%m%d%H%M%S").png
+bindsym $mod+Print exec grim  ~/Imágenes/capturas/$(date +%Y-%m-%d_%H-%m-%s).png
 ## Aparencia de sway y fonde de pantalla
-#output * bg ~/Imágenes/wallpapers/frikios.png  fill
 output * bg  $wallpaper fill
 # espacios entre aplicaciones
 #gaps inner 10px
@@ -36,7 +35,8 @@ font pango : Nono Sans bold 12px
 # espacio de la barra de titulo
 titlebar_padding 15 8
 default_border pixel 2px
-#colores
+# colores
+# class       border      background       text     indicator     child_border
 client.focused $base $base_background $text1 $indicator_main
 client.unfocused $secundary $secundary_background $text1 $indicator_secundary
 client.focused_inactive $secundary $secundary_background $text1 $indicator_secundary
@@ -48,7 +48,6 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 exec dbus-update-activation-environment --all
 exec  ~/scripts/pipewire.sh
 exec /usr/lib/libexec/polkit-kde-authentication-agent-1 
-#exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec /usr/bin/dunst -config ~/.config/dunst/dunstrc
 # tiempo de espera
 exec swayidle -w \
@@ -64,9 +63,9 @@ for_window [window_role="About"] floating enable
 ##### Atajos de Teclado      
 # lanzar Terminal
 bindsym $mod+Return exec $term
- # Salir de la Aplicación activa   
+# Salir de la Aplicación activa
 bindsym $mod+Shift+q kill
- #Lanzar launcher
+# Lanzar launcher
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+z exec ~/.config/rofi/launchers/type-2/launcher.sh
 floating_modifier $mod normal
