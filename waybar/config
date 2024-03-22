@@ -5,7 +5,7 @@
     // Choose the order of the modules
     "modules-left": ["custom/launcher", "sway/workspaces"],
     "modules-center": ["clock", "custom/weather"],
-    "modules-right": [ "keyboard-state","wireplumber", "network", "cpu", "memory", "disk", "temperature" , "temperature2", "sway/language" , "custom/launcher2" ],
+    "modules-right": [ "keyboard-state","wireplumber", "network", "cpu", "memory", "disk", "temperature" , "custom/kernel", "sway/language" , "custom/launcher2" ],
     // Modules configuration
       
     "custom/launcher":{
@@ -119,6 +119,13 @@
 
   },
 
+    "custom/kernel": {
+        "format": "{} ",
+        "exec": "uname -r",
+	"tooltip": false,
+	"interval": "once"
+        
+    },
 
    "custom/launcher2":{
         "format": "",
