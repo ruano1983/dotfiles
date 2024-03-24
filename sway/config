@@ -11,7 +11,7 @@ set $up k
 set $right l
 # Terminal predeterminado
 set $term alacritty
-set $wallpaper ~/Imágenes/wallpapers/minimal/cave-minimalist-4k-k5-3840x2160.jpg
+set $wallpaper /usr/share/wallpapers/frikios/cave.jpg
 set $lock swaylock -e -f -i $wallpaper
 #Bloqueo de pantalla
 bindsym $mod+Shift+b exec $lock
@@ -46,12 +46,12 @@ client.urgent $alert $alert_background $text1 $indicator_secundary
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 # lanzar al inicio
 exec dbus-update-activation-environment --all
-exec  ~/scripts/pipewire.sh
+exec /usr/lib/libexec/pipewire-launch.sh
 exec /usr/lib/libexec/polkit-kde-authentication-agent-1 
 exec /usr/bin/dunst -config ~/.config/dunst/dunstrc
 # tiempo de espera
-exec swayidle -w \
-         timeout 600 $look
+#exec swayidle -w \
+ #        timeout 600 $look
 # Ventanas flotantes
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
