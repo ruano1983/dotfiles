@@ -32,7 +32,7 @@ alias play="mpv --shuffle --no-video"
 export makeopts="-j16"
 
 ##### Prompt
-export PS1='\[\e[38;5;32;2m\]\u\[\e[0m\] \[\e[1m\]\w\[\e[0m\] '
+export PS1='\[\e[38;5;32;1;2m\]\u\[\e[0m\] \[\e[1m\]\w\[\e[0m\] \n\[\e[1m\]...\[\e[0m\] '
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
     . /usr/share/bash-completion/bash_completion
 
