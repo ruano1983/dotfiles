@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100"
+   height="100"
+   viewBox="0 0 26.458332 26.458333"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="logo.png"
+   inkscape:export-xdpi="61.5"
+   inkscape:export-ydpi="61.5"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   sodipodi:docname="logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#cccccc"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="5.6568542"
+     inkscape:cx="52.856232"
+     inkscape:cy="58.424698"
+     inkscape:window-width="956"
+     inkscape:window-height="1046"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     inkscape:clip-to-page="false"
+     showguides="true"
+     showgrid="false"
+     inkscape:export-bgcolor="#ffffff00">
+    <sodipodi:guide
+       position="65.35572,50.933957"
+       orientation="0,-1"
+       id="guide5"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="90.328462,89.679566"
+       orientation="0,-1"
+       id="guide6"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <rect
+       x="308.62463"
+       y="92.177711"
+       width="58.720615"
+       height="107.82229"
+       id="rect5" />
+    <rect
+       x="81.935745"
+       y="207.57056"
+       width="652.75476"
+       height="327.74298"
+       id="rect1" />
+  </defs>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#0d62ac;stroke-width:1;fill-opacity:1"
+       id="rect2"
+       width="26.458332"
+       height="26.458332"
+       x="3.1789143e-06"
+       y="5.5631e-07" />
+    <path
+       style="font-weight:bold;font-stretch:semi-condensed;font-size:95.4476px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold Semi-Condensed';fill:#ffffff;stroke-width:0.669851"
+       d="M 5.5292826,6.784613 H 13.601165 V 9.2968247 H 8.5249446 l -8e-7,2.3999823 h 4.7740652 v 2.512211 H 8.5249446 v 5.464709 h -2.995662 z"
+       id="path3" />
+    <path
+       id="text4-5-9"
+       style="font-weight:bold;font-stretch:semi-condensed;font-size:95.4476px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold Semi-Condensed';fill:#f1581b;stroke-width:0.669851;fill-opacity:1"
+       d="m 15.462546,15.336358 2.810419,1.008275 3.185252,-8.5517521 -2.810416,-1.0082757 z m -1.239973,3.329075 2.810418,1.008275 0.830441,-2.229565 -2.810417,-1.008274 z" />
+  </g>
+</svg>
