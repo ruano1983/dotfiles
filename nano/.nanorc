@@ -1,0 +1,14 @@
+set autoindent
+set constantshow
+set fill 72
+set historylog
+set multibuffer
+set positionlog
+set quickblank
+set regexp
+set linenumbers
+set minibar
+set numbercolor  blue,black
+set minicolor  blue,black
+set keycolor blue,black
+include "/usr/share/nano/*.nanorc"
