@@ -1,0 +1,34 @@
+set history=1000
+set nocompatible
+syntax on
+set number "Show current line number
+set scrolloff=10
+set laststatus=2 
+" Clear status line when vimrc is reloaded.
+set statusline=
+" Status line left side.
+set statusline+=\ %F\ %M\ %Y\ %R
+" Use a divider to separate the left side from the right side.
+set statusline+=%=
+" Status line right side.
+set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+" Show the status on the second to last line.
+set laststatus=2
+set showmatch
+set autoindent "autoidentación
+set shiftwidth=4
+set softtabstop=4
+set smartindent "identación intelegente
+set mouse=a  "Permite la integración del mouse (seleccionar texto, mover el cursor)
+set wildmenu
+set shiftwidth=4
+set softtabstop=4
+set wildoptions=pum
+set hlsearch
+set smartcase
+nnoremap <c-s> :w<CR>
+imap ññ <Esc>
+set background=dark
+set termguicolors "enable true colors support
+
+source ~/.config/nvim/colors/frikios.vim
