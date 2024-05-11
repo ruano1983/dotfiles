@@ -4,7 +4,6 @@ let g:colors_name = "frikios"
 set background=dark
 set t_Co=256
 hi Normal guifg=#ffffff ctermbg=NONE guibg=#000000 gui=NONE
-
 hi DiffText guifg=#0d62ac guibg=NONE
 hi ErrorMsg guifg=#0d62ac guibg=NONE
 hi WarningMsg guifg=#0d62ac guibg=NONE
@@ -33,7 +32,7 @@ hi Debug guifg=#c7ae20 guibg=NONE
 hi SpecialChar guifg=#4fa637 guibg=NONE
 hi Conditional guifg=#4fa637 guibg=NONE
 hi Todo guifg=#c7ae20 guibg=NONE
-hi Special guifg=#8619bc guibg=NONE
+hi Special guifg=#c7ae20 guibg=NONE
 hi Label guifg=#c7ae20 guibg=NONE
 hi Delimiter guifg=#c7ae20 guibg=NONE
 hi Number guifg=#ffffff guibg=NONE cterm=NONE
@@ -63,13 +62,12 @@ hi Pmenu guifg=#ffffff guibg=#000000
 hi SignColumn guibg=#000000
 hi Title guifg=#ffffff
 hi LineNr guifg=#0d62ac guibg=#000000
-hi NonText guifg=#25a0a6 guibg=#000000
+hi NonText guifg=#0d62ac guibg=#000000
 hi Comment guifg=#25a0a6
 hi SpecialComment guifg=#25a0a6  guibg=NONE
 hi TabLineFill gui=NONE guibg=#000000
 hi TabLine guifg=#000000 guibg=#000000 gui=NONE
 hi TermCursor cterm=reverse ctermfg=NONE ctermbg=NONE gui=reverse guifg=NONE guibg=NONE
-
 hi StatusLine gui=bold guibg=#0d62ac guifg=#000000
 hi Search guibg=#000000 guifg=#ffffff
 hi VertSplit gui=NONE guifg=#000000 guibg=NONE
