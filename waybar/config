@@ -1,55 +1,62 @@
 {
     "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 32, // Waybar height (to be removed for auto height)
-    "spacing":2, // Gaps between modules (4px)
+    "height": 30, // Waybar height (to be removed for auto height)
+    "spacing":4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["custom/launcher", "sway/workspaces"],
-    "modules-center": ["clock", "custom/weather"],
-    "modules-right": [ "keyboard-state","wireplumber", "network", "cpu", "memory", "disk", "temperature" , "custom/kernel", "sway/language" , "custom/launcher2" ],
+    "modules-left": ["custom/launcher", "sway/workspaces","sway/window"],
+    "modules-center": [],
+    "modules-right": [ "network", "cpu", "memory", "temperature", "wireplumber","custom/kernel", "sway/language" , "clock" ],
     // Modules configuration
       
     "custom/launcher":{
-        "format": "",
+        "format": "",
         "on-click": "~/.config/rofi/launchers/type-2/launcher.sh",
         "on-click-right": "killall rofi",
 	"tooltip": false
     },
 
     "sway/workspaces": {
-        "disable-scroll": true,
-        "format": "{name} {icon}",
-         "format-icons": {
-            "1": "Terminal",
-            "2": "Internet",
-            "3": "Email",
-            "4": "Ficheros",
-            "5": "Oficina",
-            "6": "Fotografia",
-            "7": "Musica",
-            "8": "Otros",
+        "disable-scroll": false,
+        "format": " {icon}",
+         "persistent-workspaces": {
+            "1" : [],
+            "2" : [],
+            "3" : [],
+            "4" : [],
+            "5" : [],
+            "6" : [],
+            "7" : [],
+            "8" : [],
         },
+
+	  "format-icons": {
+            "1": "term",
+            "2": "web",
+            "3": "chat",
+            "4": "files",
+            "5": "doc",
+            "6": "media",
+            "7": "games",
+            "8": "others",
+
     },
+},
 	
 
   "sway/window": {
      "format": "{title}",
-     "max-length": 170,
+     "max-length": 120,
      "rewrite": {
-        "ivanruano83@B550-plus(.*)" : "  ivanruano83@B550-plus $1 - Alacritty",
+    "ivanruano83@servidor(.*)" : "   ivanruano83@servidor $1 - Alacritty",
         "(.*) — Mozilla Firefox": "🌎  $1 - Mozilla Firefox",
-        "(.*) — Midori Browser": "🌎  $1 - Midori Browser",
         "(.*) — Dolphin": "   $1 - Dolphin",
+        "(.*) — Kate": "   $1 - Kate",
         "(.*) - Mozilla Thunderbird": "    $1 - Mozilla Thunderbird",
         "(.*) - Audacious": "   $1 - Audacious",
-        "(.*) - NVIM": "   $1 - Neovim"
+        "(.*) - VIM": "   $1 - Vim"
       }
-  },
 
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%A, %d %B, %H:%M}"
-
-    },
+},
 
     "custom/weather": {
         "format": "{}",
@@ -70,29 +77,28 @@
     },
 
     "wireplumber": {
-         "format": "{volume}% {icon}",
-         "format-muted": "",
-         "on-click": "helvum",
-         "format-icons": ["", "", ""]
+         "format": "   {volume}%",
+         "on-click": "pavucontrol"
+
     },  
 
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Desconectado ⚠",
+        "format-wifi": "󰖩   {essid} {signalStrength}%",
+        "format-ethernet": " {ipaddr}/{cidr}",
+        "tooltip-format": " {ifname} via {gwaddr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": " Desconectado",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
 
     "cpu": {
-        "format": "{usage}% ",
+        "format": "   {avg_frequency}GHz  {usage}%",
         "tooltip": true,
         "interval": 1
         },
     "memory": {
-        "format": "{}% ",
+        "format": "   {used:0.1f}G/{total:0.1f}G",
         "interval": 1
     },
 
@@ -103,34 +109,36 @@
     },
 
    "temperature": {
-        // "thermal-zone": 2,
-         "hwmon-path": "/sys/class/hwmon/hwmon2/temp3_input",
-        "critical-threshold": 95,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""],
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp3_input",
+        "critical-threshold": 99,
+        "format": "  {temperatureC}°C",
          "interval":1
     },
 
-
-    "sway/language": {
-    	"format": "{} ",
-        "tooltip": false
-
-  },
-
     "custom/kernel": {
-        "format": "{} ",
-        "exec": "uname -r",
+    "format": "󰌽   {}",
+    "exec": "uname -r",
 	"tooltip": false,
 	"interval": "once"
         
     },
 
+    "sway/language": {
+    	"format":"    {} ",
+    "tooltip": false
+
+  },
+
+    "clock":{
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "   {:%A %d %b, %H:%M}"
+
+    },
+
    "custom/launcher2":{
-        "format": "",
-        "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh",
-        "on-click-right": "killall rofi",
+    "format": "",
+    "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh",
+    "on-click-right": "killall rofi",
 	"tooltip": false
     },
 
