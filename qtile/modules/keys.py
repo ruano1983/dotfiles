@@ -34,7 +34,7 @@ keys = [
     ),
 
     # Rofi
-    Key([mod , "shift"], "z", lazy.spawn(rofi), desc="Launch Rofi"),
+    Key([mod , "shift"], "m", lazy.spawn(rofi), desc="Launch Rofi"),
     # power menu
     Key([mod , "shift"], "p", lazy.spawn(power), desc="Launch Rofi"),
     # lock screen
@@ -42,7 +42,7 @@ keys = [
     # pavucontrol
     Key([mod , "shift"], "v", lazy.spawn("pavucontrol"), desc="Launch pavucontrol"),
     # Darktable
-    Key([mod , "shift"], "F", lazy.spawn("darktable"), desc="Launch darktable"),
+    Key([mod , "shift"], "f", lazy.spawn("darktable"), desc="Launch darktable"),
     # libreoffice writer 
     Key([mod , "shift"], "o", lazy.spawn("libreoffice --writer"), desc="Launch libreoffice writer"),
     ### Terminal Alacritty
@@ -55,14 +55,14 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")),
     ### Firefox
-    Key([mod , "shift"] ,"w", lazy.spawn("firefox"),desc="Launch Firefox"),
+    Key([mod , "shift"] ,"y", lazy.spawn("firefox"),desc="Launch Firefox"),
     ### Thunderbird
     Key([mod , "shift"] ,"t", lazy.spawn("thunderbird"),desc="Launch thunderbird"),
     ### Dolphin
     Key([mod , "shift"] ,"d", lazy.spawn("dolphin"),desc="Launch dolphin"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod , "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod , "shift"], "n", lazy.window.kill(), desc="Kill focused window"),
     Key(
         [mod],
         "f",

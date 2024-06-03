@@ -24,7 +24,7 @@ screens = [
                     padding=2,
                     text='󰖲'
                     ),
-                widget.WindowName(max_chars=85),
+                widget.WindowName(max_chars=80),
                 widget.TextBox(
                     #ont='Ubuntu Nerd Font',
                     fontsize=14,
@@ -78,7 +78,10 @@ screens = [
                     padding=5,
                     text=''
                 ),
-                widget.KeyboardLayout(configured_keyboards=['es', 'us']),
+                widget.KeyboardLayout(
+                        configured_keyboards=['es', 'us altgr-intl'],
+                        display_map={'es':'es', 'us altgr-intl': 'ansi'}
+                ),
                 widget.Spacer(length=12),
                 widget.TextBox(
                     #ont='Ubuntu Nerd Font',
