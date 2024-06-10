@@ -2,7 +2,6 @@
 #########################
 ########## CONFIG QTILE ###############
 
-#from libqtile import hook
 from libqtile.utils import guess_terminal
 from libqtile.backend.wayland import InputConfig
 from modules.keys import *
@@ -29,14 +28,8 @@ auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = {
- "type:keyboard": InputConfig(kb_layout="es"),
+ "type:keyboard": InputConfig(kb_layout="us altgr-intl"),
 }
-### Autostart
-#@hook.subscribe.startup_once
-#def autostart():
-#    home = os.path.expanduser('~/.config/qtile/autostart.sh
-
-
 command=shlex.split("swaybg -m fill -i " + wallpaper)
 Popen(command, stdout=PIPE, stderr=PIPE)
 

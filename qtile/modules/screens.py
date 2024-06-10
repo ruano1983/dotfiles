@@ -79,8 +79,8 @@ screens = [
                     text=''
                 ),
                 widget.KeyboardLayout(
-                        configured_keyboards=['es', 'us altgr-intl'],
-                        display_map={'es':'es', 'us altgr-intl': 'ansi'}
+                        configured_keyboards=['us altgr-intl','es'],
+                        display_map={ 'us altgr-intl': 'ansi', 'es':'es'}
                 ),
                 widget.Spacer(length=12),
                 widget.TextBox(
