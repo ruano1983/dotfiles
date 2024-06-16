@@ -39,6 +39,8 @@ keys = [
     Key([mod , "shift"], "p", lazy.spawn(power), desc="Launch Rofi"),
     # lock screen
     Key([mod , "shift"], "b", lazy.spawn(lock), desc="lock screen"),
+    # Calculator
+    Key([mod , "shift"], "a", lazy.spawn("kcalc"), desc="calculator"),
     # pavucontrol
     Key([mod , "shift"], "v", lazy.spawn("pavucontrol"), desc="Launch pavucontrol"),
     # Darktable
@@ -54,6 +56,8 @@ keys = [
     ### volumen
     Key([], "XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")),
+    ### Mute
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
     ### Firefox
     Key([mod , "shift"] ,"y", lazy.spawn("firefox"),desc="Launch Firefox"),
     ### Thunderbird
