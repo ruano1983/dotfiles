@@ -175,24 +175,32 @@ riverctl border-color-focused 0x0d62ac
 riverctl border-color-unfocused 0x111111
 riverctl border-color-urgent 0xb63625
 riverctl border-width 2
-
+riverctl xcursor‐theme "Breeze_Snow"
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
+# Moving the cursor will always focus whatever view is under the cursor
+riverctl focus-follows-cursor always
+riverctl hide-cursor when-typing enabled
 
 # Make all views with an app-id that starts with "float" and title "foo" start floating.
 riverctl float-filter-add "float"
 riverctl float-filter-add "popup"
 riverctl rule-add -app-id 'float*' -title 'foo' float
 riverctl rule-add -app-id "firefox" ssd
+riverctl rule-add -app-id "firefox" tags 2
 riverctl rule-add -app-id "thunderbird-esr" ssd
+riverctl rule-add -app-id "thunderbird-esr" tags 3
+riverctl rule-add -app-id "pavucontrol" ssd
 riverctl rule-add -app-id "pavucontrol" ssd
 riverctl rule-add -app-id "org.inkscape.Inkscape" ssd
 riverctl rule-add -app-id "libreoffice-writer" ssd
+riverctl rule-add -app-id "libreoffice-writer" tags 5
+riverctl rule-add -app-id "Darktable" tags 8
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-rivertile -view-padding 0 -outer-padding 0 -main-count 2  &
+rivertile -view-padding 0 -outer-padding 0  &
 
 # autostart
 riverctl spawn "wlr-randr --output HDMI-A-1 --mode 1920x1080@74.973000" 
