@@ -71,4 +71,4 @@ hi TermCursor cterm=reverse ctermfg=NONE ctermbg=NONE gui=reverse guifg=NONE gui
 hi StatusLine gui=bold guibg=#0d62ac guifg=#000000
 hi Search guibg=#000000 guifg=#ffffff
 hi VertSplit gui=NONE guifg=#000000 guibg=NONE
-hi Visual gui=NONE guibg=#000000
+hi Visual guifg=#ffffff gui=NONE guibg=#0d62ac
