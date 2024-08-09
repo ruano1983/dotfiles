@@ -1,0 +1,11 @@
+# Disable syntax highlighting
+bleopt highlight_syntax=
+
+# Disable highlighting based on filenames
+bleopt highlight_filename=
+
+# Disable highlighting based on variable types
+bleopt highlight_variable=
+
+# Disable auto-complete (Note: auto-complete is enabled by default in bash-4.0+)
+#bleopt complete_auto_complete=
