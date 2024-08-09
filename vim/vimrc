@@ -26,8 +26,16 @@ set softtabstop=4
 set wildoptions=pum
 set hlsearch
 set smartcase
-nnoremap <c-s> :w<CR>
-imap ññ <Esc>
+nnoremap <c-x> :x<CR>
+nnoremap <F5> :x<CR>
+
+nnoremap <c-q> :q!<CR>
+nnoremap <F2> :q!<CR>
+
+map <F12> <Insert>
+imap <F12> <Insert>
+
+
 set background=dark
 set termguicolors "enable true colors support
 
