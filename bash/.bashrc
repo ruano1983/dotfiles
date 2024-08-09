@@ -3,9 +3,10 @@ case $- in
     *) return;;
 esac
 ##### Variables
-export PATH="$HOME/.cargo/bin:$HOME/scripts:$HOME/.local/bin:$PATH"
+export PATH="/opt/android-tools/:$HOME/.cargo/bin:$HOME/scripts:$HOME/.local/bin:$PATH"
 export EDITOR="/usr/bin/vim"
 export LFS="/mnt/lfs"
+export sources="/build/lfs-12.2-sysv/lfs"
 export makeopts="-j16"
 source .bash-aliases
 source .bash-stream
@@ -19,8 +20,10 @@ PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND}'printf "\033]0;%s@%s:%s\007" "
 #### Greeting message
 #echo -e 'Bienvenido a FrikiOS 2023.9'
 eval "$(zoxide init bash)"
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(atuin init bash)"
 #PF_INFO="ascii title os host kernel uptime memory shell"  SHELL="bash" PF_COL1=7  pfetch
-printf "\e[34m" 
-figlet -f slant "#! FrikiOS" 
-printf "\e[0m"
+#printf "\e[34m" 
+#figlet -f slant "#! FrikiOS" 
+#printf "\e[0m"
+fastfetch --colors-block-width 5 --colors-block-range-end 7
+source ~/.local/share/blesh/ble.sh
