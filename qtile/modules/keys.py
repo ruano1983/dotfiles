@@ -91,7 +91,7 @@ keys = [
     # Reload config
     Key([mod, "shift"], "c", lazy.reload_config(), desc="Reload the config"),
     # Salir qtile
-    Key([mod, "shift"], "e", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "shift"], "e", lazy.spawn(logoutuser), desc="Logout user"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 

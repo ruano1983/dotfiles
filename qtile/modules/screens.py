@@ -2,6 +2,10 @@ from libqtile import bar
 from .widgets import *
 from .globals import * 
 from libqtile.config import Screen
+## functions
+def fc_separation():
+    return  widget.Spacer(length=12)
+
 screens = [
     Screen(
         bottom=bar.Bar([
@@ -25,40 +29,40 @@ screens = [
                 widget.TextBox(
                     #ont='Ubuntu Nerd Font',
                     fontsize=14,
-                    padding=5,
+                    padding=6,
                     text='󰧈'
                 ),
 
                 widget.Net(format='{down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}'),
-                widget.Spacer(length=12),
+                fc_separation(),
                 widget.TextBox(
                     #ont='Ubuntu Nerd Font',
                     fontsize=14,
-                    padding=5,
+                    padding=6,
                     text='󰖩'
                 ),
                 widget.Wlan(format='{essid} {percent:2.0%}'),
-                widget.Spacer(length=12),
+                fc_separation(),
                 widget.TextBox(
                     #ont='Ubuntu Nerd Font',
                     fontsize=14,
-                    padding=5,
+                    padding=6,
                     text='󰐸'
                 ),
                 widget.CPU(format='{freq_current}GHz {load_percent}%'),
-                widget.Spacer(length=12),
+                fc_separation(),
                 widget.TextBox(
                     #ont='Ubuntu Nerd Font',
                     fontsize=14,
-                    padding=5,
+                    padding=6,
                     text=''
                 ),
                 widget.Memory(measure_mem='G'),
-                widget.Spacer(length=12),
+                fc_separation(),
                 widget.TextBox(
                     #ont='Ubuntu Nerd Font',
                     fontsize=14,
-                    padding=5,
+                    padding=6,
                     text='󰋊'
                 ),
                 widget.DF(visible_on_warn=False,
@@ -66,40 +70,44 @@ screens = [
                 partition='/',
                 measure='G'
                 ),
-                widget.Spacer(length=12),
+                fc_separation(),
                 widget.TextBox(
                     #ont='Ubuntu Nerd Font',
                     fontsize=14,
-                    padding=5,
-                    text=''
+                    padding=6,
+                    text=''
                 ),
                 widget.PulseVolume(),
-                 widget.Spacer(length=12),
+                fc_separation(),
                 widget.TextBox(
                     fontsize=14,
-                    padding=5,
+                    padding=6,
                     text='󰌽'
                 ),
                 widget.GenPollCommand(cmd="uname -r", shell=True,update_interval=None),
-                widget.Spacer(length=12),
+                fc_separation(),
                 widget.TextBox(
                     #ont='Ubuntu Nerd Font',
                     fontsize=14,
-                    padding=5,
-                    text=''
+                    padding=6,
+                    text='󰌌'
                 ),
                 widget.KeyboardLayout(
                     configured_keyboards=['us altgr-intl','es'],
                     display_map={ 'us altgr-intl': 'ansi', 'es':'es'}
                 ),
-                widget.Spacer(length=12),
+                fc_separation(),
                 widget.TextBox(
                     #ont='Ubuntu Nerd Font',
                     fontsize=14,
-                    padding=5,
-                    text=''
+                   # background="#0d62ac",
+                    padding=6,
+                    text='󰥔'
                 ),
-                widget.Clock(format="%A %d %b, %H:%M"),
+                widget.Clock(
+                format="%A %d %b, %H:%M",
+                #background="#0d62ac"
+                ),
                 ],
             32,
             background="#000000",
