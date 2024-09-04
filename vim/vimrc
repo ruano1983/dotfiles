@@ -1,3 +1,4 @@
+source $VIMRUNTIME/defaults.vim
 set history=1000
 set nocompatible
 syntax on
@@ -38,5 +39,4 @@ imap <F12> <Insert>
 
 set background=dark
 set termguicolors "enable true colors support
-
 source ~/.config/nvim/colors/frikios.vim
