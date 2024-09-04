@@ -1,0 +1,16 @@
+font=Noto Sans
+indicator-thickness=20
+ring-color=299ADB
+ring-clear-color=FFBF00
+ring-ver-color=11BEC1
+ring-wrong-color=E85757
+key-hl-color=86C0E2
+inside-color=FFFFFF
+inside-wrong-color=FFFFFF
+inside-clear-color=FFFFFF
+inside-ver-color=FFFFFF
+text-color=1C1C1C
+text-clear-color=1C1C1C
+text-ver-color=1C1C1C
+text-wrong-color=1C1C1C
+separator-color=FFFFFF
