@@ -32,7 +32,11 @@ riverctl map normal Super+Shift f spawn "darktable"
 riverctl map normal Super+Shift o spawn "libreoffice --writer"
 riverctl map normal Super+Shift a spawn "kcalc"
 riverctl map normal Super+Shift d spawn "dolphin"
+riverctl map normal Super+Shift i spawn "kate"
 riverctl map normal Super+Shift v spawn "pavucontrol"
+
+# take screenshot
+riverctl map normal Super Print spawn "grim"
 
 # Super+n to close the focused view
 riverctl map normal Super+Shift n close
@@ -183,24 +187,20 @@ riverctl focus-follows-cursor always
 riverctl hide-cursor when-typing enabled
 
 # Make all views with an app-id that starts with "float" and title "foo" start floating.
-riverctl float-filter-add "float"
-riverctl float-filter-add "popup"
-riverctl rule-add -app-id 'float*' -title 'foo' float
+#riverctl float-filter-add "float"
+#riverctl float-filter-add "popup"
+#riverctl rule-add -app-id 'float*' -title 'foo' float
 riverctl rule-add -app-id "firefox" ssd
-riverctl rule-add -app-id "firefox" tags 2
 riverctl rule-add -app-id "thunderbird-esr" ssd
-riverctl rule-add -app-id "thunderbird-esr" tags 3
 riverctl rule-add -app-id "pavucontrol" ssd
 riverctl rule-add -app-id "pavucontrol" ssd
 riverctl rule-add -app-id "org.inkscape.Inkscape" ssd
 riverctl rule-add -app-id "libreoffice-writer" ssd
-riverctl rule-add -app-id "libreoffice-writer" tags 5
-riverctl rule-add -app-id "Darktable" tags 8
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-rivertile -view-padding 0 -outer-padding 0  &
+rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 &
 
 # autostart
 riverctl spawn "wlr-randr --output HDMI-A-1 --mode 1920x1080@74.973000" 

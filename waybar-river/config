@@ -13,7 +13,7 @@
         "on-click": "~/.config/rofi/launchers/type-2/launcher.sh",
         "on-click-right": "killall rofi",
 	"tooltip": true,
-        "tooltip-format": "FrikiOS 2024.7.1 'Stormtrooper'"
+        "tooltip-format": "FrikiOS 2024.7.2 'Stormtrooper'"
     },
 
 
@@ -68,7 +68,7 @@
         },
     "memory": {
         "format": "   {used:0.1f}G/{total:0.1f}G", 
-        "tooltip-format":"Ram Crucial 3200Mhz {used:0.1f} used",
+        "tooltip-format":"Ram Crucial 3200Mhz {used:0.1f}G used",
         "interval": 1
     },
 
@@ -83,7 +83,7 @@
         "hwmon-path": "/sys/class/hwmon/hwmon2/temp3_input",
         "critical-threshold": 95,
         "format": "  {temperatureC}°C",	
-        "tooltip-format": "Ryzen 5800x {temperatureC}°C",
+        "tooltip-format": "Ryzen 5600x {temperatureC}°C",
          "interval":1
     },
 
