@@ -6,13 +6,13 @@ from .keys import *
 
 groups = [
     Group("1", label="term"),
-    Group("2", label="web"),
+    Group("2", label="web",layout='max'),
     Group("3", label="chat"),
     Group("4", label="files"),
     Group("5", label="doc"),
-    Group("6", label="music"),
-    Group("7", label="photo"),
-    Group("8", label="others"),
+    Group("6", label="media"),
+    Group("7", label="games"),
+    Group("8", label="photo"),
 
 
 ]
