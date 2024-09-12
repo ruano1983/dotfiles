@@ -1,6 +1,6 @@
 from libqtile import bar
 from .widgets import *
-from .globals import * 
+from .globals import *  
 from libqtile.config import Screen
 ## functions
 def fc_separation():
@@ -11,17 +11,20 @@ def run_btm():
     qtile.cmd_spawn(terminal + ' -e btm')
 def run_vol():
     qtile.cmd_spawn('pavucontrol')
+def init_colors():
+    return[["#b82016","#b82016"], # color1
+           ["#0d62ac","#0d62ac"]] # color2
+colors = init_colors()
 screens = [
     Screen(
         bottom=bar.Bar([
                 widget.TextBox(
-                    fontsize=14,text='',background='#0d62ac',padding=14,
+                    fontsize=16,text='',background=colors[0],padding=18,
                     mouse_callbacks={'Button1':lambda:qtile.cmd_spawn(rofi)}),
                 widget.GroupBox(highlight_method='block', block_highlight_text_color="#ffffff",
-                    highlight_color=["#0d62ac","#0d62ac"],  this_current_screen_border="#0d62ac",
+                    highlight_color=[colors[0],colors[0]],  this_current_screen_border="#b82016",
                     inactive="#484848", padding=8 ,rounded=False, borderwidth=4 ),
-                #widget.CurrentLayoutIcon(scale=0.5),
-                widget.CurrentLayout(),
+                widget.CurrentLayout(background=colors[0],padding=8),
                 widget.Prompt(prompt="Run "),
                 widget.Spacer(length=8),
                 fc_textbox(icon='󰖯',p=3),        
@@ -54,7 +57,6 @@ screens = [
                 fc_separation(),
                 fc_textbox(icon='󰥔'),
                 widget.Clock(format="%A %d %b %H:%M"),
-                fc_separation(),
         ],
             32,
             background="#000000",

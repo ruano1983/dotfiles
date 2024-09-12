@@ -31,10 +31,10 @@ plugins=(
   bashmarks
 )
 
-source "$OSH"/oh-my-bash.sh
+#source "$OSH"/oh-my-bash.sh
 source ~/.local/share/blesh/ble.sh
 eval "$(zoxide init bash)"
 eval "$(atuin init bash)"
 echo -e 'Bienvenido a FrikiOS (Stormtrooper) 2024.7.2'
-
+PS1='\[\e[91;1m\]\u\[\e[0m\] \[\e[1m\]\w\[\e[0m\] \n\[\e[1m\]...\[\e[0m\] \[\e[1m\]\\$\[\e[0m\] '
 
