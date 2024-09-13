@@ -5,7 +5,7 @@
     // Choose the order of the modules
     "modules-left": ["custom/launcher", "river/tags","river/window"],
     "modules-center": [],
-    "modules-right": [ "network", "cpu", "memory","temperature","disk","wireplumber","custom/kernel","custom/weather","clock" ],
+    "modules-right": [ "network#speed","network", "cpu", "memory","temperature","disk","wireplumber","custom/kernel","custom/weather","clock" ],
     // Modules configuration
       
     "custom/launcher":{
@@ -30,7 +30,7 @@
     "custom/weather": {
         "format": "{}",
         "tooltip": true,
-        "interval": 1800,
+        "interval": 600,
         "exec": "$HOME/.config/waybar/scripts/wttr.py",
         "return-type": "json"
     },
@@ -51,15 +51,22 @@
          "tooltip-format":"{node_name} {volume}%"
     },  
 
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "󰖩   {essid} {signalStrength}%",
-        "format-ethernet": " {ipaddr}/{cidr}",
-        "tooltip-format": " {ifname} via {gwaddr}",
-        "format-linked": " {ifname} (No IP)",
-        "format-disconnected": " Desconectado",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+   "network#speed": {	
+	"format": "󰧈  {bandwidthUpBytes} / {bandwidthDownBytes}",
+	"interval": 2
     },
+    
+    "network": {
+        "format-wifi": "󰖩   {signalStrength}%",
+        "format-ethernet": "   {ipaddr}/{cidr}",
+        "tooltip-format": "   {ipaddr}",
+        "format-linked": "   {ifname} (No IP)",
+        "format-disconnected": " Desconectado",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    	"interval": 30
+    },
+
+
 
     "cpu": {
         "format": "󰐸   {avg_frequency}GHz  {usage}%",
@@ -74,7 +81,7 @@
 
     "disk": {
 	"interval": 60,
-	"format": "󰋊   {percentage_used}%",
+	"format": "󰋊   / {percentage_used}%",
 	"unit": "GB",
 	"path": "/"
     },
@@ -97,11 +104,11 @@
 
     "clock":{
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
-    "format": "   {:%A %d %b, %H:%M}"
+    "format": "󰥔   {:%A %d %b %H:%M}"
 
     },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name    
+        "escape": true
+
+   
 }
 
