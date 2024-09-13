@@ -13,6 +13,7 @@ alias eza="eza -l -a"
 alias play="mpv --shuffle --no-video"
 alias wlrandr="wlr-randr --output HDMI-A-1 --mode 1920x1080@74.973000"
 alias cp="cp -v"
+alias rm="rm -v"
 # sudo 
 alias sdmesg="sudo dmesg"
 alias rmla="sudo /usr/bin/remove-la-files.sh"
