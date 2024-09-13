@@ -8,7 +8,7 @@
 # See the river(1), riverctl(1), and rivertile(1) man pages for complete
 # documentation.
 
-wall="/usr/share/wallpapers/frikios/Stormtrooper.png"
+wall="/home/ivanruano83/Imágenes/wallpapers/planetatierra.jpg"
 riverctl keyboard-layout  -variant altgr-intl us
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
@@ -23,7 +23,7 @@ riverctl map normal Super+Shift m spawn  "~/.config/rofi/launchers/type-2/launch
 riverctl map normal Super+Shift p spawn "~/.config/rofi/powermenu/type-2/powermenu.sh"
 
 # lock screen 
-riverctl map normal Super+Shift b spawn "swaylock -e -f -i ${wall}"
+riverctl map normal Super+Shift b spawn "swaylock -e -n -f -i ${wall} -C  ~/.config/swaylock/config"
 
 # run applications
 riverctl map normal Super+Shift y spawn "MOZ_ENABLE_WAYLAND=1 firefox"
@@ -175,10 +175,10 @@ done
 
 # Set background and border color
 riverctl background-color 0x000000
-riverctl border-color-focused 0x0d62ac
+riverctl border-color-focused 0xb82016
 riverctl border-color-unfocused 0x111111
-riverctl border-color-urgent 0xb63625
-riverctl border-width 2
+riverctl border-color-urgent 0xf1c31a
+riverctl border-width 1
 riverctl xcursor‐theme "Breeze_Snow"
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
