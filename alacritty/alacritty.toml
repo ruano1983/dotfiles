@@ -1,7 +1,8 @@
-import = ["/home/ivanruano83/.config/alacritty/frikios.toml"]
+import = ["/home/ivanruano83/.config/alacritty/lune.toml"]
 
 [cursor.style]
 shape = "Block"
+blinking = "Always"
 
 [env]
 TERM = "xterm-256color"
