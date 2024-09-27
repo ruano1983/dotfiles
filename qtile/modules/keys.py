@@ -43,7 +43,7 @@ keys = [
     # power menu
     Key([mod , "shift"], "p", lazy.spawn(power), desc="Launch Rofi"),
     # lock screen
-    Key([mod , "shift"], "b", lazy.spawn(lock), desc="lock screen"),
+    Key([mod , "shift"], "F12", lazy.spawn(lock), desc="lock screen"),
     # Calculator
     Key([mod , "shift"], "a", lazy.spawn("kcalc"), desc="calculator"),
     # pavucontrol

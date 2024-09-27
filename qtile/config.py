@@ -28,7 +28,7 @@ auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = {
- "type:keyboard": InputConfig(kb_repeat_rate=50,kb_repeat_delay=350),
+ "type:keyboard": InputConfig(kb_repeat_rate=25,kb_repeat_delay=400),
  "2362:9488:PixArt USB Optical Mouse": InputConfig(pointer_accel=0.2,accel_profile='adaptive'),
 }
 command=shlex.split("swaybg -m fill -i " + wallpaper)
