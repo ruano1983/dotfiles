@@ -20,5 +20,5 @@ eval "$(atuin init bash)"
 # velcome
 echo -e 'Bienvenido a FrikiOS (Stormtrooper) 2024.7.2'
 # prompt
-PS1='\[\e[91;1m\]\u\[\e[0m\] \[\e[1m\]\w\[\e[0m\] \n\[\e[1m\]...\[\e[0m\] \[\e[1m\]\\$\[\e[0m\] '
+PS1='\[\e[38;5;30;1m\]\u\[\e[0m\] \[\e[1m\]\w\[\e[0m\] \n\[\e[1m\]...\[\e[0m\] \[\e[1m\]\\$\[\e[0m\] '
 
