@@ -53,6 +53,9 @@ set nofollowlinks
 " Natural sort of (version) numbers within text.
 set sortnumbers
 
+" Show hidden files
+set dotfiles
+
 " Maximum number of changes that can be undone.
 set undolevels=100
 
