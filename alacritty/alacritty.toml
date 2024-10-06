@@ -1,4 +1,4 @@
-import = ["/home/ivanruano83/.config/alacritty/lune.toml"]
+import = ["/home/ivanruano83/.config/alacritty/dracula.toml"]
 
 [cursor.style]
 shape = "Block"
