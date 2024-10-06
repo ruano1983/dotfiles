@@ -7,10 +7,10 @@ import os
 
 keys = [
     # Switch between windows
-    Key([mod, "control"], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod, "control"], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod, "control"], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod, "control"], "k", lazy.layout.up(), desc="Move focus up"),
+    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     #ey([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -20,15 +20,18 @@ keys = [
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-    Key([mod], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
+    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    Key([mod, "control"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # layout MonadWide
     Key([mod], "i", lazy.layout.grow()),
     Key([mod], "m", lazy.layout.shrink()),
     Key([mod], "n", lazy.layout.reset()),
+    # layout tile 
+    Key([mod], "o", lazy.layout.increase_ratio()),
+    Key([mod], "p", lazy.layout.decrease_ratio()),
 
     # Toggle between split and unsplit sides of stack.
     Key(
@@ -95,9 +98,8 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 
-
 # Add key bindings to switch VTs in Wayland.
-for vt in range(1, 8):
+for vt in range(1, 9):
     keys.append(
         Key(
             ["control", "mod1"],

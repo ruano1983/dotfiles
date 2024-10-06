@@ -2,17 +2,16 @@
 from libqtile.config import Group, Match
 from .keys import *
 
-
-
 groups = [
-    Group("1", label="term"),
-    Group("2", label="web",layout='max'),
-    Group("3", label="chat"),
-    Group("4", label="files"),
-    Group("5", label="doc"),
-    Group("6", label="media"),
-    Group("7", label="games"),
-    Group("8", label="photo"),
+    Group("1", label="1"),
+    Group("2", label="2",layout='max'),
+    Group("3", label="3"),
+    Group("4", label="4"),
+    Group("5", label="5"),
+    Group("6", label="6"),
+    Group("7", label="7"),
+    Group("8", label="8"),
+    Group("9", label="9",layout='tile'),
 
 
 ]
