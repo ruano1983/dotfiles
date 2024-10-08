@@ -3,6 +3,7 @@ case $- in
   *i*) ;;
     *) return;;
 esac
+source git-prompt.sh
 # Variables
 export OSH='/home/ivanruano83/.oh-my-bash'
 export PATH="/opt/android-tools/:$HOME/.cargo/bin:$HOME/scripts:$HOME/.local/bin:$PATH"
@@ -20,5 +21,4 @@ eval "$(atuin init bash)"
 # velcome
 echo -e 'Bienvenido a FrikiOS (Stormtrooper) 2024.7.2'
 # prompt
-PS1='\[\e[38;5;30;1m\]\u\[\e[0m\] \[\e[1m\]\w\[\e[0m\] \n\[\e[1m\]...\[\e[0m\] \[\e[1m\]\\$\[\e[0m\] '
-
+PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")'; PS1='\[\e[38;5;134;1m\]\u\[\e[0m\] \[\e[1m\]\w\[\e[0m\] \n\[\e[1m\]...\[\e[0m\] \[\e[1m\]\\$\[\e[38;5;44m\]${PS1_CMD1}\[\e[0m\] '
