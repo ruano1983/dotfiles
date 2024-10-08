@@ -39,4 +39,11 @@ imap <F12> <Insert>
 
 set background=dark
 set termguicolors "enable true colors support
-source ~/.config/nvim/colors/ibericos.vim
+
+
+call plug#begin()
+Plug 'dracula/vim', { 'as': 'dracula' }
+" List your plugins hee
+call plug#end()
+"#source ~/.config/nvim/colors/lune.vim
+colorscheme dracula
