@@ -52,7 +52,7 @@ keys = [
     # pavucontrol
     Key([mod , "shift"], "v", lazy.spawn("pavucontrol"), desc="Launch pavucontrol"),
     # Darktable
-    Key([mod , "shift"], "f", lazy.spawn("darktable"), desc="Launch darktable"),
+    Key([mod , "shift"], "f", lazy.spawn("alacritty -e vifm"), desc="Launch file manager(vifm)"),
     # libreoffice writer 
     Key([mod , "shift"], "o", lazy.spawn("libreoffice --writer"), desc="Launch libreoffice writer"),
     ### Terminal Alacritty

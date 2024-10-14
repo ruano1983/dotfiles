@@ -3,15 +3,15 @@ from libqtile.config import Group, Match
 from .keys import *
 
 groups = [
-    Group("1", label="1"),
-    Group("2", label="2",layout='max'),
-    Group("3", label="3"),
-    Group("4", label="4"),
-    Group("5", label="5"),
-    Group("6", label="6"),
-    Group("7", label="7"),
-    Group("8", label="8"),
-    Group("9", label="9",layout='tile'),
+    Group("1", label="1", layout='tile'),
+    Group("2", label="2", layout='max'),
+    Group("3", label="3", layout='tile'),
+    Group("4", label="4", layout='tile'),
+    Group("5", label="5", layout='tile'),
+    Group("6", label="6", layout='tile'),
+    Group("7", label="7", layout='tile'),
+    Group("8", label="8", layout='tile'),
+    Group("9", label="9", layout='tile'),
 
 
 ]
