@@ -1,41 +1,66 @@
-import = ["/home/ivanruano83/.config/alacritty/dracula.toml"]
+# colors theme
+general.import = ["/home/ivanruano83/.config/alacritty/argyls.toml"]
 
+# cursosr
 [cursor.style]
 shape = "Block"
 blinking = "Always"
 
+# historyscrolling
+[scrolling]
+history = 30000
+# env
 [env]
 TERM = "xterm-256color"
 
-[font]
-size = 9
-
-[font.normal]
-family = "HackNerdFontMono"
-style = "bold"
-
+# keys actions
+# key copy
 [[keyboard.bindings]]
 action = "Copy"
 key = "C"
 mods = "Control"
-
+# key paste
 [[keyboard.bindings]]
 action = "Paste"
 key = "V"
 mods = "Control"
+# key new window
+[[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "N"
+mods = "Control"
+# key quit window
+[[keyboard.bindings]]
+action = "Quit"
+key = "Q"
+mods = "Control"
 
-
+# window setting
 [window]
 decorations = "full"
 dynamic_title = true
 
+# window clase
 [window.class]
 general = "Alacritty"
 
+# window size
 [window.dimensions]
-columns = 90
-lines = 53
+columns = 134
+lines = 50
 
+# window padding
 [window.padding]
-x = 6
-y = 6
+x = 13
+y = 13
+
+# font settings
+[font]
+offset.x = 0  # For letter spacing (default: 0)
+offset.y = 3  # For line spacing (default: 0)
+size=10
+
+# font name
+[font.normal]
+family = "Liberation Mono"
+style = "bold"
