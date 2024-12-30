@@ -1,35 +1,56 @@
 # Alias
-alias exway="dbus-run-session sway"
-alias xfce="startx"
+# tar xvf
 alias tarx="tar xvf"
+# mlocate updatedb
 alias updb="updatedb  --prunepaths=/run"
+# qtile wayland start
+alias qtilestart="dbus-run-session qtile start -b wayland"
+# plasma wayland start
 alias kde="dbus-run-session startplasma-wayland"
-alias qtile="dbus-run-session qtile"
-alias cash="sh cash.sh"
+# weather
 alias clima="curl wttr.in/Fuenlabrada"
-alias ls='ls --color=auto'
+# greep colors
 alias grep='grep --color=auto'
+# vifm
 alias vifmp="vifm /build/pkgmk /build/pkgmk"
+alias vifmc="vifm ~/.config ~/.config"
+# ranger
 alias rangerv="ranger --cmd='set viewmode=multipane' ~/ ~/"
 alias rangerp="ranger  /build/pkgmk"
-alias eza="eza -l -a"
+# eza 
+alias eza="eza -G"
+# Changing "ls" to "eza"
+alias ls="eza -G"
+# mpv play
 alias play="mpv --shuffle --no-video"
+# wl-randr
 alias wlrandr="wlr-randr --output DP-1 --mode 1920x1080@74.973000"
+# cp 
 alias cp="cp -v"
+# rm
 alias rm="rm -v"
+# curl -o
 alias curlo="curl -O"
+# rip trash
 alias rip="rip --graveyard /tmp/trash"
+# df human
 alias df="df -H"
-# sudo
+# sudo dmesg 
 alias sdmesg="sudo dmesg"
+# remove .la
 alias rmla="sudo /usr/bin/remove-la-files.sh"
+# fstrim
 alias trim="sudo fstrim -a"
+# smart nvme
 alias smartnvme="sudo smartctl -a /dev/nvme0n1"
-# scripts
-alias buildlinux="sh /home/ivanruano83/scripts/build_linux.sh"
+# build linux script
+alias buildlinux="sh /home/ivanruano83/scripts/build_linux.sh -f /build/linux"
+# install firefox script
 alias mozdown="sudo python3 ~/scripts/python/mozilla-download.py"
-alias apk="sudo  python3 ~/scripts/python/apk.py"
+# rename files 
 alias renove="python3 ~/scripts/python/rename.py"
+# build qtile script
+alias buildqtile="sh ~/scripts/build_qtile.sh -f qtile_env -b wayland"
 # git
 alias gl="git pull"
 alias ga="git add"
@@ -41,8 +62,8 @@ alias prtup="prt-get update"
 alias prtid="prt-get depinst"
 alias prtdep="prt-get depends"
 alias prtinfo="prt-get info"
+alias prtrem="prt-get remove"
 # pkgutils
 alias makepkg="fakeroot pkgmk -d"
 alias pkgin="pkgadd"
 alias pkgup="pkgadd -u"
-alias qtilestart="dbus-run-session qtile start -b wayland"

@@ -4,22 +4,20 @@ case $- in
     *) return;;
 esac
 # Variables
-export PATH="/opt/android-tools/:$HOME/.cargo/bin:$HOME/scripts:$HOME/.local/bin:$PATH"
+export PATH="$HOME/Aplicaciones/Telegram/:/opt/android-tools/:$HOME/.cargo/bin:$HOME/scripts:$HOME/.local/bin:$PATH"
 export EDITOR="/usr/bin/vim"
 export LFS="/mnt/lfs"
 export sources="/build/lfs-12.2-sysv/lfs"
 export makeopts="make -j$(nproc)"
-#eval "$(atuin init bash)"
 eval "$(zoxide init bash)"
 # alias
 source ~/.bash-alias
 source ~/.bash-stream
-source /etc/profile.d/bash_completion.sh
-#bind 'set show-all-if-ambiguous on'
-#bind 'TAB:menu-complete'
+# History
 HISTSIZE=10000
 HISTFILESIZE=10000
-PROMPT_COMMAND='history -a'
+#PROMPT_COMMAND='history -a'
+# Colors
 # Regular Colors
 Black='\033[0;30m'        # Black
 Red='\033[0;31m'          # Red
@@ -40,9 +38,12 @@ BPurple='\033[1;35m'      # Purple
 BCyan='\033[1;36m'        # Cyan
 BWhite='\033[1;37m'       # White
 
-#exec fish
+PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND}'printf "\033]0;%s@%s:%s\007" "${LOGNAME}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
 # prompt
-PS1="$BYellow \u$Cnormal \w\n... $ "
+PS1="$BBlue\u$Cnormal \w\n... $ "
+# bash completation
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion
 # greeting
 echo -e "Hello friend!"
 echo -e "Today is $BYellow$(date +'%A %d %b %Y %T')\e[0m and this machine is called $BYellow$HOSTNAME \e[0m with the kernel $BYellow$(uname -r)"
