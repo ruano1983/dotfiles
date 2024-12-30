@@ -1,1 +1,8 @@
-My dotfiles sway, waybar, alacritty, rofi, vim, qtile, riverwm ... including color themes y bashrc.
+   ___             _                 __     _       _                    
+  |   \    ___    | |_     ___      / _|   (_)     | |     ___     ___   
+  | |) |  / _ \   |  _|   / _ \    |  _|   | |     | |    / -_)   (_-<   
+  |___/   \___/   _\__|   \___/   _|_|_   _|_|_   _|_|_   \___|   /__/_  
+_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""| 
+"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'
+
+My dotfiles for qtile, sway, waybar, alacritty, rofi, vim, riverwm... including color themes, bashrc and bash aliases.
