@@ -1,9 +1,8 @@
 ##########################
-#########################
+########################
 ########## CONFIG QTILE ###############
-
 from libqtile.utils import guess_terminal
-from libqtile.backend.wayland import InputConfig
+from libqtile.backend.wayland import *
 from modules.keys import *
 from modules.groups import *
 from modules.layouts import *
@@ -15,8 +14,11 @@ import shlex
 import os
 from subprocess import Popen, PIPE
 
+wl_xcursor_theme = "Quintom_Snow"
+wl_xcursor_size = 24
+
 dgroups_key_binder = None
-dgroups_app_rules = []  # type: list
+dgroups_app_rules = []
 follow_mouse_focus = True
 bring_front_click = False
 floats_kept_above = True
@@ -26,11 +28,11 @@ focus_on_window_activation = "smart"
 reconfigure_screens = True
 auto_minimize = True
 
-# When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = {
- "type:keyboard": InputConfig(kb_repeat_rate=25,kb_repeat_delay=400),
+ "type:keyboard": InputConfig(kb_repeat_rate=25,kb_repeat_delay=400,kb_layout='us',kb_variant='altgr-intl'),
  "2362:9488:PixArt USB Optical Mouse": InputConfig(pointer_accel=0.2,accel_profile='adaptive'),
 }
+
 command=shlex.split("swaybg -m fill -i " + wallpaper)
 Popen(command, stdout=PIPE, stderr=PIPE)
 

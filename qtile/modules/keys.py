@@ -1,9 +1,18 @@
 ###### Keys Module ######
-
-from libqtile.config import Key
+from libqtile import qtile
+from libqtile.config import Key, KeyChord
 from libqtile.lazy import lazy
 from .globals import * 
 import os
+home_dir = os.path.expanduser( '~' )
+# A function for toggling between MAX and title layouts
+@lazy.function
+def maximize_by_switching_layout(qtile):
+    current_layout_name = qtile.current_group.layout.name
+    if current_layout_name == 'tile':
+        qtile.current_group.layout = 'max'
+    elif current_layout_name == 'max':
+        qtile.current_group.layout = 'tile'
 
 keys = [
     # Switch between windows
@@ -11,7 +20,6 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    #ey([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
@@ -32,7 +40,6 @@ keys = [
     # layout tile 
     Key([mod], "o", lazy.layout.increase_ratio()),
     Key([mod], "p", lazy.layout.decrease_ratio()),
-
     # Toggle between split and unsplit sides of stack.
     Key(
         [mod, "shift"],
@@ -40,64 +47,60 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-
     # Rofi
-    Key([mod , "shift"], "m", lazy.spawn(rofi), desc="Launch Rofi"),
+    Key([mod , "shift"], "m", lazy.spawn(rofi), desc="Launch rofi"),
     # power menu
-    Key([mod , "shift"], "p", lazy.spawn(power), desc="Launch Rofi"),
-    # lock screen
-    Key([mod , "shift"], "F12", lazy.spawn(lock), desc="lock screen"),
+    Key([mod , "shift"], "p", lazy.spawn(power), desc="Launch rofi"),
     # Calculator
-    Key([mod , "shift"], "a", lazy.spawn("kcalc"), desc="calculator"),
+    Key([mod , "shift"], "a", lazy.spawn("qalculate-gtk"), desc="Launch Calculator"),
     # pavucontrol
     Key([mod , "shift"], "v", lazy.spawn("pavucontrol"), desc="Launch pavucontrol"),
-    # Darktable
-    Key([mod , "shift"], "f", lazy.spawn("alacritty -e vifm"), desc="Launch file manager(vifm)"),
     # libreoffice writer 
     Key([mod , "shift"], "o", lazy.spawn("libreoffice --writer"), desc="Launch libreoffice writer"),
-    ### Terminal Alacritty
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    # play Music
+    # Terminal
+    Key([mod], "Return", lazy.spawn(myTerm), desc="Launch Terminal"),
+    # play Media
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
     Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
-    ### volumen
+    # volumen
     Key([], "XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")),
-    ### Mute
+    # Mute
     Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
-    ### Firefox
-    Key([mod , "shift"] ,"y", lazy.spawn("firefox"),desc="Launch Firefox"),
-    ### Thunderbird
-    Key([mod , "shift"] ,"t", lazy.spawn("thunderbird"),desc="Launch thunderbird"),
-    ### Dolphin
-    Key([mod , "shift"] ,"d", lazy.spawn("dolphin"),desc="Launch dolphin"),
-    ### Kate
-    Key([mod , "shift"] ,"i", lazy.spawn("kate"),desc="Launch kate"),
-    ### Kate
+    # Firefox
+    Key([mod , "shift"] ,"y", lazy.spawn(myBrowser),desc="Launch Web Browser"),
+    # Telegram
+    Key([mod , "shift"] ,"t", lazy.spawn("Telegram"),desc="Launch telegram"),
+    # keychord file manager 
+    KeyChord([mod],"v", [
+    # vifm
+    Key([] ,"f", lazy.spawn(myTerm + ' -e ' + myfm + ' ' + home_dir + ' ' + home_dir),desc="Launch vifm"),
+    # vifmp (pkgmk)
+    Key([] ,"p", lazy.spawn(myTerm + ' -e '+ myfm + ' /build/pkgmk /build/pkgmk'),desc="Launch vifm"),
+    # vifmc (.config)
+    Key([] ,"c", lazy.spawn(myTerm + ' -e '+ myfm + ' .config .config'),desc="Launch vifm "),
+    ]),
     ### shutdown 
     Key([mod , "shift"] ,"s", lazy.spawn("loginctl  poweroff"),desc="shutdown"), 
     ### Reboot 
     Key([mod , "shift"] ,"r", lazy.spawn("loginctl reboot"),desc="reboot"), 
-
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    # kill window
     Key([mod , "shift"], "n", lazy.window.kill(), desc="Kill focused window"),
-    Key(
-        [mod],
-        "f",
-        lazy.window.toggle_fullscreen(),
-        desc="Toggle fullscreen on the focused window",
+    # Fullscreen
+    Key([mod], "f", maximize_by_switching_layout(),lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window",
     ),
     # Tile off on
     Key([mod], "space", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     # Reload config
     Key([mod, "shift"], "c", lazy.reload_config(), desc="Reload the config"),
     # Salir qtile
-    Key([mod, "shift"], "e", lazy.spawn(logoutuser), desc="Logout user"),
+    Key([mod, "shift"], "e", lazy.shutdown(), desc="quit qtile"),
+    # prompt run widget
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
-
 # Add key bindings to switch VTs in Wayland.
 for vt in range(1, 9):
     keys.append(

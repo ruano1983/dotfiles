@@ -5,7 +5,7 @@ from .keys import *
 groups = [
     Group("1", label="1", layout='tile'),
     Group("2", label="2", layout='max'),
-    Group("3", label="3", layout='tile'),
+    Group("3", label="3", layout='max'),
     Group("4", label="4", layout='tile'),
     Group("5", label="5", layout='tile'),
     Group("6", label="6", layout='tile'),
