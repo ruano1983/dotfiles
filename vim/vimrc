@@ -42,8 +42,8 @@ set termguicolors "enable true colors support
 
 
 call plug#begin()
-Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'dracula/vim', { 'as': 'dracula' }
 " List your plugins hee
 call plug#end()
-"#source ~/.config/nvim/colors/lune.vim
-colorscheme dracula
+source ~/.config/nvim/colors/argyls-contrast.vim
+"colorscheme bold
