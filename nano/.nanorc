@@ -8,7 +8,40 @@ set quickblank
 set regexp
 set linenumbers
 set minibar
-set numbercolor  blue,black
-set minicolor  blue,black
-set keycolor blue,black
+set numbercolor  blue
+set minicolor  blue
+set keycolor blue
 include "/usr/share/nano/*.nanorc"
+bind ^X cut main
+bind ^Y copy main
+bind ^P paste all
+bind ^Q exit all
+bind ^S savefile main
+bind ^W writeout main
+bind ^O insert main
+bind ^D cancel all
+
+# set multibuffer
+# bind ^H help all
+# bind ^H exit help
+# bind ^F whereis all
+# bind ^G findnext all
+# bind ^B wherewas all
+# bind ^D findprevious all
+# bind ^R replace main
+unbind ^U all
+unbind ^N main
+#unbind ^Y all
+# unbind M-J main
+# unbind M-T main
+# bind ^A mark main
+# bind ^P location main
+# bind ^T gotoline main
+# bind ^T gotodir browser
+# bind ^T cutrestoffile execute
+# bind ^L linter execute
+# bind ^E execute main
+# bind ^K "{mark}{end}{zap}" main
+# bind ^U "{mark}{home}{zap}" main
+bind ^U undo main
+bind ^R redo main
