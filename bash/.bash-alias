@@ -37,6 +37,8 @@ alias rip="rip --graveyard /tmp/trash"
 alias df="df -H"
 # sudo dmesg 
 alias sdmesg="sudo dmesg"
+# clock
+alias clock="tock -s -C 3 -m -c"
 # remove .la
 alias rmla="sudo /usr/bin/remove-la-files.sh"
 # fstrim
@@ -53,7 +55,7 @@ alias renove="python3 ~/scripts/python/rename.py"
 alias buildqtile="sh ~/scripts/build_qtile.sh -f qtile_env -b wayland"
 # git
 alias gl="git pull"
-alias ga="git add"
+alias ga="git add ."
 alias gc="git commit -m"
 alias gp="git push"
 # prt-get
