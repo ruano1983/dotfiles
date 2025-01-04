@@ -36,14 +36,9 @@ nnoremap <F2> :q!<CR>
 map <F12> <Insert>
 imap <F12> <Insert>
 
-
 set background=dark
 set termguicolors "enable true colors support
 
-
 call plug#begin()
-"Plug 'dracula/vim', { 'as': 'dracula' }
-" List your plugins hee
 call plug#end()
 source ~/.config/nvim/colors/argyls-contrast.vim
-"colorscheme bold
