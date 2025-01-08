@@ -6,9 +6,8 @@ green = "0x3db36e"
 magenta = "0xd36a7d"
 red = "0xe66456"
 white = "0xffffff"
+yellow = "0xf1b213"
 
-#yellow = "0xebc041"
-yellow = "0xf1b018"
 [colors.normal]
 black = "0x000000"
 blue = "0x2fa6c7"
@@ -17,8 +16,8 @@ green = "0x3db36e"
 magenta = "0xd36a7d"
 red = "0xe66456"
 white = "0xffffff"
-yellow = "0xf1b018"
+yellow = "0xf1b213"
 
 [colors.primary]
-background = "0x1e1e1e"
+background = "0x121212"
 foreground = "0xdfdfdf"
