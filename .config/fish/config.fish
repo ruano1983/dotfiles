@@ -2,8 +2,10 @@ if status is-interactive
     zoxide init fish | source
 end
 set -g fish_prompt_pwd_dir_length 80
-set PATH  $HOME/scripts $HOME/.local/bin $PATH
-set fish_greeting		 # greeting	
+# fish path
+set -e fish_user_paths
+set -U fish_user_paths  $HOME/.local/bin  $HOME/Applications  $HOME/Aplicaciones/Telegram $HOME/scripts  $fish_user_paths
+set fish_greeting	 # greeting	
 # radiotunes
 alias tuneslatino="mpv --no-video 'http://prem2.radiotunes.com:80/latinpophits?99fc5648cc8e87d633d28b0b'"
 alias tunesdance="mpv --no-video 'http://prem2.radiotunes.com:80/dancehits?99fc5648cc8e87d633d28b0b'"
@@ -92,5 +94,6 @@ alias pkgin="pkgadd"
 alias pkgup="pkgadd -u"
 set TERM "xterm-256color"	 # Sets the terminal type
 set EDITOR "vim"		 # $EDITOR use vim
-# colorscript
-colorscript -e 47
+if [ (tty) = "/dev/tty1" ]
+    exec dbus-run-session qtile start -b wayland
+end
