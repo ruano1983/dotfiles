@@ -2,23 +2,31 @@ from libqtile import layout
 import colors
 colors = colors.Argyls
 
+layout_theme = {"border_width": 1,
+                "margin": 0,
+                "border_focus": colors[1],
+                "border_normal": colors[3],
+                "change_size": 30,
+                "border_on_single":True 
+                }
+
 layouts = [
-    layout.Columns(
-            margin=0,border_focus=colors[1],border_normal=colors[3],border_width=1,fair=True,insert_position=1,change_size=30,border_on_single=True ),
-    layout.MonadTall(
-            margin=0,border_focus=colors[1],border_normal=colors[3],border_width=1,change_size=30,border_on_single=True ), 
-    layout.MonadWide(
-            margin=0,border_focus=colors[1],border_normal=colors[3],border_width=1,change_size=30,border_on_single=True ),
+    layout.Tile(
+            **layout_theme,ratio=0.56),  
     layout.Max(
-            margin=0,border_focus=colors[1],border_normal=colors[3],border_width=1, border_on_single=True ), 
-    # Try more layouts by unleashing below layouts.
+            **layout_theme), 
+    # Layout.Columns(
+    #        **layout_theme,fair=True,insert_position=1 ),
+    layout.MonadTall(
+            **layout_theme), 
+    layout.MonadWide(
+            **layout_theme),
+    
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(),
     # layout.RatioTile(),
-    layout.Tile(
-         margin=0,border_focus=colors[1],border_normal=colors[3],border_width=1,change_size=30,border_on_single=True,ratio=0.6 ), 
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),

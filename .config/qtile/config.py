@@ -9,6 +9,7 @@ from modules.layouts import *
 from modules.screens import *
 from modules.mouse import * 
 from modules.hooks import *  
+from modules.floating import *
 from modules.globals import *
 import shlex
 import os
@@ -29,7 +30,7 @@ reconfigure_screens = True
 auto_minimize = True
 
 wl_input_rules = {
- "type:keyboard": InputConfig(kb_repeat_rate=25,kb_repeat_delay=400,kb_layout='us',kb_variant='altgr-intl'),
+ "type:keyboard": InputConfig(kb_repeat_rate=30,kb_repeat_delay=350,kb_layout='us',kb_variant='altgr-intl'),
  "2362:9488:PixArt USB Optical Mouse": InputConfig(pointer_accel=0.2,accel_profile='adaptive'),
 }
 
