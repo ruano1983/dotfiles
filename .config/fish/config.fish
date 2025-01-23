@@ -35,7 +35,7 @@ alias clima="curl wttr.in/Fuenlabrada"
 # greep colors
 alias grep='grep --color=auto'
 # vifm
-alias vifmp="vifm /build/pkgmk /build/pkgmk"
+alias vifmp="vifm /build/ports /build/ports"
 alias vifmc="vifm ~/.config ~/.config"
 # ranger
 alias rangerv="ranger --cmd='set viewmode=multipane' ~/ ~/"
@@ -69,7 +69,7 @@ alias trim="sudo fstrim -a"
 # smart nvme
 alias smartnvme="sudo smartctl -a /dev/nvme0n1"
 # build linux script
-alias buildlinux="sh /home/ivanruano83/scripts/build_linux.sh -f /build/linux"
+alias buildlinux="sh /home/ivanruano83/scripts/build_linux.sh -f /linux"
 # install firefox script
 alias mozdown="sudo python3 ~/scripts/python/mozilla-download.py"
 # rename files 
@@ -96,4 +96,6 @@ set TERM "xterm-256color"	 # Sets the terminal type
 set EDITOR "vim"		 # $EDITOR use vim
 if [ (tty) = "/dev/tty1" ]
     exec dbus-run-session qtile start -b wayland
+    #exec dbus-run-session startplasma-wayland
+    #exec dbus-run-session dwl -s waybar
 end
