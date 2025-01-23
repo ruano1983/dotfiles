@@ -1,0 +1,31 @@
+#!/bin/sh
+
+volume_up() {
+	wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+}
+volume_down() {
+	wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+}
+volume_mute() {
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+}
+power_off() {
+	loginctl poweroff
+}
+
+power_reboot() {
+	loginctl reboot
+}
+pause_player() {
+	playerctl play-pause
+}
+next_player() {
+	playerctl next
+}
+previous_player() {
+	playerctl previous
+}
+print_screenshot() {
+	grim $(xdg-user-dir PICTURES)/capturas/$(date +'%s_grim.png')
+}
+$1
