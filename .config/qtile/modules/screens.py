@@ -4,9 +4,9 @@ from .globals import *
 import colors
 from libqtile.config import Screen
 # functions
-def fc_separation(l=11):
+def fc_separation(l=12):
     return  widget.Spacer(length=l)
-def fc_textbox(icon,p=5):
+def fc_textbox(icon,p=6):
     return widget.TextBox(fontsize=14,padding=p,text=icon)
 def run_btm():
     qtile.spawn(myTerm + ' -e btm')
@@ -16,15 +16,22 @@ screens = [
     Screen(
         # bar widgets bottom
         bottom=bar.Bar([
-               fc_separation(l=4),
-               widget.TextBox(text='',padding=5,mouse_callbacks={'Button1':lambda:qtile.spawn(rofi)}),
-               fc_separation(l=6),
-               widget.GroupBox(highlight_method='block',rounded=False,highlight_color=[colors[1]],
-                               this_current_screen_border=colors[1],inactive="#383838",
-                               foreground=colors[2], padding=5 ,spacing=4,borderwidth=4,
-                               active="#F8F8F2",block_highlight_text_color=colors[0]),
-                widget.CurrentLayoutIcon(padding=5,scale=0.50), 
-                widget.CurrentLayout(padding=5), 
+               fc_separation(l=1),
+               widget.GroupBox(highlight_method='block',
+                               rounded=False,
+                               this_current_screen_border=colors[1],
+                               inactive=colors[3],
+                               active="#F8F8F2",
+                               foreground=colors[2], 
+                               padding=6,
+                               spacing=3,
+                               borderwidth=4,
+                               block_highlight_text_color=colors[0],
+                               disable_drag=True,
+                               hide_unused=True
+                               ),
+                widget.CurrentLayoutIcon(padding=6,scale=0.50), 
+                widget.CurrentLayout(padding=6), 
                 fc_separation(l=6),
                 widget.Prompt(prompt="Run "),
                 fc_textbox(icon='󰖲'),        
@@ -35,7 +42,7 @@ screens = [
                 fc_textbox(icon='󰖩'),
                 widget.Wlan(format='{percent:2.0%}'),
                 fc_separation(),
-                fc_textbox(icon='󰐸'),
+                fc_textbox(icon=''),
                 widget.CPU(format='{freq_current}GHz {load_percent}%',update_interval=1,mouse_callbacks = {'Button1': lambda: run_btm()}),
                 fc_separation(),
                 fc_textbox(icon=''),
@@ -57,14 +64,14 @@ screens = [
                 widget.OpenWeather(app_key="bb789b9c68ed3ee12c7f8d99d62f3c3b",location='Fuenlabrada', format='{weather} {main_temp:.0f}°{units_temperature}'),
                 fc_separation(),
                 fc_textbox(icon=''),
-                widget.Clock(format="%a %d %B"),
+                widget.Clock(format="%A %d %B"),
                 fc_separation(),
                 fc_textbox(icon='󰥔'),
                 widget.Clock(format="%H:%M"),
-                fc_separation(l=4),
+                fc_separation(l=1),
         ],
             # size and background color
-            36,
+            38,
             background=colors[0],
             border_width=0,
         ),
