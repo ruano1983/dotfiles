@@ -28,6 +28,10 @@ alias tarx="tar xvf"
 alias updb="updatedb  --prunepaths=/run"
 # qtile wayland start
 alias qtilestart="dbus-run-session qtile start -b wayland"
+# dwl wayland start
+alias dwlstart="dbus-run-session dwl -s waybar"
+# sway wayland start
+alias swaystart="dbus-run-session sway"
 # plasma wayland start
 alias kde="dbus-run-session startplasma-wayland"
 # weather
@@ -39,11 +43,11 @@ alias vifmp="vifm /build/ports /build/ports"
 alias vifmc="vifm ~/.config ~/.config"
 # ranger
 alias rangerv="ranger --cmd='set viewmode=multipane' ~/ ~/"
-alias rangerp="ranger  /build/pkgmk"
+alias rangerp="ranger  /build/ports"
 # eza 
-alias eza="eza -G"
+alias eza="eza -G --group-directories-first"
 # Changing "ls" to "eza"
-alias ls="eza -G"
+alias ls="eza -G --group-directories-first"
 # mpv play
 alias play="mpv --shuffle --no-video"
 # wl-randr
@@ -61,21 +65,24 @@ alias df="df -H"
 # sudo dmesg 
 alias sdmesg="sudo dmesg"
 # clock
-alias clock="tock -s -C 3 -m -c"
+alias clock="tock -s -C 4 -m -c"
 # remove .la
 alias rmla="sudo /usr/bin/remove-la-files.sh"
 # fstrim
 alias trim="sudo fstrim -a"
 # smart nvme
-alias smartnvme="sudo smartctl -a /dev/nvme0n1"
-# build linux script
-alias buildlinux="sh /home/ivanruano83/scripts/build_linux.sh -f /linux"
+alias smartnvme1="sudo smartctl -x /dev/nvme0n1"
+alias smartnvme2="sudo smartctl -x /dev/nvme1n1"
 # install firefox script
 alias mozdown="sudo python3 ~/scripts/python/mozilla-download.py"
 # rename files 
 alias renove="python3 ~/scripts/python/rename.py"
+# build linux script
+alias buildlinux="fish /home/ivanruano83/scripts/build_linux.fish -f /linux -i vmlinuz-frikios"
 # build qtile script
-alias buildqtile="sh ~/scripts/build_qtile.sh -f qtile_env -b wayland"
+alias buildqtile="fish ~/scripts/build_qtile.fish -f qtile_env -b wayland"
+# build darktable script
+alias builddarktable="fish ~/scripts/build_darktable.fish"
 # git
 alias gl="git pull"
 alias ga="git add ."
@@ -83,8 +90,8 @@ alias gc="git commit -m"
 alias gp="git push"
 # prt-get
 alias prtin="prt-get install"
-alias prtup="prt-get update"
-alias prtid="prt-get depinst"
+alias prtup="prt-get update -fr"
+alias prtid="prt-get depinst -g"
 alias prtdep="prt-get depends"
 alias prtinfo="prt-get info"
 alias prtrem="prt-get remove"
@@ -95,7 +102,7 @@ alias pkgup="pkgadd -u"
 set TERM "xterm-256color"	 # Sets the terminal type
 set EDITOR "vim"		 # $EDITOR use vim
 if [ (tty) = "/dev/tty1" ]
-    exec dbus-run-session qtile start -b wayland
+    #exec dbus-run-session qtile start -b wayland
     #exec dbus-run-session startplasma-wayland
     #exec dbus-run-session dwl -s waybar
 end
