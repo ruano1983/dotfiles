@@ -9,10 +9,10 @@ home_dir = os.path.expanduser( '~' )
 @lazy.function
 def maximize_by_switching_layout(qtile):
     current_layout_name = qtile.current_group.layout.name
-    if current_layout_name == 'tile':
+    if current_layout_name == 'columns':
         qtile.current_group.layout = 'max'
     elif current_layout_name == 'max':
-        qtile.current_group.layout = 'tile'
+        qtile.current_group.layout = 'columns'
 
 keys = [
     # Switch between windows
@@ -53,21 +53,25 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn("wl-script volume_up")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("wl-script volume_down")),
     # Mute
-    Key([], "XF86AudioMute", lazy.spawn("wl-script volume-mute")),
+    Key([], "XF86AudioMute", lazy.spawn("wl-script volume_mute")),
     # Firefox
     Key([mod , "shift"] ,"y", lazy.spawn(myBrowser),desc="Launch Web Browser"),
-    # Telegram
-    Key([mod , "shift"] ,"t", lazy.spawn("Telegram"),desc="Launch telegram"),
+    # session-desktop
+    Key([mod , "shift"] ,"t", lazy.spawn(chat),desc="Launch session-desktop"),
+    # thunar
+    Key([mod , "shift"] ,"f", lazy.spawn("thunar"),desc="Launch thunar file manager"),
     # screenshot
     Key([],"print", lazy.spawn("wl-script print_screenshot"),desc="Screenshot"),
     # keychord file manager 
     KeyChord([mod],"v", [
-    # vifm
-    Key([] ,"h", lazy.spawn(myTerm + ' -e ' + myfm + ' ' + home_dir + ' ' + home_dir),desc="Launch vifm"),
-    # vifmp (ports)
+     # vifm (ports)
     Key([] ,"p", lazy.spawn(myTerm + ' -e '+ myfm + ' /build/ports /build/ports'),desc="Launch vifm"),
-    # vifmc (.config)
-    Key([] ,"c", lazy.spawn(myTerm + ' -e '+ myfm + ' .config .config'),desc="Launch vifm "),
+    # ranger-fm (home)
+    Key([] ,"h", lazy.spawn(myTerm + ' -e '+ myfm2 + ' ' + home_dir),desc="Launch ranger-fm"),
+    # ranger-fm (.config)
+    Key([] ,"c", lazy.spawn(myTerm + ' -e '+ myfm2 + ' .config'),desc="Launch ranger-fm"),
+    # ranger-fm (scripts)
+    Key([] ,"s", lazy.spawn(myTerm + ' -e '+ myfm2 + ' scripts'),desc="Launch ranger-fm"),
     ]),
     # keychord power
     KeyChord([mod],"p", [
@@ -83,13 +87,12 @@ keys = [
     # kill window
     Key([mod , "shift"], "n", lazy.window.kill(), desc="Kill focused window"),
     # Fullscreen
-    Key([mod], "f", maximize_by_switching_layout(),lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window",
-    ),
+    Key([mod], "f", maximize_by_switching_layout(),lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
     # Tile off on
     Key([mod], "space", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     # Reload config
     Key([mod, "shift"], "c", lazy.reload_config(), desc="Reload the config"),
-        # prompt run widget
+    # prompt run widget
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 # Add key bindings to switch VTs in Wayland.
