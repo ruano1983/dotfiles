@@ -1,150 +1,113 @@
-{
+{   "layer": "top", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
-    "spacing":4, // Gaps between modules (4px)
+    "height": 38, // Waybar height (to be removed for auto height)
+    "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["custom/launcher", "sway/workspaces","sway/window"],
+    "modules-left": ["sway/workspaces","sway/window"],
     "modules-center": [],
-    "modules-right": [ "network", "cpu", "memory", "temperature", "wireplumber","custom/kernel", "sway/language" , "clock" ],
+    "modules-right": [ "network" , "cpu" , "memory" , "temperature" , "disk" , "wireplumber" , "custom/kernel" , "sway/language", "custom/weather" , "clock#date" , "clock#time" ],
+    
     // Modules configuration
-      
-    "custom/launcher":{
-        "format": "",
-        "on-click": "~/.config/rofi/launchers/type-2/launcher.sh",
-        "on-click-right": "killall rofi",
-	"tooltip": false
-    },
-
     "sway/workspaces": {
-        "disable-scroll": false,
-        "format": " {icon}",
-         "persistent-workspaces": {
-            "1" : [],
-            "2" : [],
-            "3" : [],
-            "4" : [],
-            "5" : [],
-            "6" : [],
-            "7" : [],
-            "8" : [],
-        },
+         "disable-scroll": false,
+         "all-outputs": true,
+         "current-only": false,
+     }, 
 
-	  "format-icons": {
-            "1": "term",
-            "2": "web",
-            "3": "chat",
-            "4": "files",
-            "5": "doc",
-            "6": "media",
-            "7": "games",
-            "8": "others",
-
-    },
-},
-	
-
-  "sway/window": {
-     "format": "{title}",
-     "max-length": 120,
-     "rewrite": {
-    "ivanruano83@servidor(.*)" : "   ivanruano83@servidor $1 - Alacritty",
-        "(.*) — Mozilla Firefox": "🌎  $1 - Mozilla Firefox",
-        "(.*) — Dolphin": "   $1 - Dolphin",
-        "(.*) — Kate": "   $1 - Kate",
-        "(.*) - Mozilla Thunderbird": "    $1 - Mozilla Thunderbird",
-        "(.*) - Audacious": "   $1 - Audacious",
-        "(.*) - VIM": "   $1 - Vim"
-      }
-
-},
-
-    "custom/weather": {
-        "format": "{}",
-        "tooltip": true,
-        "interval": 1800,
-        "exec": "$HOME/.config/waybar/scripts/wttr.py",
-        "return-type": "json"
-    },
-
-    "keyboard-state": {
-        //"numlock": true,
-        "capslock": true,
-        "format": "{name} {icon} ",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        },
+    "sway/window": {
+	"format": "󰖲   {}",
+	"max-length": 90
     },
 
     "wireplumber": {
-         "format": "   {volume}%",
-         "on-click": "pavucontrol"
-
+         "format": "    {volume}%",
+	 "format-muted":"󰸈  Mute  ",
+         "on-click": "pavucontrol",	
+         "tooltip-format":"{node_name} {volume}%"
     },  
 
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "󰖩   {essid} {signalStrength}%",
-        "format-ethernet": " {ipaddr}/{cidr}",
-        "tooltip-format": " {ifname} via {gwaddr}",
-        "format-linked": " {ifname} (No IP)",
-        "format-disconnected": " Desconectado",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+   "network": {
+        "interval": 10,
+        "format-wifi": "󰖩   {signalStrength}%", // Icon: wifi
+        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+        "format-disconnected": "󰤭  Disconnected",
+	"family":"ipv4",
+        "tooltip-format": "{essid}: {signalStrength}%"
     },
 
     "cpu": {
-        "format": "   {avg_frequency}GHz  {usage}%",
+        "format": "   {avg_frequency}GHz  {usage}%",
         "tooltip": true,
+	"on-click":"alacritty -e btm",
         "interval": 1
         },
+
     "memory": {
-        "format": "   {used:0.1f}G/{total:0.1f}G",
+        "format": "    {used:0.1f}G/{total:0.1f}G", 
+        "tooltip-format":"{used:0.1f}G used out of {total:0.1f}G",
+	"on-click":"alacritty -e btm",
         "interval": 1
     },
 
     "disk": {
-	"interval": 30,
-	"format": "{percentage_used}%  ",
-	"unit": "GB"
+	"interval": 60,
+	"format": "   / {percentage_used}%",
+	"unit": "GB",
+	"path": "/",
+	"on-click":"alacritty -e btm"
     },
 
    "temperature": {
-        "hwmon-path": "/sys/class/hwmon/hwmon2/temp3_input",
-        "critical-threshold": 99,
-        "format": "  {temperatureC}°C",
-         "interval":1
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp3_input",
+        "format": "{icon}  {temperatureC}°C",
+	"critical-threshold": 85,
+	"format-icons": [
+          "", // Icon: temperature-empty
+          "", // Icon: temperature-quarter
+          "", // Icon: temperature-half
+          "", // Icon: temperature-three-quarters
+          ""  // Icon: temperature-full
+	 ],
+	"tooltip-format": "Ryzen 5800x {temperatureC}°C",
+	"on-click":"alacritty -e btm",
+        "interval":1
     },
 
     "custom/kernel": {
     "format": "󰌽   {}",
+    "tooltip-format":"{}",
     "exec": "uname -r",
-	"tooltip": false,
+	"tooltip": true,
 	"interval": "once"
         
     },
-
+    
     "sway/language": {
-    	"format":"    {} ",
-    "tooltip": false
-
-  },
-
-    "clock":{
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "   {:%A %d %b, %H:%M}"
-
+    "format": "{}",
+    "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
     },
 
-   "custom/launcher2":{
-    "format": "",
-    "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh",
-    "on-click-right": "killall rofi",
-	"tooltip": false
+    "custom/weather": {
+    "format": "{}",
+    "tooltip": true,
+    "interval": 300,
+    "exec": "$HOME/.config/waybar/scripts/wttr.py",
+    "return-type": "json"
     },
 
+    "clock#date":{
+    "tooltip": true,
+    "tooltip-format": "{:%d-%m-%Y}",
+    "locale":"es_ES.UTF-8",
+    "format": "   {:%A %d %B}"
 
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name    
+    },
+    "clock#time":{
+    "tooltip": true,
+    "tooltip-format": "{:%d-%m-%Y}",
+    "format": "󰥔   {:%H:%M}"
+
+    },
+     "escape": true,
 }
 
