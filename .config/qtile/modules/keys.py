@@ -14,6 +14,15 @@ def maximize_by_switching_layout(qtile):
     elif current_layout_name == 'max':
         qtile.current_group.layout = 'columns'
 
+@lazy.function
+def change_layout(qtile):
+    current_layout_name = qtile.current_group.layout.name
+    if current_layout_name == 'columns':
+        qtile.current_group.layout = 'tile'
+    elif current_layout_name == 'tile':
+        qtile.current_group.layout = 'columns'
+
+
 keys = [
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -57,7 +66,7 @@ keys = [
     # Firefox
     Key([mod , "shift"] ,"y", lazy.spawn(myBrowser),desc="Launch Web Browser"),
     # session-desktop
-    Key([mod , "shift"] ,"t", lazy.spawn(chat),desc="Launch session-desktop"),
+    Key([mod , "shift"] ,"t", lazy.spawn(myChat),desc="Launch session-desktop"),
     # thunar
     Key([mod , "shift"] ,"f", lazy.spawn("thunar"),desc="Launch thunar file manager"),
     # screenshot
@@ -86,6 +95,8 @@ keys = [
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     # kill window
     Key([mod , "shift"], "n", lazy.window.kill(), desc="Kill focused window"),
+    # change layout
+    Key([mod], "t", change_layout(), desc="Change layout"),
     # Fullscreen
     Key([mod], "f", maximize_by_switching_layout(),lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
     # Tile off on
