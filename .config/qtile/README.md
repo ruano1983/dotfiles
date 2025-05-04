@@ -1,5 +1,6 @@
 # My qtile settings.
 My setup is based on modules: keys, groups, screen, globals, floating, hooks, layouts, mouse, and widgets.
+![desktop qtile](/images/1746388805.png)
 
 ## config.py
 
@@ -47,3 +48,16 @@ wmname = "LG3D"
 ## globals.py 
 
 This file is for global variables such as wallpaper, web browser, chat application, etc.
+
+```import os
+mod = "mod4"
+myTerm = "alacritty"
+myBrowser = "LibreWolf.x86_64.AppImage"
+myfm = "vifm"
+myfm2 = "ranger"
+myChat = "session-desktop.AppImage"
+file_wallpaper = "arquitectura/508887.jpg"
+wallpaper = os.path.join(os.path.expanduser('~/Imágenes/wallpapers/'), file_wallpaper)
+rofi = os.path.expanduser('~/.config/rofi/launchers/type-2/launcher.sh')
+power = os.path.expanduser('~/.config/rofi/powermenu/type-2/powermenu.sh')
+```
