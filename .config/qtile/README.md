@@ -2,6 +2,7 @@
 My setup is based on modules: keys, groups, screen, globals, floating, hooks, layouts, mouse, and widgets.
 
 - #### **config.py**
+-
 
 This is the main file, it imports all modules and adds basic qtile configuration.
 
