@@ -3,7 +3,7 @@ My setup is based on modules: keys, groups, screen, globals, floating, hooks, la
 
 **config.py**
 
-``from libqtile.utils import guess_terminal
+```from libqtile.utils import guess_terminal
 from libqtile.backend.wayland import *
 from modules.keys import *
 from modules.groups import *
