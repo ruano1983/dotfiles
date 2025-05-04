@@ -132,6 +132,7 @@ This module records the key shortcuts for launching applications and special fun
 | MODKEY + SHIFT + f      | opens run file manager (thunar)        |
 | MODKEY + SHIFT + n      | closes window with focus               |
 | MODKEY + TAB            | rotates through the available layouts  |
+| MODKEY + f              | full screen                            |
 | MODKEY + SHIFT + c      | restarts qtile                         |
 | MODKEY + q              | quits qtile                            |
 | MODKEY + 1-9            | switch focus to workspace (1-9)        |
