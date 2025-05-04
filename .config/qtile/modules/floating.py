@@ -2,7 +2,7 @@ from libqtile import layout
 from libqtile.config import Match
 import colors
 
-colors = colors.Argyls
+colors = colors.argyls
 
 floating_layout = layout.Floating(
     border_focus=colors[1],

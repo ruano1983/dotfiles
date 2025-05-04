@@ -1,6 +1,6 @@
 from libqtile import layout
 import colors
-colors = colors.Argyls
+colors = colors.argyls
 
 layout_theme = {"border_width": 1,
                 "margin": 0,
@@ -11,12 +11,12 @@ layout_theme = {"border_width": 1,
                 }
 
 layouts = [
-    layout.Tile(
-            **layout_theme,ratio=0.56),  
     layout.Max(
             **layout_theme), 
-    # Layout.Columns(
-    #        **layout_theme,fair=True,insert_position=1 ),
+    layout.Columns(
+            **layout_theme,fair=True,insert_position=1),
+    layout.Tile(
+            **layout_theme,ratio=0.55),  
     layout.MonadTall(
             **layout_theme), 
     layout.MonadWide(
