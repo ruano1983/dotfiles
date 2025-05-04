@@ -219,9 +219,7 @@ This module activates the layout types and their respective appearance.
 
 ```
 from libqtile import layout
-import colors
-colors = colors.argyls
-
+from .theme import *
 layout_theme = {"border_width": 1,
                 "margin": 0,
                 "border_focus": colors[1],
@@ -241,6 +239,7 @@ layouts = [
             **layout_theme),
     layout.MonadWide(
             **layout_theme),
+]
 ```
 ## widgets.py
 
@@ -249,9 +248,8 @@ This module creates the widgets to then display them in the status bar.
 ```
 from libqtile import widget
 from libqtile import qtile
-import colors
+from .theme import *
 from .globals import *
-colors = colors.argyls
 # functions
 def fc_separation(l=12):
     return  widget.Spacer(length=l)
@@ -322,4 +320,85 @@ primary_widgets = [
         widget.Clock(format="%H:%M"),
         fc_separation(l=1),
 ]
+```
+## screens.py
+
+This module displays the status bar with all the widgets created with the widgets.py module.
+
+```
+from libqtile import bar
+from .widgets import *
+from .theme import *
+from libqtile.config import Screen
+
+
+# bar
+def status_bar(widgets):
+    return bar.Bar(widgets, 38,
+            background=colors[0],
+            border_width=0)
+
+screens = [
+    Screen(
+        bottom=status_bar(primary_widgets))
+]
+```
+## mouse.py
+
+This module records the movement of floating windows.
+
+```
+from libqtile.config import Click, Drag
+from libqtile.lazy import lazy
+from .globals import *
+
+# Drag floating layouts.
+mouse = [
+    Drag([mod], "Button1", lazy.window.set_position_floating().when(when_floating=True), start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Click([mod], "Button2", lazy.window.bring_to_front()),
+]
+```
+## floating.py
+
+This module creates the rules for floating windows.
+
+```
+from libqtile import layout
+from libqtile.config import Match
+from .theme import *
+
+floating_layout = layout.Floating(
+    border_focus=colors[1],
+    border_width=1,
+    float_rules=[
+        # Run the utility of `xprop` to see the wm class and name of an X client.
+        *layout.Floating.default_float_rules,
+        Match(wm_class="confirmreset"),   # gitk
+        Match(wm_class="dialog"),         # dialog boxes
+        Match(wm_class="download"),       # downloads
+        Match(wm_class="error"),          # error msgs
+    ]
+)
+```
+## theme.py
+
+This module selects the color theme.
+
+```
+import colors
+colors = colors.nube
+```
+
+## colors
+
+This file contains all the color schemes.
+
+```
+argyls = [
+    ["#121212" , "#121212"], # BG BLACK
+    ["#2fa6c7" , "#2fa6c7"], # PRIMARY BLUE
+    ["#dfdfdf" , "#dfdfdf"], # FG WHITE
+    ["#383838" , "#383838"]  # GRAY
+    ] ...
 ```
