@@ -40,4 +40,3 @@ command=shlex.split("swaybg -m fill -i " + wallpaper)
 Popen(command, stdout=PIPE, stderr=PIPE)
 
 wmname = "LG3D"
-``
