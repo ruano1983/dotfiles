@@ -6,7 +6,8 @@ My setup is based on modules: keys, groups, screen, globals, floating, hooks, la
 
 This is the main file, it imports all modules and adds basic qtile configuration.
 
-```from libqtile.utils import guess_terminal
+```
+from libqtile.utils import guess_terminal
 from libqtile.backend.wayland import *
 from modules.keys import *
 from modules.groups import *
@@ -51,7 +52,8 @@ This file is for global variables such as wallpaper, web browser, chat applicati
 
 **Note that the wallpaper URL is split in two to make it easier to change the wallpaper in the Python code.**
 
-```import os
+```
+import os
 mod = "mod4"
 myTerm = "alacritty"
 myBrowser = "LibreWolf.x86_64.AppImage"
@@ -67,7 +69,8 @@ power = os.path.expanduser('~/.config/rofi/powermenu/type-2/powermenu.sh')
 
 This file launches autostart.sh at startup.
 
-```from libqtile import hook
+```
+from libqtile import hook
 import os
 import subprocess
 qtile_path = os.path.join(os.path.expanduser('~'), ".config", "qtile")
@@ -80,7 +83,8 @@ def autostart():
 
 This file creates and organizes the names of the groups and their respective layouts.
 
-```from libqtile.config import Group, Match
+```
+from libqtile.config import Group, Match
 from .keys import *
 
 groups = [
@@ -124,7 +128,8 @@ for i in groups:
 
 This file records the key shortcuts for launching applications and special functions such as volume or shutting down and restarting the PC.
 
-```keys = [
+```
+keys = [
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
