@@ -1,9 +1,7 @@
 # My qtile settings.
 My setup is based on modules: keys, groups, screen, globals, floating, hooks, layouts, mouse, and widgets.
 
-- **config.py**
----
-
+## config.py
 
 This is the main file, it imports all modules and adds basic qtile configuration.
 
@@ -43,4 +41,6 @@ wl_input_rules = {
 command=shlex.split("swaybg -m fill -i " + wallpaper)
 Popen(command, stdout=PIPE, stderr=PIPE)
 
-wmname = "LG3D"`
+wmname = "LG3D"
+
+```
