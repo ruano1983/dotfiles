@@ -3,7 +3,7 @@ My setup is based on modules: keys, groups, screen, globals, floating, hooks, la
 
 **config.py**
 
-``` from libqtile.utils import guess_terminal
+```from libqtile.utils import guess_terminal
 from libqtile.backend.wayland import *
 from modules.keys import *
 from modules.groups import *
@@ -39,4 +39,4 @@ wl_input_rules = {
 command=shlex.split("swaybg -m fill -i " + wallpaper)
 Popen(command, stdout=PIPE, stderr=PIPE)
 
-wmname = "LG3D" ```
+wmname = "LG3D"```
