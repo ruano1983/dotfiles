@@ -2,7 +2,7 @@
 My setup is based on modules: keys, groups, screen, globals, floating, hooks, layouts, mouse, and widgets.
 
 - **config.py**
-___
+
 This is the main file, it imports all modules and adds basic qtile configuration.
 
 ```from libqtile.utils import guess_terminal
