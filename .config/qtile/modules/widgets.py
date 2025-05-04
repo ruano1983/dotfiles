@@ -1,4 +1,3 @@
-## widget default
 from libqtile import widget
 from libqtile import qtile
 from .theme import *
@@ -43,7 +42,7 @@ primary_widgets = [
         widget.Net(format='{down:.0f}{up_suffix} ↑↓ {up:.0f}{down_suffix}',update_interval=2),
         fc_separation(),
         fc_textbox(icon='󰖩'),
-        widget.Wlan(format='{percent:2.0%}'),
+        widget.Wlan(format='{percent:2.0%}',interface='wlan0'),
         fc_separation(),
         fc_textbox(icon=''),
         widget.CPU(format='{freq_current}GHz {load_percent}%',update_interval=1,mouse_callbacks = {'Button1': lambda: run_btm()}),
