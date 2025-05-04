@@ -390,7 +390,7 @@ import colors
 colors = colors.nube
 ```
 
-## colors
+## colors.py
 
 This file contains all the color schemes.
 
