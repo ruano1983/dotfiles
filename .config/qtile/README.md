@@ -283,7 +283,7 @@ primary_widgets = [
                                rounded=False,
                                this_current_screen_border=colors[1],
                                inactive=colors[3],
-                               active="#F8F8F2",
+                               active=colors[4],
                                foreground=colors[2],
                                padding=6,
                                spacing=3,
@@ -399,7 +399,7 @@ This module selects the color theme.
 
 ```
 import colors
-colors = colors.nube
+colors = colors.Nube
 ```
 
 ## colors.py
@@ -407,7 +407,7 @@ colors = colors.nube
 This file contains all the color schemes.
 
 ```
-nube = [
+Nube = [
     ["#121212" , "#121212"], # BG BLACK
     ["#2e86c1" , "#2e86c1"], # PRIMARY BLUE
     ["#dfdfdf" , "#dfdfdf"], # FG WHITE
