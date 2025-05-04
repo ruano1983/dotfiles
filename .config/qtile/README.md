@@ -44,3 +44,6 @@ Popen(command, stdout=PIPE, stderr=PIPE)
 wmname = "LG3D"
 
 ```
+## globals.py 
+
+This file is for global variables such as wallpaper, web browser, chat application, etc.
