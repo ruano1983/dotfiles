@@ -407,10 +407,10 @@ colors = colors.nube
 This file contains all the color schemes.
 
 ```
-argyls = [
+nube = [
     ["#121212" , "#121212"], # BG BLACK
-    ["#2fa6c7" , "#2fa6c7"], # PRIMARY BLUE
+    ["#2e86c1" , "#2e86c1"], # PRIMARY BLUE
     ["#dfdfdf" , "#dfdfdf"], # FG WHITE
-    ["#383838" , "#383838"]  # GRAY
+    ["#383838" , "#383838"]  # BLACK
     ] ...
 ```
