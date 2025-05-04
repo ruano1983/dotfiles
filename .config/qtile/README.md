@@ -122,7 +122,7 @@ for i in groups:
 ```
 ## keys.py
 
-This module records the key shortcuts for launching applications and special functions such as volume or shutting down and restarting the PC.
+This module creates keyboard shortcuts for switching between workspaces, launching applications, and special functions such as volume and power management.
 
 | IMPORTANT KEYBINDINGS   | ASSOCIATED ACTION                      |
 |-------------------------|----------------------------------------|
