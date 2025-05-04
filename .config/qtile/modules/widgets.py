@@ -1,9 +1,8 @@
 ## widget default
 from libqtile import widget
 from libqtile import qtile
-import colors
+from .theme import *
 from .globals import *
-colors = colors.argyls
 # functions
 def fc_separation(l=12):
     return  widget.Spacer(length=l)
@@ -25,7 +24,7 @@ primary_widgets = [
                                rounded=False,
                                this_current_screen_border=colors[1],
                                inactive=colors[3],
-                               active="#F8F8F2",
+                               active=colors[4],
                                foreground=colors[2],
                                padding=6,
                                spacing=3,
