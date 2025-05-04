@@ -48,6 +48,7 @@ wmname = "LG3D"
 ## globals.py 
 
 This file is for global variables such as wallpaper, web browser, chat application, etc.
+**Note that the wallpaper URL is split in two to make it easier to change the wallpaper in the Python code.**
 
 ```import os
 mod = "mod4"
@@ -60,4 +61,17 @@ file_wallpaper = "arquitectura/508887.jpg"
 wallpaper = os.path.join(os.path.expanduser('~/Imágenes/wallpapers/'), file_wallpaper)
 rofi = os.path.expanduser('~/.config/rofi/launchers/type-2/launcher.sh')
 power = os.path.expanduser('~/.config/rofi/powermenu/type-2/powermenu.sh')
+```
+### hooks.py
+
+This file launches autostart.sh at startup.
+
+```from libqtile import hook
+import os
+import subprocess
+qtile_path = os.path.join(os.path.expanduser('~'), ".config", "qtile")
+# Autostart
+@hook.subscribe.startup_once
+def autostart():
+    subprocess.call([os.path.join(qtile_path, 'autostart.sh')])
 ```
