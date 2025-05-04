@@ -1,12 +1,9 @@
 from libqtile import layout
-import colors
-colors = colors.argyls
-
+from .theme import *
 layout_theme = {"border_width": 1,
                 "margin": 0,
                 "border_focus": colors[1],
                 "border_normal": colors[3],
-                "change_size": 30,
                 "border_on_single":True 
                 }
 
