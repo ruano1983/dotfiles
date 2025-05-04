@@ -1,5 +1,6 @@
 # My qtile settings.
 My setup is based on modules: keys, groups, screen, globals, floating, hooks, layouts, mouse, and widgets.
+My environment uses Wayland for the Qtile session.
 ![desktop qtile](/images/1746388805.png)
 
 ## config.py
