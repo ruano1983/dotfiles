@@ -340,7 +340,6 @@ from .widgets import *
 from .theme import *
 from libqtile.config import Screen
 
-
 # bar
 def status_bar(widgets):
     return bar.Bar(widgets, 38,
