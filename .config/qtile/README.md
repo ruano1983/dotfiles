@@ -165,7 +165,7 @@ keys = [
     # Toggle between split and unsplit sides of stack.
     Key([mod, "shift"],"Return",lazy.layout.toggle_split(),desc="Toggle between split and unsplit sides of stack"),
     # Rofi
-    Key([mod , "shift"], "m", lazy.spawn(rofi), desc="Launch rofi"),
+    Key([mod, "shift"], "Return",  lazy.spawn(rofi), desc="Launch rofi"),
     # power menu
     Key([mod , "shift"], "p", lazy.spawn(power), desc="Launch rofi"),
     # pavucontrol
@@ -200,10 +200,10 @@ keys = [
     # ranger-fm (scripts)
     Key([] ,"s", lazy.spawn(myTerm + ' -e '+ myfm2 + ' scripts'),desc="Launch ranger-fm"),
     ]),
+    # exit qtile
+    Key([mod], "q", lazy.shutdown(), desc="quit qtile"),
     # keychord power
     KeyChord([mod],"p", [
-    # exit qtile
-    Key([], "q", lazy.shutdown(), desc="quit qtile"),
     ### shutdown
     Key([], "s", lazy.spawn("wl-script power_off"),desc="shutdown"),
     ### Reboot
