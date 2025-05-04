@@ -83,7 +83,7 @@ def autostart():
 ```
 ## groups.py
 
-This module creates and organizes the names of the groups and their respective layouts.
+This module creates and organizes workspace names and their respective layouts.
 
 ```
 from libqtile.config import Group, Match
