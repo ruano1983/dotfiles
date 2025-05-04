@@ -5,7 +5,7 @@ My setup is based on modules: keys, groups, screen, globals, floating, hooks, la
 ## config.py
 
 This is the main file, it imports all modules and adds basic qtile configuration.
-
+*the variable `wl_xcursor_theme` it is used to change the mouse cursor in the Wayland session.*
 ```
 from libqtile.utils import guess_terminal
 from libqtile.backend.wayland import *
