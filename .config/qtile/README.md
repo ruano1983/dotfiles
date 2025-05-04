@@ -37,7 +37,6 @@ auto_minimize = True
 
 wl_input_rules = {
  "type:keyboard": InputConfig(kb_repeat_rate=30,kb_repeat_delay=350,kb_layout='us',kb_variant='altgr-intl'),
- "2362:9488:PixArt USB Optical Mouse": InputConfig(pointer_accel=0.2,accel_profile='adaptive'),
 }
 
 command=shlex.split("swaybg -m fill -i " + wallpaper)
@@ -133,6 +132,7 @@ This module records the key shortcuts for launching applications and special fun
 | MODKEY + RETURN         | opens terminal (alacritty)             |
 | MODKEY + SHIFT + RETURN | opens run launcher (rofi)              |
 | MODKEY + SHIFT + y      | opens run web browser (librewolf)      |
+| MODKEY + SHIFT + f      | opens run file manager (thunar)        |
 | MODKEY + SHIFT + n      | closes window with focus               |
 | MODKEY + TAB            | rotates through the available layouts  |
 | MODKEY + SHIFT + c      | restarts qtile                         |
