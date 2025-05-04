@@ -128,6 +128,18 @@ for i in groups:
 
 This module records the key shortcuts for launching applications and special functions such as volume or shutting down and restarting the PC.
 
+| IMPORTANT KEYBINDINGS   | ASSOCIATED ACTION                      |
+|-------------------------|----------------------------------------|
+| MODKEY + RETURN         | opens terminal (alacritty)             |
+| MODKEY + SHIFT + RETURN | opens run launcher (rofi)              |
+| MODKEY + SHIFT + y      | opens run web browser (librewolf)      |
+| MODKEY + SHIFT + n      | closes window with focus               |
+| MODKEY + TAB            | rotates through the available layouts  |
+| MODKEY + SHIFT + c      | restarts qtile                         |
+| MODKEY + q              | quits qtile                            |
+| MODKEY + 1-9            | switch focus to workspace (1-9)        |
+| MODKEY + SHIFT + 1-9    | send focused window to workspace (1-9) |
+
 ```
 keys = [
     # Switch between windows
