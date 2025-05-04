@@ -416,7 +416,7 @@ Nube = [
 ```
 ## autostart.sh
 
-startup script
+startup script.
 
 ```
 kanshi &
