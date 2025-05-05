@@ -116,6 +116,8 @@ def autostart():
 
 This module creates and organizes workspace names and their respective layouts.
 
+The workspaces are named 1-9 the MOD+1-9
+
 ### Name of the workspaces
 
 ```
