@@ -1,6 +1,10 @@
 # My Qtile settings.
-My setup is based on modules: globals, hooks, groups, keys, layouts, widgets, screen, mouse, floating, theme.\
+My setup is based on modules: globals, hooks, groups, keys, layouts, widgets, screen, mouse, floating, theme.
+
 My environment uses Wayland for the Qtile session.
+
+My setup uses apps like rofi, alacrity, swaybg, grim, vifm, ranger, bottom.
+make sure you have them available, you can still substitute them.
 
 ![desktop qtile](/images/1746388805.png)
 
