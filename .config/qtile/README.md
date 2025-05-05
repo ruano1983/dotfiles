@@ -67,6 +67,7 @@ The `myTerm` variable is the default terminal.
 The `myBrowser` variable is the web browser.
 The `myChat` variable is the default messaging application for the user.
 
+### global variables
 ```
 import os
 mod = "mod4"
