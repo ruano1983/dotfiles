@@ -60,7 +60,7 @@ wl_input_rules = {
  "type:keyboard": InputConfig(kb_repeat_rate=30,kb_repeat_delay=350,kb_layout='us',kb_variant='altgr-intl'),
 }
 ```
-### wallpaper con swaybg
+### wallpaper with swaybg
 ```
 command=shlex.split("swaybg -m fill -i " + wallpaper)
 Popen(command, stdout=PIPE, stderr=PIPE)
