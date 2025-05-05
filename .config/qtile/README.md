@@ -24,7 +24,7 @@ This is the main file, it imports all modules and adds basic qtile configuration
 *the `wl_xcursor_theme` option it is used to change the mouse cursor theme and `wl_xcursor_size` for the size in the Wayland session*\
 *the `kb_layout` option changes the keyboard layout, modify it depending on your keyboard.*
 
-### import modules
+### Import modules
 ```
 from libqtile.utils import guess_terminal
 from libqtile.backend.wayland import *
@@ -40,7 +40,7 @@ import shlex
 import os
 from subprocess import Popen, PIPE
 ```
-### general options
+### General options
 ```
 wl_xcursor_theme = "Quintom_Snow"
 wl_xcursor_size = 24
@@ -56,13 +56,13 @@ focus_on_window_activation = "smart"
 reconfigure_screens = True
 auto_minimize = True
 ```
-### keyboard options and layout
+### Keyboard options and layout
 ```
 wl_input_rules = {
  "type:keyboard": InputConfig(kb_repeat_rate=30,kb_repeat_delay=350,kb_layout='us',kb_variant='altgr-intl'),
 }
 ```
-### wallpaper with swaybg
+### Wallpaper with swaybg
 ```
 command=shlex.split("swaybg -m fill -i " + wallpaper)
 Popen(command, stdout=PIPE, stderr=PIPE)
@@ -79,7 +79,7 @@ To launch Rofi I use [this collection of themes](https://github.com/adi1090x/rof
 
 **Note that the wallpaper URL is split in two to make it easier to change the wallpaper in the Python code.**
 
-### global variables
+### Variables
 ```
 import os
 mod = "mod4"
@@ -89,11 +89,11 @@ myfm = "vifm"
 myfm2 = "ranger"
 myChat = "session-desktop.AppImage"
 ```
-### wallpaper
+### Wallpaper
 ```
 wallpaper = os.path.join(os.path.expanduser('~/Imágenes/wallpapers/'),'arquitectura/508887.jpg')
 ```
-### rofi
+### Rofi
 ```
 rofi = os.path.expanduser('~/.config/rofi/launchers/type-2/launcher.sh')
 power = os.path.expanduser('~/.config/rofi/powermenu/type-2/powermenu.sh')
@@ -116,7 +116,7 @@ def autostart():
 
 This module creates and organizes workspace names and their respective layouts.
 
-### name of the workspaces
+### Name of the workspaces
 
 ```
 from libqtile.config import Group, Match
@@ -135,7 +135,7 @@ groups = [
 
 ]
 ```
-### workspace keybindings
+### Workspace keybindings
 ```
 for i in groups:
     keys.extend(
@@ -159,7 +159,7 @@ for i in groups:
 
 This module creates keyboard shortcuts for switching between workspaces, launching applications, and special functions such as volume and power management.
 
-### keybindings
+### Keybindings
 
 | IMPORTANT KEYBINDINGS   | ASSOCIATED ACTION                      |
 |-------------------------|----------------------------------------|
@@ -276,7 +276,7 @@ layout_theme = {"border_width": 1,
                 "border_on_single":True
                 }
 ```
-### layouts
+### Layouts
 ```
 layouts = [
     layout.Max(
@@ -296,7 +296,7 @@ layouts = [
 This module creates the widgets to then display them in the status bar.\
 **For the WLAN widget, change the interface option to your system's. You can find it with the ifconfig or iwconfig commands.**
 
-### widget functions
+### Widget functions
 ```
 from libqtile import widget
 from libqtile import qtile
@@ -310,7 +310,7 @@ def fc_textbox(icon,p=6):
 def run_btm():
     qtile.spawn(myTerm + ' -e btm')
 ```
-### default widget options
+### Default widget options
 ```
 widget_defaults = dict(
     font="Noto Sans bold",
@@ -320,7 +320,7 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 ```
-### primary widgets
+### Widgets
 ```
 primary_widgets = [
         fc_separation(l=1),
