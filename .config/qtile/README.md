@@ -3,7 +3,7 @@ My setup is based on modules: globals, hooks, groups, keys, layouts, widgets, sc
 
 My environment uses Wayland for the Qtile session.
 
-My setup uses apps like rofi, alacrity, swaybg, grim, vifm, ranger, bottom.
+My setup uses apps like rofi, alacrity, swaybg, grim, vifm, ranger, bottom, kanshi.
 make sure you have them available, you can still substitute them.
 
 The font I use is Noto Sans. Make sure you have it on your system.
