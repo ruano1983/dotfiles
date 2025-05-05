@@ -13,6 +13,9 @@ This is the main file, it imports all modules and adds basic qtile configuration
 
 *the `wl_xcursor_theme` option it is used to change the mouse cursor theme and `wl_xcursor_size` for the size in the Wayland session*\
 *the `kb_layout` option changes the keyboard layout, modify it depending on your keyboard.*
+
+### import modules
+
 ```
 from libqtile.utils import guess_terminal
 from libqtile.backend.wayland import *
@@ -27,7 +30,9 @@ from modules.globals import *
 import shlex
 import os
 from subprocess import Popen, PIPE
-
+```
+### general options
+```
 wl_xcursor_theme = "Quintom_Snow"
 wl_xcursor_size = 24
 
