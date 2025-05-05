@@ -12,7 +12,6 @@ volume_mute() {
 power_off() {
 	loginctl poweroff
 }
-
 power_reboot() {
 	loginctl reboot
 }
