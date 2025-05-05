@@ -1,6 +1,3 @@
-##########################
-########################
-########## CONFIG QTILE ###############
 from libqtile.utils import guess_terminal
 from libqtile.backend.wayland import *
 from modules.keys import *
@@ -17,7 +14,6 @@ from subprocess import Popen, PIPE
 
 wl_xcursor_theme = "Quintom_Snow"
 wl_xcursor_size = 24
-
 dgroups_key_binder = None
 dgroups_app_rules = []
 follow_mouse_focus = True
