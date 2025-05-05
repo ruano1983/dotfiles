@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 volume_up() {
 	wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
@@ -7,7 +7,7 @@ volume_down() {
 	wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 }
 volume_mute() {
-	pactl set-sink-mute @DEFAULT_SINK@ toggle
+	wpctl set-mute  @DEFAULT_SINK@ toggle
 }
 power_off() {
 	loginctl poweroff
