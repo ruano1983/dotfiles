@@ -152,6 +152,7 @@ This module creates keyboard shortcuts for switching between workspaces, launchi
 | MODKEY + q              | quits qtile                            |
 | MODKEY + 1-9            | switch focus to workspace (1-9)        |
 | MODKEY + SHIFT + 1-9    | send focused window to workspace (1-9) |
+| PRINT                   | screenshot                             |
 
 ```
 keys = [
