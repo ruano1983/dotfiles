@@ -85,8 +85,7 @@ import os
 mod = "mod4"
 myTerm = "alacritty"
 myBrowser = "LibreWolf.x86_64.AppImage"
-myfm = "vifm"
-myfm2 = "ranger"
+myfm = ("thunar" , "ranger" , "vifm")
 myChat = "session-desktop.AppImage"
 ```
 ### Wallpaper
@@ -224,19 +223,19 @@ keys = [
     # session-desktop
     Key([mod , "shift"] ,"t", lazy.spawn(myChat),desc="Launch session-desktop"),
     # thunar
-    Key([mod , "shift"] ,"f", lazy.spawn("thunar"),desc="Launch thunar file manager"),
+    Key([mod , "shift"] ,"f", lazy.spawn(myfm[0]),desc="Launch thunar file manager"),
     # screenshot
     Key([],"print", lazy.spawn("wl-script print_screenshot"),desc="Screenshot"),
     # keychord file manager
     KeyChord([mod],"v", [
      # vifm (ports)
-    Key([] ,"p", lazy.spawn(myTerm + ' -e '+ myfm + ' /build/ports /build/ports'),desc="Launch vifm"),
+    Key([] ,"p", lazy.spawn(myTerm + ' -e '+ myfm[2] + ' /build/ports /build/ports'),desc="Launch vifm"),
     # ranger-fm (home)
-    Key([] ,"h", lazy.spawn(myTerm + ' -e '+ myfm2 + ' ' + home_dir),desc="Launch ranger-fm"),
+    Key([] ,"h", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' ' + home_dir),desc="Launch ranger-fm"),
     # ranger-fm (.config)
-    Key([] ,"c", lazy.spawn(myTerm + ' -e '+ myfm2 + ' .config'),desc="Launch ranger-fm"),
+    Key([] ,"c", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' .config'),desc="Launch ranger-fm"),
     # ranger-fm (scripts)
-    Key([] ,"s", lazy.spawn(myTerm + ' -e '+ myfm2 + ' scripts'),desc="Launch ranger-fm"),
+    Key([] ,"s", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' scripts'),desc="Launch ranger-fm"),
     ]),
     # exit qtile
     Key([mod], "q", lazy.shutdown(), desc="quit qtile"),
