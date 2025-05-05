@@ -69,12 +69,12 @@ Popen(command, stdout=PIPE, stderr=PIPE)
 
 This module is for global variables such as wallpaper, web browser, chat application, etc.
 
-**Note that the wallpaper URL is split in two to make it easier to change the wallpaper in the Python code.**
-
 The `myTerm` variable is the default terminal.
 The `myBrowser` variable is the web browser.
 The `myChat` variable is the default messaging application for the user.
 To launch Rofi I use [this collection of themes](https://github.com/adi1090x/rofi)
+
+**Note that the wallpaper URL is split in two to make it easier to change the wallpaper in the Python code.**
 
 ### global variables
 ```
