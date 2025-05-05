@@ -138,6 +138,8 @@ for i in groups:
 
 This module creates keyboard shortcuts for switching between workspaces, launching applications, and special functions such as volume and power management.
 
+### keybindings
+
 | IMPORTANT KEYBINDINGS   | ASSOCIATED ACTION                      |
 |-------------------------|----------------------------------------|
 | MODKEY + RETURN         | opens terminal (alacritty)             |
