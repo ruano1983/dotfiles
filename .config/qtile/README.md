@@ -3,7 +3,7 @@ My setup is based on modules: globals, hooks, groups, keys, layouts, widgets, sc
 
 My environment uses Wayland for the Qtile session.
 
-My setup uses apps like [rofi](https://github.com/lbonn/rofi?tab=readme-ov-file#wayland-support), [alacrity](https://alacritty.org/), [swaybg](https://github.com/swaywm/swaybg), grim, vifm, ranger, [bottom](https://github.com/ClementTsang/bottom), [kanshi](https://gitlab.freedesktop.org/emersion/kanshi).
+My setup uses apps like [rofi](https://github.com/lbonn/rofi?tab=readme-ov-file#wayland-support), [alacrity](https://alacritty.org/), [swaybg](https://github.com/swaywm/swaybg), [grim](https://gitlab.freedesktop.org/emersion/grim), [vifm](https://vifm.info/), [ranger](https://ranger.github.io/), [bottom](https://github.com/ClementTsang/bottom), [kanshi](https://gitlab.freedesktop.org/emersion/kanshi).
 make sure you have them available, you can still substitute them.
 
 ![desktop qtile](/images/1746388805.png)
