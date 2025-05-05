@@ -267,7 +267,7 @@ layouts = [
 ```
 ## widgets.py
 
-This module creates the widgets to then display them in the status bar.
+This module creates the widgets to then display them in the status bar.\
 **For the WLAN widget, change the interface option to your system's. You can find it with the ifconfig or iwconfig commands.**
 
 ```
