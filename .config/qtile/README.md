@@ -15,7 +15,6 @@ This is the main file, it imports all modules and adds basic qtile configuration
 *the `kb_layout` option changes the keyboard layout, modify it depending on your keyboard.*
 
 ### import modules
-
 ```
 from libqtile.utils import guess_terminal
 from libqtile.backend.wayland import *
@@ -46,16 +45,19 @@ auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
 auto_minimize = True
-
+```
+### keyboard options and layout
+```
 wl_input_rules = {
  "type:keyboard": InputConfig(kb_repeat_rate=30,kb_repeat_delay=350,kb_layout='us',kb_variant='altgr-intl'),
 }
-
+```
+### wallpaper con swaybg
+```
 command=shlex.split("swaybg -m fill -i " + wallpaper)
 Popen(command, stdout=PIPE, stderr=PIPE)
 
 wmname = "LG3D"
-
 ```
 ## globals.py 
 
