@@ -437,6 +437,8 @@ gsettings set org.gnome.desktop.interface font-name 'Noto Sans 8' &
 ## images
 
 ![desktop rofi](/images/1746403145.png)
+
 ![desktop rofi2](/images/1746404724.png)
+
 ![desktop cava](/images/1746405142.png)
 
