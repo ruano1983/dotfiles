@@ -158,7 +158,7 @@ for i in groups:
 ```
 ## keys.py
 
-This module creates keyboard shortcuts for switching between workspaces, launching applications, and special functions such as volume and power management.
+This module creates keyboard shortcuts for switching between workspaces, launching applications, for special actions use the `wl-script` script.
 
 ### Keybindings
 
