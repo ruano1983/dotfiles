@@ -57,8 +57,9 @@ This module is for global variables such as wallpaper, web browser, chat applica
 
 **Note that the wallpaper URL is split in two to make it easier to change the wallpaper in the Python code.**
 
-The variable `myTerm` is the default terminal.
-The variable `myBrowser` is the web browser.
+The `myTerm` variable is the default terminal.
+The `myBrowser` variable is the web browser.
+The `myChat` variable is the default messaging application for the user.
 
 ```
 import os
