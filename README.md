@@ -4,4 +4,4 @@ My dotfiles for multiple window managers, including Sway and RiverWM, with speci
 
 I also offer some custom color themes for vim nano rofi, vifm and most importantly qtile with quite simple color schemes.
 
-![desktop](/images/1746403145.png)
+![desktop](/images/1746405091.png)
