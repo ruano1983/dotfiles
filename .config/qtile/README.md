@@ -281,6 +281,7 @@ layouts = [
 This module creates the widgets to then display them in the status bar.\
 **For the WLAN widget, change the interface option to your system's. You can find it with the ifconfig or iwconfig commands.**
 
+### widget functions
 ```
 from libqtile import widget
 from libqtile import qtile
@@ -293,7 +294,9 @@ def fc_textbox(icon,p=6):
     return widget.TextBox(fontsize=14,padding=p,text=icon)
 def run_btm():
     qtile.spawn(myTerm + ' -e btm')
-
+```
+### default widget options
+```
 widget_defaults = dict(
     font="Noto Sans bold",
     fontsize=12,
@@ -301,6 +304,9 @@ widget_defaults = dict(
     foreground=colors[2],
 )
 extension_defaults = widget_defaults.copy()
+```
+### primary widgets
+```
 primary_widgets = [
         fc_separation(l=1),
         widget.GroupBox(highlight_method='block',
