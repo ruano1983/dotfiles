@@ -3,7 +3,7 @@ My setup is based on modules: globals, hooks, groups, keys, layouts, widgets, sc
 My environment uses Wayland for the Qtile session.
 ![desktop qtile](/images/1746388805.png)
 
-Modified by Ivan Ruano Monjas\
+Created and distributed by Ivan Ruano Monjas\
 [My Github](https://github.com/ruano1983)
 
 ## config.py
