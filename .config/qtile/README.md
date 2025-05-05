@@ -114,6 +114,8 @@ def autostart():
 
 This module creates and organizes workspace names and their respective layouts.
 
+### name of the workspaces
+
 ```
 from libqtile.config import Group, Match
 from .keys import *
@@ -130,7 +132,9 @@ groups = [
     Group("9", label="9", layout='columns'),
 
 ]
-
+```
+### workspace keybindings
+```
 for i in groups:
     keys.extend(
         [
