@@ -252,6 +252,7 @@ keys = [
 
 This module activates the layout types and their respective appearance.
 
+### default layout options
 ```
 from libqtile import layout
 from .theme import *
@@ -262,7 +263,9 @@ layout_theme = {"border_width": 1,
                 "change_size": 30,
                 "border_on_single":True
                 }
-
+```
+### layouts
+```
 layouts = [
     layout.Max(
             **layout_theme),
