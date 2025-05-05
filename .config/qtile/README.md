@@ -6,6 +6,8 @@ My environment uses Wayland for the Qtile session.
 My setup uses apps like rofi, alacrity, swaybg, grim, vifm, ranger, bottom, kanshi.
 make sure you have them available, you can still substitute them.
 
+My Qtile layout has a status bar with real-time information widgets on the right and workspaces on the left, including the name of the focused app. The taskbar has a black background color, and the active workspace is colored according to color themes.
+
 The font I use is Noto Sans. Make sure you have it on your system.
 
 for the widget icons I use nerd typography.
