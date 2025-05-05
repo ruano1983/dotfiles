@@ -88,8 +88,7 @@ myChat = "session-desktop.AppImage"
 ```
 ### wallpaper
 ```
-file_wallpaper = "arquitectura/508887.jpg"
-wallpaper = os.path.join(os.path.expanduser('~/Imágenes/wallpapers/'), file_wallpaper)
+wallpaper = os.path.join(os.path.expanduser('~/Imágenes/wallpapers/'),'arquitectura/508887.jpg')
 ```
 ### rofi
 ```
