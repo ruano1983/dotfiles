@@ -456,10 +456,10 @@ This file contains all the color schemes.
 
 ```
 Nube = [
-    ["#121212" , "#121212"], # BG BLACK
-    ["#2e86c1" , "#2e86c1"], # PRIMARY BLUE
-    ["#dfdfdf" , "#dfdfdf"], # FG WHITE
-    ["#383838" , "#383838"]  # BLACK
+    ["#121212" , "#121212"], # bg
+    ["#2e86c1" , "#2e86c1"], # blue
+    ["#dfdfdf" , "#dfdfdf"], # fg
+    ["#383838" , "#383838"]  # black
     ] ...
 ```
 ## autostart.sh
