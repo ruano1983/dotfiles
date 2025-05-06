@@ -437,6 +437,9 @@ floating_layout = layout.Floating(
         Match(wm_class="dialog"),         # dialog boxes
         Match(wm_class="download"),       # downloads
         Match(wm_class="error"),          # error msgs
+        Match(wm_class="ssh-askpass"),    # ssh-askpass
+        Match(title="branchdialog"),      # gitk
+        Match(title="pinentry"),          # GPG key password entry
     ]
 )
 ```
