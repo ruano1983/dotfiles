@@ -15,6 +15,7 @@ I also offer some custom color themes for vim nano rofi, vifm and most important
 - [bottom](https://bottom.pages.dev/stable/) system monitor
 - [vifm](https://vifm.info/) file manager 
 - [ranger](https://ranger.github.io/) file manager
+[swaybg](https://github.com/swaywm/swaybg) wallpaper
 - [bash](https://www.gnu.org/software/bash/) shell
 - [fish](https://fishshell.com/) shell
 
