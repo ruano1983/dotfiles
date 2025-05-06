@@ -22,4 +22,6 @@ I also offer some custom color themes for vim nano rofi, vifm and most important
 
 ![desktop](/images/1746388805.png)
 
+![desktop rofi](/images/1746403145.png)
+
 ![desktop](/images/1746405091.png)
