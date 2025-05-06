@@ -7,7 +7,7 @@ I also offer some custom color themes for vim nano rofi, vifm and most important
 - [qtile](/.config/qtile)
 - [rofi](/.config/rofi)
 - [vim](/.config/vim)
-- [nano]
+- nano
 - dunst
 - cava
 - vifm
