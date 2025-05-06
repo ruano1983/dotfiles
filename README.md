@@ -12,9 +12,10 @@ I also offer some custom color themes for vim nano rofi, vifm and most important
 - [vim](https://www.vim.org/) text editor
 - [dunst](https://dunst-project.org/) notification daemons
 - [cava](https://github.com/karlstav/cava) audio visualizer
+- [bottom](https://bottom.pages.dev/stable/) system monitor
 - [vifm](https://vifm.info/) file manager 
 - [ranger](https://ranger.github.io/) file manager
-- [bash](https://www.gnu.org/software/bash/)     shell
+- [bash](https://www.gnu.org/software/bash/) shell
 - [fish](https://fishshell.com/) shell
 
 ## Qtile window manager
