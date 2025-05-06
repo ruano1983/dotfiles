@@ -4,9 +4,11 @@ My dotfiles for multiple window managers, with special attention to **Qtile in w
 
 I also offer some custom color themes for vim nano rofi, vifm and most importantly qtile with quite simple color schemes.
 
-- [qtile](/.config/qtile)
-- [rofi](/.config/rofi)
-- [vim](/.config/vim)
+## Sowfware I use
+
+- [qtile](https://qtile.org/)
+- [rofi](https://github.com/lbonn/rofi)
+- [vim](https://www.vim.org/)
 - nano
 - dunst
 - cava
