@@ -14,8 +14,8 @@ I also offer some custom color themes for vim nano rofi, vifm and most important
 - [cava](https://github.com/karlstav/cava) audio visualizer
 - [vifm](https://vifm.info/) file manager 
 - [ranger](https://ranger.github.io/) file manager
-- [bash](https://www.gnu.org/software/bash/) shell
-- [fish](https://fishshell.com/)shell
+- [bash](https://www.gnu.org/software/bash/)     shell
+- [fish](https://fishshell.com/) shell
 
 ## Qtile window manager
 
