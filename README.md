@@ -9,7 +9,6 @@ I also offer some custom color themes for vim nano rofi, vifm and most important
 - [qtile](https://qtile.org/)
 - [rofi](https://github.com/lbonn/rofi)
 - [vim](https://www.vim.org/)
-- nano
 - dunst
 - cava
 - vifm
