@@ -6,13 +6,13 @@ I also offer some custom color themes for vim nano rofi, vifm and most important
 
 ## Software I use
 
-- [qtile](https://qtile.org/)
-- [rofi](https://github.com/lbonn/rofi)
-- [vim](https://www.vim.org/)
-- dunst
-- cava
-- vifm
-- ranger
+- [qtile](https://qtile.org/) wm
+- [rofi](https://github.com/lbonn/rofi) launcher
+- [vim](https://www.vim.org/) text editor
+- [dunst](https://dunst-project.org/) notification daemons
+- [cava](https://github.com/karlstav/cava) Audio Visualizer
+- [vifm](https://vifm.info/) file manager 
+- [ranger] file manager
 - bash
 - fish
 
