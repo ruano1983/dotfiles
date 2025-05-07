@@ -1,8 +1,8 @@
 from libqtile import bar
 from .widgets import *
-import colors
+from .theme import *
 from libqtile.config import Screen
-colors = colors.argyls
+
 
 # bar
 def status_bar(widgets):
