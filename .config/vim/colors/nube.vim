@@ -63,8 +63,8 @@ hi SignColumn guibg=#121212
 hi Title guifg=#dfdfdf
 hi LineNr guifg=#2e86c1 guibg=#121212
 hi NonText guifg=#2e86c1 guibg=#121212
-hi Comment guifg=#5b5b5b
-hi SpecialComment guifg=#5b5b5b  guibg=NONE
+hi Comment guifg=#616161
+hi SpecialComment guifg=#616161  guibg=NONE
 hi TabLineFill gui=NONE guibg=#121212
 hi TabLine guifg=#121212 guibg=#121212 gui=NONE
 hi TermCursor cterm=reverse ctermfg=NONE ctermbg=NONE gui=reverse guifg=NONE guibg=NONE
