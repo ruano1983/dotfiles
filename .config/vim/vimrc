@@ -41,4 +41,4 @@ set termguicolors "enable true colors support
 
 call plug#begin()
 call plug#end()
-source ~/.config/nvim/colors/argyls-contrast.vim
+source ~/.config/vim/colors/nube.vim
