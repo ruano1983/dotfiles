@@ -21,6 +21,7 @@ def change_layout(qtile):
     elif current_layout_name == 'tile':
         qtile.current_group.layout = 'columns'
 
+home = os.path.expanduser('~')
 
 keys = [
     # Switch between windows
@@ -75,7 +76,7 @@ keys = [
      # vifm (ports)
     Key([] ,"p", lazy.spawn(myTerm + ' -e '+ myfm[2] + ' /build/ports /build/ports'),desc="Launch vifm"),
     # ranger-fm (home)
-    Key([] ,"h", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' ' + home_dir),desc="Launch ranger-fm"),
+    Key([] ,"h", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' ' + home),desc="Launch ranger-fm"),
     # ranger-fm (.config)
     Key([] ,"c", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' .config'),desc="Launch ranger-fm"),
     # ranger-fm (scripts)
