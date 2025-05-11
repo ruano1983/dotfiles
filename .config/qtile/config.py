@@ -1,4 +1,3 @@
-from libqtile.utils import guess_terminal
 from libqtile.backend.wayland import *
 from modules.keys import *
 from modules.groups import *
