@@ -179,88 +179,54 @@ This module creates keyboard shortcuts for switching between workspaces, launchi
 | MODKEY + p (keychord) r    | reboot                                 |
 | MODKEY + p (keychord) s    | power off                              |
 ```
-keys = [
-    # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    # Move windows between left/right columns or move up/down in current stack.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-    # Grow windows. If current window is on the edge of screen and direction
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod, "control"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    # layout MonadWide
-    Key([mod], "i", lazy.layout.grow()),
-    Key([mod], "m", lazy.layout.shrink()),
-    Key([mod], "n", lazy.layout.reset()),
-    # Toggle between split and unsplit sides of stack.
-    Key([mod, "shift"],"Return",lazy.layout.toggle_split(),desc="Toggle between split and unsplit sides of stack"),
-    # Rofi
-    Key([mod, "shift"], "Return",  lazy.spawn(rofi), desc="Launch rofi"),
-    # power menu
-    Key([mod , "shift"], "p", lazy.spawn(power), desc="Launch rofi"),
-    # pavucontrol
-    Key([mod , "shift"], "v", lazy.spawn("pavucontrol"), desc="Launch pavucontrol"),
-    # Terminal
-    Key([mod], "Return", lazy.spawn(myTerm), desc="Launch Terminal"),
-    # play Media
-    Key([], "XF86AudioPlay", lazy.spawn("wl-script pause_player")),
-    Key([], "XF86AudioNext", lazy.spawn("wl-script next_player")),
-    Key([], "XF86AudioPrev", lazy.spawn("wl-script previous_player")),
-    # volumen
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("wl-script volume_up")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("wl-script volume_down")),
-    # Mute
-    Key([], "XF86AudioMute", lazy.spawn("wl-script volume_mute")),
-    # Firefox
-    Key([mod , "shift"] ,"y", lazy.spawn(myBrowser),desc="Launch Web Browser"),
-    # session-desktop
-    Key([mod , "shift"] ,"t", lazy.spawn(myChat),desc="Launch session-desktop"),
-    # thunar
-    Key([mod , "shift"] ,"f", lazy.spawn(myfm[0]),desc="Launch thunar file manager"),
-    # screenshot
-    Key([],"print", lazy.spawn("wl-script print_screenshot"),desc="Screenshot"),
-    # keychord file manager
-    KeyChord([mod],"v", [
-     # vifm (ports)
-    Key([] ,"p", lazy.spawn(myTerm + ' -e '+ myfm[2] + ' /build/ports /build/ports'),desc="Launch vifm"),
-    # ranger-fm (home)
-    Key([] ,"h", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' ' + home_dir),desc="Launch ranger-fm"),
-    # ranger-fm (.config)
-    Key([] ,"c", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' .config'),desc="Launch ranger-fm"),
-    # ranger-fm (scripts)
-    Key([] ,"s", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' scripts'),desc="Launch ranger-fm"),
-    ]),
-    # exit qtile
-    Key([mod], "q", lazy.shutdown(), desc="quit qtile"),
-    # keychord power
-    KeyChord([mod],"p", [
-    ### shutdown
-    Key([], "s", lazy.spawn("wl-script power_off"),desc="shutdown"),
-    ### Reboot
-    Key([], "r", lazy.spawn("wl-script power_reboot"),desc="reboot"),
-    ]),
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    # kill window
-    Key([mod , "shift"], "n", lazy.window.kill(), desc="Kill focused window"),
-    # change layout
-    Key([mod], "t", change_layout(), desc="Change layout"),
-    # Fullscreen
-    Key([mod], "f", maximize_by_switching_layout(),lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
-    # Tile off on
-    Key([mod], "space", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
-    # Reload config
-    Key([mod, "shift"], "c", lazy.reload_config(), desc="Reload the config"),
-    # prompt run widget
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+primary_widgets = [
+        fc_separation(l=1),
+        widget.GroupBox(highlight_method='block',rounded=False,this_current_screen_border=colors[1],
+                        inactive=colors[3],active=colors[4],foreground=colors[2],
+                        padding=6,spacing=4,borderwidth=4,
+                        block_highlight_text_color=colors[0],
+                        disable_drag=True,
+                        hide_unused=True
+                        ),
+        widget.CurrentLayoutIcon(padding=6,scale=0.50),
+        widget.CurrentLayout(padding=6),
+        fc_separation(l=6),
+        widget.Prompt(prompt="Run "),
+        fc_textbox(icon='󰖲'),
+        widget.WindowName(max_chars=77),
+        fc_textbox(icon=''),
+        widget.Bluetooth(default_text='{num_connected_devices} connected',mouse_callbacks = {'Button1': lambda: run_blueman()}),
+        fc_separation(),
+        fc_textbox(icon='󰖩'),
+        widget.Wlan(format='{percent:2.0%}',interface='wlan0'),
+        fc_separation(),
+        fc_textbox(icon=''),
+        widget.CPU(format='{freq_current}GHz {load_percent}%',update_interval=1,mouse_callbacks = {'Button1': lambda: run_btm()}),
+        fc_separation(),
+        fc_textbox(icon=''),
+        widget.ThermalSensor(tag_sensor='Tccd1',threshold=85.0,foreground_alert='f0614e'),
+        fc_separation(),
+        fc_textbox(icon=''),
+        widget.Memory(format='{MemUsed: .1f}{mm} /{MemTotal: .1f}{mm}',measure_mem='G',mouse_callbacks = {'Button1': lambda: run_btm()}),
+        fc_separation(),
+        fc_textbox(icon='󰆼'),
+        widget.DF(visible_on_warn=False,format='/ {r:.0f}%',partition='/',measure='G', mouse_callbacks = {'Button1': lambda: run_btm()}),
+        fc_separation(),
+        fc_textbox(icon='󰌽'),
+        widget.GenPollCommand(cmd="uname -r", shell=True,update_interval=None),
+        fc_separation(),
+        fc_textbox(icon=''),
+        widget.PulseVolume(mute_format="mute",step=4),
+        fc_separation(),
+        fc_textbox(icon='󰌌'),
+        widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es'],display_map={ 'us altgr-intl': 'ansi', 'es':'es'}),
+        fc_separation(),
+        fc_textbox(icon='󰽢'),
+        widget.OpenWeather(app_key="bb789b9c68ed3ee12c7f8d99d62f3c3b",location='Fuenlabrada', format='{weather} {main_temp:.0f}°{units_temperature}'),
+        fc_separation(),
+        fc_textbox(icon='󰥔'),
+        widget.Clock(format="%a %d %b %H:%M"),
+        fc_separation(l=1),
 ]
 ```
 ## layout.py
