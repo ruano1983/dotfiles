@@ -287,7 +287,7 @@ layouts = [
             **layout_theme),
     layout.Columns(
             **layout_theme,fair=True,insert_position=1),
-        layout.MonadTall(
+    layout.MonadTall(
             **layout_theme),
     layout.MonadWide(
             **layout_theme),
@@ -297,7 +297,7 @@ layouts = [
 
 This module creates the widgets to then display them in the status bar.
 
-widgets included are Spacer, Groupbox, CurrentLayoutIcon, TextBox, Prompt, WindowName, Net, Cpu, Memory, DF, GellPollComand, PulseVolume, KeyboardLayout, OpenWeather, clock.
+widgets included are Spacer, Groupbox, CurrentLayoutIcon, TextBox, Prompt, WindowName, wlan, bluetooth, Cpu, Memory, DF, GellPollComand, PulseVolume, KeyboardLayout, OpenWeather, clock.
 
 **For the WLAN widget, change the interface option to your system's. You can find it with the ifconfig or iwconfig commands.**
 
