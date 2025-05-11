@@ -314,6 +314,8 @@ def fc_textbox(icon,p=6):
     return widget.TextBox(fontsize=14,padding=p,text=icon)
 def run_btm():
     qtile.spawn(myTerm + ' -e btm')
+def run_blueman():
+    qtile.spawn("blueman-manager")
 ```
 ### Default widget options
 ```
@@ -389,7 +391,7 @@ from libqtile.config import Screen
 
 # bar
 def status_bar(widgets):
-    return bar.Bar(widgets, 36,
+    return bar.Bar(widgets, 38,
             background=colors[0],
             border_width=0)
 

@@ -8,7 +8,7 @@ layout_theme = {"border_width": 1,
                 }
 layouts = [
     layout.Tile(
-            **layout_theme,ratio=0.55), 
+            **layout_theme,ratio=0.57), 
     layout.Max(
             **layout_theme), 
     layout.Columns(
