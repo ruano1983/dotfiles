@@ -12,6 +12,7 @@ groups = [
     Group("7", label="7", layout='columns'),
     Group("8", label="8", layout='columns'),
     Group("9", label="9", layout='columns'),
+    Group("0", label="0", layout='columns'),
 
 ]
 
