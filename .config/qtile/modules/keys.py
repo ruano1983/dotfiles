@@ -4,7 +4,6 @@ from libqtile.config import Key, KeyChord
 from libqtile.lazy import lazy
 from .globals import * 
 import os
-home_dir = os.path.expanduser( '~' )
 # A function for toggling between MAX and title layouts
 @lazy.function
 def maximize_by_switching_layout(qtile):
