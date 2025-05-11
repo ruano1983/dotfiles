@@ -6,11 +6,11 @@ My environment uses Wayland for the Qtile session.
 My setup uses apps like [rofi](https://github.com/lbonn/rofi?tab=readme-ov-file#wayland-support), [alacrity](https://alacritty.org/), [swaybg](https://github.com/swaywm/swaybg), [grim](https://gitlab.freedesktop.org/emersion/grim), [vifm](https://vifm.info/), [ranger](https://ranger.github.io/), [bottom](https://github.com/ClementTsang/bottom), [kanshi](https://gitlab.freedesktop.org/emersion/kanshi).
 make sure you have them available, you can still substitute them.
 
-![desktop qtile](/images/1746388805.png)
+![desktop qtile](/images/1746967161.png)
 
 My Qtile layout has a status bar with real-time information widgets on the right and workspaces on the left, including the name of the focused app. The taskbar has a black background color, and the active workspace is colored according to color themes.
 
-The font I use is Noto Sans. Make sure you have it on your system.
+The font I use is Ubuntu Bold. Make sure you have it on your system.
 
 for the widget icons I use nerd typography.
 
@@ -26,7 +26,6 @@ This is the main file, it imports all modules and adds basic qtile configuration
 
 ### Import modules
 ```
-from libqtile.utils import guess_terminal
 from libqtile.backend.wayland import *
 from modules.keys import *
 from modules.groups import *
@@ -114,7 +113,7 @@ def autostart():
 
 This module creates and organizes workspace names and their respective layouts.
 
-The workspaces are named 1-9 the MOD+1-9
+The workspaces are named 1-0 the MOD+1-0
 
 ### Name of the workspaces
 
@@ -132,6 +131,7 @@ groups = [
     Group("7", label="7", layout='columns'),
     Group("8", label="8", layout='columns'),
     Group("9", label="9", layout='columns'),
+    Group("0", label="0", layout='columns'),
 
 ]
 ```
@@ -167,6 +167,7 @@ This module creates keyboard shortcuts for switching between workspaces, launchi
 | MODKEY + SHIFT + RETURN | opens run launcher (rofi)              |
 | MODKEY + SHIFT + y      | opens run web browser (librewolf)      |
 | MODKEY + SHIFT + f      | opens run file manager (thunar)        |
+| MODKEY + SHIFT + h      | opens run file manager (ranger)        |
 | MODKEY + SHIFT + n      | closes window with focus               |
 | MODKEY + TAB            | rotates through the available layouts  |
 | MODKEY + f              | full screen                            |
@@ -175,7 +176,8 @@ This module creates keyboard shortcuts for switching between workspaces, launchi
 | MODKEY + 1-9            | switch focus to workspace (1-9)        |
 | MODKEY + SHIFT + 1-9    | send focused window to workspace (1-9) |
 | PRINT                   | screenshot                             |
-
+| MODKEY + SHIFT + r      | reboot                                 |
+| MODKEY + SHIFT + s      | power off                              |
 ```
 keys = [
     # Switch between windows
@@ -279,13 +281,13 @@ layout_theme = {"border_width": 1,
 ### Layouts
 ```
 layouts = [
+    layout.Tile(
+            **layout_theme,ratio=0.55),
     layout.Max(
             **layout_theme),
     layout.Columns(
             **layout_theme,fair=True,insert_position=1),
-    layout.Tile(
-            **layout_theme,ratio=0.55),
-    layout.MonadTall(
+        layout.MonadTall(
             **layout_theme),
     layout.MonadWide(
             **layout_theme),
@@ -316,7 +318,7 @@ def run_btm():
 ### Default widget options
 ```
 widget_defaults = dict(
-    font="Noto Sans bold",
+    font="Ubuntu bold",
     fontsize=12,
     padding=5,
     foreground=colors[2],
@@ -327,27 +329,21 @@ extension_defaults = widget_defaults.copy()
 ```
 primary_widgets = [
         fc_separation(l=1),
-        widget.GroupBox(highlight_method='block',
-                               rounded=False,
-                               this_current_screen_border=colors[1],
-                               inactive=colors[3],
-                               active=colors[4],
-                               foreground=colors[2],
-                               padding=6,
-                               spacing=3,
-                               borderwidth=4,
-                               block_highlight_text_color=colors[0],
-                               disable_drag=True,
-                               hide_unused=True
-                               ),
+        widget.GroupBox(highlight_method='block',rounded=False,this_current_screen_border=colors[1],
+                        inactive=colors[3],active=colors[4],foreground=colors[2],
+                        padding=6,spacing=4,borderwidth=5,
+                        block_highlight_text_color=colors[0],
+                        disable_drag=True,
+                        hide_unused=True
+                        ),
         widget.CurrentLayoutIcon(padding=6,scale=0.50),
         widget.CurrentLayout(padding=6),
         fc_separation(l=6),
         widget.Prompt(prompt="Run "),
         fc_textbox(icon='󰖲'),
         widget.WindowName(max_chars=77),
-        fc_textbox(icon='󰧈'),
-        widget.Net(format='{down:.0f}{up_suffix} ↑↓ {up:.0f}{down_suffix}',update_interval=2),
+        fc_textbox(icon=''),
+        widget.Bluetooth(default_text='{num_connected_devices} connected'),
         fc_separation(),
         fc_textbox(icon='󰖩'),
         widget.Wlan(format='{percent:2.0%}',interface='wlan0'),
@@ -355,8 +351,11 @@ primary_widgets = [
         fc_textbox(icon=''),
         widget.CPU(format='{freq_current}GHz {load_percent}%',update_interval=1,mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
+        fc_textbox(icon=''),
+        widget.ThermalSensor(tag_sensor='Tccd1',threshold=85.0,foreground_alert='f0614e'),
+        fc_separation(),
         fc_textbox(icon=''),
-        widget.Memory(format='{MemUsed: .1f}{mm}/{MemTotal: .1f}{mm}',measure_mem='G',mouse_callbacks = {'Button1': lambda: run_btm()}),
+        widget.Memory(format='{MemUsed: .1f}{mm} /{MemTotal: .1f}{mm}',measure_mem='G',mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
         fc_textbox(icon='󰆼'),
         widget.DF(visible_on_warn=False,format='/ {r:.0f}%',partition='/',measure='G', mouse_callbacks = {'Button1': lambda: run_btm()}),
@@ -373,11 +372,8 @@ primary_widgets = [
         fc_textbox(icon='󰽢'),
         widget.OpenWeather(app_key="bb789b9c68ed3ee12c7f8d99d62f3c3b",location='Fuenlabrada', format='{weather} {main_temp:.0f}°{units_temperature}'),
         fc_separation(),
-        fc_textbox(icon=''),
-        widget.Clock(format="%A %d %B"),
-        fc_separation(),
         fc_textbox(icon='󰥔'),
-        widget.Clock(format="%H:%M"),
+        widget.Clock(format="%a %d %b %H:%M"),
         fc_separation(l=1),
 ]
 ```
@@ -473,7 +469,7 @@ startup script.
 COLORSCHEME=argyls
 kanshi &
 dbus-update-activation-environment --all &
-/usr/libexec/polkit-gnome-authentication-agent-1 &
+/usr/libexec/polkit-kde-authentication-agent-1 &
 
 if [ -f /usr/libexec/pipewire-launch.sh  ]; then
     /usr/libexec/pipewire-launch.sh &
@@ -494,5 +490,5 @@ gsettings set org.gnome.desktop.interface font-name 'Noto Sans 8' &
 
 ![desktop rofi2](/images/1746404724.png)
 
-![desktop cava](/images/1746405142.png)
+![desktop cava](/images/1746967158.png)
 
