@@ -60,7 +60,7 @@ primary_widgets = [
         widget.GenPollCommand(cmd="uname -r", shell=True,update_interval=None),
         fc_separation(),
         fc_textbox(icon=''),
-        widget.PulseVolume(),
+        widget.PulseVolume(mute_format="mute",step=4),
         fc_separation(),
         fc_textbox(icon='󰌌'),
         widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es'],display_map={ 'us altgr-intl': 'ansi', 'es':'es'}),
