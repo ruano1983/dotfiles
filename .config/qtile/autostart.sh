@@ -2,7 +2,7 @@
 COLORSCHEME=argyls
 kanshi &
 dbus-update-activation-environment --all &
-/usr/libexec/polkit-gnome-authentication-agent-1 &
+/usr/libexec/polkit-kde-authentication-agent-1 &
 
 if [ -f /usr/libexec/pipewire-launch.sh  ]; then
     /usr/libexec/pipewire-launch.sh &
