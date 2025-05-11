@@ -331,7 +331,7 @@ primary_widgets = [
         fc_separation(l=1),
         widget.GroupBox(highlight_method='block',rounded=False,this_current_screen_border=colors[1],
                         inactive=colors[3],active=colors[4],foreground=colors[2],
-                        padding=6,spacing=4,borderwidth=5,
+                        padding=6,spacing=4,borderwidth=4,
                         block_highlight_text_color=colors[0],
                         disable_drag=True,
                         hide_unused=True
@@ -389,7 +389,7 @@ from libqtile.config import Screen
 
 # bar
 def status_bar(widgets):
-    return bar.Bar(widgets, 38,
+    return bar.Bar(widgets, 36,
             background=colors[0],
             border_width=0)
 
