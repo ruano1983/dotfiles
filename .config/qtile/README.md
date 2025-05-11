@@ -167,7 +167,7 @@ This module creates keyboard shortcuts for switching between workspaces, launchi
 | MODKEY + SHIFT + RETURN | opens run launcher (rofi)              |
 | MODKEY + SHIFT + y      | opens run web browser (librewolf)      |
 | MODKEY + SHIFT + f      | opens run file manager (thunar)        |
-| MODKEY + v (chord) h    | opens run file manager (ranger)        |
+| MODKEY + v (keychord) h    | opens run file manager (ranger)        |
 | MODKEY + SHIFT + n      | closes window with focus               |
 | MODKEY + TAB            | rotates through the available layouts  |
 | MODKEY + f              | full screen                            |
@@ -176,8 +176,8 @@ This module creates keyboard shortcuts for switching between workspaces, launchi
 | MODKEY + 1-9            | switch focus to workspace (1-9)        |
 | MODKEY + SHIFT + 1-9    | send focused window to workspace (1-9) |
 | PRINT                   | screenshot                             |
-| MODKEY + p (chord) r    | reboot                                 |
-| MODKEY + p (chord) s    | power off                              |
+| MODKEY + p (keychord) r    | reboot                                 |
+| MODKEY + p (keychord) s    | power off                              |
 ```
 keys = [
     # Switch between windows
