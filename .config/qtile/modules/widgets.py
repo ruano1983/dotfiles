@@ -9,6 +9,9 @@ def fc_textbox(icon,p=6):
     return widget.TextBox(fontsize=14,padding=p,text=icon)
 def run_btm():
     qtile.spawn(myTerm + ' -e btm')
+def run_blueman():
+    qtile.spawn("blueman-manager")
+
 
 widget_defaults = dict(
     font="Ubuntu Bold",
@@ -36,7 +39,7 @@ primary_widgets = [
         #widget.Net(format='{down:.0f}{up_suffix} ↑↓ {up:.0f}{down_suffix}',update_interval=2),
         #fc_separation(),
         fc_textbox(icon=''),
-        widget.Bluetooth(default_text='{num_connected_devices} connected'),
+        widget.Bluetooth(default_text='{num_connected_devices} connected',mouse_callbacks = {'Button1': lambda: run_blueman()}),
         fc_separation(),
         fc_textbox(icon='󰖩'),
         widget.Wlan(format='{percent:2.0%}',interface='wlan0'),
