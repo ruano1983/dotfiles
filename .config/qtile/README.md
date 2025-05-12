@@ -164,10 +164,10 @@ This module creates keyboard shortcuts for switching between workspaces, launchi
 | IMPORTANT KEYBINDINGS   | ASSOCIATED ACTION                      |
 |-------------------------|----------------------------------------|
 | MODKEY + RETURN         | opens terminal (alacritty)             |
-| MODKEY + SHIFT + RETURN | opens run launcher (rofi)              |
+| MODKEY + SHIFT + m      | opens run launcher (rofi)              |
 | MODKEY + SHIFT + y      | opens run web browser (librewolf)      |
 | MODKEY + SHIFT + f      | opens run file manager (thunar)        |
-| MODKEY + v (keychord) h    | opens run file manager (ranger)        |
+| MODKEY + v (keychord) h | opens run file manager (ranger)        |
 | MODKEY + SHIFT + n      | closes window with focus               |
 | MODKEY + TAB            | rotates through the available layouts  |
 | MODKEY + f              | full screen                            |
