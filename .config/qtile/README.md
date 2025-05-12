@@ -247,14 +247,14 @@ layout_theme = {"border_width": 1,
 ### Layouts
 ```
 layouts = [
+    layout.MonadTall(
+            **layout_theme),
     layout.Tile(
             **layout_theme,ratio=0.55),
     layout.Max(
             **layout_theme),
     layout.Columns(
             **layout_theme,fair=True,insert_position=1),
-    layout.MonadTall(
-            **layout_theme),
     layout.MonadWide(
             **layout_theme),
 ]
