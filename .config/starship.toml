@@ -1,0 +1,72 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = false
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$python\
+$line_break\
+$character\ 
+"""
+
+[directory]
+style = "green bold"
+truncation_length = 10
+#truncation_symbol = "…/"
+truncate_to_repo = true
+read_only = " 󰌾"
+
+[username]
+show_always = true
+style_user="blue bold"
+style_root="red bold"
+
+[hostname]
+ssh_only = false
+format = "[@$hostname](green bold)"
+disabled = true
+
+[character]
+success_symbol = "[... \\$](white bold)"
+error_symbol = "[... ](red bold)[\\$](white bold)"
+#success_symbol = "[󰘍](green bold)"
+#success_symbol = "[](red bold)[](purple bold)[](cyan bold)[ \\$](white bold)"
+#error_symbol = "[󰘍](red bold)"
+#error_symbol = "[](red bold)[ \\$](white bold)"
+#vimcmd_symbol = "[ \\$](green bold)"
+
+[git_branch]
+style = "purple bold"
+symbol = " "
+
+[git_commit]
+tag_symbol = '  '
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "purple bold"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "red bold"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow bold"
+
+[python]
+#format = "[$virtualenv $symbol]($style)\n"
+style = "purple bold"
+symbol = " "
