@@ -7,17 +7,17 @@ layout_theme = {"border_width": 1,
                 "border_on_single":True 
                 }
 layouts = [
+   layout.MonadTall(
+            **layout_theme), 
     layout.Tile(
             **layout_theme,ratio=0.57), 
     layout.Max(
             **layout_theme), 
     layout.Columns(
             **layout_theme,fair=True,insert_position=1),
-        layout.MonadTall(
-            **layout_theme), 
-    layout.MonadWide(
-            **layout_theme),
-       # layout.Stack(num_stacks=2),
+    #layout.MonadWide(
+            #**layout_theme),
+    # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(),
