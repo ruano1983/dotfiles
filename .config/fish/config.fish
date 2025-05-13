@@ -63,11 +63,11 @@ alias l...='eza -al --color=always --group-directories-first ../../../' # ls on 
 alias play="mpv --shuffle --no-video"
 # wl-randr
 alias wlrandr="wlr-randr --output DP-1 --mode 1920x1080@74.973000"
-# cp 
+# cp verbose
 alias cp="cp -v"
-# rm
+# rm verbose
 alias rm="rm -v"
-# curl -o
+# curl -O
 alias curlo="curl -O"
 # rip trash
 alias rip="rip --graveyard /tmp/trash"
@@ -75,7 +75,7 @@ alias rip="rip --graveyard /tmp/trash"
 alias df="df -H"
 # sudo dmesg 
 alias sdmesg="sudo dmesg"
-# clock
+# tock clock
 alias clock="tock -s -C 4 -m -c"
 # removes .la
 alias rmla="sudo /usr/bin/remove-la-files.sh"
@@ -115,6 +115,7 @@ alias prtrem="prt-get remove"
 alias makepkg="fakeroot pkgmk -d"
 alias pkgin="pkgadd"
 alias pkgup="pkgadd -u"
-if [ (tty) = "/dev/tty1" ]
-    exec dbus-run-session qtile start -b wayland
-end
+starship init fish | source
+#if [ (tty) = "/dev/tty1" ]
+#   exec dbus-run-session qtile start -b wayland
+#end
