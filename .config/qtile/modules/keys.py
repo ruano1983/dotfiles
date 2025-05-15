@@ -8,10 +8,12 @@ import os
 @lazy.function
 def maximize_by_switching_layout(qtile):
     current_layout_name = qtile.current_group.layout.name
-    if current_layout_name == 'columns':
+    if current_layout_name == 'monadtall':
+        qtile.current_group.layout = 'max'
+    elif current_layout_name == 'columns':
         qtile.current_group.layout = 'max'
     elif current_layout_name == 'max':
-        qtile.current_group.layout = 'columns'
+        qtile.current_group.layout = 'monadtall'
 
 @lazy.function
 def change_layout(qtile):
@@ -40,6 +42,8 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod, "control"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    # layout monadtall
+    Key([mod, "shift"], "space", lazy.layout.flip()),
     # layout MonadWide
     Key([mod], "i", lazy.layout.grow()),
     Key([mod], "m", lazy.layout.shrink()),
@@ -47,7 +51,7 @@ keys = [
     # Toggle between split and unsplit sides of stack.
     Key([mod, "shift"],"Return",lazy.layout.toggle_split(),desc="Toggle between split and unsplit sides of stack"),
     # Rofi
-    Key([mod, "shift"], "Return",  lazy.spawn(rofi), desc="Launch rofi"),
+    Key([mod, "shift"], "m",  lazy.spawn(rofi), desc="Launch rofi"),
     # power menu
     Key([mod , "shift"], "p", lazy.spawn(power), desc="Launch rofi"),
     # pavucontrol

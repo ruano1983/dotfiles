@@ -8,7 +8,7 @@ layout_theme = {"border_width": 1,
                 }
 layouts = [
    layout.MonadTall(
-            **layout_theme), 
+            **layout_theme,new_client_position='before_current'), 
     layout.Tile(
             **layout_theme,ratio=0.57), 
     layout.Max(

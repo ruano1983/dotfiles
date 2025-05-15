@@ -1,2 +1,2 @@
 import colors
-colors = colors.Nube
+colors = colors.Colorfull

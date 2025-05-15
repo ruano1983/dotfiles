@@ -3,20 +3,19 @@ from libqtile import qtile
 from .theme import *
 from .globals import *
 # functions
-def fc_separation(l=12):
+def fc_separation(l=10):
     return  widget.Spacer(length=l)
-def fc_textbox(icon,p=6):
-    return widget.TextBox(fontsize=14,padding=p,text=icon)
+#def fc_textbox(icon,p=6,color=colors[2]):
+    #return widget.TextBox(fontsize=13,padding=p,text=icon,foreground=color)
 def run_btm():
     qtile.spawn(myTerm + ' -e btm')
 def run_blueman():
     qtile.spawn("blueman-manager")
 
-
 widget_defaults = dict(
     font="Ubuntu Bold",
-    fontsize=12,
-    padding=5,
+    fontsize=13,
+    padding=4,
     foreground=colors[2],
 )
 extension_defaults = widget_defaults.copy()
@@ -29,46 +28,27 @@ primary_widgets = [
                         disable_drag=True,
                         hide_unused=True
                         ),
-        widget.CurrentLayoutIcon(padding=6,scale=0.50),
-        widget.CurrentLayout(padding=6),
-        fc_separation(l=6),
+        widget.CurrentLayoutIcon(padding=4,scale=0.50),
+        widget.CurrentLayout(),
+        fc_separation(l=4),
         widget.Prompt(prompt="Run "),
-        fc_textbox(icon='󰖲'),
-        widget.WindowName(max_chars=77),
-        #fc_textbox(icon='󰧈'),
-        #widget.Net(format='{down:.0f}{up_suffix} ↑↓ {up:.0f}{down_suffix}',update_interval=2),
-        #fc_separation(),
-        fc_textbox(icon=''),
-        widget.Bluetooth(default_text='{num_connected_devices} connected',mouse_callbacks = {'Button1': lambda: run_blueman()}),
+        widget.WindowName(max_chars=80),
+        widget.Bluetooth(default_text='{num_connected_devices} connected',foreground=colors[5],fmt='  {}',mouse_callbacks = {'Button1': lambda: run_blueman()}),
         fc_separation(),
-        fc_textbox(icon='󰖩'),
-        widget.Wlan(format='{percent:2.0%}',interface='wlan0'),
+        widget.CPU(format=' {freq_current}GHz {load_percent}%',fmt = '  Cpu: {}',foreground=colors[7],update_interval=1,mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
-        fc_textbox(icon=''),
-        widget.CPU(format='{freq_current}GHz {load_percent}%',update_interval=1,mouse_callbacks = {'Button1': lambda: run_btm()}),
+        widget.ThermalSensor(tag_sensor='Tccd1',threshold=85.0,fmt='  Temp:  {}',foreground=colors[8],foreground_alert='f0614e',mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
-        fc_textbox(icon=''),
-        widget.ThermalSensor(tag_sensor='Tccd1',threshold=85.0,foreground_alert='f0614e'),
+        widget.Memory(format='{MemUsed: .1f}{mm}', fmt = '🖥️  MemUsed: {}',measure_mem='G',foreground=colors[9],mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
-        fc_textbox(icon=''),
-        widget.Memory(format='{MemUsed: .1f}{mm} /{MemTotal: .1f}{mm}',measure_mem='G',mouse_callbacks = {'Button1': lambda: run_btm()}),
+        widget.GenPollCommand(cmd="uname -r", shell=True,update_interval=None,fmt = '   Linux:  {}',foreground=colors[10]),
         fc_separation(),
-        fc_textbox(icon='󰆼'),
-        widget.DF(visible_on_warn=False,format='/ {r:.0f}%',partition='/',measure='G', mouse_callbacks = {'Button1': lambda: run_btm()}),
+        widget.DF(visible_on_warn=False,format='{r:.0f}{m}',fmt = '🖴  Disk:  {}',partition='/',measure='G',foreground=colors[9], mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
-        fc_textbox(icon='󰌽'),
-        widget.GenPollCommand(cmd="uname -r", shell=True,update_interval=None),
+        widget.PulseVolume(mute_format="mute",step=4,fmt='   Vol:  {}',foreground=colors[8]),
         fc_separation(),
-        fc_textbox(icon=''),
-        widget.PulseVolume(mute_format="mute",step=4),
+        widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es'],display_map={ 'us altgr-intl': 'ansi', 'es':'es'},fmt='    Keyboard: {}',foreground=colors[7]),
         fc_separation(),
-        fc_textbox(icon='󰌌'),
-        widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es'],display_map={ 'us altgr-intl': 'ansi', 'es':'es'}),
-        fc_separation(),
-        fc_textbox(icon='󰽢'),
-        widget.OpenWeather(app_key="bb789b9c68ed3ee12c7f8d99d62f3c3b",location='Fuenlabrada', format='{weather} {main_temp:.0f}°{units_temperature}'),
-        fc_separation(),
-        fc_textbox(icon='󰥔'),
-        widget.Clock(format="%a %d %b %H:%M"),
+        widget.Clock(format="%a %d %b %H:%M",fmt='   {}',foreground=colors[5]),
         fc_separation(l=1),
 ]
