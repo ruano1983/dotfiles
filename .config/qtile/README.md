@@ -6,7 +6,7 @@ My environment uses Wayland for the Qtile session.
 My setup uses apps like [rofi](https://github.com/lbonn/rofi?tab=readme-ov-file#wayland-support), [alacrity](https://alacritty.org/), [swaybg](https://github.com/swaywm/swaybg), [grim](https://gitlab.freedesktop.org/emersion/grim), [vifm](https://vifm.info/), [ranger](https://ranger.github.io/), [bottom](https://github.com/ClementTsang/bottom), [kanshi](https://gitlab.freedesktop.org/emersion/kanshi).
 make sure you have them available, you can still substitute them.
 
-![desktop qtile](/images/1746967161.png)
+![desktop qtile](/images/1747310815.png)
 
 My Qtile layout has a status bar with real-time information widgets on the right and workspaces on the left, including the name of the focused app. The taskbar has a black background color, and the active workspace is colored according to color themes.
 
@@ -88,7 +88,7 @@ myChat = "session-desktop.AppImage"
 ```
 ### Wallpaper
 ```
-wallpaper = os.path.join(os.path.expanduser('~/Imágenes/wallpapers/'),'arquitectura/508887.jpg')
+wallpaper = os.path.join(os.path.expanduser('~/Imágenes/wallpapers/'), 'arquitectura/pexels-introspectivedsgn-7260877.jpg')
 ```
 ### Rofi
 ```
@@ -179,54 +179,92 @@ This module creates keyboard shortcuts for switching between workspaces, launchi
 | MODKEY + p (keychord) r    | reboot                                 |
 | MODKEY + p (keychord) s    | power off                              |
 ```
-primary_widgets = [
-        fc_separation(l=1),
-        widget.GroupBox(highlight_method='block',rounded=False,this_current_screen_border=colors[1],
-                        inactive=colors[3],active=colors[4],foreground=colors[2],
-                        padding=6,spacing=4,borderwidth=4,
-                        block_highlight_text_color=colors[0],
-                        disable_drag=True,
-                        hide_unused=True
-                        ),
-        widget.CurrentLayoutIcon(padding=6,scale=0.50),
-        widget.CurrentLayout(padding=6),
-        fc_separation(l=6),
-        widget.Prompt(prompt="Run "),
-        fc_textbox(icon='󰖲'),
-        widget.WindowName(max_chars=77),
-        fc_textbox(icon=''),
-        widget.Bluetooth(default_text='{num_connected_devices} connected',mouse_callbacks = {'Button1': lambda: run_blueman()}),
-        fc_separation(),
-        fc_textbox(icon='󰖩'),
-        widget.Wlan(format='{percent:2.0%}',interface='wlan0'),
-        fc_separation(),
-        fc_textbox(icon=''),
-        widget.CPU(format='{freq_current}GHz {load_percent}%',update_interval=1,mouse_callbacks = {'Button1': lambda: run_btm()}),
-        fc_separation(),
-        fc_textbox(icon=''),
-        widget.ThermalSensor(tag_sensor='Tccd1',threshold=85.0,foreground_alert='f0614e'),
-        fc_separation(),
-        fc_textbox(icon=''),
-        widget.Memory(format='{MemUsed: .1f}{mm} /{MemTotal: .1f}{mm}',measure_mem='G',mouse_callbacks = {'Button1': lambda: run_btm()}),
-        fc_separation(),
-        fc_textbox(icon='󰆼'),
-        widget.DF(visible_on_warn=False,format='/ {r:.0f}%',partition='/',measure='G', mouse_callbacks = {'Button1': lambda: run_btm()}),
-        fc_separation(),
-        fc_textbox(icon='󰌽'),
-        widget.GenPollCommand(cmd="uname -r", shell=True,update_interval=None),
-        fc_separation(),
-        fc_textbox(icon=''),
-        widget.PulseVolume(mute_format="mute",step=4),
-        fc_separation(),
-        fc_textbox(icon='󰌌'),
-        widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es'],display_map={ 'us altgr-intl': 'ansi', 'es':'es'}),
-        fc_separation(),
-        fc_textbox(icon='󰽢'),
-        widget.OpenWeather(app_key="bb789b9c68ed3ee12c7f8d99d62f3c3b",location='Fuenlabrada', format='{weather} {main_temp:.0f}°{units_temperature}'),
-        fc_separation(),
-        fc_textbox(icon='󰥔'),
-        widget.Clock(format="%a %d %b %H:%M"),
-        fc_separation(l=1),
+home = os.path.expanduser('~')
+
+keys = [
+    # Switch between windows
+    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+    # Move windows between left/right columns or move up/down in current stack.
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    # Grow windows. If current window is on the edge of screen and direction
+    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
+    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    Key([mod, "control"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    # layout monadtall
+    Key([mod, "shift"], "space", lazy.layout.flip()),
+    # layout MonadWide
+    Key([mod], "i", lazy.layout.grow()),
+    Key([mod], "m", lazy.layout.shrink()),
+    Key([mod], "n", lazy.layout.reset()),
+    # Toggle between split and unsplit sides of stack.
+    Key([mod, "shift"],"Return",lazy.layout.toggle_split(),desc="Toggle between split and unsplit sides of stack"),
+    # Rofi
+    Key([mod, "shift"], "m",  lazy.spawn(rofi), desc="Launch rofi"),
+    # power menu
+    Key([mod , "shift"], "p", lazy.spawn(power), desc="Launch rofi"),
+    # pavucontrol
+    Key([mod , "shift"], "v", lazy.spawn("pavucontrol"), desc="Launch pavucontrol"),
+    # Terminal
+    Key([mod], "Return", lazy.spawn(myTerm), desc="Launch Terminal"),
+    # play Media
+    Key([], "XF86AudioPlay", lazy.spawn("wl-script pause_player")),
+    Key([], "XF86AudioNext", lazy.spawn("wl-script next_player")),
+    Key([], "XF86AudioPrev", lazy.spawn("wl-script previous_player")),
+    # volumen
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("wl-script volume_up")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("wl-script volume_down")),
+    # Mute
+    Key([], "XF86AudioMute", lazy.spawn("wl-script volume_mute")),
+    # Firefox
+    Key([mod , "shift"] ,"y", lazy.spawn(myBrowser),desc="Launch Web Browser"),
+    # session-desktop
+    Key([mod , "shift"] ,"t", lazy.spawn(myChat),desc="Launch session-desktop"),
+    # thunar
+    Key([mod , "shift"] ,"f", lazy.spawn(myfm[0]),desc="Launch thunar file manager"),
+    # screenshot
+    Key([],"print", lazy.spawn("wl-script print_screenshot"),desc="Screenshot"),
+    # keychord file manager 
+    KeyChord([mod],"v", [
+     # vifm (ports)
+    Key([] ,"p", lazy.spawn(myTerm + ' -e '+ myfm[2] + ' /build/ports /build/ports'),desc="Launch vifm"),
+    # ranger-fm (home)
+    Key([] ,"h", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' ' + home),desc="Launch ranger-fm"),
+    # ranger-fm (.config)
+    Key([] ,"c", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' .config'),desc="Launch ranger-fm"),
+    # ranger-fm (scripts)
+    Key([] ,"s", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' scripts'),desc="Launch ranger-fm"),
+    ]),
+    # exit qtile
+    Key([mod], "q", lazy.shutdown(), desc="quit qtile"),
+    # keychord power
+    KeyChord([mod],"p", [
+    ### shutdown 
+    Key([], "s", lazy.spawn("wl-script power_off"),desc="shutdown"), 
+    ### Reboot 
+    Key([], "r", lazy.spawn("wl-script power_reboot"),desc="reboot"), 
+    ]),
+    # Toggle between different layouts as defined below
+    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    # kill window
+    Key([mod , "shift"], "n", lazy.window.kill(), desc="Kill focused window"),
+    # change layout
+    Key([mod], "t", change_layout(), desc="Change layout"),
+    # Fullscreen
+    Key([mod], "f", maximize_by_switching_layout(),lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
+    # Tile off on
+    Key([mod], "space", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
+    # Reload config
+    Key([mod, "shift"], "c", lazy.reload_config(), desc="Reload the config"),
+    # prompt run widget
+    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 ```
 ## layout.py
@@ -247,16 +285,24 @@ layout_theme = {"border_width": 1,
 ### Layouts
 ```
 layouts = [
-    layout.MonadTall(
-            **layout_theme),
+   layout.MonadTall(
+            **layout_theme,new_client_position='before_current'), 
     layout.Tile(
-            **layout_theme,ratio=0.55),
+            **layout_theme,ratio=0.57), 
     layout.Max(
-            **layout_theme),
+            **layout_theme), 
     layout.Columns(
             **layout_theme,fair=True,insert_position=1),
-    layout.MonadWide(
-            **layout_theme),
+    #layout.MonadWide(
+            #**layout_theme),
+    # layout.Stack(num_stacks=2),
+    # layout.Bsp(),
+    # layout.Matrix(),
+    # layout.MonadTall(),
+    # layout.RatioTile(),
+    # layout.TreeTab(),
+    # layout.VerticalTile(),
+    # layout.Zoomy(),
 ]
 ```
 ## widgets.py
@@ -274,10 +320,10 @@ from libqtile import qtile
 from .theme import *
 from .globals import *
 # functions
-def fc_separation(l=12):
+def fc_separation(l=10):
     return  widget.Spacer(length=l)
-def fc_textbox(icon,p=6):
-    return widget.TextBox(fontsize=14,padding=p,text=icon)
+#def fc_textbox(icon,p=6,color=colors[2]):
+    #return widget.TextBox(fontsize=13,padding=p,text=icon,foreground=color)
 def run_btm():
     qtile.spawn(myTerm + ' -e btm')
 def run_blueman():
@@ -287,8 +333,8 @@ def run_blueman():
 ```
 widget_defaults = dict(
     font="Ubuntu bold",
-    fontsize=12,
-    padding=5,
+    fontsize=13,
+    padding=4,
     foreground=colors[2],
 )
 extension_defaults = widget_defaults.copy()
@@ -304,44 +350,28 @@ primary_widgets = [
                         disable_drag=True,
                         hide_unused=True
                         ),
-        widget.CurrentLayoutIcon(padding=6,scale=0.50),
-        widget.CurrentLayout(padding=6),
-        fc_separation(l=6),
+        widget.CurrentLayoutIcon(padding=4,scale=0.50),
+        widget.CurrentLayout(),
+        fc_separation(l=4),
         widget.Prompt(prompt="Run "),
-        fc_textbox(icon='󰖲'),
-        widget.WindowName(max_chars=77),
-        fc_textbox(icon=''),
-        widget.Bluetooth(default_text='{num_connected_devices} connected'),
+        widget.WindowName(max_chars=80),
+        widget.Bluetooth(default_text='{num_connected_devices} connected',foreground=colors[5],fmt='  {}',mouse_callbacks = {'Button1': lambda: run_blueman()}),
         fc_separation(),
-        fc_textbox(icon='󰖩'),
-        widget.Wlan(format='{percent:2.0%}',interface='wlan0'),
+        widget.CPU(format=' {freq_current}GHz {load_percent}%',fmt = '  Cpu: {}',foreground=colors[7],update_interval=1,mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
-        fc_textbox(icon=''),
-        widget.CPU(format='{freq_current}GHz {load_percent}%',update_interval=1,mouse_callbacks = {'Button1': lambda: run_btm()}),
+        widget.ThermalSensor(tag_sensor='Tccd1',threshold=85.0,fmt='  Temp:  {}',foreground=colors[8],foreground_alert='f0614e',mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
-        fc_textbox(icon=''),
-        widget.ThermalSensor(tag_sensor='Tccd1',threshold=85.0,foreground_alert='f0614e'),
+        widget.Memory(format='{MemUsed: .1f}{mm}', fmt = '🖥️  MemUsed: {}',measure_mem='G',foreground=colors[9],mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
-        fc_textbox(icon=''),
-        widget.Memory(format='{MemUsed: .1f}{mm} /{MemTotal: .1f}{mm}',measure_mem='G',mouse_callbacks = {'Button1': lambda: run_btm()}),
+        widget.GenPollCommand(cmd="uname -r", shell=True,update_interval=None,fmt = '   Linux:  {}',foreground=colors[10]),
         fc_separation(),
-        fc_textbox(icon='󰆼'),
-        widget.DF(visible_on_warn=False,format='/ {r:.0f}%',partition='/',measure='G', mouse_callbacks = {'Button1': lambda: run_btm()}),
+        widget.DF(visible_on_warn=False,format='{r:.0f}{m}',fmt = '🖴  Disk:  {}',partition='/',measure='G',foreground=colors[9], mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
-        fc_textbox(icon='󰌽'),
-        widget.GenPollCommand(cmd="uname -r", shell=True,update_interval=None),
+        widget.PulseVolume(mute_format="mute",step=4,fmt='   Vol:  {}',foreground=colors[8]),
         fc_separation(),
-        fc_textbox(icon=''),
-        widget.PulseVolume(),
+        widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es'],display_map={ 'us altgr-intl': 'ansi', 'es':'es'},fmt='    Keyboard: {}',foreground=colors[7]),
         fc_separation(),
-        fc_textbox(icon='󰌌'),
-        widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es'],display_map={ 'us altgr-intl': 'ansi', 'es':'es'}),
-        fc_separation(),
-        fc_textbox(icon='󰽢'),
-        widget.OpenWeather(app_key="bb789b9c68ed3ee12c7f8d99d62f3c3b",location='Fuenlabrada', format='{weather} {main_temp:.0f}°{units_temperature}'),
-        fc_separation(),
-        fc_textbox(icon='󰥔'),
-        widget.Clock(format="%a %d %b %H:%M"),
+        widget.Clock(format="%a %d %b %H:%M",fmt='   {}',foreground=colors[5]),
         fc_separation(l=1),
 ]
 ```
@@ -359,7 +389,7 @@ from libqtile.config import Screen
 def status_bar(widgets):
     return bar.Bar(widgets, 38,
             background=colors[0],
-            border_width=0)
+            border_width=1)
 
 screens = [
     Screen(
@@ -413,7 +443,7 @@ This module selects the color theme.
 
 ```
 import colors
-colors = colors.Nube
+colors = colors.Colorfull
 ```
 
 ## colors.py
@@ -421,11 +451,18 @@ colors = colors.Nube
 This file contains all the color schemes.
 
 ```
-Nube = [
-    ["#121212" , "#121212"], # bg
-    ["#2e86c1" , "#2e86c1"], # blue
+Colorfull = [
+    ["#101010" , "#101010"], # bg
+    ["#00acc1" , "#00acc1"], # blue
     ["#dfdfdf" , "#dfdfdf"], # fg
-    ["#383838" , "#383838"]  # black
+    ["#383838" , "#383838"], # black
+    ["#F8F8F2" , "#F8F8F2"], # white
+    ["#00acc1" , "#00acc1"], # cyan
+    ["#689f38" , "#689f38"], # green
+    ["#693bb8" , "#693bb8"], # puple
+    ["#fbc02d" , "#fbc02d"], # yellow
+    ["#f44336" , "#f44336"], # red
+    ["#e91e63" , "#e91e63"], # rose
     ] ...
 ```
 ## autostart.sh
@@ -454,9 +491,9 @@ gsettings set org.gnome.desktop.interface font-name 'Noto Sans 8' &
 ```
 ## images
 
-![desktop rofi](/images/1746968394.png)
+![desktop rofi launcher](/images/1747311104.png)
 
-![desktop rofi2](/images/1746968398.png)
+![desktop rofi powermenu](/images/1747311108.png)
 
-![desktop cava](/images/1746967158.png)
+![desktop cava](/images/1747311424.png)
 
