@@ -1,5 +1,5 @@
 # colors theme
-general.import = ["/home/ivanruano83/.config/alacritty/argyls.toml"]
+general.import = ["/home/ivanruano83/.config/alacritty/nube.toml"]
 
 # cursosr
 [cursor.style]
@@ -30,10 +30,10 @@ action = "CreateNewWindow"
 key = "N"
 mods = "Control"
 # key quit window
-[[keyboard.bindings]]
-action = "Quit"
-key = "Q"
-mods = "Control"
+#[[keyboard.bindings]]
+#action = "Quit"
+#key = "Q"
+#mods = "Control"
 
 # window setting
 [window]
@@ -62,5 +62,5 @@ size=10
 
 # font name
 [font.normal]
-family = "Liberation Mono"
+family = "UbuntuMono Nerd Font"
 style = "bold"
