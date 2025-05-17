@@ -29,7 +29,7 @@
 ; bar_height = 32
 
 # For SDL width and space between bars is in pixels, defaults are:
- bar_width = 3
+ bar_width = 5
 ; bar_spacing = 5
 
 # sdl_glsl have these default values, they are only used to calculate max number of bars.
@@ -225,9 +225,9 @@ method = pipewire
 
 # SDL and sdl_glsl only support hex code colors, these are the default:
 ; background = '#111111'
-#foreground = '#2fa6c7' # argyls
+foreground = '#2fa6c7' # argyls
 #foreground = '#4f8af7' # morad
-foreground = '#00acc1' # colorfull
+#foreground = '#00acc1' # colorfull
 #2e86c1
 # Gradient mode, only hex defined colors are supported,
 # background must also be defined in hex or remain commented out. 1 = on, 0 = off.
