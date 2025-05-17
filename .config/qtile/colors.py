@@ -6,19 +6,23 @@ Argyls = [
     ["#F8F8F2" , "#F8F8F2"]  # white
     ]
 
-Colorfull = [
-    ["#101010" , "#101010"], # bg
+Nube = [
+    ["#121212" , "#121212"], # bg
+    ["#2e86c1" , "#2e86c1"], # blue
+    ["#dfdfdf" , "#dfdfdf"], # fg
+    ["#383838" , "#383838"], # black
+    ["#F8F8F2" , "#F8F8F2"]  # white
+    ]
+
+
+Cayn = [
+    ["#121212" , "#121212"], # bg
     ["#00acc1" , "#00acc1"], # blue
     ["#dfdfdf" , "#dfdfdf"], # fg
     ["#383838" , "#383838"], # black
-    ["#F8F8F2" , "#F8F8F2"], # white
-    ["#00acc1" , "#00acc1"], # cyan
-    ["#689f38" , "#689f38"], # green
-    ["#693bb8" , "#693bb8"], # puple
-    ["#fbc02d" , "#fbc02d"], # yellow
-    ["#f44336" , "#f44336"], # red
-    ["#e91e63" , "#e91e63"], # rose
+    ["#F8F8F2" , "#F8F8F2"] # white
     ]
+
 Blue = [
     ["#121212" , "#121212"], # bg
     ["#0288d1" , "#0288d1"], # blue

@@ -1,2 +1,2 @@
 import colors
-colors = colors.Colorfull
+colors = colors.Argyls
