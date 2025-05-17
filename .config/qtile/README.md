@@ -8,8 +8,7 @@ make sure you have them available, you can still substitute them.
 
 ![desktop qtile](/images/1747310815.png)
 
-My Qtile layout has a status bar with real-time information widgets on the right and workspaces on the left, including the name of the focused app. The taskbar has a black background color, and the active workspace is colored according to color themes.
-
+My Qtile design has a status bar with real-time information widgets on the right and workspaces on the left, including the name of the highlighted app. The taskbar has a simple, attractive black background, and the active workspace is colored with the color theme's accent.
 The font I use is Ubuntu Bold. Make sure you have it on your system.
 
 for the widget icons I use nerd typography.
