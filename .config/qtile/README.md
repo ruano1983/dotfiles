@@ -122,16 +122,16 @@ from libqtile.config import Group, Match
 from .keys import *
 
 groups = [
-    Group("1", label="1", layout='tile'),
+    Group("1", label="1", layout='monadtall'),
     Group("2", label="2", layout='max'),
     Group("3", label="3", layout='max'),
-    Group("4", label="4", layout='columns'),
-    Group("5", label="5", layout='columns'),
-    Group("6", label="6", layout='columns'),
-    Group("7", label="7", layout='columns'),
-    Group("8", label="8", layout='columns'),
-    Group("9", label="9", layout='columns'),
-    Group("0", label="0", layout='columns'),
+    Group("4", label="4", layout='monadtall'),
+    Group("5", label="5", layout='monadtall'),
+    Group("6", label="6", layout='monadtall'),
+    Group("7", label="7", layout='monadtall'),
+    Group("8", label="8", layout='monadtall'),
+    Group("9", label="9", layout='monadtall'),
+    Group("0", label="0", layout='monadtall'),
 
 ]
 ```
