@@ -22,8 +22,8 @@ I also offer some custom color themes for vim nano rofi, vifm and most important
 ## Qtile window manager
 
 
-![desktop](/images/1747310815.png)
+![desktop](/images/1747515897_grim.png)
 
-![desktop rofi](/images/1747311104.png)
+![desktop rofi](/images/1747515916_grim.png)
 
-![desktop cava](/images/1747311424.png)
+![desktop cava](/images/1747515902_grim.png)
