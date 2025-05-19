@@ -39,8 +39,9 @@ BBlue='\033[1;34m'        # Blue
 BPurple='\033[1;35m'      # Purple
 BCyan='\033[1;36m'        # Cyan
 BWhite='\033[1;37m'       # White
+#fish
 # alacritty
-PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND}'printf "\033]0;%s@%s:%s\007" "${LOGNAME}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
+#PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND}'printf "\033]0;%s@%s:%s\007" "${LOGNAME}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
 # prompt
 PS1="$BBlue\u$Cnormal \w\n... $ "
 # bash completation
@@ -50,4 +51,6 @@ PS1="$BBlue\u$Cnormal \w\n... $ "
 echo -e "Hello friend!"
 echo -e "Today is $BYellow$(date +'%A %d %b %Y %T')\e[0m and this machine is called $BYellow$HOSTNAME \e[0m with the kernel $BYellow$(uname -r)"
 # colorscript
-colorscript -e 47
+#colorscript -e 47
+# ~/.bashrc
+eval "$(starship init bash)"

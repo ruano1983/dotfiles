@@ -1,35 +1,43 @@
-# Alias
-# tar xvf
+# tar compression
 alias tarx="tar xvf"
+alias tarc="tar cvJf" 
 # mlocate updatedb
 alias updb="updatedb  --prunepaths=/run"
-# qtile wayland start
+# window manager start
 alias qtilestart="dbus-run-session qtile start -b wayland"
+alias dwlstart="dbus-run-session dwl -s waybar"
+alias swaystart="dbus-run-session sway"
 # plasma wayland start
 alias kde="dbus-run-session startplasma-wayland"
-# weather
+# weather Fuenlabrada
 alias clima="curl wttr.in/Fuenlabrada"
 # greep colors
 alias grep='grep --color=auto'
-# vifm
-alias vifmp="vifm /build/pkgmk /build/pkgmk"
+# vifm file manager
+alias vifmp="vifm /build/ports /build/ports"
 alias vifmc="vifm ~/.config ~/.config"
-# ranger
-alias rangerv="ranger --cmd='set viewmode=multipane' ~/ ~/"
-alias rangerp="ranger  /build/pkgmk"
+# ranger file manager
+alias rangerh="ranger --cmd='set viewmode=multipane' ~/ ~/"
+alias rangerp="ranger  /build/ports"
 # eza 
-alias eza="eza -G"
+alias eza="eza -G --group-directories-first"
 # Changing "ls" to "eza"
-alias ls="eza -G"
-# mpv play
+alias ls='eza -G --color=always --group-directories-first' # my preferred listing
+alias la='eza -a --color=always --group-directories-first'  # all files and dirs
+alias ll='eza -l --color=always --group-directories-first'  # long format
+alias lt='eza -aT --color=always --group-directories-first' # tree listing
+alias l.='eza -al --color=always --group-directories-first ../' # ls on the PARENT directory
+alias l..='eza -al --color=always --group-directories-first ../../' # ls on directory 2 levels up
+alias l...='eza -al --color=always --group-directories-first ../../../' # ls on directory 3 levels up
+# mpv play music
 alias play="mpv --shuffle --no-video"
 # wl-randr
 alias wlrandr="wlr-randr --output DP-1 --mode 1920x1080@74.973000"
-# cp 
+# cp verbose
 alias cp="cp -v"
-# rm
+# rm verbose
 alias rm="rm -v"
-# curl -o
+# curl -O
 alias curlo="curl -O"
 # rip trash
 alias rip="rip --graveyard /tmp/trash"
@@ -37,31 +45,41 @@ alias rip="rip --graveyard /tmp/trash"
 alias df="df -H"
 # sudo dmesg 
 alias sdmesg="sudo dmesg"
-# clock
-alias clock="tock -s -C 3 -m -c"
-# remove .la
+# tock clock
+alias clock="tock -s -C 4 -m -c"
+# removes .la
 alias rmla="sudo /usr/bin/remove-la-files.sh"
 # fstrim
 alias trim="sudo fstrim -a"
 # smart nvme
-alias smartnvme="sudo smartctl -a /dev/nvme0n1"
-# build linux script
-alias buildlinux="sh /home/ivanruano83/scripts/build_linux.sh -f /build/linux"
+alias smartnvme1="sudo smartctl -x /dev/nvme0n1"
+alias smartnvme2="sudo smartctl -x /dev/nvme1n1"
+# download LibreWolf
+alias lwolfdown="fish ~/scripts/download_librewolf.fish ~/Aplicaciones"
 # install firefox script
 alias mozdown="sudo python3 ~/scripts/python/mozilla-download.py"
+# dowload brave
+alias bravedown="fish ~/scripts/download_brave.fish ~/Aplicaciones"
 # rename files 
 alias renove="python3 ~/scripts/python/rename.py"
-# build qtile script
+# clean ports (.md5sum .footprint)
+alias cleanports="fish ~/scripts/clean_ports.fish"
+# build apps script
+alias buildlinux="sh ~/scripts/build_linux.sh -f /linux -i vmlinuz-frikios"
 alias buildqtile="sh ~/scripts/build_qtile.sh -f qtile_env -b wayland"
+alias builddarktable="fish ~/scripts/build_darktable.fish"
+alias buildkde="fish ~/scripts/build_kde.fish"
 # git
-alias gl="git pull"
-alias ga="git add ."
-alias gc="git commit -m"
-alias gp="git push"
+alias pull="git pull"
+alias addall="git add ."
+alias add="git add"
+alias commit="git commit -m"
+alias push="git push"
+alias clone='git clone'
 # prt-get
 alias prtin="prt-get install"
-alias prtup="prt-get update"
-alias prtid="prt-get depinst"
+alias prtup="prt-get update -fr"
+alias prtid="prt-get depinst -g"
 alias prtdep="prt-get depends"
 alias prtinfo="prt-get info"
 alias prtrem="prt-get remove"
