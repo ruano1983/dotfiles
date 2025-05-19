@@ -32,7 +32,7 @@ primary_widgets = [
         widget.CurrentLayout(),
         fc_separation(l=6),
         widget.Prompt(prompt="Run "),
-        widget.WindowName(max_chars=80,fmt='󰖲  {}'),
+        widget.WindowName(max_chars=73,fmt='󰖲  {}'),
         widget.Bluetooth(default_text='{num_connected_devices} connected',foreground=colors[2],fmt='  {}',mouse_callbacks = {'Button1': lambda: run_blueman()}),
         fc_separation(),
         widget.CPU(format=' {freq_current}GHz {load_percent}%',fmt = '  Cpu: {}',foreground=colors[2],update_interval=1,mouse_callbacks = {'Button1': lambda: run_btm()}),
