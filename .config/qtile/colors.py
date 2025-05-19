@@ -30,7 +30,13 @@ Blue = [
     ["#383838" , "#383838"], # black
     ["#F8F8F2" , "#F8F8F2"]  # white
     ]
-      
+Oxygen = [
+    ["#121212" , "#121212"], # bg
+    ["#22a6db" , "#22a6db"], # blue
+    ["#dfdfdf" , "#dfdfdf"], # fg
+    ["#383838" , "#383838"], # black
+    ["#F8F8F2" , "#F8F8F2"]  # white
+    ]     
 Morad = [
     ["#121212" , "#121212"], # bg
     ["#673ab7" , "#673ab7"], # blue
@@ -47,7 +53,35 @@ Purple = [
     ["#F8F8F2" , "#F8F8F2"]  # white
     ]
     
- 
+UltraVioleta = [
+    ["#121212" , "#121212"], # bg
+    ["#4e1ecd",  "#4e1ecd"], # blue
+    ["#f8f8f2" , "#f8f8f2"], # fg
+    ["#383838" , "#383838"], # black
+    ["#F8F8F2" , "#F8F8F2"]  # white
+    ]
+Ubuntu = [
+    ["#121212" , "#121212"], # bg
+    ["#76448a",  "#76448a"], # fushia
+    ["#f8f8f2" , "#f8f8f2"], # fg
+    ["#383838" , "#383838"], # black
+    ["#F8F8F2" , "#F8F8F2"]  # white
+    ]
+Iberia = [
+    ["#121212" , "#121212"], # bg
+    ["#e02822",  "#e02822"], # red
+    ["#f8f8f2" , "#f8f8f2"], # fg
+    ["#383838" , "#383838"], # black
+    ["#F8F8F2" , "#F8F8F2"]  # white
+    ]
+Qaqui = [
+    ["#121212" , "#121212"], # bg
+    ["#9a7d0a",  "#9a7d0a"], # browm
+    ["#f8f8f2" , "#f8f8f2"], # fg
+    ["#383838" , "#383838"], # black
+    ["#F8F8F2" , "#F8F8F2"]  # white
+    ]
+
 DarkOrange = [
     ["#121212" , "#121212"], # bg
     ["#f57c00" , "#f57c00"], # orange
@@ -129,7 +163,7 @@ Forest = [
     ["#F8F8F2" , "#F8F8F2"]  # white
     ]
 
-Aquamarine = [
+AquaMarine = [
     ["#121212" , "#121212"], # bg
     ["#20B2AA" , "#20B2AA"], # green
     ["#f8f8f2" , "#f8f8f2"], # fg
@@ -137,7 +171,7 @@ Aquamarine = [
     ["#F8F8F2" , "#F8F8F2"]  # white
     ]
 
-AquamarineDark = [
+AquaMarineDark = [
     ["#121212" , "#121212"], # bg
     ["#008B8B" , "#008B8B"], # green
     ["#f8f8f2" , "#f8f8f2"], # fg
