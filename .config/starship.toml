@@ -16,10 +16,7 @@ $character\
 
 [directory]
 style = "green bold"
-#truncation_length = 4
-#truncation_symbol = "…/"
 truncate_to_repo = true
-#read_only = " 󰌾"
 read_only = " read only"
 
 [username]
@@ -38,7 +35,6 @@ error_symbol = "[... ](red bold)[\\$](white bold)"
 
 [git_branch]
 style = "purple bold"
-#symbol = " "
 symbol = "git "
 
 [git_commit]
@@ -61,7 +57,6 @@ format = "[$duration]($style) "
 style = "yellow bold"
 
 [python]
-#format = "[$virtualenv $symbol]($style)\n"
 style = "purple bold"
 symbol = "python "
 
