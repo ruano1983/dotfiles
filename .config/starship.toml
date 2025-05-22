@@ -45,23 +45,15 @@ symbol = "git "
 tag_symbol = " tag "
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted )](cyan bold)($ahead_behind$stashed)]($style)"
 style = "purple bold"
-#conflicted = "​"
-#untracked = "​"
-#modified = "​"
-#staged = "​"
-#renamed = "​"
-#deleted = "​"
-#stashed = "≡"
 ahead = ">"
 behind = "<"
 diverged = "<>"
 renamed = "r"
 deleted = "x"
+untracked = "?"
 
 [git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "red bold"
 
 [cmd_duration]
