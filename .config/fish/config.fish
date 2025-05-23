@@ -23,6 +23,8 @@ alias play40p="mpv --no-video 'https://25653.live.streamtheworld.com/LOS40_SC'"
 alias playlaser="mpv --no-video 'https://23543.live.streamtheworld.com/CADENASER_SC'"
 alias playdial="mpv --no-video 'https://25683.live.streamtheworld.com/CADENADIAL_SC'"
 alias playondafuen="mpv --no-video 'https://radioserver12.profesionalhosting.com/proxy/pkg78581/stream'"
+alias playrne="mpv --no-video 'https://rtvelivestream.akamaized.net/rtvesec/rne/rne_r1_main.m3u8?idasset=1712486'"
+alias playcero="mpv --no-video 'https://atres-live.ondacero.es/live/ondacero/bitrate_1.m3u8'"
 # iptv
 alias play24h="mpv 'https://ztnr.rtve.es/ztnr/1694255.m3u8'"
 alias playgol="mpv 'https://spa-ha-p004.cdn.masmediatv.es/SVoriginOperatorEdge/smil:5_HD.smil/manifest.m3u8'"
@@ -88,6 +90,8 @@ alias smartnvme2="sudo smartctl -x /dev/nvme1n1"
 alias lwolfdown="fish ~/scripts/download_librewolf.fish ~/Aplicaciones"
 # install firefox script
 alias mozdown="sudo python3 ~/scripts/python/mozilla-download.py"
+# dowload brave
+alias bravedown="fish ~/scripts/download_brave.fish ~/Aplicaciones"
 # rename files 
 alias renove="python3 ~/scripts/python/rename.py"
 # clean ports (.md5sum .footprint)
