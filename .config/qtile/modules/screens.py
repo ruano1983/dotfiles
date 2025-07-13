@@ -7,7 +7,7 @@ from libqtile.config import Screen
 def status_bar(widgets):
     return bar.Bar(widgets, 38,
             background=colors[0],
-            border_width=1)
+            border_width=0)
 
 screens = [
     Screen(
