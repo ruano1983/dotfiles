@@ -81,13 +81,13 @@ To launch Rofi I use [this collection of themes](https://github.com/adi1090x/rof
 import os
 mod = "mod4"
 myTerm = "alacritty"
-myBrowser = "LibreWolf.x86_64.AppImage"
+myBrowser = "/opt/vivaldi/vivaldi"
 myfm = ("thunar" , "ranger" , "vifm")
-myChat = "session-desktop.AppImage"
+myChat = "Telegram"
 ```
 ### Wallpaper
 ```
-wallpaper = os.path.join(os.path.expanduser('~/Imágenes/wallpapers/'), 'arquitectura/pexels-introspectivedsgn-7260877.jpg')
+wallpaper = os.path.join(os.path.expanduser('~/Imágenes/wallpapers/'), 'Naturaleza/pexels-sumit-shinde-251784-763699.jpg')
 ```
 ### Rofi
 ```
@@ -164,7 +164,7 @@ This module creates keyboard shortcuts for switching between workspaces, launchi
 |-------------------------|----------------------------------------|
 | MODKEY + RETURN         | opens terminal (alacritty)             |
 | MODKEY + SHIFT + m      | opens run launcher (rofi)              |
-| MODKEY + SHIFT + y      | opens run web browser (librewolf)      |
+| MODKEY + SHIFT + y      | opens run web browser (vivaldi)        |
 | MODKEY + SHIFT + f      | opens run file manager (thunar)        |
 | MODKEY + v (keychord) h | opens run file manager (ranger)        |
 | MODKEY + SHIFT + n      | closes window with focus               |
@@ -349,13 +349,16 @@ primary_widgets = [
                         disable_drag=True,
                         hide_unused=True
                         ),
-        widget.CurrentLayoutIcon(padding=4,scale=0.50),
+        widget.CurrentLayout(icon_first=True,padding=4,scale=0.50),
         widget.CurrentLayout(),
         fc_separation(l=6),
         widget.Prompt(prompt="Run "),
-        widget.WindowName(max_chars=80,fmt='󰖲  {}'),
+        widget.WindowName(max_chars=73,fmt='󰖲  {}'),
+        widget.Prompt(prompt="Run "),
         widget.Bluetooth(default_text='{num_connected_devices} connected',foreground=colors[2],fmt='  {}',mouse_callbacks = {'Button1': lambda: run_blueman()}),
         fc_separation(),
+        widget.Wlan(format='{percent:2.0%}',fmt='󰖩   {}',update_interval=10),
+        fc_separation(l=6),
         widget.CPU(format=' {freq_current}GHz {load_percent}%',fmt = '  Cpu: {}',foreground=colors[2],update_interval=1,mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
         widget.ThermalSensor(tag_sensor='Tccd1',threshold=85.0,fmt='  Temp:  {}',foreground=colors[2],foreground_alert='f0614e',mouse_callbacks = {'Button1': lambda: run_btm()}),
@@ -368,7 +371,7 @@ primary_widgets = [
         fc_separation(),
         widget.PulseVolume(mute_format="mute",step=4,fmt='   Vol:  {}',foreground=colors[2]),
         fc_separation(),
-        widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es'],display_map={ 'us altgr-intl': 'ansi', 'es':'es'},fmt='    Keyboard: {}',foreground=colors[2]),
+        widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es'],display_map={ 'us altgr-intl': 'ansi', 'es':'es'},fmt='     {}',foreground=colors[2]),
         fc_separation(),
         widget.Clock(format="%a %d %b %H:%M",fmt='   {}',foreground=colors[2]),
         fc_separation(l=1),
@@ -388,7 +391,7 @@ from libqtile.config import Screen
 def status_bar(widgets):
     return bar.Bar(widgets, 38,
             background=colors[0],
-            border_width=1)
+            border_width=0)
 
 screens = [
     Screen(
@@ -482,10 +485,6 @@ gsettings set org.gnome.desktop.interface icon-theme 'Papirus' &
 gsettings set org.gnome.desktop.interface font-name 'Noto Sans 8' &
 
 ```
-## images
-
-![desktop rofi launcher](/images/1747515916_grim.png)
 
 
-![desktop cava](/images/1747515902_grim.png)
 
