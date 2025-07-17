@@ -65,6 +65,7 @@ alias l...='eza -al --color=always --group-directories-first ../../../' # ls on 
 alias play="mpv --shuffle --no-video"
 # wl-randr
 alias wlrandr="wlr-randr --output DP-1 --mode 1920x1080@74.973000"
+alias grepe="grep -rn"  
 # cp verbose
 alias cp="cp -v"
 # rm verbose
@@ -113,6 +114,7 @@ alias prtin="prt-get install"
 alias prtup="prt-get update -fr"
 alias prtid="prt-get depinst -g"
 alias prtdep="prt-get depends"
+alias prtrdep="prt-get dependent"
 alias prtinfo="prt-get info"
 alias prtrem="prt-get remove"
 # pkgutils
