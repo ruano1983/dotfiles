@@ -25,5 +25,3 @@ I also offer some custom color themes for vim nano rofi, vifm and most important
 ![desktop](/images/1752792002_grim.png)
 
 ![desktop rofi](/images/1752792046_grim.png)
-
-![desktop cava](/images/1747515902_grim.png)
