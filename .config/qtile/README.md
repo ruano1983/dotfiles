@@ -6,7 +6,7 @@ My environment uses Wayland for the Qtile session.
 My setup uses apps like [rofi](https://github.com/lbonn/rofi?tab=readme-ov-file#wayland-support), [alacrity](https://alacritty.org/), [swaybg](https://github.com/swaywm/swaybg), [grim](https://gitlab.freedesktop.org/emersion/grim), [vifm](https://vifm.info/), [ranger](https://ranger.github.io/), [bottom](https://github.com/ClementTsang/bottom), [kanshi](https://gitlab.freedesktop.org/emersion/kanshi).
 make sure you have them available, you can still substitute them.
 
-![desktop qtile](/images/1747515897_grim.png)
+![desktop qtile](/images/1753209422_grim.png)
 
 My Qtile design has a status bar with real-time information widgets on the right and workspaces on the left, including the name of the highlighted app. The taskbar has a simple, attractive black background, and the active workspace is colored with the color theme's accent.
 The font I use is Ubuntu Bold. Make sure you have it on your system.
