@@ -6,7 +6,7 @@ My environment uses Wayland for the Qtile session.
 My setup uses apps like [rofi](https://github.com/lbonn/rofi?tab=readme-ov-file#wayland-support), [alacrity](https://alacritty.org/), [swaybg](https://github.com/swaywm/swaybg), [grim](https://gitlab.freedesktop.org/emersion/grim), [vifm](https://vifm.info/), [ranger](https://ranger.github.io/), [bottom](https://github.com/ClementTsang/bottom), [kanshi](https://gitlab.freedesktop.org/emersion/kanshi).
 make sure you have them available, you can still substitute them.
 
-![desktop qtile](/images/1747515897_grim.png)
+![desktop qtile](/images/1753209422_grim.png)
 
 My Qtile design has a status bar with real-time information widgets on the right and workspaces on the left, including the name of the highlighted app. The taskbar has a simple, attractive black background, and the active workspace is colored with the color theme's accent.
 The font I use is Ubuntu Bold. Make sure you have it on your system.
@@ -87,7 +87,7 @@ myChat = "Telegram"
 ```
 ### Wallpaper
 ```
-wallpaper = os.path.join(os.path.expanduser('~/Imágenes/wallpapers/'), 'Naturaleza/pexels-sumit-shinde-251784-763699.jpg')
+wallpaper = os.path.join(os.path.expanduser('~/Imágenes/wallpapers/'), 'verano/generic-tropical-beach-serene-waves-summer-desktop-wallpaper.jpg')
 ```
 ### Rofi
 ```
@@ -121,16 +121,14 @@ from libqtile.config import Group, Match
 from .keys import *
 
 groups = [
-    Group("1", label="1", layout='monadtall'),
-    Group("2", label="2", layout='max'),
-    Group("3", label="3", layout='max'),
-    Group("4", label="4", layout='monadtall'),
-    Group("5", label="5", layout='monadtall'),
-    Group("6", label="6", layout='monadtall'),
-    Group("7", label="7", layout='monadtall'),
-    Group("8", label="8", layout='monadtall'),
-    Group("9", label="9", layout='monadtall'),
-    Group("0", label="0", layout='monadtall'),
+    Group("1", label="dev", layout='monadtall'),
+    Group("2", label="web", layout='max'),
+    Group("3", label="chat", layout='max'),
+    Group("4", label="media", layout='monadtall'),
+    Group("5", label="file", layout='monadtall'),
+    Group("6", label="term", layout='monadtall'),
+    Group("7", label="gfx", layout='monadtall'),
+    Group("8", label="misc", layout='monadtall'),
 
 ]
 ```
@@ -326,7 +324,7 @@ def fc_separation(l=10):
 def run_btm():
     qtile.spawn(myTerm + ' -e btm')
 def run_blueman():
-    qtile.spawn("blueman-manager")
+    qtile.spawn(myTerm + ' -e bluetui')
 ```
 ### Default widget options
 ```
@@ -342,38 +340,83 @@ extension_defaults = widget_defaults.copy()
 ```
 primary_widgets = [
         fc_separation(l=1),
-        widget.GroupBox(highlight_method='block',rounded=False,this_current_screen_border=colors[1],
-                        inactive=colors[3],active=colors[4],foreground=colors[2],
-                        padding=6,spacing=4,borderwidth=4,
+        widget.GroupBox(highlight_method='block',
+                        rounded=True,
+                        this_current_screen_border=colors[1],
+                        inactive=colors[3],
+                        active=colors[4],
+                        foreground=colors[2],
+                        padding=7,
+                        spacing=2,
+                        borderwidth=4,
                         block_highlight_text_color=colors[0],
                         disable_drag=True,
                         hide_unused=True
                         ),
-        widget.CurrentLayout(icon_first=True,padding=4,scale=0.50),
+        widget.TextBox(
+                 text = '|',
+                 foreground = colors[2],
+                 padding = 6,
+                 ),
+
+        widget.CurrentLayout(icon_first=True,padding=6,scale=0.50),
         widget.CurrentLayout(),
         fc_separation(l=6),
         widget.Prompt(prompt="Run "),
-        widget.WindowName(max_chars=73,fmt='󰖲  {}'),
-        widget.Prompt(prompt="Run "),
-        widget.Bluetooth(default_text='{num_connected_devices} connected',foreground=colors[2],fmt='  {}',mouse_callbacks = {'Button1': lambda: run_blueman()}),
+        widget.WindowName(max_chars=67,
+                          fmt='󰖲  {}'),
+        widget.Bluetooth(default_text='{num_connected_devices} connected',
+                         foreground=colors[2],
+                         fmt='  {}',
+                         mouse_callbacks = {'Button1': lambda: run_blueman()}),
         fc_separation(),
-        widget.Wlan(format='{percent:2.0%}',fmt='󰖩   {}',update_interval=10),
+        widget.Wlan(format='{percent:2.0%}',
+                    fmt='󰖩   {}',
+                    update_interval=10),
         fc_separation(l=6),
-        widget.CPU(format=' {freq_current}GHz {load_percent}%',fmt = '  Cpu: {}',foreground=colors[2],update_interval=1,mouse_callbacks = {'Button1': lambda: run_btm()}),
+        widget.CPU(format=' {freq_current}GHz {load_percent}%',
+                   fmt = '  Cpu: {}',
+                   foreground=colors[2],
+                   update_interval=1,
+                   mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
-        widget.ThermalSensor(tag_sensor='Tccd1',threshold=85.0,fmt='  Temp:  {}',foreground=colors[2],foreground_alert='f0614e',mouse_callbacks = {'Button1': lambda: run_btm()}),
+        widget.ThermalSensor(tag_sensor='Tccd1',
+                             threshold=85.0,
+                             fmt='  Temp:  {}',
+                             foreground=colors[2],
+                             foreground_alert='f0614e',
+                             mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
-        widget.Memory(format='{MemUsed: .1f}{mm}', fmt = '🖥️  MemUsed: {}',measure_mem='G',foreground=colors[2],mouse_callbacks = {'Button1': lambda: run_btm()}),
+        widget.Memory(format='{MemUsed: .1f}{mm}',
+                      fmt = '🖥️  Mem: {}',
+                      measure_mem='G',
+                      foreground=colors[2],
+                      mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
-        widget.GenPollCommand(cmd="uname -r", shell=True,update_interval=None,fmt = '   Linux:  {}',foreground=colors[2]),
+        widget.GenPollCommand(cmd="uname -r",
+                              shell=True,update_interval=None,
+                              fmt = '   Linux:  {}',
+                              foreground=colors[2]),
         fc_separation(),
-        widget.DF(visible_on_warn=False,format='{r:.0f}{m}',fmt = '🖴  Disk:  {}',partition='/',measure='G',foreground=colors[2], mouse_callbacks = {'Button1': lambda: run_btm()}),
+        widget.DF(visible_on_warn=False,format='{r:.0f}{m}',
+                  fmt = '🖴  Disk:  {}',
+                  partition='/',
+                  measure='G',
+                  foreground=colors[2],
+                  mouse_callbacks = {'Button1': lambda: run_btm()}),
         fc_separation(),
-        widget.PulseVolume(mute_format="mute",step=4,fmt='   Vol:  {}',foreground=colors[2]),
+        widget.PulseVolume(mute_format="mute",
+                           step=4,fmt='   Vol:  {}',
+                           foreground=colors[2]),
         fc_separation(),
-        widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es'],display_map={ 'us altgr-intl': 'ansi', 'es':'es'},fmt='     {}',foreground=colors[2]),
+        widget.KeyboardLayout(configured_keyboards=['us altgr-intl','es'],
+                              display_map={ 'us altgr-intl': 'ansi', 'es':'es'},
+                              fmt='     {}',
+                              foreground=colors[2]),
         fc_separation(),
-        widget.Clock(format="%a %d %b %H:%M",fmt='   {}',foreground=colors[2]),
+        widget.Clock(format="%a %d %b %H:%M",
+                     fmt='   {}',
+                     foreground=colors[2]),
         fc_separation(l=1),
 ]
 ```
@@ -389,7 +432,7 @@ from libqtile.config import Screen
 
 # bar
 def status_bar(widgets):
-    return bar.Bar(widgets, 38,
+    return bar.Bar(widgets, 36,
             background=colors[0],
             border_width=0)
 
@@ -454,7 +497,7 @@ This file contains all the color schemes.
 
 ```
 Argyls = [
-    ["#121212" , "#121212"], # bg 
+    ["#161616" , "#161616"], # bg 
     ["#2fa6c7" , "#2fa6c7"], # blue
     ["#dfdfdf" , "#dfdfdf"], # fg
     ["#383838" , "#383838"], # black
