@@ -3,16 +3,14 @@ from libqtile.config import Group, Match
 from .keys import *
 
 groups = [
-    Group("1", label="1", layout='monadtall'),
-    Group("2", label="2", layout='max'),
-    Group("3", label="3", layout='max'),
-    Group("4", label="4", layout='monadtall'),
-    Group("5", label="5", layout='monadtall'),
-    Group("6", label="6", layout='monadtall'),
-    Group("7", label="7", layout='monadtall'),
-    Group("8", label="8", layout='monadtall'),
-    Group("9", label="9", layout='monadtall'),
-    Group("0", label="0", layout='monadtall'),
+    Group("1", label="dev", layout='monadtall'),
+    Group("2", label="web", layout='max'),
+    Group("3", label="chat", layout='max'),
+    Group("4", label="media", layout='monadtall'),
+    Group("5", label="file", layout='monadtall'),
+    Group("6", label="term", layout='monadtall'),
+    Group("7", label="gfx", layout='monadtall'),
+    Group("8", label="misc", layout='monadtall'),
 
 ]
 

@@ -1,9 +1,16 @@
 Argyls = [
-    ["#121212" , "#121212"], # bg 
+    ["#161616" , "#161616"], # bg 
     ["#2fa6c7" , "#2fa6c7"], # blue
     ["#dfdfdf" , "#dfdfdf"], # fg
-    ["#383838" , "#383838"], # black
-    ["#F8F8F2" , "#F8F8F2"]  # white
+    ["#202020" , "#202020"], # black
+    ["#F8F8F2" , "#F8F8F2"], # white
+    ]
+gruvbox = [
+    ["#282828" , "#282828"], # bg 
+    ["#d79921" , "#d79921"], # red
+    ["#ebdbb2" , "#ebdbb2"], # fg
+    ["#202020" , "#202020"], # black
+    ["#ebdbb2" , "#ebdbb2"]  # white
     ]
 
 Nube = [
@@ -14,13 +21,12 @@ Nube = [
     ["#F8F8F2" , "#F8F8F2"]  # white
     ]
 
-
 Cayn = [
     ["#121212" , "#121212"], # bg
     ["#00acc1" , "#00acc1"], # blue
     ["#dfdfdf" , "#dfdfdf"], # fg
     ["#383838" , "#383838"], # black
-    ["#F8F8F2" , "#F8F8F2"] # white
+    ["#F8F8F2" , "#F8F8F2"]  # white
     ]
 
 Blue = [
