@@ -40,7 +40,7 @@ primary_widgets = [
                  padding = 6,
                  ),
 
-        widget.CurrentLayout(icon_first=True,padding=6,scale=0.50),
+        widget.CurrentLayout(mode="icon",padding=6,scale=0.50),
         widget.CurrentLayout(),
         fc_separation(l=6),
         widget.Prompt(prompt="Run "),
