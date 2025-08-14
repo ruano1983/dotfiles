@@ -8,7 +8,7 @@ end
 set -g fish_prompt_pwd_dir_length 80
 # fish path
 set -e fish_user_paths
-set -U fish_user_paths  $HOME/.local/bin  $HOME/Applications  $HOME/Aplicaciones/Telegram $HOME/scripts  $fish_user_paths
+set -U fish_user_paths  $HOME/.local/bin  $HOME/Applications  $HOME/Aplicaciones/yt-dlp $HOME/Aplicaciones/Telegram $HOME/scripts  $fish_user_paths
 set fish_greeting	    # welcome message
 set TERM "xterm-256color"   # getting proper colors
 set EDITOR "vim"	    # $EDITOR use vim
@@ -94,7 +94,7 @@ alias mozdown="sudo python3 ~/scripts/python/mozilla-download.py"
 # dowload brave
 alias bravedown="fish ~/scripts/download_brave.fish ~/Aplicaciones"
 # rename files 
-alias renove="python3 ~/scripts/python/rename.py"
+alias renove="python3 ~/scripts/python/renove.py"
 # clean ports (.md5sum .footprint)
 alias cleanports="fish ~/scripts/clean_ports.fish"
 # build apps script
@@ -115,12 +115,15 @@ alias prtup="prt-get update -fr"
 alias prtid="prt-get depinst -g"
 alias prtdep="prt-get depends"
 alias prtrdep="prt-get dependent"
+alias prtdept="prt-get deptree"
 alias prtinfo="prt-get info"
 alias prtrem="prt-get remove"
 # pkgutils
 alias makepkg="fakeroot pkgmk -d"
 alias pkgin="pkgadd"
 alias pkgup="pkgadd -u"
+# yt-dlp yotutube
+alias yt="yt-dlp -x --audio-format mp3 --audio-quality 0"
 starship init fish | source
 #if [ (tty) = "/dev/tty1" ]
 #   exec dbus-run-session qtile start -b wayland

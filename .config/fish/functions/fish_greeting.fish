@@ -1,5 +1,5 @@
 function fish_greeting
-    echo Hello friend!
-    echo Today is (set_color yellow; date "+%A %d %b %Y %T";set_color normal) and this machine is called (set_color yellow)$hostname (set_color normal) with the kernel  (set_color yellow; uname -r)
+    echo Hello $USER!
+    echo Today is (set_color yellow; date "+%A %d %B";set_color normal) and this machine is called (set_color yellow)$hostname (set_color normal) with the kernel  (set_color yellow; uname -r) (set_color normal)
     colorscript -e 45
 end
