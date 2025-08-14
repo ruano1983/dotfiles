@@ -29,6 +29,8 @@ alias playcero="mpv --no-video 'https://atres-live.ondacero.es/live/ondacero/bit
 alias play24h="mpv 'https://ztnr.rtve.es/ztnr/1694255.m3u8'"
 alias playgol="mpv 'https://spa-ha-p004.cdn.masmediatv.es/SVoriginOperatorEdge/smil:5_HD.smil/manifest.m3u8'"
 alias playla1="mpv 'https://ztnr.rtve.es/ztnr/1688877.m3u8'"
+alias playla2="mpv 'https://rtvelivestream.rtve.es/rtvesec/la2/la2_main_dvr.m3u8'"
+alias playdeporte="mpv 'https://ztnr.rtve.es/ztnr/1712295.m3u8'"
 alias playmadridtv="mpv 'https://telemadrid-23-secure2.akamaized.net/master.m3u8'"
 # tar compression
 alias tarx="tar xvf"
