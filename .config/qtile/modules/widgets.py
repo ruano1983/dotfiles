@@ -3,10 +3,8 @@ from libqtile import qtile
 from .theme import *
 from .globals import *
 # functions
-def fc_separation(l=10):
+def fc_separation(l=11):
     return  widget.Spacer(length=l)
-#def fc_textbox(icon,p=6,color=colors[2]):
-    #return widget.TextBox(fontsize=13,padding=p,text=icon,foreground=color)
 def run_btm():
     qtile.spawn(myTerm + ' -e btm')
 def run_blueman():
@@ -21,7 +19,8 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 primary_widgets = [
         fc_separation(l=1),
-        widget.GroupBox(highlight_method='block',
+        widget.Image(filename='/home/ivanruano83/diseño/frikios/frikios_simple.svg',margin=4),
+        widget.GroupBox(highlight_method='text',
                         rounded=True,
                         this_current_screen_border=colors[1],
                         inactive=colors[3],
@@ -32,7 +31,7 @@ primary_widgets = [
                         borderwidth=4,
                         block_highlight_text_color=colors[0],
                         disable_drag=True,
-                        hide_unused=True
+                        hide_unused=False
                         ),
         widget.TextBox(
                  text = '|',
@@ -40,21 +39,19 @@ primary_widgets = [
                  padding = 6,
                  ),
 
-        widget.CurrentLayout(mode="icon",padding=6,scale=0.50),
-        widget.CurrentLayout(),
-        fc_separation(l=6),
-        widget.Prompt(prompt="Run "),
-        widget.WindowName(max_chars=67,
-                          fmt='󰖲  {}'),
-        widget.Bluetooth(default_text='{num_connected_devices} connected',
+        widget.CurrentLayout(foreground=colors[2]),
+        widget.Spacer(),
+        widget.Bluetooth(default_text='{num_connected_devices} connected',device_format='{name}{battery_level} [{symbol}]',
                          foreground=colors[2],
                          fmt='  {}',
                          mouse_callbacks = {'Button1': lambda: run_blueman()}),
         fc_separation(),
         widget.Wlan(format='{percent:2.0%}',
+                    foreground=colors[2],
                     fmt='󰖩   {}',
+                    interface = 'wlp5s0',
                     update_interval=10),
-        fc_separation(l=6),
+        fc_separation(),
         widget.CPU(format=' {freq_current}GHz {load_percent}%',
                    fmt = '  Cpu: {}',
                    foreground=colors[2],

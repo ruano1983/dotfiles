@@ -108,7 +108,7 @@ keys = [
     # Reload config
     Key([mod, "shift"], "c", lazy.reload_config(), desc="Reload the config"),
     # prompt run widget
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "r", lazy.spawn(bemenu), desc="bemenu run"),
 ]
 # Add key bindings to switch VTs in Wayland.
 for vt in range(1, 9):
