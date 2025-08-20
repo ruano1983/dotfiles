@@ -1,57 +1,56 @@
 @import "colors/argyls.css";
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Noto Sans, Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    font-family: Ubuntu, Helvetica, Arial, sans-serif;
+    font-size: 13px;
     font-weight: bold;
   }
 
   window#waybar {
     background-color: @background;
-    border-bottom: 0px solid ;
+    /* border-top: 0px solid black ; */
     color: @text;
     transition-property: background-color;
 }
-
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-
 #tags {   
-padding: 0px;
-margin: 0 0px;
+/* border-top: 0px solid black ; */
+border-radius: 0;
 }
-
+#workspaces button, 
 #tags button {
     background-color: @background;
+    color: @inactive;
+    border-style: solid;
+    border-color: @background;
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
-    border: none;
-    border-radius: 0;
-    color: #383838;
+    border-width: 4px 2px 4px 2px;
+    padding: 0 6px;
     transition: none;
-    padding: 8px;
-    /* margin: 0 0px;*/
+
 }
+#workspaces button:hover,
 #tags button:hover {
     background: inherit;
     text-shadow: inherit;
 }
 
-#tags button.focused{  
-    background-color: @base;
-    color: @text;
-}
 
+#workspaces button.visible,
 #tags button.occupied{
     color: @text;    
+    background-color: @background;
+}
+#workspaces button.focused,
+#tags button.focused{  
+    background-color: @background;
+    color: @base;
 }
 
-
-
+#bluetooth,
 #disk,
 #clock,
+#language,
 #wireplumber,
 #cpu,
 #memory,
@@ -61,22 +60,17 @@ margin: 0 0px;
  {
     padding: 8px;
     color: @text;
+    background-color: @background;
 }
 
+
+tooltip,
 #window {
-    padding: 8px;
     background-color: @background;
     color: @text;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+    padding-left: 4pt;
+    padding-right: 4pt;
+    opacity: 1.00;
 }
 
 
@@ -87,37 +81,13 @@ margin: 0 0px;
     }
 }
 
+#temperature.critical, 
 #network.disconnected { 
-    background-color: @alert; 
+    color: @alert;
 }
 
-
-#wireplumber.muted {
-    background-color: @alert;
-}
-
-#temperature.critical { 
-    background-color: @alert; 
-}
-
-
-#idle_inhibitor {
-    background-color:@background;
-}
-
-#idle_inhibitor.activated {
-    background-color: @alert;
-    color: @text;
-}
-
-#scratchpad {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-	background-color: transparent;
-}
 
 #clock.toltip {
-font-family: Noto Sans;
+font-family: Ubuntu;
+
 }

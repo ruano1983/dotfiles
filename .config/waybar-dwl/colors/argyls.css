@@ -3,6 +3,9 @@
 @define-color background  #121212;
 @define-color focus #2fa6c7;
 @define-color hover #000000;
-@define-color alert #b63625;
+@define-color secundary #f1b213;
+@define-color alert #e66456;
+@define-color inactive #202020;
+
 
 

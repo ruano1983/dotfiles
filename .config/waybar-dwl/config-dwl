@@ -1,0 +1,88 @@
+{   "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 34, // Waybar height (to be removed for auto height)
+    "spacing": 8, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["dwl/tags"],
+    "modules-right": [ "bluetooth" ,"network", "cpu" , "memory" , "temperature" ,  "custom/kernel" , "disk" , "wireplumber" , "clock" ],
+    
+    // Modules configuration
+
+ "dwl/tags": {
+          "num-tags": 9,
+          "tag-labels": [ "", "", "", "", "", "", "", "", "" ],
+          "disable-click": false
+  },
+    
+
+    "bluetooth": {
+	"format": "    {status}",
+	"format-connected": "   {num_connections} connected",
+	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+},
+    "wireplumber": {
+         "format": "   Vol: {volume}%",
+	 "format-muted":"   Vol: Mute",
+         "on-click": "alacritty -e wiremix",	
+         "tooltip-format":"{node_name} {volume}%"
+    },  
+
+   "network": {
+        "interval": 10,
+        "format-wifi": "󰖩   {signalStrength}%", // Icon: wifi
+        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+        "format-disconnected": "󰤭   Disconnected",
+	"family":"ipv4",
+        "tooltip-format": "{essid}: {signalStrength}%\n{ifname}: {ipaddr}"
+    },
+
+    "cpu": {
+        "format": "  Cpu:  {avg_frequency}GHz  {usage}%",
+        "tooltip": true,
+	"on-click":"alacritty -e btm",
+        "interval": 1
+        },
+
+    "memory": {
+        "format": "🖥️  Mem:  {used:0.2f}G", 
+        "tooltip-format":"{used:0.1f}G used out of {total:0.1f}G",
+	"on-click":"alacritty -e btm",
+        "interval": 1
+    },
+
+    "disk": {
+	"interval": 60,
+	"format": "🖴  Disk:  {specific_used:0.1f}G",
+	"unit": "GB",
+	"path": "/",
+	"on-click":"alacritty -e btm"
+    },
+
+   "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp3_input",
+        "format": "  Temp:  {temperatureC}°C",
+	"critical-threshold": 90,
+	"tooltip-format": "Ryzen 5800x {temperatureC}°C",
+	"on-click":"alacritty -e btm",
+        "interval":1
+    },
+
+    "custom/kernel": {
+    "format": "   Linux:  {}",
+    "tooltip-format":"{}",
+    "exec": "uname -r",
+	"tooltip": true,
+	"interval": "once"
+    },
+      
+    "clock":{
+    "tooltip": true,
+    "tooltip-format": "{:%d-%m-%Y}",
+    "locale":"es_ES.UTF-8",
+    "format": "   {:L%a %d %b %H:%M}"
+    },
+}
+
