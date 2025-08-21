@@ -159,11 +159,10 @@ static const Key keys[] = {
 	{ 0,			      XKB_KEY_XF86AudioRaiseVolume,	spawn,         {.v = volumeup} },
 	{ 0,			      XKB_KEY_XF86AudioLowerVolume,	spawn,         {.v = volumedown} },
 	{ 0,			      XKB_KEY_XF86AudioMute,		spawn,          {.v = volumemute} },
-	{ MODKEY|WLR_MODIFIER_CTRL,   XKB_KEY_p,		 spawn,          {.v = poweroff} },
+	{ MODKEY|WLR_MODIFIER_CTRL,   XKB_KEY_s,		 spawn,          {.v = poweroff} },
 	{ MODKEY|WLR_MODIFIER_CTRL,   XKB_KEY_r,		 spawn,          {.v = reboot} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_M,		 spawn,          {.v = rofi} },
 
-	
 	{ MODKEY,                     XKB_KEY_b,          togglebar,      {0} },
 	{ MODKEY,                     XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                     XKB_KEY_k,          focusstack,     {.i = -1} },
