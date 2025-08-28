@@ -81,6 +81,7 @@ alias prtin="prt-get install"
 alias prtup="prt-get update -fr"
 alias prtid="prt-get depinst -g"
 alias prtdep="prt-get depends"
+alias prtrdep="prt-get dependent"
 alias prtinfo="prt-get info"
 alias prtrem="prt-get remove"
 # pkgutils

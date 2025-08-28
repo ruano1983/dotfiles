@@ -39,7 +39,7 @@ BBlue='\033[1;34m'        # Blue
 BPurple='\033[1;35m'      # Purple
 BCyan='\033[1;36m'        # Cyan
 BWhite='\033[1;37m'       # White
-#fish
+fish
 # alacritty
 #PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND}'printf "\033]0;%s@%s:%s\007" "${LOGNAME}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
 # prompt
@@ -54,3 +54,5 @@ echo -e "Today is $BYellow$(date +'%A %d %b %Y %T')\e[0m and this machine is cal
 #colorscript -e 47
 # ~/.bashrc
 eval "$(starship init bash)"
+
+# bun

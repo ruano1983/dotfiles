@@ -1,0 +1,18 @@
+# radiotunes
+alias tuneslatino="mpv --no-video http://prem2.radiotunes.com:80/latinpophits?99fc5648cc8e87d633d28b0b"
+alias tunesdance="mpv --no-video http://prem2.radiotunes.com:80/dancehits?99fc5648cc8e87d633d28b0b"
+alias tunes90="mpv --no-video http://prem2.radiotunes.com:80/hit90s?99fc5648cc8e87d633d28b0b"
+alias tunestop="mpv --no-video http://prem2.radiotunes.com:80/tophits?99fc5648cc8e87d633d28b0b"
+# radio
+alias playcope="mpv --no-video https://net1-cope-rrcast.flumotion.com/cope/net1-low.mp3"
+alias play40p="mpv --no-video https://25653.live.streamtheworld.com/LOS40_SC"
+alias playlaser="mpv --no-video https://23543.live.streamtheworld.com/CADENASER_SC"
+alias playdial="mpv --no-video https://25683.live.streamtheworld.com/CADENADIAL_SC"
+alias playondafuen="mpv --no-video https://radioserver12.profesionalhosting.com/proxy/pkg78581/stream"
+alias playrne="mpv --no-video https://rtvelivestream.akamaized.net/rtvesec/rne/rne_r1_main.m3u8?idasset=1712486"
+alias playcero="mpv --no-video https://atres-live.ondacero.es/live/ondacero/bitrate_1.m3u8"
+# iptv
+alias play24h="mpv https://ztnr.rtve.es/ztnr/1694255.m3u8"
+alias playgol="mpv https://spa-ha-p004.cdn.masmediatv.es/SVoriginOperatorEdge/smil:5_HD.smil/manifest.m3u8"
+alias playla1="mpv https://ztnr.rtve.es/ztnr/1688877.m3u8"
+alias playmadridtv="mpv https://telemadrid-23-secure2.akamaized.net/master.m3u8"
