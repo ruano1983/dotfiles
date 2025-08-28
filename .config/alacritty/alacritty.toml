@@ -1,5 +1,5 @@
 # colors theme
-general.import = ["/home/ivanruano83/.config/alacritty/nube.toml"]
+general.import = ["/home/ivanruano83/.config/alacritty/argyls.toml"]
 
 # cursosr
 [cursor.style]
