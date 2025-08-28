@@ -24,7 +24,7 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-        "sh", "-c", "swaybg -m fill -i /home/ivanruano83/Imágenes/wallpapers/verano/wp11206034-island-summer-wallpapers.jpg", NULL,
+        "sh", "-c", "swaybg -m fill -i /usr/share/wallpapers/frikios/wp11206034-island-summer-wallpapers.jpg", NULL,
 	"sh", "-c", "scripts/autostart.sh", NULL,
 	NULL  /* terminate */
 };
@@ -166,6 +166,8 @@ static const Key keys[] = {
 	{ MODKEY,                     XKB_KEY_b,          togglebar,      {0} },
 	{ MODKEY,                     XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                     XKB_KEY_k,          focusstack,     {.i = -1} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_J,	  movestack,	  {.i = -1 } },
+	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_K,	  movestack,	  {.i = +1 } },
 	{ MODKEY,                     XKB_KEY_i,          incnmaster,     {.i = +1} },
 	{ MODKEY,                     XKB_KEY_d,          incnmaster,     {.i = -1} },
 	{ MODKEY,                     XKB_KEY_h,          setmfact,       {.f = -0.05f} },
