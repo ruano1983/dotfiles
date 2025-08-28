@@ -62,12 +62,12 @@
     },
 
    "temperature": {
-        "hwmon-path": "/sys/class/hwmon/hwmon3/temp3_input",
-        "format": "  Temp:  {temperatureC}°C",
-	"critical-threshold": 90,
-	"tooltip-format": "Ryzen 5800x {temperatureC}°C",
-	"on-click":"alacritty -e btm",
-        "interval":1
+       "hwmon-path": "/dev/cpu_temp",
+       "format": "  Temp:  {temperatureC}°C",
+       "critical-threshold": 90,
+       "tooltip-format": "Ryzen 5600xt {temperatureC}°C",
+       "on-click":"alacritty -e btm",
+       "interval":1
     },
 
     "custom/kernel": {
