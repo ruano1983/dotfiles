@@ -10,10 +10,10 @@ volume_mute() {
 	wpctl set-mute  @DEFAULT_SINK@ toggle
 }
 power_off() {
-	loginctl poweroff
+	loginctl  poweroff
 }
 power_reboot() {
-	loginctl reboot
+	loginctl  reboot
 }
 pause_player() {
 	playerctl play-pause
@@ -25,6 +25,11 @@ previous_player() {
 	playerctl previous
 }
 print_screenshot() {
-	grim $(xdg-user-dir PICTURES)/capturas/$(date +'%s_grim.png')
+	capture="$(xdg-user-dir PICTURES)/capturas/$(date +'%s_grim.png')"
+	grim $capture
+	notify-send -i /usr/share/icons/Papirus-Dark/32x32/status/messagebox_info.svg "Screenshot created!" "$capture"
+}
+runbmenu() {
+	bemenu-run -i -l 12 --fb '#121212' --ff '#dfdfdf' --nb '#121212' --nf '#dfdfdf' --tb '#121212' --hb '#2fa6c7' --tf '#2fa6c7' --hf '#000000' --af '#dfdfdf' --sb '#2fa6c7' --fn 'Ubuntu bold 10' -H 18 -C -b  -p Run
 }
 $1
