@@ -24,7 +24,6 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-        "sh", "-c", "swaybg -m fill -i /usr/share/wallpapers/frikios/wp11206034-island-summer-wallpapers.jpg", NULL,
 	"sh", "-c", "scripts/autostart.sh", NULL,
 	NULL  /* terminate */
 };
@@ -136,6 +135,7 @@ static const char *printcmd[] = { "scripts/wl-script","print_screenshot", NULL }
 static const char *packagescmd[] = { "alacritty","-e","vifm","/build/ports","/build/ports", NULL };
 static const char *configcmd[] = { "alacritty","-e","ranger",".config", NULL };
 static const char *rangercmd[] = { "alacritty","-e","ranger", NULL };
+static const char *brootcmd[] = { "alacritty","-e","broot", NULL };
 static const char *volumeup[] = { "scripts/wl-script","volume_up", NULL };
 static const char *volumedown[] = { "scripts/wl-script","volume_down", NULL };
 static const char *volumemute[] = { "scripts/wl-script","volume_mute", NULL };
@@ -155,6 +155,7 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_P,		 spawn,          {.v = packagescmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_C,		 spawn,          {.v = configcmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_H,		 spawn,          {.v = rangercmd} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_B,		 spawn,          {.v = brootcmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_V,		 spawn,          {.v = pulsecmd} },
 	{ 0,			      XKB_KEY_XF86AudioRaiseVolume,	spawn,         {.v = volumeup} },
 	{ 0,			      XKB_KEY_XF86AudioLowerVolume,	spawn,         {.v = volumedown} },
