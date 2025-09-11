@@ -8,7 +8,7 @@ end
 set -g fish_prompt_pwd_dir_length 80
 # fish path
 set -e fish_user_paths
-set -U fish_user_paths  $HOME/.local/bin  $HOME/Applications  $HOME/Aplicaciones/yt-dlp $HOME/Aplicaciones/Telegram $HOME/scripts  $fish_user_paths
+set -U fish_user_paths  $HOME/.local/bin  $HOME/Applications  $HOME/home/ivanruano83/.cargo/bin $HOME/Aplicaciones/yt-dlp $HOME/Aplicaciones/Telegram $HOME/scripts  $fish_user_paths
 set fish_greeting	    # welcome message
 set TERM "xterm-256color"   # getting proper colors
 set EDITOR "vim"	    # $EDITOR use vim
@@ -25,6 +25,8 @@ alias playdial="mpv --no-video 'https://25683.live.streamtheworld.com/CADENADIAL
 alias playondafuen="mpv --no-video 'https://radioserver12.profesionalhosting.com/proxy/pkg78581/stream'"
 alias playrne="mpv --no-video 'https://rtvelivestream.akamaized.net/rtvesec/rne/rne_r1_main.m3u8?idasset=1712486'"
 alias playcero="mpv --no-video 'https://atres-live.ondacero.es/live/ondacero/bitrate_1.m3u8'"
+alias playeuropa="mpv --no-video 'https://28573.live.streamtheworld.com/EFMAAC/HLS/80a407b6-5ad5-4416-9202-0bbf6a3a7b75/0/playlist.m3u8'"
+alias playmarca="mpv --no-video 'https://19993.live.streamtheworld.com/RADIOMARCA_NACIONAL_SC'"
 # iptv
 alias play24h="mpv 'https://ztnr.rtve.es/ztnr/1694255.m3u8'"
 alias playgol="mpv 'https://spa-ha-p004.cdn.masmediatv.es/SVoriginOperatorEdge/smil:5_HD.smil/manifest.m3u8'"
@@ -32,6 +34,7 @@ alias playla1="mpv 'https://ztnr.rtve.es/ztnr/1688877.m3u8'"
 alias playla2="mpv 'https://rtvelivestream.rtve.es/rtvesec/la2/la2_main_dvr.m3u8'"
 alias playdeporte="mpv 'https://ztnr.rtve.es/ztnr/1712295.m3u8'"
 alias playmadridtv="mpv 'https://telemadrid-23-secure2.akamaized.net/master.m3u8'"
+alias playclean="mpv 'https://ztnr.rtve.es/ztnr/5466990.m3u8'"
 # tar compression
 alias tarx="tar xvf"
 alias tarc="tar cvJf" 
@@ -63,6 +66,8 @@ alias lt='eza -aT --color=always --group-directories-first' # tree listing
 alias l.='eza -al --color=always --group-directories-first ../' # ls on the PARENT directory
 alias l..='eza -al --color=always --group-directories-first ../../' # ls on directory 2 levels up
 alias l...='eza -al --color=always --group-directories-first ../../../' # ls on directory 3 levels up
+# gparted
+alias gparted='sudo -sE gparted'
 # mpv play music
 alias play="mpv --shuffle --no-video"
 # wl-randr
