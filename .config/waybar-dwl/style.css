@@ -1,4 +1,4 @@
-@import "colors/argyls.css";
+@import "colors/moon.css";
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: Ubuntu, Helvetica, Arial, sans-serif;
@@ -38,7 +38,7 @@ border-radius: 0;
 
 #workspaces button.visible,
 #tags button.occupied{
-    color: @text;    
+    color: @occupied;    
     background-color: @background;
 }
 #workspaces button.focused,
@@ -73,6 +73,9 @@ tooltip,
     opacity: 1.00;
 }
 
+tooltip label {
+   color: @text;
+}
 
 @keyframes blink {
     to {
