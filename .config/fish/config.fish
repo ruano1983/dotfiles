@@ -1,5 +1,5 @@
 #### My fish shell config 
-## Ivan Ruano Monjas (ivanruanomonjas@protonmail)
+## Ivan Ruano Monjas (ivanruanomonjas@protonmail.com)
 ## https://github.com/ruano1983
 
 if status is-interactive
@@ -109,22 +109,6 @@ alias buildlinux="fish /home/ivanruano83/scripts/build_linux.fish -f /linux -i v
 alias buildqtile="fish ~/scripts/build_qtile.fish -f qtile_env -b wayland"
 alias builddarktable="fish ~/scripts/build_darktable.fish"
 alias buildkde="fish ~/scripts/build_kde.fish"
-# git
-alias pull="git pull"
-alias addall="git add ."
-alias add="git add"
-alias commit="git commit -m"
-alias push="git push"
-alias clone='git clone'
-# prt-get
-alias prtin="prt-get install"
-alias prtup="prt-get update -fr"
-alias prtid="prt-get depinst -g"
-alias prtdep="prt-get depends"
-alias prtrdep="prt-get dependent"
-alias prtdept="prt-get deptree"
-alias prtinfo="prt-get info"
-alias prtrem="prt-get remove"
 # pkgutils
 alias makepkg="fakeroot pkgmk -d"
 alias pkgin="pkgadd"
@@ -132,6 +116,16 @@ alias pkgup="pkgadd -u"
 # yt-dlp yotutube
 alias yt="yt-dlp -x --audio-format mp3 --audio-quality 0"
 starship init fish | source
+# abbr
+# prt-get
+abbr --add prtin  'prt-get install'
+abbr --add prtid  'prt-get depinst -g'
+abbr --add prtdep  'prt-get depends'
+abbr --add prtrdep  'prt-get dependent'
+abbr --add prtdept  'prt-get deptree'
+abbr --add prtup  'prt-get update -fr'
+abbr --add prtrem 'prt-get remove'
+abbr --add prtinfo  'prt-get info'
 #if [ (tty) = "/dev/tty1" ]
 #   exec dbus-run-session qtile start -b wayland
 #end
