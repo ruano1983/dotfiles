@@ -104,7 +104,7 @@ endif
 " Set custom status line look
 set statusline="  %t%= %A %10u:%-7g %15E %20d  "
 " List of color schemes to try (picks the first one supported by the terminal)
-colorscheme dracula
+colorscheme moon
 
 " ------------------------------------------------------------------------------
 " Bookmarks
