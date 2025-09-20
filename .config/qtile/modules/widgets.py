@@ -3,7 +3,7 @@ from libqtile import qtile
 from .theme import *
 from .globals import *
 # functions
-def fc_separation(l=11):
+def fc_separation(l=12):
     return  widget.Spacer(length=l)
 def run_btm():
     qtile.spawn(myTerm + ' -e btm')
@@ -13,21 +13,18 @@ def run_blueman():
 widget_defaults = dict(
     font="Ubuntu Bold",
     fontsize=13,
-    padding=4,
+    padding=6,
     foreground=colors[2],
 )
 extension_defaults = widget_defaults.copy()
 primary_widgets = [
-        fc_separation(l=1),
-        widget.Image(filename='/home/ivanruano83/diseño/frikios/frikios_simple.svg',margin=4),
         widget.GroupBox(highlight_method='text',
-                        rounded=True,
                         this_current_screen_border=colors[1],
                         inactive=colors[3],
-                        active=colors[4],
+                        active=colors[2],
                         foreground=colors[2],
-                        padding=7,
-                        spacing=2,
+                        padding=6,
+                        spacing=4,
                         borderwidth=4,
                         block_highlight_text_color=colors[0],
                         disable_drag=True,
@@ -36,7 +33,8 @@ primary_widgets = [
         widget.TextBox(
                  text = '|',
                  foreground = colors[2],
-                 padding = 6,
+                 padding = 4,
+                 fontsize = 14,
                  ),
 
         widget.CurrentLayout(foreground=colors[2]),
@@ -49,7 +47,7 @@ primary_widgets = [
         widget.Wlan(format='{percent:2.0%}',
                     foreground=colors[2],
                     fmt='󰖩   {}',
-                    interface = 'wlp5s0',
+                    interface = 'wlp4s0',
                     update_interval=10),
         fc_separation(),
         widget.CPU(format=' {freq_current}GHz {load_percent}%',
@@ -76,7 +74,7 @@ primary_widgets = [
                               fmt = '   Linux:  {}',
                               foreground=colors[2]),
         fc_separation(),
-        widget.DF(visible_on_warn=False,format='{r:.0f}{m}',
+        widget.DF(visible_on_warn=False,format='{r:.1f}{m}',
                   fmt = '🖴  Disk:  {}',
                   partition='/',
                   measure='G',
@@ -95,5 +93,5 @@ primary_widgets = [
         widget.Clock(format="%a %d %b %H:%M",
                      fmt='   {}',
                      foreground=colors[2]),
-        fc_separation(l=1),
+        fc_separation(l=4),
 ]

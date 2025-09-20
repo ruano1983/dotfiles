@@ -52,8 +52,6 @@ keys = [
     Key([mod, "shift"],"Return",lazy.layout.toggle_split(),desc="Toggle between split and unsplit sides of stack"),
     # Rofi
     Key([mod, "shift"], "m",  lazy.spawn(rofi), desc="Launch rofi"),
-    # power menu
-    Key([mod , "shift"], "p", lazy.spawn(power), desc="Launch rofi"),
     # pavucontrol
     Key([mod , "shift"], "v", lazy.spawn("pavucontrol"), desc="Launch pavucontrol"),
     # Terminal
@@ -76,7 +74,7 @@ keys = [
     # screenshot
     Key([],"print", lazy.spawn("wl-script print_screenshot"),desc="Screenshot"),
     # keychord file manager 
-    KeyChord([mod],"v", [
+    KeyChord([mod],"f", [
      # vifm (ports)
     Key([] ,"p", lazy.spawn(myTerm + ' -e '+ myfm[2] + ' /build/ports /build/ports'),desc="Launch vifm"),
     # ranger-fm (home)
@@ -85,9 +83,11 @@ keys = [
     Key([] ,"c", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' .config'),desc="Launch ranger-fm"),
     # ranger-fm (scripts)
     Key([] ,"s", lazy.spawn(myTerm + ' -e '+ myfm[1] + ' scripts'),desc="Launch ranger-fm"),
+    # broot
+    Key([] ,"b", lazy.spawn(myTerm + ' -e '+ myfm[3]),desc="Launch broot"),
     ]),
     # exit qtile
-    Key([mod], "q", lazy.shutdown(), desc="quit qtile"),
+    Key([mod , "shift"], "q", lazy.shutdown(), desc="quit qtile"),
     # keychord power
     KeyChord([mod],"p", [
     ### shutdown 
@@ -102,13 +102,13 @@ keys = [
     # change layout
     Key([mod], "t", change_layout(), desc="Change layout"),
     # Fullscreen
-    Key([mod], "f", maximize_by_switching_layout(),lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
+    Key([mod], "e", maximize_by_switching_layout(),lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
     # Tile off on
     Key([mod], "space", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     # Reload config
     Key([mod, "shift"], "c", lazy.reload_config(), desc="Reload the config"),
     # prompt run widget
-    Key([mod], "r", lazy.spawn(bemenu), desc="bemenu run"),
+    Key([mod], "r", lazy.spawn("wl-script runbmenu"), desc="bemenu run"),
 ]
 # Add key bindings to switch VTs in Wayland.
 for vt in range(1, 9):

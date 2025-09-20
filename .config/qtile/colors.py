@@ -1,7 +1,15 @@
+Moon = [
+    ["#121212" , "#121212"], # background
+    ["#207599" , "#207599"], # primary
+    ["#f7f2b8" , "#f7f2b8"], # text
+    ["#202020" , "#202020"], # black
+    ["#F8F8F2" , "#F8F8F2"], # white
+    ]
+
 Argyls = [
-    ["#161616" , "#161616"], # bg 
-    ["#2fa6c7" , "#2fa6c7"], # blue
-    ["#dfdfdf" , "#dfdfdf"], # fg
+    ["#161616" , "#161616"], # background
+    ["#2fa6c7" , "#2fa6c7"], # primary
+    ["#dfdfdf" , "#dfdfdf"], # text
     ["#202020" , "#202020"], # black
     ["#F8F8F2" , "#F8F8F2"], # white
     ]
