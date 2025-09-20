@@ -1,0 +1,80 @@
+skin: {
+    default: "#f7f2b8 Bold"
+    tree: "#a87d0f Bold"
+    parent: "#f7f2b8 Bold"
+    file: "#f7f2b8 Bold"
+    directory: "#207599 Bold"
+    exe: Green Bold
+    link: Magenta Bold
+    pruning: "#f7f2b8 Italic"
+    perm__: gray(5) None
+    perm_r: ansi(94) None
+    perm_w: ansi(132) None
+    perm_x: ansi(65) None
+    owner: ansi(138) None
+    group: ansi(131) None
+    count: ansi(136) gray(3)
+    dates: ansi(66) None
+    sparse: ansi(214) None
+    content_extract: ansi(29) None
+    content_match: ansi(34) None
+    device_id_major: ansi(138) None
+    device_id_sep: ansi(102) None
+    device_id_minor: ansi(138) None
+    git_branch: ansi(229) None
+    git_insertions: ansi(28) None
+    git_deletions: ansi(160) None
+    git_status_current: gray(5) None
+    git_status_modified: ansi(28) None
+    git_status_new: ansi(94) None Bold
+    git_status_ignored: gray(17) None
+    git_status_conflicted: ansi(88) None
+    git_status_other: ansi(88) None
+    selected_line: None #202020 / None #202020
+    char_match: Yellow None
+    file_error: Red None
+    flag_label: "#f7f2b8 Bold"
+    flag_value: "#f7f2b8 Bold"
+    input: "#f7f2b8 None"
+    status_error: "#f7f2b8 #9a390c Bold"
+    status_job: "#a87d0f #202020 Bold"
+    status_normal: "#f7f2b8 #202020"
+    status_italic: "#a87d0f #202020 italic"
+    status_bold: "#a87d0f #202020 Bold" 
+    status_code: "#a87d0f #202020" 
+    status_ellipsis: gray(19) gray(1) / gray(2) gray(2)
+    purpose_normal: gray(20) gray(2)
+    purpose_italic: ansi(178) gray(2)
+    purpose_bold: ansi(178) gray(2) Bold
+    purpose_ellipsis: gray(20) gray(2)
+    scrollbar_track: "#a87d0f  None"
+    scrollbar_thumb: "#f7f2b8 None"
+    help_paragraph: "#f7f2b8 None"
+    help_bold: "#a87d0f Bold"
+    help_italic: "#a87d0f italic"
+    help_code: "#a87d0f #202020"
+    help_headers: "#a87d0f Bold"
+    help_table_border: "#202020 None"
+    preview_title: gray(23) None / gray(21) None
+    preview: gray(20) gray(1) / gray(18) gray(2)
+    preview_separator: ansi(94) None / gray(3) None
+    preview_line_number: gray(12) gray(3)
+    preview_match: None ansi(29)
+    hex_null: gray(11) None
+    hex_ascii_graphic: gray(18) None
+    hex_ascii_whitespace: ansi(143) None
+    hex_ascii_other: ansi(215) None
+    hex_non_ascii: ansi(167) None
+    staging_area_title: gray(22) None / gray(20) None
+    mode_command_mark: gray(5) ansi(204) Bold
+    good_to_bad_0: ansi(28)
+    good_to_bad_1: ansi(29)
+    good_to_bad_2: ansi(29)
+    good_to_bad_3: ansi(29)
+    good_to_bad_4: ansi(29)
+    good_to_bad_5: ansi(100)
+    good_to_bad_6: ansi(136)
+    good_to_bad_7: ansi(172)
+    good_to_bad_8: ansi(166)
+    good_to_bad_9: ansi(196)
+}
