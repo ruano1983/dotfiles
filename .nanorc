@@ -9,8 +9,8 @@ set regexp
 set linenumbers
 set minibar
 set numbercolor  blue
-set minicolor  blue
-set keycolor blue
+set minicolor  yellow
+set keycolor yellow
 include "/usr/share/nano/*.nanorc"
 bind ^X cut main
 bind ^Y copy main
