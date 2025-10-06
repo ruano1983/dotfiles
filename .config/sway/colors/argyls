@@ -1,6 +1,6 @@
 set $base #2fa6c7
 set $base_background #2fa6c7
-set $text1 #ffffff
+set $foreground #dfdfdf
 set $secundary_background #383838
 set $secundary #383838
 set $alert #f1b213

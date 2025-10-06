@@ -1,0 +1,9 @@
+set $base #207599
+set $base_background #207599
+set $foreground #f7f2b8
+set $secundary_background #202020
+set $secundary #202020
+set $alert #a87d0f
+set $alert_background #a87d0f
+set $indicator_main #a87d0f
+set $indicator_secundary #3db36e

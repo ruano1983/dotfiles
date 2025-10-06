@@ -1,7 +1,6 @@
-########### Archivo de configuración de Sway ##############
-include colors/argyls
-## Salida de Video hdmi
-output HDMI-A-1 mode 1920x1080@74.973Hz
+#### sway config ######
+# color theme
+include colors/nevada
 
 # tecla funcion(windows)
 set $mod Mod4
@@ -12,52 +11,55 @@ set $down j
 set $up k
 set $right l
 
-# Terminal predeterminado
+# Terminal
 set $term alacritty
-set $wallpaper ~/Imágenes/wallpapers/arquitectura/pexels-masoodaslami-4448829.jpg
-
-# Power Menu
-bindsym $mod+Shift+p exec ~/.config/rofi/powermenu/type-2/powermenu.sh
-
-# Apps
-bindsym $mod+Shift+y exec MOZ_ENABLE_WAYLAND=1 firefox
-bindsym $mod+Shift+t exec ~/Aplicaciones/session-desktop-linux-x86_64-1.15.2.AppImage 
+# Web broswer 
+set $broswer firefox
+# telegram
+set $chat Telegram
+# Runs Apps
+bindsym $mod+Shift+y exec $broswer
+bindsym $mod+Shift+t exec $chat
 bindsym $mod+Shift+v exec pavucontrol
 bindsym Print exec wl-script print_screenshot
 
-# vifm
-bindsym $mod+Ctrl+p exec alacritty -e vifm /build/ports /build/ports
-bindsym $mod+Ctrl+c exec alacritty -e vifm .config .config
+# File Manager
+bindsym $mod+Shift+p exec alacritty -e vifm /build/ports /build/ports
+bindsym $mod+Shift+c exec alacritty -e ranger
+bindsym $mod+Shift+b exec alacritty -e broot
 
-## Aparencia de sway y fonde de pantalla
-output * bg  $wallpaper fill
+# font
+font pango : Ubuntu bold 13px 
 
-# Tipografia
-font pango : Nono Sans bold 12px 
-
-# espacio de la barra de titulo
+# Title Bar Space
 titlebar_padding 15 8
 
-# Borde de las ventanas
+# Wide window edges
 default_border pixel 1px
 
-# colores
-# class       border      background       text     indicator     child_border
-client.focused $base $base_background $text1 $indicator_main
-client.unfocused $secundary $secundary_background $text1 $indicator_main
-client.focused_inactive $secundary $secundary_background $text1 $indicator_main
-client.urgent $alert $alert_background $text1 $indicator_secundary
+# colors
+# class			border		    background	    text		indicator     child_border
+client.focused		$base		    $base	    $foreground		$indicator_main
+client.unfocused	$secundary	    $secundary	    $foreground		$indicator_main
+client.focused_inactive $secundary	    $secundary	    $foreground		$indicator_main
+client.urgent		$alert		    $alert	    $foreground		$indicator_secundary
 
-# Aplicacions en ejecutar
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# bmenu
+set $menu ~/scripts/wl-script runbmenu
 
-# lanzar al inicio
-exec dbus-update-activation-environment --all
-exec /usr/libexec/pipewire-launch.sh
-exec /usr/libexec/polkit-gnome-authentication-agent-1 
-exec /usr/bin/dunst -config ~/.config/dunst/dunstrc-dwl
+# Autostart
+exec /home/ivanruano83/scripts/autostart.sh
 
-# Ventanas flotantes
+# autotiling
+exec_always autotiling --limit 2
+
+# Firefox siempre en workspace 2
+assign [app_id="firefox"] 2
+
+# Cliente de chat en workspace 3
+assign [app_id="org.telegram.desktop._353c6751dd3837b1ed6ebfcdc83f2de9"] 3
+
+# window floating
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -66,26 +68,25 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [window_role="About"] floating enable
 
-# Atajos de Teclado      
-# lanzar Terminal
+# Terminal
 bindsym $mod+Return exec $term
 
 # Salir de la Aplicación activa
 bindsym $mod+Shift+n kill
 
-# Lanzar launcher
-bindsym $mod+d exec $menu
+# Run bmenu and rofi
+bindsym $mod+r exec $menu
 bindsym $mod+Shift+m exec ~/.config/rofi/launchers/type-2/launcher.sh
 
 floating_modifier $mod normal
 
-# Recargar Configuración
-bindsym $mod+Shift+c reload
+# Reload config
+bindsym $mod+Shift+r reload
 
-# Salir de Sway
-bindsym $mod+Shift+e exec swaymsg exit
+# quit sway
+bindsym $mod+Shift+q exec swaymsg exit
 
-# Control Sonido y multimedia
+# Control audio pipewire
 bindsym XF86AudioRaiseVolume exec ~/scripts/wl-script volume_up 
 bindsym XF86AudioLowerVolume exec  ~/scripts/wl-script volume_down
 bindsym XF86AudioMute exec  ~/scripts/wl-script volume_mute
@@ -93,7 +94,11 @@ bindsym XF86AudioPlay exec  ~/scripts/wl-script pause_player
 bindsym XF86AudioNext exec ~/scripts/wl-script next_player
 bindsym XF86AudioPrev exec ~/scripts/wl-script previous_player
 
-# Moverse entre las aplicaciones
+# power
+bindsym $mod+Ctrl+s exec ~/scripts/wl-script power_off 
+bindsym $mod+Ctrl+r exec  ~/scripts/wl-script power_reboot
+
+# Moving between windows
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
@@ -103,7 +108,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# Mover Aplicaciones 
+# Move window
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
@@ -113,7 +118,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Moverse entre escritorios de trabajo
+# Moving between desktops
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -123,8 +128,10 @@ bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
-# Mover una aplicacion a un escritorio diferente    
+
+#Move a window to another desktop
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
@@ -134,6 +141,7 @@ bindsym $mod+Shift+6 move container to workspace number 6
 bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
 # Switch workspace
 bindsym $mod+Ctrl+$left workspace prev
@@ -145,15 +153,18 @@ bindsym $mod+Ctrl+right workspace next
 bindsym $mod+b splith
 bindsym $mod+v splitv
 
-# Cambiar de estilo flotante o tiling
-bindsym $mod+s layout stacking
+# Change layout
+# Tabbed (ventanas en pestañas)
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# Stacked (ventanas apiladas)
+bindsym $mod+e layout stacking
+# Volver al tiling normal
+bindsym $mod+s layout toggle split
 
-# Poner la aplicacion activa en pantalla completa  
+# Full screen
 bindsym $mod+f fullscreen
 
-# cambiar la aplicacion activa de estilo flotante o tiling
+# Floating window
 bindsym $mod+Shift+space floating toggle
 
 # Swap focus between the tiling area and the floating area
@@ -167,26 +178,27 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Rediminsionar los contenedores
-mode "resize" {
-    bindsym $left resize shrink width 5px
-    bindsym $down resize grow height 5px
-    bindsym $up resize shrink height 5px
-    bindsym $right resize grow width 5px
-    bindsym Left resize shrink width 5px
-    bindsym Down resize grow height 5px
-    bindsym Up resize shrink height 5px
-    bindsym Right resize grow width 5px
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
+#mode "resize" {
+#    bindsym $left resize shrink width 5px
+#    bindsym $down resize grow height 5px
+#    bindsym $up resize shrink height 5px
+#    bindsym $right resize grow width 5px
+#    bindsym Left resize shrink width 5px
+#    bindsym Down resize grow height 5px
+#    bindsym Up resize shrink height 5px
+#    bindsym Right resize grow width 5px
+#    # Return to default mode
+#    bindsym Return mode "default"
+#    bindsym Escape mode "default"
+#}
+#bindsym $mod+r mode "resize"
 
 #### Barra de estado Waybar
-bar {
-    swaybar_command waybar 
-}
+#bar {
+#    swaybar_command waybar 
+#}
 
+exec_always --no-startup-id ~/scripts/start_eww.sh
 # input keyboard
 input type:keyboard {
     xkb_layout "us,es"
@@ -203,7 +215,5 @@ exec_always {
     gsettings set org.gnome.desktop.interface icon-theme  'Papirus'
     gsettings set org.gnome.desktop.interface cursor-theme 'Quintom_Snow'
     gsettings set org.gnome.desktop.interface font-name 'Noto Sans 8'
-
-
 }
 include /etc/sway/config.d/*
