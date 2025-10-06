@@ -13,10 +13,15 @@ set fish_greeting	    # welcome message
 set TERM "xterm-256color"   # getting proper colors
 set EDITOR "vim"	    # $EDITOR use vim
 # radiotunes
-alias tuneslatino="mpv --no-video 'http://prem2.radiotunes.com:80/latinpophits?99fc5648cc8e87d633d28b0b'"
-alias tunesdance="mpv --no-video 'http://prem2.radiotunes.com:80/dancehits?99fc5648cc8e87d633d28b0b'"
-alias tunes90="mpv --no-video 'http://prem2.radiotunes.com:80/hit90s?99fc5648cc8e87d633d28b0b'"
-alias tunestop="mpv --no-video 'http://prem2.radiotunes.com:80/tophits?99fc5648cc8e87d633d28b0b'"
+alias tuneslatino="mpv --no-video 'http://prem2.radiotunes.com:80/latinpophits_hi?99fc5648cc8e87d633d28b0b'"
+alias tunesdance="mpv --no-video 'http://prem2.radiotunes.com:80/dancehits_hi?99fc5648cc8e87d633d28b0b'"
+alias tunes90s="mpv --no-video 'http://prem2.radiotunes.com:80/hit90s_hi?99fc5648cc8e87d633d28b0b'"
+alias tunestop="mpv --no-video 'http://prem2.radiotunes.com:80/tophits_hi?99fc5648cc8e87d633d28b0b'"
+alias tunesrock="mpv --no-video 'http://prem2.radiotunes.com:80/poprock_hi?99fc5648cc8e87d633d28b0b'"
+alias tunesclassic="mpv --no-video 'http://prem2.radiotunes.com:80/classical_hi?99fc5648cc8e87d633d28b0b'"
+alias tunesworld="mpv --no-video 'http://prem2.radiotunes.com:80/world?99fc5648cc8e87d633d28b0b'"
+alias tunesregge="mpv --no-video 'http://prem2.radiotunes.com:80/reggaeton?99fc5648cc8e87d633d28b0b'"
+alias tunesrelax="mpv --no-video 'http://prem2.radiotunes.com:80/relaxation?99fc5648cc8e87d633d28b0b'"
 # radio
 alias playcope="mpv --no-video 'https://net1-cope-rrcast.flumotion.com/cope/net1-low.mp3'"
 alias play40p="mpv --no-video 'https://25653.live.streamtheworld.com/LOS40_SC'"
@@ -82,11 +87,11 @@ alias curlo="curl -O"
 # rip trash
 alias rip="rip --graveyard /tmp/trash"
 # df human
-alias df="df -H"
+alias df="df -h"
 # sudo dmesg 
 alias sdmesg="sudo dmesg"
 # tock clock
-alias clock="tock -s -C 4 -m -c"
+alias clock="tock -s -C 2 -m -c"
 # removes .la
 alias rmla="sudo /usr/bin/remove-la-files.sh"
 # fstrim
