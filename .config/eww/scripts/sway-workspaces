@@ -1,0 +1,81 @@
+#!/usr/bin/env python3
+import os, sys, json, subprocess
+
+WORKSPACE_ICONS = [
+    (1, "󰝤"),
+    (2, "󰝤"),
+    (3, "󰝤"),
+    (4, "󰝤"),
+    (5, "󰝤"),
+    (6, "󰝤"),
+    (7, "󰝤"),
+    (8, "󰝤"),
+    (9, "󰝤"),
+    (10, "󰝤"),
+]
+
+Workspaces = dict[int, bool]
+
+def get_widgets(workspaces: Workspaces) -> str:
+    """
+    Crear widgets en formato JSON para Eww
+    """
+    def get_class(k):
+        key = workspaces.get(k, None)
+        if key is None:
+            return "inactive"
+        elif key:
+            return "focused"
+        else:
+            return "active"
+
+    buttons = [
+        f'"id": "{k}", "text": "{icon}", "class": "{get_class(k)}"'
+        for k, icon in WORKSPACE_ICONS
+    ]
+    buttons = ", ".join(["{" + b + "}" for b in buttons])
+    return "[" + buttons + "]"
+
+class SwayHandler:
+    @staticmethod
+    def get_workspace_info() -> Workspaces:
+        workspaces = json.loads(os.popen("swaymsg --raw -t get_workspaces").read())
+        # Devuelve dict {num: is_focused}
+        return {int(w["num"]): w["focused"] for w in workspaces}
+
+    def listen_workspaces(self):
+        with subprocess.Popen(
+            ["swaymsg", "-t", "subscribe", "-m", '["workspace"]'],
+            stdout=subprocess.PIPE
+        ) as proc:
+            # estado inicial
+            workspace_info = SwayHandler.get_workspace_info()
+            print(get_widgets(workspace_info), flush=True)
+
+            # escuchar cambios
+            while line := proc.stdout.readline():
+                workspace_info = SwayHandler.get_workspace_info()
+                print(get_widgets(workspace_info), flush=True)
+
+    def set_workspace(self, i):
+        subprocess.run(["swaymsg", "workspace", str(i)])
+
+if __name__ == "__main__":
+    if len(sys.argv) == 1:
+        print("Usage: sway-ws.py workspaces|set-workspace <id>")
+        sys.exit(1)
+
+    handler = SwayHandler()
+    key = sys.argv[1]
+
+    if key == "workspaces":
+        handler.listen_workspaces()
+    elif key == "set-workspace":
+        if len(sys.argv) != 3:
+            print("Set workspace necesita un número", file=sys.stderr)
+            sys.exit(1)
+        arg = sys.argv[2]
+        handler.set_workspace(arg)
+    else:
+        print(f"Unknown key: {key}", file=sys.stderr)
+

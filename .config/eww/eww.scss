@@ -1,0 +1,45 @@
+* {
+  all: unset; // Unsets everything so you can style everything from scratch
+}
+
+.bar-bg {
+    background-color: #121212; 
+    color: #f7f2b8; 
+    font-family: Ubuntu;
+    font-size: 13px;
+    font-weight: bold;
+
+}
+
+.workspaces {
+    font-size: 15px;
+    padding:7px;
+  }  
+.focused {
+  color: #1e7c7e;
+  padding:1 7px;
+}
+.active {
+  color: #f7f2b8;
+  padding:1 7px;
+}
+.inactive {
+  color: #202020;
+  padding:1 7px;
+}
+
+.bluetooth, .cpu, .ram, .temp, .disk, .linux, .date, .player, .volume, .kblayout, .wifi{
+  color:#f7f2b8;
+  font-weight: bold;
+  padding:7px;
+}
+
+.tooltip {
+  background-color: #121212;   /* fondo oscuro */
+  color: #f7f2b8;              /* texto claro */
+  padding: 12px;           /* espacio interno */
+  font-size: 13px;
+  font-weight: bold;
+  margin: 8px;
+}
+
