@@ -25,10 +25,10 @@ get_disk_info() {
 while true; do
   root=$(get_disk_info "/")
   home=$(get_disk_info "/home")
+  build=$(get_disk_info "/build")
 
-  jq -c -n --argjson root "$root" --argjson home "$home" \
-    '{root:$root, home:$home}'
-
-  sleep 7
+  jq -c -n --argjson root "$root" --argjson home "$home" --argjson build "$build" \
+    '{root:$root, home:$home, build:$build}'
+  sleep 6
 done
 

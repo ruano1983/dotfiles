@@ -112,7 +112,12 @@
 	(label :text "Core 9: ${round(EWW_CPU.cores[9].usage,1)}% ${EWW_CPU.cores[9].freq} Mhz")
 	(label :text "Core 10: ${round(EWW_CPU.cores[10].usage,1)}% ${EWW_CPU.cores[10].freq} Mhz")
 	(label :text "Core 11: ${round(EWW_CPU.cores[11].usage,1)}% ${EWW_CPU.cores[11].freq} Mhz")
-    )
+	(label :text "Core 12: ${round(EWW_CPU.cores[12].usage,1)}% ${EWW_CPU.cores[12].freq} Mhz")
+	(label :text "Core 13: ${round(EWW_CPU.cores[13].usage,1)}% ${EWW_CPU.cores[13].freq} Mhz")
+	(label :text "Core 14: ${round(EWW_CPU.cores[14].usage,1)}% ${EWW_CPU.cores[14].freq} Mhz")
+	(label :text "Core 15: ${round(EWW_CPU.cores[15].usage,1)}% ${EWW_CPU.cores[15].freq} Mhz")
+
+   )
 )
 
 
@@ -156,7 +161,7 @@
 	    :onhover "eww open ram-tooltip && eww update show-ram-tooltip=true"
 	    :onhoverlost "eww close ram-tooltip && eww update show-ram-tooltip=false"
 	    (label 
-		:text "    Ram: ${ram}G"
+		:text "    Ram: ${ram.used}G/${ram.total}G"
 
 	    )
 	)    
@@ -165,12 +170,15 @@
 
 (defwindow ram-tooltip
   :monitor 0
-  :geometry (geometry :x "1000" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "1010" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
   :focusable false
-  (box :class "tooltip" (label :text "Memoria usada: ${ram}G"))
+  (box :class "tooltip" :orientation "v" 
+  (label :text "Memoria usada: ${ram.used}G/${ram.total}G")
+  (label :text "Memoria cache: ${ram.cache}G")
+  )
 )
 
 
@@ -201,6 +209,7 @@
     (box :class "tooltip" :orientation "v" 
 	(label :text "Partición /: ${disk.root.used}G/${disk.root.size}G")
 	(label :text "Partición Home: ${disk.home.used}G/${disk.home.size}G")
+	(label :text "Partición build: ${disk.build.used}G/${disk.build.size}G")
     )
 )
 
@@ -222,7 +231,7 @@
 )
 (defwindow systeminfo-tooltip
     :monitor 0
-    :geometry (geometry :x "1250" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "1255" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
@@ -252,7 +261,7 @@
 
 (defwindow player-tooltip
   :monitor 0
-  :geometry (geometry :x "1350" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "1360" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
@@ -289,7 +298,7 @@
 
 (defwindow audio-tooltip
   :monitor 0
-  :geometry (geometry :x "1440" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "1450" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
@@ -319,7 +328,7 @@
 )
 (defwindow kblayout-tooltip
   :monitor 0
-  :geometry (geometry :x "1580" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "1585" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
@@ -347,7 +356,7 @@
 )
 (defwindow wifi-tooltip
     :monitor 0
-    :geometry (geometry :x "1610" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "1620" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
