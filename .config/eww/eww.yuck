@@ -10,7 +10,7 @@
 (defvar show-wifi-tooltip false)
 (defvar show-date-tooltip false)
 
-(deflisten bluetooth "bash scripts/bluetooth.sh")
+(deflisten bluetooth "bash scripts/bluetooth2.sh")
 (deflisten cpu-temp "bash scripts/cpu_temp.sh")
 (deflisten ram "bash scripts/ram.sh")
 (deflisten disk "bash scripts/disk.sh")
