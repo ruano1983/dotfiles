@@ -15,18 +15,18 @@ $character\
 """
 
 [directory]
-style = "green bold"
+style = "yellow bold"
 truncate_to_repo = true
 read_only = " read only"
 
 [username]
 show_always = true
-style_user="blue bold"
+style_user="green bold"
 style_root="red bold"
 
 [hostname]
 ssh_only = false
-format = "[@$hostname](green bold)"
+format = "[@$hostname](blue bold)"
 disabled = true
 
 [character]
