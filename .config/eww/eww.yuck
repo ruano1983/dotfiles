@@ -10,9 +10,7 @@
 (defvar show-wifi-tooltip false)
 (defvar show-date-tooltip false)
 
-
-
-(deflisten bluetooth  "bash scripts/bluetooth.sh")
+(deflisten bluetooth "bash scripts/bluetooth.sh")
 (deflisten cpu-temp "bash scripts/cpu_temp.sh")
 (deflisten ram "bash scripts/ram.sh")
 (deflisten disk "bash scripts/disk.sh")
@@ -20,7 +18,7 @@
 (deflisten player "bash scripts/player.sh")
 (deflisten audio  "bash scripts/audio.sh")
 (defpoll kblayout :interval "5s" "bash scripts/kblayout.sh")
-(defpoll wifi :interval "7s" "bash scripts/wifi.sh")
+(defpoll wifi :interval "5s" "bash scripts/wifi.sh")
 (deflisten date "bash scripts/date.sh")
 
 (defwidget widget-workspaces []
@@ -41,8 +39,6 @@
 	"scripts/sway-workspaces workspaces")
 (deflisten active-window-title :initial ""
 	"scripts/sway-workspaces active-title")
-
-
 
 (defwidget bluetooth-widget []
     (box    
@@ -112,15 +108,8 @@
 	(label :text "Core 9: ${round(EWW_CPU.cores[9].usage,1)}% ${EWW_CPU.cores[9].freq} Mhz")
 	(label :text "Core 10: ${round(EWW_CPU.cores[10].usage,1)}% ${EWW_CPU.cores[10].freq} Mhz")
 	(label :text "Core 11: ${round(EWW_CPU.cores[11].usage,1)}% ${EWW_CPU.cores[11].freq} Mhz")
-	(label :text "Core 12: ${round(EWW_CPU.cores[12].usage,1)}% ${EWW_CPU.cores[12].freq} Mhz")
-	(label :text "Core 13: ${round(EWW_CPU.cores[13].usage,1)}% ${EWW_CPU.cores[13].freq} Mhz")
-	(label :text "Core 14: ${round(EWW_CPU.cores[14].usage,1)}% ${EWW_CPU.cores[14].freq} Mhz")
-	(label :text "Core 15: ${round(EWW_CPU.cores[15].usage,1)}% ${EWW_CPU.cores[15].freq} Mhz")
-
    )
 )
-
-
 
 (defwidget temp-widget []
     (box    
@@ -257,7 +246,6 @@
     )
     
 )
-
 
 (defwindow player-tooltip
   :monitor 0
