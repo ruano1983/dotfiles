@@ -1,14 +1,14 @@
 # Dotfiles
 
-My dotfiles for multiple window managers, with special attention to **Qtile in wayland** as my favorite window manager. I also include extra applications like Rofi Cava, vifm, ranger ,Vim, Nano, dunst, and shells like Bash and Fish.
+My dotfiles for multiple window managers, with special attention to **sway wm** as my favorite window manager. I also include extra applications like Rofi Cava, vifm, ranger ,Vim, Nano, dunst, and shells like Bash and Fish.
 
 I also offer some custom color themes for vim nano rofi, vifm and most importantly qtile with quite simple color schemes.
 
 ## Software I use
 
-- [qtile](https://qtile.org/) window manager
+- [sway](https://github.com/swaywm/sway) window manager
 - [alacritty](https://alacritty.org/) terminal
-- [rofi](https://github.com/lbonn/rofi) launcher
+- [rofi](https://github.com/lbonn/rofi) launcher apps
 - [vim](https://www.vim.org/) text editor
 - [dunst](https://dunst-project.org/) notification daemons
 - [cava](https://github.com/karlstav/cava) audio visualizer
@@ -18,8 +18,8 @@ I also offer some custom color themes for vim nano rofi, vifm and most important
 - [swaybg](https://github.com/swaywm/swaybg) wallpaper
 - [bash](https://www.gnu.org/software/bash/) shell
 - [fish](https://fishshell.com/) shell
-
-## Qtile window manager
+- [bemenu](https://github.com/Cloudef/bemenu) launcher apps
+## sway window manager
 
 
 ![desktop](/images/1753209422_grim.png)
