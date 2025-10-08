@@ -120,7 +120,9 @@ fi
 # --- Copy all other dotfiles ------------------------------
 find . -mindepth 1 -not -path './.git*' \
     -not -path './.config/waybar-*' \
-    -not -name 'install.sh' | while read -r path; do
+    -not -name 'install.sh' \
+    -not -name 'LICENSE' \
+    -not -name 'README.md' | while read -r path; do
   src="${DOTFILES_DIR}/${path#./}"
   dest="${HOME}/${path#./}"
 
