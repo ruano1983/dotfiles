@@ -1,6 +1,6 @@
 # Dotfiles
 
-My dotfiles for multiple window managers, with special attention to **sway wm** as my favorite window manager. I also include extra applications like Rofi Cava, vifm, ranger ,Vim, Nano, dunst, and shells like Bash and Fish.
+My dotfiles for multiple window managers, with special attention to **sway wm** as my favorite window manager. I also include extra applications like eww, Rofi Cava, vifm, ranger ,Vim, Nano, dunst, and shells like Bash and Fish.
 
 I also offer some custom color themes for vim nano rofi, vifm and most importantly qtile with quite simple color schemes.
 
