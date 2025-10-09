@@ -30,6 +30,6 @@ print_screenshot() {
 	notify-send -i /usr/share/icons/Papirus-Dark/32x32/status/messagebox_info.svg "Screenshot created!" "$capture"
 }
 runbmenu() {
-	bemenu-run -i -l 14 --fb '#121212' --ff '#f7f2b8' --nb '#121212' --nf '#f7f2b8' --tb '#121212' --hb '#207599' --tf '#207599' --hf '#000000' --af '#f7f2b8' --sb '#207599' --fn 'Ubuntu bold 10' -H 18 -C -b  -p Run
+	bemenu-run -i -l 14 --fb '#121212' --ff '#f7f2b8' --nb '#121212' --nf '#f7f2b8' --tb '#121212' --hb '#1e7c7e' --tf '#1e7c7e' --hf '#000000' --af '#f7f2b8' --sb '#1e7c7e' --fn 'Ubuntu bold 10' -H 18 -C -b  -p Run
 }
 $1
