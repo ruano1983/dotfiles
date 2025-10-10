@@ -1,157 +1,157 @@
 #!/usr/bin/env bash
 # ===========================================
-# 🧩 Interactive Dotfiles Installer (with Waybar selection)
+# Interactive Dotfiles Installer (files + folders)
 # ===========================================
 # Author: Ivan Ruano
-# Repository: https://github.com/ruano1983/dotfiles
 # Description:
-#   - Clones or updates your dotfiles repo
-#   - Interactively copies files and folders to $HOME
-#   - Makes automatic backups (.bak)
-#   - Lets you choose which Waybar config to install
-#   - Shows a final summary
+#   - Interactive prompts for every file and folder
+#   - Replaces folders and files if confirmed
 # ===========================================
 
 set -e
 
-DOTFILES_REPO="https://github.com/ruano1983/dotfiles.git"
-DOTFILES_DIR="${HOME}/dotfiles"
+DOTFILES_DIR="/home/ivanruano83/dotfiles"
 
-# --- Colors and helpers ----------------------------------
 GREEN="\033[1;32m"
 YELLOW="\033[1;33m"
-BLUE="\033[1;34m"
 RESET="\033[0m"
 
 msg()  { echo -e "${GREEN}==>${RESET} $*"; }
 warn() { echo -e "${YELLOW}⚠️  $*${RESET}"; }
-
-# Ask the user for confirmation (yes/no)
-ask() {
+ask()  {
   local prompt="$1"
   local response
   read -rp "$prompt [y/n]: " response
   [[ "$response" =~ ^[Yy]$ ]]
 }
 
-# --- Counters --------------------------------------------
-COPIED=0
-BACKED_UP=0
-SKIPPED=0
+# --- Fancy banner ---
+show_banner() {
+  clear
+  echo -e "${CYAN}"
+  echo "==============================================="
 
-# --- Backup and copy function -----------------------------
-backup_and_copy() {
-  local src="$1"
-  local dest="$2"
-
-  # If the destination already exists, ask whether to back it up
-  if [ -e "$dest" ]; then
-    warn "Exists: $dest"
-    if ask "Make a backup and replace it?"; then
-      msg "📦 Backup: $dest → ${dest}.bak"
-      mv "$dest" "${dest}.bak"
-      ((BACKED_UP++))
-    else
-      warn "Skipped: $dest"
-      ((SKIPPED++))
-      return
-    fi
+  if command -v figlet >/dev/null 2>&1; then
+    figlet "Ivan Ruano"
+  elif command -v toilet >/dev/null 2>&1; then
+    toilet "Ivan Ruano"
+  else
+    echo "🚀  DOTFILES INSTALLER by Ivan Ruano  🚀"
   fi
 
-  # Ensure the destination directory exists
-  mkdir -p "$(dirname "$dest")"
-
-  # Copy the file or directory
-  cp -r "$src" "$dest"
-  msg "✅ Copied: $src → $dest"
-  ((COPIED++))
+  echo "==============================================="
+  echo -e "${RESET}"
+  sleep 1
 }
 
-# --- Clone or update repo --------------------------------
-if [ ! -d "$DOTFILES_DIR" ]; then
-  msg "Cloning repository into $DOTFILES_DIR..."
-  git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
-else
-  msg "Repository already exists: $DOTFILES_DIR"
-  if ask "Do you want to update it (git pull)?"; then
-    (cd "$DOTFILES_DIR" && git pull --quiet)
-    msg "🔄 Repository updated."
+# --- Start banner ---
+show_banner
+
+# --- Files to copy -------------------------------------
+FILES_TO_COPY=(
+  ".bashrc"
+  ".bash-alias"
+  ".bash-stream"
+  ".bash-path"
+  ".nanorc"
+  "scripts/autostart.sh"
+  "scripts/start_eww.sh"
+  ".config/mpv/scripts/notify-send.lua"
+  ".local/bin/wl-script"
+  ".local/share/color-schemes/Moon.colors"
+  ".local/share/color-schemes/ArgylsDark.colors"
+
+  # add other files here
+)
+
+# --- Folders to copy -----------------------------------
+FOLDERS_TO_COPY=(
+  ".config/eww"
+  ".config/fish"
+  ".config/alacritty"
+  ".config/vim"
+  ".config/vifm"
+  ".config/fastfetch"
+  ".config/kanshi"
+  ".config/cava"
+  ".config/bottom"
+  ".config/qtile"
+  ".config/sway"
+  ".config/ranger"
+  ".config/dunst"
+  ".config/broot"
+  ".config/foot"
+  ".config/waybar-dwl"
+  ".config/waybar-sway"
+  ".config/waybar-river"
+  # add other folders here
+)
+
+# --- Copy files interactively -------------------------
+for file in "${FILES_TO_COPY[@]}"; do
+  src="${DOTFILES_DIR}/${file}"
+  dest="${HOME}/${file}"
+
+  if [ ! -f "$src" ]; then
+    warn "File not found: $src"
+    continue
   fi
-fi
-
-echo
-msg "🚀 Starting interactive dotfiles installation..."
-echo
-
-cd "$DOTFILES_DIR"
-
-# --- Waybar configuration selection ----------------------
-WAYBAR_OPTION=""
-echo -e "${BLUE}Select your Waybar configuration:${RESET}"
-echo "1) waybar-dwl"
-echo "2) waybar-sway"
-echo "3) waybar-river"
-echo "4) None / skip"
-read -rp "Option [1-4]: " waybar_choice
-
-case "$waybar_choice" in
-  1) WAYBAR_OPTION=".config/waybar-dwl" ;;
-  2) WAYBAR_OPTION=".config/waybar-sway" ;;
-  3) WAYBAR_OPTION=".config/waybar-river" ;;
-  4) WAYBAR_OPTION="" ;;
-  *) warn "Invalid option. Waybar will be skipped."; WAYBAR_OPTION="" ;;
-esac
-
-if [ -n "$WAYBAR_OPTION" ]; then
-  msg "Using Waybar config: ${WAYBAR_OPTION}"
-  backup_and_copy "${DOTFILES_DIR}/${WAYBAR_OPTION}" "${HOME}/.config/waybar"
-  # Ask if the user wants to restart Waybar automatically
-  if ask "Do you want to restart Waybar now?"; then
-    if pgrep -x "waybar" >/dev/null; then
-      msg "Restarting Waybar..."
-      pkill -x waybar && nohup waybar >/dev/null 2>&1 &
-    else
-      msg "Starting Waybar..."
-      nohup waybar >/dev/null 2>&1 &
-    fi
-  fi
-fi
-
-# --- Copy all other dotfiles ------------------------------
-find . -mindepth 1 -not -path './.git*' \
-    -not -path './.config/waybar-*' \
-    -not -name 'install.sh' \
-    -not -name 'LICENSE' \
-    -not -name 'README.md' | while read -r path; do
-  src="${DOTFILES_DIR}/${path#./}"
-  dest="${HOME}/${path#./}"
 
   echo
-  msg "Detected item:"
+  msg "File detected:"
   echo "   Source: $src"
   echo "   Target: $dest"
 
-  if ask "Copy this item?"; then
-    backup_and_copy "$src" "$dest"
+  if [ -e "$dest" ]; then
+    if ask "File exists. Replace it?"; then
+      cp "$src" "$dest"
+      msg "Replaced file: $dest"
+    else
+      warn "Skipped file: $dest"
+    fi
   else
-    warn "Skipped: $src"
-    ((SKIPPED++))
+    if ask "Copy this file?"; then
+      mkdir -p "$(dirname "$dest")"
+      cp "$src" "$dest"
+      msg "Copied file: $dest"
+    else
+      warn "Skipped file: $dest"
+    fi
   fi
 done
 
-# --- Final summary ----------------------------------------
-echo
-echo -e "${BLUE}============================================${RESET}"
-echo -e "${GREEN}✨ Installation complete${RESET}"
-echo -e "${BLUE}--------------------------------------------${RESET}"
-echo -e "✅ Copied:      ${COPIED}"
-echo -e "📦 Backed up:   ${BACKED_UP}"
-echo -e "⚠️  Skipped:     ${SKIPPED}"
-echo -e "${BLUE}============================================${RESET}"
+# --- Copy folders interactively -----------------------
+for folder in "${FOLDERS_TO_COPY[@]}"; do
+  src="${DOTFILES_DIR}/${folder}"
+  dest="${HOME}/${folder}"
 
-if [ -n "$WAYBAR_OPTION" ]; then
-  msg "💡 Active Waybar config: ${WAYBAR_OPTION}"
-fi
+  if [ ! -d "$src" ]; then
+    warn "Folder not found: $src"
+    continue
+  fi
 
-msg "Done! Check your .bak backups if needed."
+  echo
+  msg "Folder detected:"
+  echo "   Source: $src"
+  echo "   Target: $dest"
 
+  if [ -d "$dest" ]; then
+    if ask "Folder exists. backup?"; then
+      mv "$dest" "$dest.bak"
+      msg "backup: $dest"
+    else
+      warn "Skipped folder: $dest"
+      continue
+    fi
+  fi
+
+  if ask "Copy this folder?"; then
+    mkdir -p "$(dirname "$dest")"
+    cp -r "$src" "$dest"
+    msg "Copied folder: $dest"
+  else
+    warn "Skipped folder: $dest"
+  fi
+done
+
+msg "Dotfiles installation completed."
