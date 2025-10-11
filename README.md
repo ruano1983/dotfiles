@@ -20,6 +20,6 @@ I also offer some custom color themes for vim nano rofi, vifm and most important
 - [fish](https://fishshell.com/) shell
 - [bemenu](https://github.com/Cloudef/bemenu) launcher apps
 - [eww](https://github.com/elkowar/eww) widgets and bar
-## sway window manager
+## Sway Window Manager
 
 ![desktop](/images/1759957137_grim.png)
