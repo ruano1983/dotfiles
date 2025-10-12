@@ -10,6 +10,8 @@
 (defvar show-wifi-tooltip false)
 (defvar show-date-tooltip false)
 
+
+
 (deflisten bluetooth  "bash scripts/bluetooth_watch_dbus.sh")
 (deflisten cpu-temp "bash scripts/cpu_temp.sh")
 (deflisten ram "bash scripts/ram.sh")
@@ -17,28 +19,31 @@
 (defpoll sysinfo :interval "20m" "bash scripts/system_info.sh")
 (deflisten player "bash scripts/player.sh")
 (deflisten audio  "bash scripts/audio.sh")
-(defpoll kblayout :interval "5s" "bash scripts/kblayout.sh")
+(defpoll kblayout :interval "2s" "bash scripts/kblayout-dwl.sh")
 (defpoll wifi :interval "7s" "bash scripts/wifi.sh")
 (deflisten date "bash scripts/date.sh")
 
-((defwidget workspaces-widget []
-    (box
-	:class "workspaces"
-	:orientation "h"
-	:space-evenly true
-	:spacing 10
-	:valign "center"
-	:halign "center"
-	    (for workspace in workspaces
-		(button
-		    :class "${workspace.class}"
-		    :onclick "scripts/sway-workspaces set-workspace ${workspace.id}"
-		    "${workspace.text}"))
-    ))
-(deflisten workspaces :initial "[]"
-	"scripts/sway-workspaces workspaces")
-(deflisten active-window-title :initial ""
-	"scripts/sway-workspaces active-title")
+
+(deflisten dwl-tags "bash scripts/dwl_tags.sh")
+
+(defwidget dwl-tags-widget []
+  (box 
+    :class "workspaces"
+    :orientation "h"
+    :space-evenly true
+    :spacing 10
+    :valign "center"
+    :halign "center"
+    (for tag in dwl-tags
+	(button 
+	    :class "${tag.class}"
+	    :onclick "dwlmsg -s -t ${tag.id}"
+	    "󰝤"
+	
+      )
+    )
+  )
+)
 
 (defwidget bluetooth-widget []
     (box    
@@ -52,7 +57,7 @@
 	    :onhover "eww open bluetooth-tooltip && eww update show-bluetooth-tooltip=true"
 	    :onhoverlost "eww close bluetooth-tooltip && eww update show-bluetooth-tooltip=false"
 	    (label 
-		:text "   Bluetooth: ${bluetooth.count}"
+		:text "󰂯  Bluetooth: ${bluetooth.count}"
 	    )
 	)
     )  
@@ -195,7 +200,7 @@
 
 (defwindow disk-tooltip
     :monitor 0
-    :geometry (geometry :x "1290" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "1295" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
@@ -261,9 +266,9 @@
   :exclusive false
   :focusable false
   (box :class "tooltip" :orientation "v"
-	(label :wrap true :text "${player.status}")
+	(label :wrap true :text "󰐊 ${player.status}")
 	(label :wrap true :text "${player.artist}")
-	(label :wrap true :width 250 :text "${player.title}")
+	(label :wrap true :width 250 :text "󰝚  ${player.title}")
     )
 
 )
@@ -322,7 +327,7 @@
 )
 (defwindow kblayout-tooltip
   :monitor 0
-  :geometry (geometry :x "1665" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "1670" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
@@ -389,6 +394,7 @@
 	
 )
 
+
 ;; 3. Define tu ventana principal (donde quieres la barra)
 (defwindow main_bar
   :monitor 0
@@ -400,7 +406,7 @@
     :orientation "h"
     :space-evenly false
     :halign "fill"
-    (workspaces-widget)
+    (dwl-tags-widget)
     (box :orientation "h" :halign "end" :hexpand true :spacing 6 :space-evenly false
     (player-widget)
     (wifi-widget)
