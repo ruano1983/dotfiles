@@ -35,7 +35,7 @@ static const Rule rules[] = {
 	/* app_id             title       tags mask  switchtotag   isfloating   monitor */
 	/* examples: */
 	{ "firefox",  NULL,       1 << 1,     1,	0,           -1 }, 
-	{ "dolphin",  NULL,       1 << 4,     0,	0,           -1 }, 
+	{ "dolphin",  NULL,       1 << 4,     1,	0,           -1 }, 
 	{ "org.telegram.desktop._353c6751dd3837b1ed6ebfcdc83f2de9",  NULL,       1 << 2,    1,     0,           -1 }, 
 
 };
@@ -43,7 +43,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },
+	{ "[-]",      tile },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
