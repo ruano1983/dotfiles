@@ -12,6 +12,9 @@ set -U fish_user_paths  $HOME/.local/bin  $HOME/Applications  $HOME/home/ivanrua
 set fish_greeting	    # welcome message
 set TERM "xterm-256color"   # getting proper colors
 set EDITOR "vim"	    # $EDITOR use vim
+set -Ux XKB_DEFAULT_LAYOUT us
+set -Ux ports /build/ports
+set -Ux ugre /mnt/ugreen
 # radiotunes
 alias tuneslatino="mpv --no-video 'http://prem2.radiotunes.com:80/latinpophits_hi?99fc5648cc8e87d633d28b0b'"
 alias tunesdance="mpv --no-video 'http://prem2.radiotunes.com:80/dancehits_hi?99fc5648cc8e87d633d28b0b'"
@@ -47,7 +50,7 @@ alias tarc="tar cvJf"
 alias updb="updatedb  --prunepaths=/run"
 # window manager start
 alias qtilestart="dbus-run-session qtile start -b wayland"
-alias dwlstart="dbus-run-session dwl -s waybar"
+alias dwlstart="dbus-run-session dwl"
 alias swaystart="dbus-run-session sway"
 # plasma wayland start
 alias kde="dbus-run-session startplasma-wayland"
@@ -120,8 +123,8 @@ alias pkgin="pkgadd"
 alias pkgup="pkgadd -u"
 # yt-dlp yotutube
 alias yt="yt-dlp -x --audio-format mp3 --audio-quality 0"
-starship init fish | source
 # abbr
+abbr --add copylinux 'fish ~/scripts/copylinux.fish $ugre'
 # prt-get
 abbr --add prtin  'prt-get install'
 abbr --add prtid  'prt-get depinst -g'
@@ -131,6 +134,4 @@ abbr --add prtdept  'prt-get deptree'
 abbr --add prtup  'prt-get update -fr'
 abbr --add prtrem 'prt-get remove'
 abbr --add prtinfo  'prt-get info'
-#if [ (tty) = "/dev/tty1" ]
-#   exec dbus-run-session qtile start -b wayland
-#end
+starship init fish | source
