@@ -9,8 +9,8 @@ static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will
 static const unsigned int borderpx         = 1;  /* border pixel of windows */
 static const float rootcolor[]             = COLOR(0x121212ff);
 static const float bordercolor[]           = COLOR(0x202020ff);
-static const float focuscolor[]            = COLOR(0x2fa6c7ff);
-static const float urgentcolor[]           = COLOR(0xff0000ff);
+static const float focuscolor[]            = COLOR(0x1e7c7eff);
+static const float urgentcolor[]           = COLOR(0xbc4848ff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You can also use glsl colors */
 static const char *cursor_theme            = "Quintom_Snow";
@@ -25,16 +25,19 @@ static int log_level = WLR_ERROR;
 /* Autostart */
 static const char *const autostart[] = {
 	"sh", "-c", "scripts/autostart.sh", NULL,
+	"sh", "-c", "scripts/start_eww.sh", NULL,
 	NULL  /* terminate */
 };
 
 
 /* NOTE: ALWAYS keep a rule declared even if you don't use rules (e.g leave at least one example) */
 static const Rule rules[] = {
-	/* app_id             title       tags mask     isfloating   monitor */
+	/* app_id             title       tags mask  switchtotag   isfloating   monitor */
 	/* examples: */
-	{ "Gimp_EXAMPLE",     NULL,       0,            1,           -1 }, /* Start on currently visible tags floating, not tiled */
-	{ "firefox_EXAMPLE",  NULL,       1 << 8,       0,           -1 }, /* Start on ONLY tag "9" */
+	{ "firefox",  NULL,       1 << 1,     1,	0,           -1 }, 
+	{ "dolphin",  NULL,       1 << 4,     0,	0,           -1 }, 
+	{ "org.telegram.desktop._353c6751dd3837b1ed6ebfcdc83f2de9",  NULL,       1 << 2,    1,     0,           -1 }, 
+
 };
 
 /* layout(s) */
@@ -127,15 +130,16 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[] = { "alacritty", NULL };
-static const char *webcmd[] = { "/opt/vivaldi/vivaldi", NULL };
-static const char *chatcmd[] = { "Telegram", NULL };
+static const char *webcmd[] = { "firefox", NULL };
+static const char *telegramcmd[] = { "Telegram", NULL };
 static const char *pulsecmd[] = { "pavucontrol", NULL };
 static const char *menucmd[] = { "scripts/wl-script","runbmenu", NULL };
 static const char *printcmd[] = { "scripts/wl-script","print_screenshot", NULL };
 static const char *packagescmd[] = { "alacritty","-e","vifm","/build/ports","/build/ports", NULL };
-static const char *configcmd[] = { "alacritty","-e","ranger",".config", NULL };
-static const char *rangercmd[] = { "alacritty","-e","ranger", NULL };
+static const char *cavacmd[] = { "alacritty","-e","cava", NULL };
+static const char *btmcmd[] = { "alacritty","-e","btm", NULL };
 static const char *brootcmd[] = { "alacritty","-e","broot", NULL };
+static const char *dolphincmd[] = { "dolphin", NULL };
 static const char *volumeup[] = { "scripts/wl-script","volume_up", NULL };
 static const char *volumedown[] = { "scripts/wl-script","volume_down", NULL };
 static const char *volumemute[] = { "scripts/wl-script","volume_mute", NULL };
@@ -150,20 +154,20 @@ static const Key keys[] = {
 	{ MODKEY,                     XKB_KEY_r,          spawn,          {.v = menucmd} },
 	{ MODKEY,		      XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_Y,	  spawn,          {.v = webcmd} },
-	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_T,	  spawn,          {.v = chatcmd} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_T,	  spawn,          {.v = telegramcmd} },
 	{ 0,			      XKB_KEY_Print,      spawn,          {.v = printcmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_P,		 spawn,          {.v = packagescmd} },
-	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_C,		 spawn,          {.v = configcmd} },
-	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_H,		 spawn,          {.v = rangercmd} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_C,		 spawn,          {.v = cavacmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_B,		 spawn,          {.v = brootcmd} },
+	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_F,		 spawn,          {.v = dolphincmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_V,		 spawn,          {.v = pulsecmd} },
+	{ MODKEY|WLR_MODIFIER_CTRL,   XKB_KEY_t,		 spawn,          {.v = btmcmd} },
 	{ 0,			      XKB_KEY_XF86AudioRaiseVolume,	spawn,         {.v = volumeup} },
 	{ 0,			      XKB_KEY_XF86AudioLowerVolume,	spawn,         {.v = volumedown} },
 	{ 0,			      XKB_KEY_XF86AudioMute,		spawn,          {.v = volumemute} },
 	{ MODKEY|WLR_MODIFIER_CTRL,   XKB_KEY_s,		 spawn,          {.v = poweroff} },
 	{ MODKEY|WLR_MODIFIER_CTRL,   XKB_KEY_r,		 spawn,          {.v = reboot} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_M,		 spawn,          {.v = rofi} },
-
 	{ MODKEY,                     XKB_KEY_b,          togglebar,      {0} },
 	{ MODKEY,                     XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                     XKB_KEY_k,          focusstack,     {.i = -1} },

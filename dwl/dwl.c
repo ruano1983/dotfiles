@@ -142,6 +142,7 @@ typedef struct {
 	unsigned int bw;
 	uint32_t tags;
 	int isfloating, isurgent, isfullscreen;
+	int switchtotag;
 	uint32_t resize; /* configure serial of a pending resize */
 } Client;
 
@@ -239,6 +240,7 @@ typedef struct {
 	const char *id;
 	const char *title;
 	uint32_t tags;
+	bool switchtotag;
 	int isfloating;
 	int monitor;
 } Rule;
@@ -254,7 +256,7 @@ typedef struct {
 
 /* function declarations */
 static void applybounds(Client *c, struct wlr_box *bbox);
-static void applyrules(Client *c);
+static void applyrules(Client *c, bool map);
 static void arrange(Monitor *m);
 static void arrangelayer(Monitor *m, struct wl_list *list,
 		struct wlr_box *usable_area, int exclusive);
@@ -489,7 +491,7 @@ applybounds(Client *c, struct wlr_box *bbox)
 }
 
 void
-applyrules(Client *c)
+applyrules(Client *c, bool map)
 {
 	/* rule matching */
 	const char *appid, *title;
@@ -497,10 +499,6 @@ applyrules(Client *c)
 	int i;
 	const Rule *r;
 	Monitor *mon = selmon, *m;
-	if (mon) {
-		c->geom.x = (mon->w.width - c->geom.width) / 2 + mon->m.x;
-		c->geom.y = (mon->w.height - c->geom.height) / 2 + mon->m.y;
-	}
 
 	c->isfloating = client_is_float_type(c);
 	if (!(appid = client_get_appid(c)))
@@ -517,6 +515,11 @@ applyrules(Client *c)
 			wl_list_for_each(m, &mons, link) {
 				if (r->monitor == i++)
 					mon = m;
+			}
+			if (r->switchtotag && map) {
+				c->switchtotag = selmon->tagset[selmon->seltags];
+				mon->seltags ^= 1;
+				mon->tagset[selmon->seltags] = r->tags & TAGMASK;
 			}
 		}
 	}
@@ -880,7 +883,7 @@ commitnotify(struct wl_listener *listener, void *data)
 		 * a different monitor based on its title this will likely select
 		 * a wrong monitor.
 		 */
-		applyrules(c);
+		applyrules(c, false);
 		wlr_surface_set_preferred_buffer_scale(client_surface(c), (int)ceilf(c->mon->wlr_output->scale));
 		wlr_fractional_scale_v1_notify_scale(client_surface(c), c->mon->wlr_output->scale);
 		setmon(c, NULL, 0); /* Make sure to reapply rules in mapnotify() */
@@ -1567,28 +1570,37 @@ void
 dwl_ipc_output_set_layout(struct wl_client *client, struct wl_resource *resource, uint32_t index)
 {
 	DwlIpcOutput *ipc_output;
-	Monitor *monitor;
+	Client *c = NULL;
+	Monitor *monitor = NULL;
 
 	ipc_output = wl_resource_get_user_data(resource);
 	if (!ipc_output)
 		return;
-
 	monitor = ipc_output->mon;
+
+	if (monitor != selmon)
+		c = focustop(selmon);
+
 	if (index >= LENGTH(layouts))
 		return;
-	if (index != monitor->lt[monitor->sellt] - layouts)
-		monitor->sellt ^= 1;
 
-	monitor->lt[monitor->sellt] = &layouts[index];
-	arrange(monitor);
-	printstatus();
+	if (c) {
+		monitor = selmon;
+		selmon = ipc_output->mon;
+	}
+	setlayout(&(Arg){.v = &layouts[index]});
+	if (c) {
+		selmon = monitor;
+		focusclient(c, 0);
+	}
 }
 
 void
 dwl_ipc_output_set_tags(struct wl_client *client, struct wl_resource *resource, uint32_t tagmask, uint32_t toggle_tagset)
 {
 	DwlIpcOutput *ipc_output;
-	Monitor *monitor;
+	Client *c = NULL;
+	Monitor *monitor = NULL;
 	unsigned int newtags = tagmask & TAGMASK;
 
 	ipc_output = wl_resource_get_user_data(resource);
@@ -1596,16 +1608,27 @@ dwl_ipc_output_set_tags(struct wl_client *client, struct wl_resource *resource, 
 		return;
 	monitor = ipc_output->mon;
 
-	if (!newtags || newtags == monitor->tagset[monitor->seltags])
-		return;
-	if (toggle_tagset)
-		monitor->seltags ^= 1;
+	if (monitor != selmon)
+		c = focustop(selmon);
 
-	monitor->tagset[monitor->seltags] = newtags;
-	if (selmon == monitor)
-		focusclient(focustop(monitor), 1);
-	arrange(monitor);
-	printstatus();
+	if (!newtags)
+		return;
+
+	/* view toggles seltags for us so we un-toggle it */
+	if (!toggle_tagset) {
+		monitor->seltags ^= 1;
+		monitor->tagset[monitor->seltags] = 0;
+	}
+
+	if (c) {
+		monitor = selmon;
+		selmon = ipc_output->mon;
+	}
+	view(&(Arg){.ui = newtags});
+	if (c) {
+		selmon = monitor;
+		focusclient(c, 0);
+	}
 }
 
 void
@@ -2025,13 +2048,9 @@ mapnotify(struct wl_listener *listener, void *data)
 	 * try to apply rules for them */
 	if ((p = client_get_parent(c))) {
 		c->isfloating = 1;
-		if (p->mon) {
-			c->geom.x = (p->mon->w.width - c->geom.width) / 2 + p->mon->m.x;
-			c->geom.y = (p->mon->w.height - c->geom.height) / 2 + p->mon->m.y;
-		}
 		setmon(c, p->mon, p->tags);
 	} else {
-		applyrules(c);
+		applyrules(c, true);
 	}
 	printstatus();
 
@@ -3147,6 +3166,14 @@ unmapnotify(struct wl_listener *listener, void *data)
 		wl_list_remove(&c->link);
 		setmon(c, NULL, 0);
 		wl_list_remove(&c->flink);
+	}
+
+	if (c->switchtotag) {
+		Arg a = { .ui = c->switchtotag };
+		// Call view() -> arrange() -> checkidleinhibitor() before
+		// wlr_scene_node_destroy() to prevent a rare use after free of
+		// tree->node.
+		view(&a);
 	}
 
 	wlr_scene_node_destroy(&c->scene->node);

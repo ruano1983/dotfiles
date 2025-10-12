@@ -1,0 +1,11 @@
+--- dwl.c
++++ dwl.c
+@@ -802,7 +809,7 @@ commitnotify(struct wl_listener *listener, void *data)
+ 		 * a different monitor based on its title this will likely select
+ 		 * a wrong monitor.
+ 		 */
+-		applyrules(c);
++		applyrules(c, false);
+ 		if (c->mon) {
+ 			client_set_scale(client_surface(c), c->mon->wlr_output->scale);
+ 		}
