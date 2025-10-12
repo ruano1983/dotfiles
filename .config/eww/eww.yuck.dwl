@@ -65,7 +65,7 @@
 
 (defwindow bluetooth-tooltip
   :monitor 0
-  :geometry (geometry :x "760" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "770" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
@@ -260,7 +260,7 @@
 
 (defwindow player-tooltip
   :monitor 0
-  :geometry (geometry :x "600" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "605" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
@@ -355,7 +355,7 @@
 )
 (defwindow wifi-tooltip
     :monitor 0
-    :geometry (geometry :x "710" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "715" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
@@ -398,7 +398,7 @@
 ;; 3. Define tu ventana principal (donde quieres la barra)
 (defwindow main_bar
   :monitor 0
-  :geometry (geometry :x "0%" :y "0%" :width "100%" :height "38px" :anchor "top center")
+  :geometry (geometry :x "0%" :y "0%" :width "100%" :height "36px" :anchor "top center")
   :stacking "bottom"
   :exclusive true
   :namespace "bar"
