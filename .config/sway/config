@@ -16,17 +16,18 @@ set $term alacritty
 # Web broswer 
 set $broswer firefox
 # telegram
-set $chat Telegram
+set $telegram Telegram
 # Runs Apps
 bindsym $mod+Shift+y exec $broswer
-bindsym $mod+Shift+t exec $chat
+bindsym $mod+Shift+t exec $telegram
 bindsym $mod+Shift+v exec pavucontrol
 bindsym Print exec wl-script print_screenshot
 
 # File Manager
 bindsym $mod+Shift+p exec alacritty -e vifm /build/ports /build/ports
-bindsym $mod+Shift+c exec alacritty -e ranger
+bindsym $mod+Shift+c exec alacritty -e cava
 bindsym $mod+Shift+b exec alacritty -e broot
+bindsym $mod+Shift+f exec dophin
 
 # font
 font pango : Ubuntu bold 13px 
@@ -53,11 +54,17 @@ exec /home/ivanruano83/scripts/autostart.sh
 # autotiling
 exec_always autotiling --limit 2
 
-# Firefox siempre en workspace 2
+# Firefox en workspace 2
 assign [app_id="firefox"] 2
+for_window [app_id="firefox"] focus
 
-# Cliente de chat en workspace 3
+# Telegram en workspace 3
 assign [app_id="org.telegram.desktop._353c6751dd3837b1ed6ebfcdc83f2de9"] 3
+for_window [app_id="org.telegram.desktop._353c6751dd3837b1ed6ebfcdc83f2de9"] focus
+
+# dolphin en workspace 5
+assign [app_id="org.kde.dolphin"] 5
+for_window [app_id="org.kde.dolphin"] focus
 
 # window floating
 for_window [window_role="pop-up"] floating enable
