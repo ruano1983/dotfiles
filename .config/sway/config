@@ -22,7 +22,6 @@ bindsym $mod+Shift+y exec $broswer
 bindsym $mod+Shift+t exec $telegram
 bindsym $mod+Shift+v exec pavucontrol
 bindsym Print exec wl-script print_screenshot
-
 # File Manager
 bindsym $mod+Shift+p exec alacritty -e vifm /build/ports /build/ports
 bindsym $mod+Shift+c exec alacritty -e cava
@@ -49,7 +48,7 @@ client.urgent		$alert		    $alert	    $foreground		$indicator_secundary
 set $menu ~/scripts/wl-script runbmenu
 
 # Autostart
-exec /home/ivanruano83/scripts/autostart.sh
+exec ~/scripts/autostart.sh
 
 # autotiling
 exec_always autotiling --limit 2
@@ -136,7 +135,6 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
-
 
 #Move a window to another desktop
 bindsym $mod+Shift+1 move container to workspace number 1
