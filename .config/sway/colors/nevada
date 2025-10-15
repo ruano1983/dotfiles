@@ -1,6 +1,6 @@
 set $base #1e7c7e
 set $foreground #f7f2b8
-set $secundary #202020
+set $secundary #191919
 set $alert #ac9229
 set $indicator_main #ac9229
 set $indicator_secundary #3db36e

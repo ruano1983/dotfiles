@@ -32,7 +32,7 @@ bindsym $mod+Shift+f exec dolphin
 font pango : Ubuntu bold 13px 
 
 # Title Bar Space
-titlebar_padding 15 8
+titlebar_padding 12 6
 
 # Wide window edges
 default_border pixel 1px
