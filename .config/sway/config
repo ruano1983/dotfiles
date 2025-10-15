@@ -26,7 +26,7 @@ bindsym Print exec wl-script print_screenshot
 bindsym $mod+Shift+p exec alacritty -e vifm /build/ports /build/ports
 bindsym $mod+Shift+c exec alacritty -e cava
 bindsym $mod+Shift+b exec alacritty -e broot
-bindsym $mod+Shift+f exec dophin
+bindsym $mod+Shift+f exec dolphin
 
 # font
 font pango : Ubuntu bold 13px 
