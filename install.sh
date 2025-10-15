@@ -154,4 +154,6 @@ for folder in "${FOLDERS_TO_COPY[@]}"; do
   fi
 done
 
+if ask "who wants to use me eww 'Sway,Dwl [s,d]'"
+
 msg "Dotfiles installation completed."
