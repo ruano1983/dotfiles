@@ -154,6 +154,11 @@ for folder in "${FOLDERS_TO_COPY[@]}"; do
   fi
 done
 
-if ask "who wants to use me eww 'Sway,Dwl [s,d]'"
+if ask "who wants to use me eww 'Sway/Dwl [s/d]'"
+read -p '> ' conf
+    if [ $conf = "s" ]; then
+ln -s eww.yunk 
+
+fi 
 
 msg "Dotfiles installation completed."
