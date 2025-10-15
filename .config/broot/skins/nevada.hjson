@@ -30,18 +30,18 @@ skin: {
     git_status_ignored: gray(17) None
     git_status_conflicted: ansi(88) None
     git_status_other: ansi(88) None
-    selected_line: None #202020 / None #202020
+    selected_line: None #191919 / None #191919
     char_match: Yellow None
     file_error: Red None
     flag_label: "#f7f2b8 Bold"
     flag_value: "#f7f2b8 Bold"
     input: "#f7f2b8 None"
     status_error: "#f7f2b8 #9a390c Bold"
-    status_job: "yellow #202020 Bold"
-    status_normal: "#f7f2b8 #202020"
-    status_italic: "yellow #202020 italic"
-    status_bold: "yellow #202020 Bold" 
-    status_code: "yellow #202020" 
+    status_job: "yellow #191919 Bold"
+    status_normal: "#f7f2b8 #191919"
+    status_italic: "yellow #191919 italic"
+    status_bold: "yellow #191919 Bold" 
+    status_code: "yellow #191919" 
     status_ellipsis: gray(19) gray(1) / gray(2) gray(2)
     purpose_normal: gray(20) gray(2)
     purpose_italic: ansi(178) gray(2)
@@ -52,9 +52,9 @@ skin: {
     help_paragraph: "#f7f2b8 None"
     help_bold: "yellow Bold"
     help_italic: "yellow italic"
-    help_code: "yellow #202020"
+    help_code: "yellow #191919"
     help_headers: "yellow Bold"
-    help_table_border: "#202020 None"
+    help_table_border: "#191919 None"
     preview_title: gray(23) None / gray(21) None
     preview: gray(20) gray(1) / gray(18) gray(2)
     preview_separator: ansi(94) None / gray(3) None

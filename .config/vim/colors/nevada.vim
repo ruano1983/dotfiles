@@ -68,7 +68,7 @@ hi SpecialComment guifg=#bc4848  guibg=NONE
 hi TabLineFill gui=NONE guibg=#121212
 hi TabLine guifg=#121212 guibg=#121212 gui=NONE
 hi TermCursor cterm=reverse ctermfg=NONE ctermbg=NONE gui=reverse guifg=NONE guibg=NONE
-hi StatusLine gui=bold guibg=#ac9229 guifg=#202020
+hi StatusLine gui=bold guibg=#ac9229 guifg=#191919
 hi Search guibg=#121212 guifg=#f7f2b8
 hi VertSplit gui=NONE guifg=#121212 guibg=NONE
 hi Visual guifg=#f7f2b8 gui=NONE guibg=#175f8c
