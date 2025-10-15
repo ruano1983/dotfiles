@@ -91,7 +91,7 @@
 
 (defwindow cpu-tooltip
     :monitor 0
-    :geometry (geometry :x "960" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "955" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
@@ -253,7 +253,7 @@
 
 (defwindow player-tooltip
   :monitor 0
-  :geometry (geometry :x "585" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "590" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
