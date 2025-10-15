@@ -6,6 +6,7 @@
 # Description:
 #   - Interactive prompts for every file and folder
 #   - Replaces folders and files if confirmed
+#   - eww configured for different wm
 # ===========================================
 
 set -e
@@ -16,15 +17,24 @@ GREEN="\033[1;32m"
 YELLOW="\033[1;33m"
 RESET="\033[0m"
 
+EWWCONF="${HOME}/.config/eww"
+
 msg()  { echo -e "${GREEN}==>${RESET} $*"; }
 warn() { echo -e "${YELLOW}⚠️  $*${RESET}"; }
 ask()  {
-  local prompt="$1"
-  local response
-  read -rp "$prompt [y/n]: " response
-  [[ "$response" =~ ^[Yy]$ ]]
+    local prompt="$1"
+    local response
+    read -rp "$prompt [y/n]: " response
+    [[ "$response" =~ ^[Yy]$ ]]
 }
 
+ask2()  {
+    local prompt="$1"
+    local response
+    read -r -p "$(echo -e "${GREEN}==> ${RESET}$prompt [s/d]: ")" response
+    echo "$response"
+   
+}
 # --- Fancy banner ---
 show_banner() {
   clear
@@ -32,9 +42,9 @@ show_banner() {
   echo "==============================================="
 
   if command -v figlet >/dev/null 2>&1; then
-    figlet "Ivan Ruano"
+    figlet "Ivan Ruano Dotfiles"
   elif command -v toilet >/dev/null 2>&1; then
-    toilet "Ivan Ruano"
+    toilet "Ivan Ruano Dotfiles"
   else
     echo "🚀  DOTFILES INSTALLER by Ivan Ruano  🚀"
   fi
@@ -53,38 +63,35 @@ FILES_TO_COPY=(
   ".bash-alias"
   ".bash-stream"
   ".bash-path"
-  ".nanorc"
-  "scripts/autostart.sh"
-  "scripts/start_eww.sh"
   ".config/mpv/scripts/notify-send.lua"
-  ".local/bin/wl-script"
   ".local/share/color-schemes/Moon.colors"
   ".local/share/color-schemes/ArgylsDark.colors"
-
-  # add other files here
+  ".nanorc"
+  "scripts/wl-script"
+  "scripts/autostart.sh"
+  "scripts/start_eww.sh"
 )
 
 # --- Folders to copy -----------------------------------
 FOLDERS_TO_COPY=(
-  ".config/eww"
-  ".config/fish"
   ".config/alacritty"
+  ".config/bat"
+  ".config/bottom"
+  ".config/broot"
+  ".config/cava"
+  ".config/dunst"
+  ".config/eww"
+  ".config/fastfetch"
+  ".config/fish"
+  ".config/foot"
+  ".config/kanshi"
+  ".config/qtile"
+  ".config/ranger"
+  ".config/sway"
   ".config/vim"
   ".config/vifm"
-  ".config/fastfetch"
-  ".config/kanshi"
-  ".config/cava"
-  ".config/bottom"
-  ".config/qtile"
-  ".config/sway"
-  ".config/ranger"
-  ".config/dunst"
-  ".config/broot"
-  ".config/foot"
   ".config/waybar-dwl"
   ".config/waybar-sway"
-  ".config/waybar-river"
-  # add other folders here
 )
 
 # --- Copy files interactively -------------------------
@@ -154,11 +161,26 @@ for folder in "${FOLDERS_TO_COPY[@]}"; do
   fi
 done
 
-if ask "who wants to use me eww 'Sway/Dwl [s/d]'"
-read -p '> ' conf
-    if [ $conf = "s" ]; then
-ln -s eww.yunk 
+# --- eww configured for different wm -------------------
+response=$(ask2 "which window manager do you want to use eww for? [Sway/Dwl]")
+case $response in
+    s)
+	cd "${EWWCONF}"
+	if [ -f "eww.yuck" ]; then
+	    mv eww.yuck eww.yuck.bak
+	fi
+	ln -s eww.yuck.sway eww.yuck
+	msg "eww configured for sway wm"
+    ;;
 
-fi 
+    d)
+	cd "${EWWCONF}"
+	if [ -f "eww.yuck" ]; then
+	    mv eww.yuck eww.yuck.bak
+	fi
+	ln -s eww.yuck.dwl eww.yuck
+	msg "eww configured for dwl"
+    ;;	
+esac
 
 msg "Dotfiles installation completed."
