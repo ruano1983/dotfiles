@@ -191,6 +191,8 @@ if [response = "y"] ; then
     cp ${DOTFILES_DIR}/dwl /tmp
     cd /tmp/dwl
     make
+    echo -e "${YELLOW}Installing dwl as root with sudo..${RESET}"
+    sleep 1
     sudo make PREFIX=/usr install
     msg "Dwl installation completed."
 fi
