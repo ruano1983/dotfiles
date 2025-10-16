@@ -1,30 +1,26 @@
 #!/usr/bin/env bash
-# Script Bluetooth instantáneo para Eww usando DBus y jq
-
 prev=""
 
 update() {
-    # Lista de dispositivos conectados
-    connected_names=()
+    devices=()
     while read -r dev; do
         [ -z "$dev" ] && continue
         if bluetoothctl info "$dev" 2>/dev/null | grep -q "Connected: yes"; then
             name=$(bluetoothctl info "$dev" 2>/dev/null | awk -F': ' '/Alias/ {print $2; exit}')
             [ -z "$name" ] && name="$dev"
-            connected_names+=("$name")
+            devices+=("$name")
         fi
     done < <(bluetoothctl devices | awk '{print $2}')
 
-    count=${#connected_names[@]}
-
-    json=$(jq -n -c \
-        --argjson count "$count" \
-        --arg tooltip "$(IFS=,; echo "${connected_names[*]}")" \
-        '{
-            count: $count,
-            tooltip: (if $count == 0 then "Sin dispositivos conectados" else $tooltip end)
-        }'
-    )
+    count=${#devices[@]}
+    if [ $count -eq 0 ]; then
+        json=$(jq -n -c --argjson count 0 --arg tooltip "Sin dispositivos conectados" \
+            '{count:$count, devices:[], tooltip:$tooltip}')
+    else
+        tooltip=$(IFS=,; echo "${devices[*]}")
+        json=$(jq -n -c --argjson count "$count" --arg tooltip "$tooltip" --argjson devices "$(printf '%s\n' "${devices[@]}" | jq -R -s -c 'split("\n")[:-1]')" \
+            '{count:$count, devices:$devices, tooltip:$tooltip}')
+    fi
 
     if [[ "$json" != "$prev" ]]; then
         echo "$json"
@@ -32,13 +28,10 @@ update() {
     fi
 }
 
-# Salida inicial
 update
 
-# Escuchar eventos DBus de bluetooth
 dbus-monitor --system "type='signal',interface='org.freedesktop.DBus.Properties',member='PropertiesChanged',path_namespace='/org/bluez'" \
 | while read -r line; do
-    # Solo reaccionar a cambios de Connected
     if [[ "$line" == *"Connected"* ]]; then
         update
     fi
