@@ -41,6 +41,67 @@
   )
 )
 
+(defwidget player-widget []
+    (box 
+	:class "player"
+	:orientation "h"
+	:space-evenly false
+	:valign "center"
+	:halign "center"
+	(eventbox
+	    :onhover "if [ \"${player.status}\" = \"Playing\" ]; then eww open player-tooltip && eww update show-player-tooltip=true; fi"
+	    :onhoverlost "eww close player-tooltip && eww update show-player-tooltip=false"
+	    (label :text "󰝚  ${player.status}")
+	)
+    )
+    
+)
+
+(defwindow player-tooltip
+  :monitor 0
+  :geometry (geometry :x "605" :y "0" :width "150" :height "30")
+  :stacking "fg"
+  :wm-ignore true          ; Ignora el gestor de ventanas
+  :exclusive false
+  :focusable false
+  (box :class "tooltip" :orientation "v"
+	(label :wrap true :text "󰐊 ${player.status}")
+	(label :wrap true :text "${player.artist}")
+	(label :wrap true :width 250 :text "󰝚  ${player.title}")
+    )
+
+)
+
+(defwidget wifi-widget []
+    (box 
+	:class "wifi"
+	:orientation "h"
+	:space-evenly false
+	:valign "center"
+	:halign "center"
+	(eventbox
+	    :onhover "eww open wifi-tooltip && eww update show-wifi-tooltip=true"
+	    :onhoverlost "eww close wifi-tooltip && eww update show-wifi-tooltip=false"
+	    (label
+		:text "󰖩   Wifi: ${wifi.signal}%"
+	    )
+	)
+    )
+)
+
+(defwindow wifi-tooltip
+    :monitor 0
+    :geometry (geometry :x "715" :y "0" :width "150" :height "30")
+    :stacking "fg"
+    :wm-ignore true          ; Ignora el gestor de ventanas
+    :exclusive false
+    :focusable false
+    (box :class "tooltip" :orientation "v" 
+	(label :text "${wifi.iface}: ${wifi.ip}") 
+	(label :text "${wifi.ssid}: ${wifi.signal}%")
+    )
+)
+
 (defwidget bluetooth-widget []
     (box
 	:class "bluetooth"
@@ -74,8 +135,6 @@
 
   )
 )
-
-
 
 (defwidget cpu-widget []
     (box    
@@ -151,7 +210,6 @@
   (box :class "tooltip" (label :text "Temperatura Ryzen: ${cpu-temp}°C"))
 )
 
-
 (defwidget ram-widget []
     (box    
 	:class "ram"
@@ -182,7 +240,6 @@
   (label :text "Memoria cache: ${ram.cache}G")
   )
 )
-
 
 (defwidget disk-widget []
     (box    
@@ -232,6 +289,7 @@
 	)
     ) 
 )
+
 (defwindow systeminfo-tooltip
     :monitor 0
     :geometry (geometry :x "1420" :y "0" :width "150" :height "30")
@@ -243,38 +301,6 @@
     	(label :text "${sysinfo.os} ${sysinfo.version}")
     	(label :text "${sysinfo.kernel}")
     )
-)
-
-(defwidget player-widget []
-    (box 
-	:class "player"
-	:orientation "h"
-	:space-evenly false
-	:valign "center"
-	:halign "center"
-	(eventbox
-	    :onhover "if [ \"${player.status}\" = \"Playing\" ]; then eww open player-tooltip && eww update show-player-tooltip=true; fi"
-	    :onhoverlost "eww close player-tooltip && eww update show-player-tooltip=false"
-	    (label :text "󰝚  ${player.status}")
-	)
-    )
-    
-)
-
-
-(defwindow player-tooltip
-  :monitor 0
-  :geometry (geometry :x "605" :y "0" :width "150" :height "30")
-  :stacking "fg"
-  :wm-ignore true          ; Ignora el gestor de ventanas
-  :exclusive false
-  :focusable false
-  (box :class "tooltip" :orientation "v"
-	(label :wrap true :text "󰐊 ${player.status}")
-	(label :wrap true :text "${player.artist}")
-	(label :wrap true :width 250 :text "󰝚  ${player.title}")
-    )
-
 )
 
 (defwidget audio-widget []
@@ -312,7 +338,6 @@
   )
 )
 
-
 (defwidget kblayout-widget []
     (box 
 	:class "kblayout"
@@ -329,6 +354,7 @@
 	)
     )
 )
+
 (defwindow kblayout-tooltip
   :monitor 0
   :geometry (geometry :x "1670" :y "0" :width "150" :height "30")
@@ -340,35 +366,6 @@
 
 )
 
-
-(defwidget wifi-widget []
-    (box 
-	:class "wifi"
-	:orientation "h"
-	:space-evenly false
-	:valign "center"
-	:halign "center"
-	(eventbox
-	    :onhover "eww open wifi-tooltip && eww update show-wifi-tooltip=true"
-	    :onhoverlost "eww close wifi-tooltip && eww update show-wifi-tooltip=false"
-	    (label
-		:text "󰖩   Wifi: ${wifi.signal}%"
-	    )
-	)
-    )
-)
-(defwindow wifi-tooltip
-    :monitor 0
-    :geometry (geometry :x "715" :y "0" :width "150" :height "30")
-    :stacking "fg"
-    :wm-ignore true          ; Ignora el gestor de ventanas
-    :exclusive false
-    :focusable false
-    (box :class "tooltip" :orientation "v" 
-	(label :text "${wifi.iface}: ${wifi.ip}") 
-	(label :text "${wifi.ssid}: ${wifi.signal}%")
-    )
-)
 
 (defwidget date-widget []
     (box    
