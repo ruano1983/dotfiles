@@ -10,8 +10,6 @@
 (defvar show-wifi-tooltip false)
 (defvar show-date-tooltip false)
 
-
-
 (deflisten bluetooth  "bash scripts/bluetooth_watch_dbus.sh")
 (deflisten cpu-temp "bash scripts/cpu_temp.sh")
 (deflisten ram "bash scripts/ram.sh")
@@ -22,8 +20,6 @@
 (defpoll kblayout :interval "2s" "bash scripts/kblayout-dwl.sh")
 (defpoll wifi :interval "7s" "bash scripts/wifi.sh")
 (deflisten date "bash scripts/date.sh")
-
-
 (deflisten dwl-tags "bash scripts/dwl_tags.sh")
 
 (defwidget dwl-tags-widget []
@@ -65,14 +61,16 @@
 
 (defwindow bluetooth-tooltip
   :monitor 0
-  :geometry (geometry :x "770" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "780" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
   :focusable false
-  (box :class "tooltip" (label :text "${bluetooth.tooltip}"))
+  (box :class "tooltip" :orientation "v"
+	(label :text "Dispositivos: ${bluetooth.count}")
+	(label :text "${bluetooth.tooltip}")
+  )
 )
-
 
 (defwidget cpu-widget []
     (box    
@@ -198,17 +196,18 @@
     )
 )
 
+
 (defwindow disk-tooltip
     :monitor 0
-    :geometry (geometry :x "1295" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "1300" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
     :focusable false
-    (box :class "tooltip" :orientation "v" 
-	(label :text "Partición /: ${disk.root.used}G/${disk.root.size}G")
-	(label :text "Partición Home: ${disk.home.used}G/${disk.home.size}G")
-	(label :text "Partición build: ${disk.build.used}G/${disk.build.size}G")
+    (box :class "tooltip" :orientation "v"
+	(label :text "Partición /: ${disk.root.used}G/${disk.root.size}G \(${disk.root.percent}%\)")
+	(label :text "Partición Home: ${disk.home.used}G/${disk.home.size}G \(${disk.home.percent}%\)")
+	(label :text "Partición build: ${disk.build.used}G/${disk.build.size}G \(${disk.build.percent}%\)")
     )
 )
 

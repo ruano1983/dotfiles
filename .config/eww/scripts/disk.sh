@@ -29,6 +29,6 @@ while true; do
 
   jq -c -n --argjson root "$root" --argjson home "$home" --argjson build "$build" \
     '{root:$root, home:$home, build:$build}'
-  sleep 6
+  sleep 5
 done
 

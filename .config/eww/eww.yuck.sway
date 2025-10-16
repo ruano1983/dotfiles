@@ -67,7 +67,10 @@
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
   :focusable false
-  (box :class "tooltip" (label :text "${bluetooth.tooltip}"))
+  (box :class "tooltip" :orientation "v" 
+	(label :text "Dispositivos: ${bluetooth.count}")
+	(label :text "${bluetooth.tooltip}")
+  )
 )
 
 
@@ -110,7 +113,10 @@
 	(label :text "Core 9: ${round(EWW_CPU.cores[9].usage,1)}% ${EWW_CPU.cores[9].freq} Mhz")
 	(label :text "Core 10: ${round(EWW_CPU.cores[10].usage,1)}% ${EWW_CPU.cores[10].freq} Mhz")
 	(label :text "Core 11: ${round(EWW_CPU.cores[11].usage,1)}% ${EWW_CPU.cores[11].freq} Mhz")
-
+	(label :text "Core 12: ${round(EWW_CPU.cores[12].usage,1)}% ${EWW_CPU.cores[12].freq} Mhz")
+	(label :text "Core 13: ${round(EWW_CPU.cores[13].usage,1)}% ${EWW_CPU.cores[13].freq} Mhz")
+	(label :text "Core 14: ${round(EWW_CPU.cores[14].usage,1)}% ${EWW_CPU.cores[14].freq} Mhz")
+	(label :text "Core 15: ${round(EWW_CPU.cores[15].usage,1)}% ${EWW_CPU.cores[15].freq} Mhz")
    )
 )
 
@@ -162,7 +168,7 @@
 
 (defwindow ram-tooltip
   :monitor 0
-  :geometry (geometry :x "1170" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "1180" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
@@ -199,9 +205,9 @@
     :exclusive false
     :focusable false
     (box :class "tooltip" :orientation "v" 
-	(label :text "Partición /: ${disk.root.used}G/${disk.root.size}G")
-	(label :text "Partición Home: ${disk.home.used}G/${disk.home.size}G")
-	(label :text "Partición build: ${disk.build.used}G/${disk.build.size}G")
+	(label :text "Partición /: ${disk.root.used}G/${disk.root.size}G \(${disk.root.percent}%\)")
+	(label :text "Partición Home: ${disk.home.used}G/${disk.home.size}G \(${disk.home.percent}%\)")
+	(label :text "Partición build: ${disk.build.used}G/${disk.build.size}G \(${disk.build.percent}%\)")
     )
 )
 
@@ -348,7 +354,7 @@
 )
 (defwindow wifi-tooltip
     :monitor 0
-    :geometry (geometry :x "705" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "710" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
