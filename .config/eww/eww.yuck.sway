@@ -42,6 +42,68 @@
 (deflisten active-window-title :initial ""
 	"scripts/sway-workspaces active-title")
 
+
+(defwidget player-widget []
+    (box 
+	:class "player"
+	:orientation "h"
+	:space-evenly false
+	:valign "center"
+	:halign "center"
+	(eventbox
+	    :onhover "if [ \"${player.status}\" = \"Playing\" ]; then eww open player-tooltip && eww update show-player-tooltip=true; fi"
+	    :onhoverlost "eww close player-tooltip && eww update show-player-tooltip=false"
+	    (label :text "󰝚  ${player.status}")
+	)
+    )
+    
+)
+
+(defwindow player-tooltip
+  :monitor 0
+  :geometry (geometry :x "590" :y "0" :width "150" :height "30")
+  :stacking "fg"
+  :wm-ignore true          ; Ignora el gestor de ventanas
+  :exclusive false
+  :focusable false
+  (box :class "tooltip" :orientation "v"
+	(label :wrap true :text "${player.status}")
+	(label :wrap true :text "${player.artist}")
+	(label :wrap true :width 250 :text "${player.title}")
+    )
+
+)
+
+(defwidget wifi-widget []
+    (box 
+	:class "wifi"
+	:orientation "h"
+	:space-evenly false
+	:valign "center"
+	:halign "center"
+	(eventbox
+	    :onhover "eww open wifi-tooltip && eww update show-wifi-tooltip=true"
+	    :onhoverlost "eww close wifi-tooltip && eww update show-wifi-tooltip=false"
+	    (label
+		:text "󰖩   Wifi: ${wifi.signal}%"
+	    )
+	)
+    )
+)
+
+(defwindow wifi-tooltip
+    :monitor 0
+    :geometry (geometry :x "710" :y "0" :width "150" :height "30")
+    :stacking "fg"
+    :wm-ignore true          ; Ignora el gestor de ventanas
+    :exclusive false
+    :focusable false
+    (box :class "tooltip" :orientation "v" 
+	(label :text "${wifi.iface}: ${wifi.ip}") 
+	(label :text "${wifi.ssid}: ${wifi.signal}%")
+    )
+)
+
 (defwidget bluetooth-widget []
     (box    
 	:class "bluetooth"
@@ -60,6 +122,7 @@
     )  
 )
 
+
 (defwindow bluetooth-tooltip
   :monitor 0
   :geometry (geometry :x "855" :y "0" :width "150" :height "30")
@@ -75,7 +138,6 @@
 
   )
 )
-
 
 (defwidget cpu-widget []
     (box    
@@ -182,7 +244,6 @@
   )
 )
 
-
 (defwidget disk-widget []
     (box    
 	:class "disk"
@@ -230,6 +291,7 @@
 	)
     ) 
 )
+
 (defwindow systeminfo-tooltip
     :monitor 0
     :geometry (geometry :x "1430" :y "0" :width "150" :height "30")
@@ -241,38 +303,6 @@
     	(label :text "${sysinfo.os} ${sysinfo.version}")
     	(label :text "${sysinfo.kernel}")
     )
-)
-
-(defwidget player-widget []
-    (box 
-	:class "player"
-	:orientation "h"
-	:space-evenly false
-	:valign "center"
-	:halign "center"
-	(eventbox
-	    :onhover "if [ \"${player.status}\" = \"Playing\" ]; then eww open player-tooltip && eww update show-player-tooltip=true; fi"
-	    :onhoverlost "eww close player-tooltip && eww update show-player-tooltip=false"
-	    (label :text "󰝚  ${player.status}")
-	)
-    )
-    
-)
-
-
-(defwindow player-tooltip
-  :monitor 0
-  :geometry (geometry :x "590" :y "0" :width "150" :height "30")
-  :stacking "fg"
-  :wm-ignore true          ; Ignora el gestor de ventanas
-  :exclusive false
-  :focusable false
-  (box :class "tooltip" :orientation "v"
-	(label :wrap true :text "${player.status}")
-	(label :wrap true :text "${player.artist}")
-	(label :wrap true :width 250 :text "${player.title}")
-    )
-
 )
 
 (defwidget audio-widget []
@@ -338,35 +368,6 @@
 
 )
 
-
-(defwidget wifi-widget []
-    (box 
-	:class "wifi"
-	:orientation "h"
-	:space-evenly false
-	:valign "center"
-	:halign "center"
-	(eventbox
-	    :onhover "eww open wifi-tooltip && eww update show-wifi-tooltip=true"
-	    :onhoverlost "eww close wifi-tooltip && eww update show-wifi-tooltip=false"
-	    (label
-		:text "󰖩   Wifi: ${wifi.signal}%"
-	    )
-	)
-    )
-)
-(defwindow wifi-tooltip
-    :monitor 0
-    :geometry (geometry :x "710" :y "0" :width "150" :height "30")
-    :stacking "fg"
-    :wm-ignore true          ; Ignora el gestor de ventanas
-    :exclusive false
-    :focusable false
-    (box :class "tooltip" :orientation "v" 
-	(label :text "${wifi.iface}: ${wifi.ip}") 
-	(label :text "${wifi.ssid}: ${wifi.signal}%")
-    )
-)
 
 (defwidget date-widget []
     (box    
