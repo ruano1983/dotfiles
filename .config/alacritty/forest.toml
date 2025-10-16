@@ -1,23 +1,22 @@
 [colors.bright]
-black = "0x191919"
-blue = "0x1B4A7F"
-cyan = "0x1C608A"
-green="0x186873"
-magenta = "0x63407f"
-red = "0x843704"
-white = "0xf7f2b8"
-yellow = "0x847b1a"
-
+black   = "#191919"
+red     = "#a46863"
+green   = "#52c1ae"        # verde-azulado más vivo
+yellow  = "#b6b476"
+blue    = "#54a8bb"
+magenta = "#9189aa"
+cyan    = "#60d3c3"        # acento teal luminoso
+white	= "#f7f2b8"
 [colors.normal]
-black = "0x191919"
-blue = "0x1B4A7F"
-cyan = "0x1C608A"
-green="0x186873"
-magenta = "0x63407f"
-red = "0x843704"
-white = "0xf7f2b8"
-yellow = "0x847b1a"
+black   = "#191919"
+red     = "#8a5a57"        # rojo corteza apagado
+green   = "#3e9f91"        # verde-azulado oscuro (tono principal)
+yellow  = "#9fa86d"        # amarillo musgo muy tenue
+blue    = "#3e89a0"        # azul petróleo
+magenta = "#7c7595"        # violeta gris frío
+cyan    = "#44b4a8"        # teal brillante controlado
+white	= "#f7f2b8"
 
 [colors.primary]
-background = "0x121212"
-foreground = "0xf7f2b8"
+background = "#121212"
+foreground = "#f7f2b8"

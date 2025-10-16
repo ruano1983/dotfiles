@@ -243,8 +243,8 @@ enable_cache_memory = true
 
 [styles.cpu]
 all_entry_color = "green"
-avg_entry_color = "red"
-cpu_core_colors = ["blue", "yellow", "cyan", "green", "magenta", "red"]
+avg_entry_color = "blue"
+cpu_core_colors = ["green", "yellow", "cyan", "blue", "magenta", "red"]
 
 [styles.memory]
 ram_color = "green"
@@ -276,7 +276,7 @@ border_color = "green"
 selected_border_color = "green"
 #widget_title = {color = "gray"}
 #text = {color = "gray"}
-selected_text = {color = "white", bg_color = "green"}
+selected_text = {color = "black", bg_color = "green"}
 #disabled_text = {color = "dark gray"}
 
 # Only on Linux
