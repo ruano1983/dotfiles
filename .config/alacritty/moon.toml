@@ -1,23 +1,25 @@
-[colors.bright]
-black = "0x191919"
-blue = "0x207599"
-cyan = "0x076e79"
-green = "0x1e7c7e"
-magenta = "0x673364"
-red = "0x9a390c"
-white = "0xf7f2b8"
-yellow = "0xa87d0f"
+# Moon Ivan Ruano Monjas
 
 [colors.normal]
-black = "0x191919"
-blue = "0x207599"
-cyan = "0x076e79"
-green = "0x1e7c7e"
-magenta = "0x673364"
-red = "0x9a390c"
-white = "0xf7f2b8"
-yellow = "0xa87d0f"
+black   = "#191919"
+red     = "#b24b30"
+green   = "#28a0a2"
+yellow  = "#d99800"
+blue    = "#2882aa"
+magenta = "#7b3d8a"
+cyan    = "#0790a0"
+white   = "#f7f2b8"
+
+[colors.bright]
+black   = "#2a2a2a"
+red     = "#da5b40"
+green   = "#30b0b2"
+yellow  = "#e0b000"
+blue    = "#3a9acc"
+magenta = "#9050b0"
+cyan    = "#33b0c0"
+white   = "#fcf8d1"
 
 [colors.primary]
-background = "0x121212"
-foreground = "0xf7f2b8"
+background = "#121212"
+foreground = "#f7f2b8"

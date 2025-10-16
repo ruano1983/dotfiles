@@ -1,0 +1,44 @@
+# Monokai night Ivan Ruano Monjas
+
+[colors.primary]
+background = "#121212"
+foreground = "#f8f8f2"
+
+[colors.cursor]
+text = "#121212"
+cursor = "#f8f8f2"
+
+[colors.selection]
+text = "#121212"
+background = "#75715e"
+
+[colors.normal]
+black   = "#272822"
+red     = "#f92672"
+green   = "#a6e22e"
+yellow  = "#f4bf75"
+blue    = "#66d9ef"
+magenta = "#ae81ff"
+cyan    = "#38ccd1"
+white   = "#f8f8f2"
+
+[colors.bright]
+black   = "#75715e"
+red     = "#f92672"
+green   = "#a6e22e"
+yellow  = "#f4bf75"
+blue    = "#66d9ef"
+magenta = "#ae81ff"
+cyan    = "#38ccd1"
+white   = "#ffffff"
+
+[colors.dim]
+black   = "#121212"
+red     = "#b94e6f"
+green   = "#8ec07c"
+yellow  = "#d79921"
+blue    = "#458588"
+magenta = "#b16286"
+cyan    = "#689d6a"
+white   = "#a89984"
+

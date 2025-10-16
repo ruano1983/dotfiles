@@ -1,0 +1,30 @@
+# forest + Ivan Ruano Monjas
+
+[colors.bright]
+black   = "#1a1a1a"
+red     = "#b76d67"        # rojo más cálido y vivo
+green   = "#5fd8c3"        # verde-azulado brillante, tipo jade
+yellow  = "#c8c076"        # dorado-musgo más saturado
+blue    = "#5eb9cc"        # azul turquesa más claro
+magenta = "#a391bb"        # violeta más definido
+cyan    = "#6ee4d0"        # teal luminoso
+white	= "#fff7bf"
+
+[colors.normal]
+black   = "#1a1a1a"
+red     = "#9b5f5a"        # corteza más viva
+green   = "#48b6a4"        # verde-azulado más claro y limpio
+yellow  = "#b2b86f"        # verde-amarillo natural
+blue    = "#4999ad"        # azul petróleo con más fuerza
+magenta = "#8a80a4"        # violeta frío más saturado
+cyan    = "#46c5b6"        # teal más presente
+white	= "#fff7bf"
+
+[colors.primary]
+background = "#121212"
+foreground = "#fff7bf"
+
+[colors.cursor]
+text = "#121212"
+cursor = "#fff7bf"
+

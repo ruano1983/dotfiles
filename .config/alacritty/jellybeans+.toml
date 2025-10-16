@@ -1,0 +1,47 @@
+# Jellybeans+ (más saturado) para Alacritty
+# Basado en el tema clásico de Vim, con un toque más moderno y contrastado
+
+[colors.primary]
+background = "#121212"
+foreground = "#f0f0c0"
+
+[colors.cursor]
+text = "#121212"
+cursor = "#f0f0c0"
+
+[colors.selection]
+text = "#121212"
+background = "#f0f0c0"
+
+[colors.normal]
+black   = "#2b2b2b"
+red     = "#ff5f5f"
+green   = "#a8d75f"
+yellow  = "#ffd75f"
+blue    = "#87afff"
+magenta = "#d787ff"
+cyan    = "#5fd7ff"
+white   = "#f0f0c0"
+
+[colors.bright]
+black   = "#5f5f5f"
+red     = "#ff8787"
+green   = "#c1ff72"
+yellow  = "#ffe87a"
+blue    = "#a3cfff"
+magenta = "#e6a8ff"
+cyan    = "#87e3ff"
+white   = "#ffffff"
+
+[colors.hints]
+start = { foreground = "#ffd75f", background = "#2b2b2b" }
+end   = { foreground = "#121212", background = "#ffd75f" }
+
+[colors.search]
+matches = { foreground = "#121212", background = "#ffd75f" }
+focused_match = { foreground = "#121212", background = "#a8d75f" }
+
+[colors.vi_mode_cursor]
+text = "#121212"
+cursor = "#87afff"
+

@@ -1,3 +1,5 @@
+# Forest Ivan Ruano Monjas
+
 [colors.bright]
 black   = "#191919"
 red     = "#a46863"
@@ -20,3 +22,8 @@ white	= "#f7f2b8"
 [colors.primary]
 background = "#121212"
 foreground = "#f7f2b8"
+
+[colors.cursor]
+text = "#121212"
+cursor = "#f7f2b8"
+

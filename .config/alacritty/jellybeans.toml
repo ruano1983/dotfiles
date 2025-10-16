@@ -1,0 +1,46 @@
+# Jellybeans color scheme for Alacritty
+# Inspirado en el esquema clásico de Vim Jellybeans
+[colors.primary]
+background = "#151515"
+foreground = "#e8e8d3"
+
+[colors.cursor]
+text = "#151515"
+cursor = "#e8e8d3"
+
+[colors.selection]
+text = "#151515"
+background = "#e8e8d3"
+
+[colors.normal]
+black   = "#1c1c1c"
+red     = "#cf6a4c"
+green   = "#99ad6a"
+yellow  = "#fad07a"
+blue    = "#8197bf"
+magenta = "#c6b6ee"
+cyan    = "#8fbfdc"
+white   = "#e8e8d3"
+
+[colors.bright]
+black   = "#6c6c6c"
+red     = "#ffb5a3"
+green   = "#d0f0a0"
+yellow  = "#fff79a"
+blue    = "#b2cff9"
+magenta = "#e6cfef"
+cyan    = "#b3dce3"
+white   = "#ffffff"
+
+[colors.hints]
+start = { foreground = "#fad07a", background = "#1c1c1c" }
+end   = { foreground = "#151515", background = "#fad07a" }
+
+[colors.search]
+matches = { foreground = "#151515", background = "#fad07a" }
+focused_match = { foreground = "#151515", background = "#99ad6a" }
+
+[colors.vi_mode_cursor]
+text = "#151515"
+cursor = "#8197bf"
+
