@@ -42,35 +42,40 @@
 )
 
 (defwidget bluetooth-widget []
-    (box    
+    (box
 	:class "bluetooth"
 	:orientation "h"
 	:space-evenly false
 	:valign "center"
 	:halign "center"
-	:spacing 0 
+	:spacing 0
 	(eventbox
 	    :onhover "eww open bluetooth-tooltip && eww update show-bluetooth-tooltip=true"
 	    :onhoverlost "eww close bluetooth-tooltip && eww update show-bluetooth-tooltip=false"
-	    (label 
-		:text "󰂯  Bluetooth: ${bluetooth.count}"
+	    (label
+		:text "   Bluetooth: ${bluetooth.count}"
 	    )
 	)
-    )  
+    )
 )
 
 (defwindow bluetooth-tooltip
   :monitor 0
-  :geometry (geometry :x "780" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "855" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
   :focusable false
   (box :class "tooltip" :orientation "v"
 	(label :text "Dispositivos: ${bluetooth.count}")
-	(label :text "${bluetooth.tooltip}")
+	(for dev in {bluetooth.devices}
+	    (label :text "${dev}")
+         )
+
   )
 )
+
+
 
 (defwidget cpu-widget []
     (box    
