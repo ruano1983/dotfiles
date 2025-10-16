@@ -33,17 +33,12 @@
   padding:1 7px;
 }
 
-
-
-.bluetooth, .cpu, .ram, .temp, .disk, .linux, .player, .volume, .kblayout, .wifi{
+.bluetooth, .cpu, .ram, .temp, .disk, .linux, .player, .volume, .kblayout, .wifi, .date{
   color:#f7f2b8;
   font-weight: bold;
   padding:8px;
 }
 
-.date {
-  padding:8px;
-}
 .tooltip {
   background-color: #121212;   /* fondo oscuro */
   color: #f7f2b8;              /* texto claro */
