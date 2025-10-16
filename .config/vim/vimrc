@@ -39,4 +39,4 @@ imap <F12> <Insert>
 set background=dark
 set termguicolors "enable true colors support
 
-source ~/.config/vim/colors/moon.vim
+source ~/.config/vim/colors/forest.vim
