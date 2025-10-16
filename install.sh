@@ -183,4 +183,16 @@ case $response in
     ;;	
 esac
 
+
+read -rp "$(echo -e "${GREEN}==>${RESET} Do you want to build and install dwl? [y/n]: ")" response
+[[ "$response" =~ ^[Yy]$ ]]
+
+if [response = "y"] ; then
+    cp ${DOTFILES_DIR}/dwl /tmp
+    cd /tmp/dwl
+    make
+    sudo make PREFIX=/usr install
+    msg "Dwl installation completed."
+fi
+
 msg "Dotfiles installation completed."
