@@ -95,6 +95,8 @@ alias df="df -h"
 alias sdmesg="sudo dmesg"
 # tock clock
 alias clock="tock -s -C 2 -m -c"
+# bat
+alias bate="bat --theme='forest'"
 # removes .la
 alias rmla="sudo /usr/bin/remove-la-files.sh"
 # fstrim
