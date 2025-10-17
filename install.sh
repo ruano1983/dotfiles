@@ -163,6 +163,7 @@ done
 
 # --- eww configured for different wm -------------------
 response=$(ask2 "which window manager do you want to use eww for? [Sway/Dwl]")
+
 case $response in
     s)
 	cd "${EWWCONF}"
@@ -180,20 +181,22 @@ case $response in
 	fi
 	ln -s eww.yuck.dwl eww.yuck
 	msg "eww configured for dwl"
-    ;;	
+    ;;
 esac
 
-
+# --- dwl build and installation --------------------------
 read -rp "$(echo -e "${GREEN}==>${RESET} Do you want to build and install dwl? [y/n]: ")" response
 [[ "$response" =~ ^[Yy]$ ]]
 
 if [response = "y"] ; then
-    cp ${DOTFILES_DIR}/dwl /tmp
+    cp -r  ${DOTFILES_DIR}/dwl /tmp
     cd /tmp/dwl
+    make clean
     make
     echo -e "${YELLOW}Installing dwl as root with sudo..${RESET}"
     sleep 1
     sudo make PREFIX=/usr install
+    rm -fr /tmp/dwl
     msg "Dwl installation completed."
 fi
 
