@@ -1,0 +1,34 @@
+# Manta Ivan Ruano Monjas
+
+[colors.primary]
+background = "#edf7f2" # Fondo menta muy suave
+foreground = "#243c36" # Texto oscuro verdoso
+
+[colors.cursor]
+text = "#edf7f2"
+cursor = "#3e7b6c"
+
+[colors.selection]
+text = "#243c36"
+background = "#c5e6d6"
+
+[colors.normal]
+black   = "#4a6059" # Gris verdoso profundo
+red     = "#d67d70" # Coral pastel
+green   = "#89c59c" # Verde menta suave
+yellow  = "#d6c47a" # Amarillo dorado suave
+blue    = "#72b7b2" # Azul verdoso cálido
+magenta = "#b2a2c4" # Lavanda cálida
+cyan    = "#8fd1b3" # Verde agua
+white   = "#f0faf5" # Blanco con tinte menta
+
+[colors.bright]
+black   = "#6b8a81"
+red     = "#e58f85"
+green   = "#a2d4ae"
+yellow  = "#e7d391"
+blue    = "#8dcac4"
+magenta = "#c5b6d8"
+cyan    = "#a7e1c8"
+white   = "#fbfffc"
+

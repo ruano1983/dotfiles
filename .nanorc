@@ -8,7 +8,7 @@ set quickblank
 set regexp
 set linenumbers
 set minibar
-set numbercolor  blue
+set numbercolor  green
 set minicolor  yellow
 set keycolor yellow
 include "/usr/share/nano/*.nanorc"
