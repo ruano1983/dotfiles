@@ -6,9 +6,11 @@ KERNEL=$(uname -r)
 # Extrae la información principal del sistema
 OS_NAME=$(grep '^NAME=' /etc/os-release | cut -d'=' -f2 | tr -d '"' )
 OS_VERSION=$(grep '^VERSION=' /etc/os-release | cut -d'=' -f2 | tr -d '"' )
+OS_HOSTNAME=$(hostname)
 
-jq -n --arg kernel "$KERNEL" \
+jq -n -c --arg kernel "$KERNEL" \
        --arg os "$OS_NAME" \
        --arg version "$OS_VERSION" \
-       '{kernel:$kernel, os:$os, version:$version}'
+       --arg hostname "$OS_HOSTNAME" \
+       '{kernel:$kernel, os:$os, version:$version, hostname:$hostname}'
 
