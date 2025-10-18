@@ -233,7 +233,7 @@
 
 (defwindow ram-tooltip
   :monitor 0
-  :geometry (geometry :x "1180" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "1170" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
@@ -263,7 +263,7 @@
 
 (defwindow disk-tooltip
     :monitor 0
-    :geometry (geometry :x "1300" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "1290" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
@@ -300,6 +300,7 @@
     :exclusive false
     :focusable false
     (box :class "tooltip" :orientation "v" 
+    (label :text "${sysinfo.hostname}")
     	(label :text "${sysinfo.os} ${sysinfo.version}")
     	(label :text "${sysinfo.kernel}")
     )

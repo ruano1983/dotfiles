@@ -298,6 +298,7 @@
     :exclusive false
     :focusable false
     (box :class "tooltip" :orientation "v" 
+    	(label :text "${sysinfo.hostname}")
     	(label :text "${sysinfo.os} ${sysinfo.version}")
     	(label :text "${sysinfo.kernel}")
     )
