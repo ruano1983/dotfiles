@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export XKB_DEFAULT_LAYOUT:us
 SETUVAR __fish_initialized:3800
 SETUVAR fish_color_autosuggestion:797979
 SETUVAR fish_color_cancel:\x2d\x2dreverse
@@ -18,7 +19,7 @@ SETUVAR fish_color_match:blue
 SETUVAR fish_color_normal:normal
 SETUVAR fish_color_operator:blue
 SETUVAR fish_color_option:\x1d
-SETUVAR fish_color_param:white
+SETUVAR fish_color_param:fffbd1
 SETUVAR fish_color_quote:c35a47
 SETUVAR fish_color_redirection:d8d8d8
 SETUVAR fish_color_search_match:white\x1e\x2d\x2dbackground\x3dbrblack
@@ -41,3 +42,5 @@ SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
 SETUVAR fish_user_paths:/home/ivanruano83/\x2elocal/bin\x1e/home/ivanruano83/Applications\x1e/home/ivanruano83/home/ivanruano83/\x2ecargo/bin\x1e/home/ivanruano83/Aplicaciones/yt\x2ddlp\x1e/home/ivanruano83/Aplicaciones/Telegram\x1e/home/ivanruano83/scripts
+SETUVAR --export ports:/build/ports
+SETUVAR --export ugre:/mnt/ugreen
