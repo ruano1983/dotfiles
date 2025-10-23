@@ -32,16 +32,16 @@ print_screenshot() {
 runbmenu() {
 	bemenu-run -i -l 16 \
 	    --fb '#121212' \
-	    --ff '#f7f2b8' \
+	    --ff '#fffbd1' \
 	    --nb '#121212' \
-	    --nf '#f7f2b8' \
+	    --nf '#fffbd1' \
 	    --tb '#121212' \
-	    --hb '#52c1ae' \
-	    --tf '#52c1ae' \
+	    --hb '#3fc3aa' \
+	    --tf '#3fc3aa' \
 	    --hf '#191919' \
-	    --af '#f7f2b8' \
-	    --sb '#52c1ae' \
-	    --sf '#f7f2b8' \
+	    --af '#fffbd1' \
+	    --sb '#3fc3aa' \
+	    --sf '#fffbd1' \
 	    --fn 'Ubuntu bold 10' -H 20 -C -b  -p Apps
 }
 $1
