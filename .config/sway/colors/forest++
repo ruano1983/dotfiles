@@ -1,4 +1,4 @@
-set $base #5fd8c3
+set $base #3fc3aa
 set $foreground #fffbd1
 set $secundary #1a1a1a
 set $alert #9b5f5a
