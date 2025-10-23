@@ -1,6 +1,6 @@
 #### sway config ######
 # color theme
-include colors/forest
+include colors/forest++
 
 # tecla funcion(windows)
 set $mod Mod4
