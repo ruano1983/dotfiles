@@ -230,7 +230,7 @@ method = pipewire
 #foreground = '#00acc1' # colorfull
 #foreground = '#207599' # moon
 #foreground = '#1e7c7e' # nevada
-foreground = '#3e9f91' # forest
+foreground = '#3fc3aa' # forest ++
 
 # Gradient mode, only hex defined colors are supported,
 # background must also be defined in hex or remain commented out. 1 = on, 0 = off.
