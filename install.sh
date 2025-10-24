@@ -55,8 +55,28 @@ If there are files in your /home folder, it will back up that .bak file or folde
   sleep 1
 }
 
+profile_ask() {
+    local response
+    read -r -p "$(echo -e "Which profile do you want to install? ( sway , qtile ) [ s,q ] ")" response
+    case $response in
+	q)
+	    FOLDER_PROFILE=(
+		".config/qtile"
+	    )
+	;;
+
+	s)
+	    FOLDER_PROFILE=(
+		".config/sway"
+	    )
+	;;
+    esac
+}
+
+
 # --- Start banner ---
 show_banner
+profile_ask
 
 # --- Files to copy -------------------------------------
 FILES_TO_COPY=(
@@ -71,6 +91,7 @@ FILES_TO_COPY=(
   "scripts/wl-script"
   "scripts/autostart.sh"
   "scripts/start_eww.sh"
+  ".config/starship.toml"
 )
 
 # --- Folders to copy -----------------------------------
@@ -86,11 +107,10 @@ FOLDERS_TO_COPY=(
   ".config/fish"
   ".config/foot"
   ".config/kanshi"
-  ".config/qtile"
   ".config/ranger"
-  ".config/sway"
   ".config/vim"
   ".config/vifm"
+  ${FOLDER_PROFILE}
 )
 
 # --- Copy files interactively -------------------------
