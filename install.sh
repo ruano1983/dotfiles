@@ -38,19 +38,20 @@ ask2()  {
 # --- Fancy banner ---
 show_banner() {
   clear
-  echo -e "${CYAN}"
   echo "==============================================="
 
   if command -v figlet >/dev/null 2>&1; then
-    figlet "Ivan Ruano Dotfiles"
+    figlet "Ivan Ruano Install Dotfiles"
   elif command -v toilet >/dev/null 2>&1; then
-    toilet "Ivan Ruano Dotfiles"
+    toilet "Ivan Ruano Install Dotfiles"
   else
-    echo "🚀  DOTFILES INSTALLER by Ivan Ruano  🚀"
+    echo "🚀  DOTFILES INSTALL by Ivan Ruano  🚀"
   fi
 
   echo "==============================================="
-  echo -e "${RESET}"
+  echo ""
+  echo -e  "${YELLOW}This bash script will install all configurations for all dotfiles, including sway, eww, etc.
+If there are files in your /home folder, it will back up that .bak file or folder. You'll also have the option to install it or not, depending on your needs. Just enter [y/n]${RESET}"
   sleep 1
 }
 
@@ -90,8 +91,6 @@ FOLDERS_TO_COPY=(
   ".config/sway"
   ".config/vim"
   ".config/vifm"
-  ".config/waybar-dwl"
-  ".config/waybar-sway"
 )
 
 # --- Copy files interactively -------------------------
