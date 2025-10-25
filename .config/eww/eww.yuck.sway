@@ -6,7 +6,7 @@
 (defvar show-linux-tooltip false)
 (defvar show-player-tooltip false)
 (defvar show-volume-tooltip false)
-(defvar show-kblayout-tooltip false)
+(defvar show-keyboard-tooltip false)
 (defvar show-wifi-tooltip false)
 (defvar show-date-tooltip false)
 
@@ -17,7 +17,7 @@
 (defpoll sysinfo :interval "20m" "bash scripts/system_info.sh")
 (deflisten player "bash scripts/player.sh")
 (deflisten audio  "bash scripts/audio.sh")
-(defpoll kblayout :interval "5s" "bash scripts/kblayout.sh")
+(deflisten keyboard  "bash scripts/kblayout.sh")
 (defpoll wifi :interval "7s" "bash scripts/wifi.sh")
 (deflisten date "bash scripts/date.sh")
 
@@ -125,7 +125,7 @@
 
 (defwindow bluetooth-tooltip
   :monitor 0
-  :geometry (geometry :x "855" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "850" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
@@ -159,7 +159,7 @@
 
 (defwindow cpu-tooltip
     :monitor 0
-    :geometry (geometry :x "955" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "950" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
@@ -178,10 +178,6 @@
 	(label :text "Core 9: ${round(EWW_CPU.cores[9].usage,1)}% ${EWW_CPU.cores[9].freq} Mhz")
 	(label :text "Core 10: ${round(EWW_CPU.cores[10].usage,1)}% ${EWW_CPU.cores[10].freq} Mhz")
 	(label :text "Core 11: ${round(EWW_CPU.cores[11].usage,1)}% ${EWW_CPU.cores[11].freq} Mhz")
-	(label :text "Core 12: ${round(EWW_CPU.cores[12].usage,1)}% ${EWW_CPU.cores[12].freq} Mhz")
-	(label :text "Core 13: ${round(EWW_CPU.cores[13].usage,1)}% ${EWW_CPU.cores[13].freq} Mhz")
-	(label :text "Core 14: ${round(EWW_CPU.cores[14].usage,1)}% ${EWW_CPU.cores[14].freq} Mhz")
-	(label :text "Core 15: ${round(EWW_CPU.cores[15].usage,1)}% ${EWW_CPU.cores[15].freq} Mhz")
    )
 )
 
@@ -263,7 +259,7 @@
 
 (defwindow disk-tooltip
     :monitor 0
-    :geometry (geometry :x "1290" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "1295" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
@@ -294,15 +290,15 @@
 
 (defwindow systeminfo-tooltip
     :monitor 0
-    :geometry (geometry :x "1430" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "1440" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
     :focusable false
     (box :class "tooltip" :orientation "v" 
-    (label :text "${sysinfo.hostname}")
-    	(label :text "${sysinfo.os} ${sysinfo.version}")
+	(label :text "${sysinfo.hostname}")
     	(label :text "${sysinfo.kernel}")
+	(label :text "${sysinfo.os} ${sysinfo.version}")
     )
 )
 
@@ -330,7 +326,7 @@
 
 (defwindow audio-tooltip
   :monitor 0
-  :geometry (geometry :x "1540" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "1550" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
@@ -342,7 +338,7 @@
 )
 
 
-(defwidget kblayout-widget []
+(defwidget keyboard-widget []
     (box 
 	:class "kblayout"
 	:orientation "h"
@@ -350,22 +346,22 @@
 	:valign "center"
 	:halign "center"
 	(eventbox
-	    :onhover "eww open kblayout-tooltip && eww update show-kblayout-tooltip=true"
-	    :onhoverlost "eww close kblayout-tooltip && eww update show-kblayout-tooltip=false"
+	    :onhover "eww open keyboard-tooltip && eww update show-keyboard-tooltip=true"
+	    :onhoverlost "eww close keyboard-tooltip && eww update show-keyboard-tooltip=false"
 	    (label
-		:text "󰌌  ${kblayout}"
+		:text "󰌌   ${keyboard.layout}"
 	    )
 	)
     )
 )
-(defwindow kblayout-tooltip
+(defwindow keyboard-tooltip
   :monitor 0
-  :geometry (geometry :x "1675" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "1630" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
   :focusable false
-  (box :class "tooltip" (label :text "Layout: ${kblayout}"))
+  (box :class "tooltip" (label :text "${keyboard.tooltip}"))
 
 )
 
@@ -420,7 +416,7 @@
     (disk-widget)
     (systeminfo-widget)
     (audio-widget)
-    (kblayout-widget)
+    (keyboard-widget)
     (date-widget) 
     ))
 )
