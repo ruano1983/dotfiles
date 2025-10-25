@@ -259,7 +259,7 @@
 
 (defwindow disk-tooltip
     :monitor 0
-    :geometry (geometry :x "1295" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "1290" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
