@@ -15,7 +15,7 @@ set EDITOR "vim"	    # $EDITOR use vim
 set -Ux XKB_DEFAULT_LAYOUT us
 set -Ux ports /build/ports  # ports frikios
 set -Ux ugre /mnt/ugreen    # ssd externo
-source .config/fish/fish-tunes.fish
+source ~/.config/fish/fish-tunes.fish
 # radio
 alias playcope="mpv --no-video 'https://net1-cope-rrcast.flumotion.com/cope/net1-low.mp3'"
 alias play40p="mpv --no-video 'https://25653.live.streamtheworld.com/LOS40_SC'"
