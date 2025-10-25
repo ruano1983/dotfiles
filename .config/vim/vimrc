@@ -12,9 +12,8 @@ set statusline+=\ %F\ %M\ %Y\ %R
 " Use a divider to separate the left side from the right side.
 set statusline+=%=
 " Status line right side.
-set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+set statusline+=\ col:\ %c\ line:\ %l\/%L\ percent:\ %p%%
 " Show the status on the second to last line.
-set laststatus=2
 set showmatch
 set autoindent "autoidentación
 set shiftwidth=4
@@ -39,4 +38,4 @@ imap <F12> <Insert>
 set background=dark
 set termguicolors "enable true colors support
 
-source ~/.config/vim/colors/forest.vim
+source ~/.config/vim/colors/forest++.vim
