@@ -1,5 +1,5 @@
 #!/bin/bash
-COLORSCHEME=forest
+COLORSCHEME=forest++
 kanshi &
 dbus-update-activation-environment --all &
 /usr/libexec/polkit-kde-authentication-agent-1 &
