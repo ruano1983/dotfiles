@@ -6,7 +6,7 @@
 (defvar show-linux-tooltip false)
 (defvar show-player-tooltip false)
 (defvar show-volume-tooltip false)
-(defvar show-kblayout-tooltip false)
+(defvar show-keyboard-tooltip false)
 (defvar show-wifi-tooltip false)
 (defvar show-date-tooltip false)
 
@@ -17,7 +17,7 @@
 (defpoll sysinfo :interval "20m" "bash scripts/system_info.sh")
 (deflisten player "bash scripts/player.sh")
 (deflisten audio  "bash scripts/audio.sh")
-(defpoll kblayout :interval "2s" "bash scripts/kblayout-dwl.sh")
+(defpoll keyboard :interval "2s" "bash scripts/kblayout-dwl.sh")
 (defpoll wifi :interval "7s" "bash scripts/wifi.sh")
 (deflisten date "bash scripts/date.sh")
 (deflisten dwl-tags "bash scripts/dwl_tags.sh")
@@ -65,9 +65,9 @@
   :exclusive false
   :focusable false
   (box :class "tooltip" :orientation "v"
-	(label :wrap true :text "󰐊 ${player.status}")
+	(label :wrap true :text "${player.status}")
 	(label :wrap true :text "${player.artist}")
-	(label :wrap true :width 250 :text "󰝚  ${player.title}")
+	(label :wrap true :width 250 :text "${player.title}")
     )
 
 )
@@ -91,7 +91,7 @@
 
 (defwindow wifi-tooltip
     :monitor 0
-    :geometry (geometry :x "715" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "720" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
@@ -156,7 +156,7 @@
 
 (defwindow cpu-tooltip
     :monitor 0
-    :geometry (geometry :x "950" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "960" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
@@ -202,7 +202,7 @@
 
 (defwindow temp-tooltip
   :monitor 0
-  :geometry (geometry :x "1045" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "1060" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
@@ -230,7 +230,7 @@
 
 (defwindow ram-tooltip
   :monitor 0
-  :geometry (geometry :x "1160" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "1180" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
@@ -292,7 +292,7 @@
 
 (defwindow systeminfo-tooltip
     :monitor 0
-    :geometry (geometry :x "1420" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "1440" :y "0" :width "150" :height "30")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
@@ -328,7 +328,7 @@
 
 (defwindow audio-tooltip
   :monitor 0
-  :geometry (geometry :x "1540" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "1550" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
@@ -339,7 +339,7 @@
   )
 )
 
-(defwidget kblayout-widget []
+(defwidget keyboard-widget []
     (box 
 	:class "kblayout"
 	:orientation "h"
@@ -347,23 +347,23 @@
 	:valign "center"
 	:halign "center"
 	(eventbox
-	    :onhover "eww open kblayout-tooltip && eww update show-kblayout-tooltip=true"
-	    :onhoverlost "eww close kblayout-tooltip && eww update show-kblayout-tooltip=false"
+	    :onhover "eww open keyboard-tooltip && eww update show-keyboard-tooltip=true"
+	    :onhoverlost "eww close keyboard-tooltip && eww update show-keyboard-tooltip=false"
 	    (label
-		:text "󰌌  ${kblayout.layout}"
+		:text "󰌌  ${keyboard.layout}"
 	    )
 	)
     )
 )
 
-(defwindow kblayout-tooltip
+(defwindow keyboard-tooltip
   :monitor 0
-  :geometry (geometry :x "1670" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "1630" :y "0" :width "150" :height "30")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
   :focusable false
-  (box :class "tooltip" (label :text "Layout: ${kblayout.layout}"))
+  (box :class "tooltip" (label :text "${keyboard.tooltip}"))
 
 )
 
@@ -419,7 +419,7 @@
     (disk-widget)
     (systeminfo-widget)
     (audio-widget)
-    (kblayout-widget)
+    (keyboard-widget)
     (date-widget) 
     ))
 )

@@ -1,16 +1,21 @@
 #!/usr/bin/env bash
-# Muestra el layout de teclado inicial en JSON (solo al inicio)
 
-# Intentamos obtener layout por localectl
-layout=${XKB_DEFAULT_LAYOUT}
+layout_full=$(cat /tmp/dwl-keymap 2>/dev/null | tr -d '\n')
 
-# Abreviaturas comunes
-case "$layout" in
-  "us") layout="Ansi" ;;
-  "es") layout="ES" ;;
-  "de") layout="DE" ;;
+# Determina el código corto según el idioma detectado
+case "$layout_full" in
+  *"English"*) layout="US" ;;
+  *"Spanish"*) layout="ES" ;;
+  *"French"*) layout="FR" ;;
+  *"German"*) layout="DE" ;;
+  *"Italian"*) layout="IT" ;;
+  *"Portuguese"*) layout="PT" ;;
+  *) layout="??" ;;
 esac
 
-# Emitimos JSON
-jq -n -c --arg layout "$layout" '{layout:$layout}'
+# Genera JSON limpio con jq
+jq -n -c \
+  --arg layout "$layout" \
+  --arg tooltip "$layout_full" \
+  '{layout: $layout, tooltip: $tooltip}'
 
