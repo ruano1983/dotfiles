@@ -13,8 +13,12 @@ static const float focuscolor[]            = COLOR(0x3fc3aaff);
 static const float urgentcolor[]           = COLOR(0xb66358ff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You can also use glsl colors */
+/* change the cursor theme and size */
 static const char *cursor_theme            = "Quintom_Snow";
 static const char cursor_size[]            = "24"; /* Make sure it's a valid integer, otherwise things will break */
+/* keyboard layout change notification for status bar */
+static const char  kblayout_file[] = "/tmp/dwl-keymap";
+static const char *kblayout_cmd[]  = {"pkill", "-RTMIN+3", "someblocks", NULL};
 
 /* tagging - TAGCOUNT must be no greater than 31 */
 #define TAGCOUNT (9)
@@ -35,7 +39,7 @@ static const Rule rules[] = {
 	/* app_id             title       tags mask  switchtotag   isfloating   monitor */
 	/* examples: */
 	{ "firefox",  NULL,       1 << 1,     1,	0,           -1 }, 
-	{ "dolphin",  NULL,       1 << 4,     1,	0,           -1 }, 
+	{ "dolphin",  NULL,       1 << 4,     0,	0,           -1 }, 
 	{ "org.telegram.desktop._353c6751dd3837b1ed6ebfcdc83f2de9",  NULL,       1 << 2,    1,     0,           -1 }, 
 
 };
@@ -192,6 +196,9 @@ static const Key keys[] = {
 	{ MODKEY,                     XKB_KEY_period,     focusmon,       {.i = WLR_DIRECTION_RIGHT} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_less,       tagmon,         {.i = WLR_DIRECTION_LEFT} },
 	{ MODKEY|WLR_MODIFIER_SHIFT,  XKB_KEY_greater,    tagmon,         {.i = WLR_DIRECTION_RIGHT} },
+	{ MODKEY,                       XKB_KEY_Left,   focusdir,              {.i = 0} },
+	{ MODKEY,                       XKB_KEY_Right,  focusdir,              {.i = 1} },
+	{ MODKEY,                       XKB_KEY_Up,     focusdir,              {.i = 2} },
 	TAGKEYS(          XKB_KEY_1, XKB_KEY_exclam,                     0),
 	TAGKEYS(          XKB_KEY_2, XKB_KEY_at,                         1),
 	TAGKEYS(          XKB_KEY_3, XKB_KEY_numbersign,                 2),
