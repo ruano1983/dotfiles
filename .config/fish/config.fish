@@ -15,7 +15,10 @@ set EDITOR "vim"	    # $EDITOR use vim
 set -Ux XKB_DEFAULT_LAYOUT us
 set -Ux ports /build/ports  # ports frikios
 set -Ux ugre /mnt/ugreen    # ssd externo
-source ~/.config/fish/fish-tunes.fish
+
+if test -e  ~/.config/fish/fish-tunes.fish
+    source ~/.config/fish/fish-tunes.fish
+end
 # radio
 alias playcope="mpv --no-video 'https://net1-cope-rrcast.flumotion.com/cope/net1-low.mp3'"
 alias play40p="mpv --no-video 'https://25653.live.streamtheworld.com/LOS40_SC'"
@@ -43,6 +46,7 @@ alias updb="updatedb  --prunepaths=/run"
 alias qtilestart="dbus-run-session qtile start -b wayland"
 alias dwlstart="dbus-run-session dwl"
 alias swaystart="dbus-run-session sway"
+alias mangostart="dbus-run-session mango"
 # plasma wayland start
 alias kde="dbus-run-session startplasma-wayland"
 # weather Fuenlabrada
