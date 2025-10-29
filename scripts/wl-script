@@ -36,11 +36,11 @@ runbmenu() {
 	    --nb '#121212' \
 	    --nf '#fffbd1' \
 	    --tb '#121212' \
-	    --hb '#567f71' \
-	    --tf '#567f71' \
+	    --hb '#3fc3aa' \
+	    --tf '#3fc3aa' \
 	    --hf '#191919' \
 	    --af '#fffbd1' \
-	    --sb '#567f71' \
+	    --sb '#3fc3aa' \
 	    --sf '#fffbd1' \
 	    --fn 'Ubuntu bold 10' -H 20 -C -b  -p Apps
 }

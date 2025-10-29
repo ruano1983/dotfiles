@@ -17,7 +17,7 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita' &
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus' &
 gsettings set org.gnome.desktop.interface font-name 'Noto Sans 8' &
 gsettings set org.gnome.desktop.interface cursor-theme 'Quintom_Snow' &
-swaybg -m fill -i '/home/ivanruano83/Imágenes/wallpapers/vector-nature/vecteezy_woodland-forest-landscape-with-smooth-color_23056868.jpg' &
+swaybg -m fill -i '/home/ivanruano83/Imágenes/wallpapers/vector-nature/vecteezy_blue-mountain-landscape-background-illustration_7692868.jpg' &
 
 sleep 1
 
