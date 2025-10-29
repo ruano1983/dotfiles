@@ -4,7 +4,7 @@
 
 .bar-bg {
     background-color: #121212; 
-    color: #fffbd1; 
+    color:#fffbd1; 
     font-family: Ubuntu;
     font-size: 13px;
     font-weight: bold;
@@ -17,19 +17,19 @@
 
 .tag-focused, 
 .focused {
-  color: #567f71;
-  padding:1 8px;
+  color: #3fc3aa;
+  padding:1 7px;
 }
 
 .tag-occupied,
 .active {
   color: #fffbd1;
-  padding:1 8px;
+  padding:1 7px;
 }
 .tag,
 .inactive {
   color: #1a1a1a;
-  padding:1 8px;
+  padding:1 7px;
 }
 
 .bluetooth, .cpu, .ram, .temp, .disk, .linux, .player, .volume, .kblayout, .wifi, .date{
@@ -40,7 +40,7 @@
 
 .tooltip {
   background-color: #121212;   /* fondo oscuro */
-  color: #fffbd1; /* texto claro */
+  color:#fffbd1; /* texto claro */
   border: 1px solid black;
   border-color: #1a1a1a;
   border-radius: 4px;

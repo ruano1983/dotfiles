@@ -209,7 +209,7 @@
   :focusable false
   :windowtype "dock"
   (box :class "tooltip" :orientation "v"
-	(label :text "  Temperature Ryzen: ${cpu-temp}°C")
+	(label :text "  Temperature Tdie: ${cpu-temp}°C")
     )
 )
 
