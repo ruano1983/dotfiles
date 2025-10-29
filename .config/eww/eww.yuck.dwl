@@ -34,7 +34,7 @@
 	(button 
 	    :class "${tag.class}"
 	    :onclick "dwlmsg -s -t ${tag.id}"
-	    "󰝤"
+	    ""
 	
       )
     )
@@ -51,7 +51,7 @@
 	(eventbox
 	    :onhover "if [ \"${player.status}\" = \"Playing\" ]; then eww open player-tooltip && eww update show-player-tooltip=true; fi"
 	    :onhoverlost "eww close player-tooltip && eww update show-player-tooltip=false"
-	    (label :text "󰝚  ${player.status}")
+	    (label :text "󰐊 ${player.status}")
 	)
     )
     
@@ -59,15 +59,16 @@
 
 (defwindow player-tooltip
   :monitor 0
-  :geometry (geometry :x "605" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "0%" :y "0" :width "170" :height "30" :anchor "top center")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
   :focusable false
+  :windowtype "dock"
   (box :class "tooltip" :orientation "v"
-	(label :wrap true :text "${player.status}")
-	(label :wrap true :text "${player.artist}")
-	(label :wrap true :width 250 :text "${player.title}")
+	(label :wrap true :text "󰐊 ${player.status}")
+	(label :wrap true :text "󰝚  ${player.artist}")
+	(label :wrap true :width 255 :text "${player.title}")
     )
 
 )
@@ -91,13 +92,14 @@
 
 (defwindow wifi-tooltip
     :monitor 0
-    :geometry (geometry :x "720" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "0%" :y "0" :width "170" :height "30" :anchor "top center")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
     :focusable false
+    :windowtype "dock"
     (box :class "tooltip" :orientation "v" 
-	(label :text "${wifi.iface}: ${wifi.ip}") 
+	(label :text "󰖩   ${wifi.iface}: ${wifi.ip}") 
 	(label :text "${wifi.ssid}: ${wifi.signal}%")
     )
 )
@@ -122,13 +124,14 @@
 
 (defwindow bluetooth-tooltip
   :monitor 0
-  :geometry (geometry :x "855" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "0%" :y "0" :width "170" :height "30" :anchor "top center")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
   :focusable false
+  :windowtype "dock"
   (box :class "tooltip" :orientation "v"
-	(label :text "Dispositivos: ${bluetooth.count}")
+	(label :text "󰦋   Devices: ${bluetooth.count}")
 	(for dev in {bluetooth.devices}
 	    (label :text "${dev}")
          )
@@ -156,13 +159,14 @@
 
 (defwindow cpu-tooltip
     :monitor 0
-    :geometry (geometry :x "960" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "0%" :y "0" :width "170" :height "30" :anchor "top center")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
-    :focusable false 
+    :focusable false
+    :windowtype "dock"
     (box :class "tooltip" :orientation "v"
-	(label :text "Uso de Cpu: ${round(EWW_CPU.avg,1)}%")
+	(label :text "  CPU usage: ${round(EWW_CPU.avg,1)}%")
 	(label :text "Core 0: ${round(EWW_CPU.cores[0].usage,1)}% ${EWW_CPU.cores[0].freq} Mhz")
 	(label :text "Core 1: ${round(EWW_CPU.cores[1].usage,1)}% ${EWW_CPU.cores[1].freq} Mhz")
 	(label :text "Core 2: ${round(EWW_CPU.cores[2].usage,1)}% ${EWW_CPU.cores[2].freq} Mhz")
@@ -175,10 +179,6 @@
 	(label :text "Core 9: ${round(EWW_CPU.cores[9].usage,1)}% ${EWW_CPU.cores[9].freq} Mhz")
 	(label :text "Core 10: ${round(EWW_CPU.cores[10].usage,1)}% ${EWW_CPU.cores[10].freq} Mhz")
 	(label :text "Core 11: ${round(EWW_CPU.cores[11].usage,1)}% ${EWW_CPU.cores[11].freq} Mhz")
-	(label :text "Core 12: ${round(EWW_CPU.cores[12].usage,1)}% ${EWW_CPU.cores[12].freq} Mhz")
-	(label :text "Core 13: ${round(EWW_CPU.cores[13].usage,1)}% ${EWW_CPU.cores[13].freq} Mhz")
-	(label :text "Core 14: ${round(EWW_CPU.cores[14].usage,1)}% ${EWW_CPU.cores[14].freq} Mhz")
-	(label :text "Core 15: ${round(EWW_CPU.cores[15].usage,1)}% ${EWW_CPU.cores[15].freq} Mhz")
 
    )
 )
@@ -202,12 +202,15 @@
 
 (defwindow temp-tooltip
   :monitor 0
-  :geometry (geometry :x "1060" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "0%" :y "0" :width "170" :height "30" :anchor "top center")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
   :focusable false
-  (box :class "tooltip" (label :text "Temperatura Ryzen: ${cpu-temp}°C"))
+  :windowtype "dock"
+  (box :class "tooltip" :orientation "v"
+	(label :text "  Temperature Ryzen: ${cpu-temp}°C")
+    )
 )
 
 (defwidget ram-widget []
@@ -230,14 +233,15 @@
 
 (defwindow ram-tooltip
   :monitor 0
-  :geometry (geometry :x "1180" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "0%" :y "0" :width "170" :height "30" :anchor "top center")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
   :focusable false
+  :windowtype "dock"
   (box :class "tooltip" :orientation "v" 
-  (label :text "Memoria usada: ${ram.used}G/${ram.total}G")
-  (label :text "Memoria cache: ${ram.cache}G")
+  (label :text "    Memory Ram used: ${ram.used}G/${ram.total}G")
+  (label :text "Cache memory: ${ram.cache}G")
   )
 )
 
@@ -252,7 +256,7 @@
 	    :onhover "eww open disk-tooltip && eww update show-disk-tooltip=true"
 	    :onhoverlost "eww close disk-tooltip && eww update show-disk-tooltip=false"
 	    (label 
-		:text "🖴  Disk: ${disk.root.used}G/${disk.root.size}G"
+		:text "   Disk: ${disk.root.used}G/${disk.root.size}G"
 	    )
 	)
     )
@@ -261,15 +265,16 @@
 
 (defwindow disk-tooltip
     :monitor 0
-    :geometry (geometry :x "1300" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "0%" :y "0" :width "170" :height "30" :anchor "top center")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
     :focusable false
+    :windowtype "dock"
     (box :class "tooltip" :orientation "v"
-	(label :text "Partición /: ${disk.root.used}G/${disk.root.size}G \(${disk.root.percent}%\)")
-	(label :text "Partición Home: ${disk.home.used}G/${disk.home.size}G \(${disk.home.percent}%\)")
-	(label :text "Partición build: ${disk.build.used}G/${disk.build.size}G \(${disk.build.percent}%\)")
+	(label :text "   Partition /: ${disk.root.used}G/${disk.root.size}G \(${disk.root.percent}%\)")
+	(label :text "Partition Home: ${disk.home.used}G/${disk.home.size}G \(${disk.home.percent}%\)")
+	(label :text "Partition build: ${disk.build.used}G/${disk.build.size}G \(${disk.build.percent}%\)")
     )
 )
 
@@ -284,7 +289,7 @@
 	    :onhover "eww open systeminfo-tooltip && eww update show-linux-tooltip=true"
 	    :onhoverlost "eww close systeminfo-tooltip && eww update show-linux-tooltip=false"
 	    (label 
-		:text "   Linux: ${sysinfo.kernel}"
+		:text "󰌽  Linux: ${sysinfo.kernel}"
 	    )	
 	)
     ) 
@@ -292,13 +297,14 @@
 
 (defwindow systeminfo-tooltip
     :monitor 0
-    :geometry (geometry :x "1440" :y "0" :width "150" :height "30")
+    :geometry (geometry :x "0%" :y "0" :width "170" :height "30" :anchor "top center")
     :stacking "fg"
     :wm-ignore true          ; Ignora el gestor de ventanas
     :exclusive false
     :focusable false
+    :windowtype "dock"
     (box :class "tooltip" :orientation "v" 
-    	(label :text "${sysinfo.hostname}")
+    	(label :text "󰌽  ${sysinfo.hostname}")
     	(label :text "${sysinfo.os} ${sysinfo.version}")
     	(label :text "${sysinfo.kernel}")
     )
@@ -318,7 +324,7 @@
 		:onhover "eww open audio-tooltip && eww update show-volume-tooltip=true"
 		:onhoverlost "eww close audio-tooltip && eww update show-volume-tooltip=false"
 		(label
-		:text {audio.muted ? "    Muted" : "   Vol:  ${audio.volume}%"}
+		:text {audio.muted ? "   Muted" : "   Vol:  ${audio.volume}%"}
 		:class {audio.muted ? "muted" : "normal"}
 		)
 	    )
@@ -328,14 +334,15 @@
 
 (defwindow audio-tooltip
   :monitor 0
-  :geometry (geometry :x "1550" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "0%" :y "0" :width "170" :height "30" :anchor "top center")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
   :focusable false
+  :windowtype "dock"
   (box :class "tooltip" :orientation "v"
-  (label :text {audio.muted ? "Muted" : "Volumen:  ${audio.volume}%"})
-  (label :text "${audio.device}")
+    (label :text {audio.muted ? "Muted" : "   Volume:  ${audio.volume}%"})
+    (label :text "${audio.device}")
   )
 )
 
@@ -358,13 +365,15 @@
 
 (defwindow keyboard-tooltip
   :monitor 0
-  :geometry (geometry :x "1630" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "0%" :y "0" :width "170" :height "30" :anchor "top center")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
   :focusable false
-  (box :class "tooltip" (label :text "${keyboard.tooltip}"))
-
+  :windowtype "dock"
+  (box :class "tooltip" :orientation "v"
+	(label :text "󰌌  ${keyboard.tooltip}")
+   )
 )
 
 
@@ -379,7 +388,7 @@
 	    :onhover "eww open date-tooltip && eww update show-date-tooltip=true"
 	    :onhoverlost "eww close date-tooltip && eww update show-date-tooltip=false"
 	    (label 
-		:text ":   ${date}"
+		:text "󱑁   ${date}"
 	    )
 	)
     )
@@ -387,12 +396,12 @@
 
 (defwindow date-tooltip
   :monitor 0
-  :geometry (geometry :x "1770" :y "0" :width "150" :height "30")
+  :geometry (geometry :x "0%" :y "0" :width "170" :height "30" :anchor "top right")
   :stacking "fg"
   :wm-ignore true          ; Ignora el gestor de ventanas
   :exclusive false
   :focusable false
-  (box :class "tooltip" (label :text "${date}")) 
+  (box :class "tooltip" (label :text "󱑁   ${date}")) 
 	
 )
 

@@ -11,39 +11,42 @@
 }
 
 .workspaces {
-    font-size: 15px;
+    font-size: 13px;
     padding:8px;
   }  
 
 .tag-focused, 
 .focused {
   color: #3fc3aa;
-  padding:1 7px;
+  padding:1 8px;
 }
 
 .tag-occupied,
 .active {
   color: #fffbd1;
-  padding:1 7px;
+  padding:1 8px;
 }
 .tag,
 .inactive {
   color: #1a1a1a;
-  padding:1 7px;
+  padding:1 8px;
 }
 
 .bluetooth, .cpu, .ram, .temp, .disk, .linux, .player, .volume, .kblayout, .wifi, .date{
   color:#fffbd1;
   font-weight: bold;
-  padding:8px;
+  padding:9px;
 }
 
 .tooltip {
   background-color: #121212;   /* fondo oscuro */
-  color: #fffbd1;              /* texto claro */
-  padding: 12px;           /* espacio interno */
+  color: #fffbd1; /* texto claro */
+  border: 1px solid black;
+  border-color: #1a1a1a;
+  border-radius: 4px;
+  padding: 18px;           /* espacio interno */
   font-size: 13px;
   font-weight: bold;
-  margin: 8px;
+  margin: 9px;
 }
 
