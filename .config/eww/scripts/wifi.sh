@@ -1,41 +1,57 @@
 #!/usr/bin/env bash
-# Muestra el estado del WiFi + IP local en JSON para Eww
+# Estado Wi-Fi en JSON instantáneo para Eww
+# Requiere: iw, iproute2, jq
 
-# Cambia esto por tu interfaz correcta
-IFACE="wlp4s0"
+IFACE="wlp4s0"  # cambia si tu interfaz es distinta
 
-# Verificar si la interfaz existe
-if ! iw dev "$IFACE" info &>/dev/null; then
-  jq -n --arg iface "$IFACE" \
-        '{"iface":$iface,"ssid":"No disponible","signal":0,"ip":"-"}'
-  exit 0
-fi
+get_wifi_status() {
+    # Si la interfaz no existe
+    if ! iw dev "$IFACE" info &>/dev/null; then
+        jq -n -c  --arg iface "$IFACE" \
+              '{"iface":$iface,"ssid":"No disponible","signal":0,"ip":"-"}'
+        return
+    fi
 
-# Obtener información del enlace
-INFO=$(iw dev "$IFACE" link)
+    INFO=$(iw dev "$IFACE" link)
+    SSID=$(echo "$INFO" | awk -F'SSID: ' '/SSID/ {print $2}' | xargs)
+    SIGNAL=$(echo "$INFO" | awk -F'signal: ' '/signal/ {print $2}' | awk '{print $1}')
+    IP=$(ip -4 addr show "$IFACE" | awk '/inet / {print $2}' | cut -d'/' -f1 | head -n1)
 
-SSID=$(echo "$INFO" | awk -F'SSID: ' '/SSID/ {print $2}')
-SIGNAL=$(echo "$INFO" | awk -F'signal: ' '/signal/ {print $2}' | awk '{print $1}')
-IP=$(ip addr show "$IFACE" | awk '/inet / {print $2}' | cut -d'/' -f1 | head -n1)
+    if [[ -z "$SSID" || "$SSID" == "Not-Associated" ]]; then
+        jq -n --arg iface "$IFACE" \
+              '{"iface":$iface,"ssid":"Desconectado","signal":0,"ip":"-"}'
+        return
+    fi
 
-# Si no hay conexión
-if [[ -z "$SSID" || "$SSID" == "Not-Associated" ]]; then
-  jq -n --arg iface "$IFACE" \
-        '{"iface":$iface,"ssid":"Desconectado","signal":0,"ip":"-"}'
-  exit 0
-fi
+    # Calcular porcentaje desde dBm
+    if [[ -z "$SIGNAL" || "$SIGNAL" == "0" ]]; then
+        SIGNAL=-100
+    fi
 
-# Convertir dBm a porcentaje aproximado
-PERC=$((2 * (SIGNAL + 100)))
-(( PERC > 100 )) && PERC=100
-(( PERC < 0 )) && PERC=0
+    PERC=$(awk -v s="$SIGNAL" 'BEGIN {
+        if (s > -50) p = 100;
+        else if (s < -100) p = 0;
+        else p = 2 * (s + 100);
+        printf "%.0f", p
+    }')
 
-# Si no hay IP (por ejemplo, conectando)
-[[ -z "$IP" ]] && IP="-"
+    [[ -z "$IP" ]] && IP="-"
 
-jq -n --arg iface "$IFACE" \
-       --arg ssid "$SSID" \
-       --arg ip "$IP" \
-       --argjson signal "$PERC" \
-       '{iface:$iface, ssid:$ssid, ip:$ip, signal:$signal}'
+    jq -n -c --arg iface "$IFACE" \
+          --arg ssid "$SSID" \
+          --arg ip "$IP" \
+          --argjson signal "$PERC" \
+          '{iface:$iface, ssid:$ssid, ip:$ip, signal:$signal}'
+}
+
+# Emitir estado inicial
+get_wifi_status
+
+# Escuchar eventos de red y WiFi
+{
+    iw event 2>/dev/null &
+    ip monitor address dev "$IFACE" 2>/dev/null &
+} | while read -r _; do
+    get_wifi_status
+done
 
